@@ -1,0 +1,37 @@
+{
+  "name": "toosoon-utils",
+  "version": "1.0.0",
+  "description": "Utility functions",
+  "main": "./lib/index.js",
+  "scripts": {
+    "build": "npx tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toosoon-dev/toosoon-utils.git"
+  },
+  "keywords": [
+    "tooson",
+    "utils",
+    "colors",
+    "dom",
+    "files",
+    "functions",
+    "geometry",
+    "maths",
+    "now",
+    "random",
+    "strings"
+  ],
+  "author": "Arnaud Rocca",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/toosoon-dev/toosoon-utils/issues"
+  },
+  "homepage": "https://github.com/toosoon-dev/toosoon-utils#readme",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "typescript": "^5.3.3"
+  }
+}
