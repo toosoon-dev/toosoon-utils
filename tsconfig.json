@@ -5,7 +5,7 @@
     "baseUrl": ".",
     "outDir": "lib",
     "target": "ES5",
-    "module": "CommonJS",
+    "module": "NodeNext",
     "lib": ["DOM", "ESNext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
