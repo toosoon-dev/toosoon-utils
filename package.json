@@ -1,6 +1,6 @@
 {
   "name": "toosoon-utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Utility functions",
   "main": "./lib/index.js",
   "scripts": {
