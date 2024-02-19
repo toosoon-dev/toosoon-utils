@@ -15,7 +15,7 @@ $ yarn add toosoon-utils
 NPM:
 
 ```properties
-$ $ npm install toosoon-utils
+$ npm install toosoon-utils
 ```
 
 ## Usage
@@ -143,7 +143,7 @@ createCanvas(width: number, height: number) => { canvas: HTMLCanvasElement; ctx:
 injectStyles(cssContent: string) => void;
 ```
 
-### FILES
+### Files
 
 ```ts
 // Download a Blob object into user files
@@ -155,7 +155,7 @@ download(blob: Blob, filename: string) => void;
 upload(onLoad: (dataUrl: string) => void, accept?: string) => void;
 ```
 
-### FUNCTIONS
+### Functions
 
 ```ts
 // No-op function
@@ -172,7 +172,7 @@ wait(timeout: number) => Promise<void>;
 defer<T>() => Deferred<T>;
 ```
 
-### GEOMETRY
+### Geometry
 
 ```ts
 // Convert a radians value into degrees
@@ -219,7 +219,7 @@ cover(target: FitInput, container: FitInput) => FitOutput;
 contain(target: FitInput, container: FitInput) => FitOutput;
 ```
 
-### MATHS
+### Maths
 
 ```ts
 // Check if a number is even
@@ -316,14 +316,14 @@ average(array: number[]) => number;
 damp(value: number, target: number, damping: number, delta: number) => number;
 ```
 
-### NOW
+### Now
 
 ```ts
 // Polyfill for "now()" functions
 now() => number;
 ```
 
-### RANDOM
+### Random
 
 ```ts
 // Generate a random boolean (true or false)
@@ -385,7 +385,7 @@ onSphere(radius?: number, target?: Vector3) => Vector3;
 insideSphere(radius?: number, target?: Vector3) => Vector3;
 ```
 
-### STRINGS
+### Strings
 
 ```ts
 // Capitalize a string
