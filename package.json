@@ -1,8 +1,20 @@
 {
   "name": "toosoon-utils",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Utility functions",
-  "main": "./lib/index.js",
+  "exports": {
+    "./colors": "./lib/colors.js",
+    "./dom": "./lib/dom.js",
+    "./files": "./lib/files.js",
+    "./functions": "./lib/functions.js",
+    "./geometry": "./lib/geometry.js",
+    "./maths": "./lib/maths.js",
+    "./now": "./lib/now.js",
+    "./random": "./lib/random.js",
+    "./strings": "./lib/strings.js",
+    "./constants": "./lib/constants.js",
+    "./types": "./lib/types.d.ts"
+  },
   "scripts": {
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"

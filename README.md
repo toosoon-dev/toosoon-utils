@@ -19,15 +19,9 @@ $ npm install toosoon-utils
 ## Usage
 
 ```js
-import { maths } from 'toosoon-utils';
+import { lerp } from 'toosoon-utils/maths';
 
-console.log(maths.lerp(0.5, 0, 5)); // 2.5
-```
-
-```js
-import { PI } from 'toosoon-utils/lib/constants';
-
-console.log(PI); // 3.141592653589793
+console.log(lerp(0.5, 0, 5)); // 2.5
 ```
 
 ## Functions
