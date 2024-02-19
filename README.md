@@ -350,12 +350,12 @@ randomHexColor() => string;
 
 ```ts
 // Pick a random item from an array
-randomItem<I>(array: I[] = []) => I | undefined;
+randomItem<T>(array: T[] = []) => T | undefined;
 ```
 
 ```ts
 // Pick a random property from an object
-randomObjectProperty(object: object) => unknown | undefined;
+randomObjectProperty<T>(object: { [key: string]: T }) => T | undefined;
 ```
 
 ```ts

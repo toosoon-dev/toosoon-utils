@@ -56,10 +56,10 @@ export function randomHexColor(): string {
 /**
  * Pick a random item from an array
  *
- * @param {I[]} [array=[]] Array to pick the item from
- * @returns {I|undefined} Random item picked
+ * @param {T[]} [array=[]] Array to pick the item from
+ * @returns {T|undefined} Random item picked
  */
-export function randomItem<I = unknown>(array: I[] = []): I | undefined {
+export function randomItem<T = unknown>(array: T[] = []): T | undefined {
   if (array.length === 0) return undefined;
   return array[randomInt(0, array.length - 1)];
 }
@@ -70,7 +70,7 @@ export function randomItem<I = unknown>(array: I[] = []): I | undefined {
  * @param {object} object Object to pick the property from
  * @returns {unknown|undefined} Random item picked
  */
-export function randomObjectProperty(object: object): unknown | undefined {
+export function randomObjectProperty<T = unknown>(object: { [key: string]: T }): T | undefined {
   const keys = Object.keys(object);
   const key = randomItem(keys);
   if (key && object.hasOwnProperty(key)) {
