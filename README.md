@@ -1,7 +1,5 @@
 # TOOSOON UTILS
 
-## &nbsp;
-
 TOOSOON utility functions.
 
 ## Installation
