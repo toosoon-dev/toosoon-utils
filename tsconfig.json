@@ -4,8 +4,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "lib",
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ES5",
+    "module": "CommonJS",
+    "lib": ["DOM", "ESNext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
