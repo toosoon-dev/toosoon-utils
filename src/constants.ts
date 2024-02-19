@@ -8,7 +8,7 @@ export const HALF_PI = Math.PI / 2;
 export const QUARTER_PI = Math.PI / 4;
 
 // *********************
-// Color
+// Colors
 // *********************
 
 // X11 colors

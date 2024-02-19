@@ -6,7 +6,7 @@ import { clamp } from './maths';
 // ******************************************
 
 /**
- * Normalize hexadecimal string
+ * Normalize an hexadecimal string
  *
  * @param  {string} hex Hexadecimal string
  * @returns {string} Normalized hexadecimal string
@@ -31,7 +31,7 @@ export function normalizeHexString(hex: string): string {
 }
 
 /**
- * Convert RGB color to hexadecimal
+ * Convert RGB to hexadecimal
  * Note: rgb values are contained in the interval [0, 1]
  *
  * @param  {[number, number, number]} rgb RGB color
@@ -42,7 +42,7 @@ export function rgbToHex([r, g, b]: [number, number, number]): number {
 }
 
 /**
- * Convert RGB color to hexadecimal string
+ * Convert RGB to hexadecimal string
  * Note: rgb values are contained in the interval [0, 1]
  *
  * @param  {[number, number, number]} rgb RGB color
@@ -58,7 +58,7 @@ export function rgbToHexString([r, g, b]: [number, number, number]): string {
 }
 
 /**
- * Convert hexadecimal color to RGB
+ * Convert hexadecimal to RGB
  * Note: rgb values are contained in the interval [0, 1]
  *
  * @param  {(number|string)} hex Hexadecimal color
@@ -129,7 +129,7 @@ export function darken(hex: string, amount: number = 0): string {
 // ***************************************************
 
 /**
- * Normalize HSL string
+ * Normalize an HSL string
  * Note: hsl values are contained in the intervals H: [0, 360], S: [0, 1], L: [0, 1]
  *
  * @param  {string} hsl HSL string (format: 'hsl(360, 100%, 100%)')
@@ -141,7 +141,7 @@ export function normalizeHslString(hsl: string): [number, number, number] {
 }
 
 /**
- * Convert RGB color to HSL color
+ * Convert RGB to HSL
  * Notes:
  *  - rgb values are contained in the interval [0, 1]
  *  - hsl values are contained in the intervals H: [0, 360], S: [0, 1], L: [0, 1]
@@ -162,7 +162,7 @@ export function rgbToHsl([r, g, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Convert HSL color to RGB color
+ * Convert HSL to RGB
  * Notes:
  *  - rgb values are contained in the interval [0, 1]
  *  - hsl values are contained in the intervals H: [0, 360], S: [0, 1], L: [0, 1]
@@ -182,7 +182,7 @@ export function hslToRgb([h, s, l]: [number, number, number]): [number, number, 
 // ***************************************************
 
 /**
- * Convert RGB color to HSB color
+ * Convert RGB to HSB
  * Notes:
  *  - rgb values are contained in the interval [0, 1]
  *  - hsb values are contained in the intervals H: [0, 360], S: [0, 1], B: [0, 1]
@@ -200,7 +200,7 @@ export function rgbToHsb([r, g, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Convert HSB color to RGB color
+ * Convert HSB to RGB
  * Notes:
  *  - rgb values are contained in the interval [0, 1]
  *  - hsb values are contained in the intervals H: [0, 360], S: [0, 1], B: [0, 1]
@@ -219,7 +219,7 @@ export function hsbToRgb([h, s, b]: [number, number, number]): [number, number, 
 // *********************************************
 
 /**
- * Convert LAB color space to HCL color
+ * Convert LAB to HCL
  * -> http://www.brucelindbloom.com/index.html?Eqn_Lab_to_LCH.html
  *
  * @param {[number, number, number]} lab LAB color
@@ -232,7 +232,7 @@ export function labToHcl([l, a, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Convert HCL color space color space to LAB color
+ * Convert HCL to LAB
  * -> http://www.brucelindbloom.com/index.html?Eqn_LCH_to_Lab.html
  *
  * @param {[number, number, number]} hcl HCL color
@@ -245,7 +245,7 @@ export function hclToLab([h, c, l]: [number, number, number]): [number, number, 
 }
 
 /**
- * Convert A and B of LAB color to Hue of LCH color
+ * Convert A and B of LAB to Hue of LCH
  * -> https://stackoverflow.com/questions/53733379/conversion-of-cielab-to-cielchab-not-yielding-correct-result
  *
  * @param {number} a A value of LAB color
@@ -287,7 +287,7 @@ const f3 = (v: number) => (v > 0.04045 ? Math.pow((v + 0.055) / 1.055, 2.4) : v 
 const f4 = (v: number) => (v > 0.008856 ? Math.pow(v, 1 / 3) : 7.787 * v + 16 / 116);
 
 /**
- * Converts LAB color to RGB
+ * Converts LAB to RGB
  *
  * @param {[number, number, number]} lab LAB color
  * @returns {[number, number, number]} RGB color
@@ -309,7 +309,7 @@ export function labToRgb([l, a, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Converts RGB color to Lab color
+ * Converts RGB to LAB
  *
  * @param {[number, number, number]} rgb RGB color
  * @returns {[number, number, number]} LAB color
@@ -356,7 +356,7 @@ export function deltaE(labA: [number, number, number], labB: [number, number, nu
 // *********************************************
 
 /**
- * Converts RGB color to HCL color
+ * Convert RGB to HCL
  *
  * @param {[number, number, number]} rgb RGB color
  * @returns {[number, number, number]} HCL color
@@ -366,7 +366,7 @@ export function rgbToHcl([r, g, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Converts HCL color to RGB color
+ * Converts HCL to RGB
  *
  * @param {[number, number, number]} hcl RGB color
  * @returns {[number, number, number]} RGB color

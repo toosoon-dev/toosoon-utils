@@ -2,7 +2,7 @@ import { radToSphere } from './geometry';
 import { Vector2, Vector3 } from './types';
 
 /**
- * Generate random boolean (true or false)
+ * Generate a random boolean (true or false)
  *
  * @param {number} [probability=0.5] Probability to get true
  * @returns {boolean} Either true or false
@@ -12,7 +12,7 @@ export function randomBoolean(probability: number = 0.5): boolean {
 }
 
 /**
- * Generate random sign (1 or -1)
+ * Generate a random sign (1 or -1)
  *
  * @param {number} [probability=0.5] Probability to get 1
  * @returns {number} Either 1 or -1
@@ -22,7 +22,7 @@ export function randomSign(probability: number = 0.5): number {
 }
 
 /**
- * Generate a random float
+ * Generate a random float number
  *
  * @param  {number} [min=0]       Minimum boundary
  * @param  {number} [max=1]       Maximum boundary
@@ -34,7 +34,7 @@ export function randomFloat(min: number = 0, max: number = 1, precision: number 
 }
 
 /**
- * Generate a random integer
+ * Generate a random integer number
  *
  * @param {number} min Minimum boundary
  * @param {number} max Maximum boundary
@@ -67,10 +67,10 @@ export function randomItem<I = unknown>(array: I[] = []): I | undefined {
 /**
  * Pick a random property from an object
  *
- * @param {object} [object={}] Object to pick the property from
+ * @param {object} object Object to pick the property from
  * @returns {unknown|undefined} Random item picked
  */
-export function randomObjectProperty(object: object = {}): unknown | undefined {
+export function randomObjectProperty(object: object): unknown | undefined {
   const keys = Object.keys(object);
   const key = randomItem(keys);
   if (key && object.hasOwnProperty(key)) {

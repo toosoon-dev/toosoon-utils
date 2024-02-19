@@ -29,7 +29,7 @@ export function isPowerOf2(value: number): boolean {
 }
 
 /**
- * Find smallest/closest power of 2 that fits a number
+ * Find closest power of 2 that fits a number
  *
  * @param {number} value         Incoming value
  * @param {string} [mode='ceil'] Can be 'floor' | 'ceil' | 'round'

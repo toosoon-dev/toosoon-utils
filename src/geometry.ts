@@ -35,7 +35,7 @@ export function angle(x1: number, y1: number, x2: number, y2: number): number {
 }
 
 /**
- * Find the closest angle betwween to angles
+ * Find the closest angle between to angles
  *
  * @param {number} source Source angle in radians
  * @param {number} target Target angle in radians
