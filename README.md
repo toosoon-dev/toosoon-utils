@@ -28,364 +28,571 @@ console.log(lerp(0.5, 0, 5)); // 2.5
 
 ### Colors
 
+##### normalizeHexString
+
+Normalize an hexadecimal string.
+
 ```ts
-// Normalize an hexadecimal string
 normalizeHexString(hex: string) => string;
 ```
 
+##### rgbToHex
+
+Convert RGB to hexadecimal.
+
 ```ts
-// Convert RGB to hexadecimal
 rgbToHex([r, g, b]: [number, number, number]) => number;
 ```
 
+##### rgbToHexString
+
+Convert RGB to hexadecimal string.
+
 ```ts
-// Convert RGB to hexadecimal string
 rgbToHexString([r, g, b]: [number, number, number]) => string;
 ```
 
+##### hexToRgb
+
+Convert hexadecimal to RGB.
+
 ```ts
-// Convert hexadecimal to RGB
 hexToRgb(hex: number | string) => [number, number, number];
 ```
 
+##### lighten
+
+Lighten a color.
+
 ```ts
-// Lighten a color
 lighten(hex: string, amount?: number) => string;
 ```
 
+##### darken
+
+Darken a color.
+
 ```ts
-// Darken a color
 darken(hex: string, amount?: number) => string;
 ```
 
+##### normalizeHslString
+
+Normalize an HSL string.
+
 ```ts
-// Normalize an HSL string
 normalizeHslString(hsl: string) => [number, number, number];
 ```
 
+##### rgbToHsl
+
+Convert RGB to HSL.
+
 ```ts
-// Convert RGB to HSL
 rgbToHsl([r, g, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### hslToRgb
+
+Convert HSL to RGB.
+
 ```ts
-// Convert HSL to RGB
 hslToRgb([h, s, l]: [number, number, number]) => [number, number, number];
 ```
 
+##### rgbToHsb
+
+Convert RGB to HSB.
+
 ```ts
-// Convert RGB to HSB
 rgbToHsb([r, g, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### hsbToRgb
+
+Convert HSB to RGB.
+
 ```ts
-// Convert HSB to RGB
 hsbToRgb([h, s, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### labToHcl
+
+Convert LAB to HCL.
+
 ```ts
-// Convert LAB to HCL
 labToHcl([l, a, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### hclToLab
+
+Convert HCL to LAB.
+
 ```ts
-// Convert HCL to LAB
 hclToLab([h, c, l]: [number, number, number]) => [number, number, number];
 ```
 
+##### labToRgb
+
+Convert LAB to RGB.
+
 ```ts
-// Convert LAB to RGB
 labToRgb([l, a, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### rgbToLab
+
+Convert RGB to LAB.
+
 ```ts
-// Convert RGB to LAB
 rgbToLab([r, g, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### deltaE
+
+Get the delta from two LAB colors.
+
 ```ts
-// Get the delta from two LAB colors
 deltaE(labA: [number, number, number], labB: [number, number, number]) => number;
 ```
 
+##### rgbToHcl
+
+Convert RGB to HCL.
+
 ```ts
-// Convert RGB to HCL
 rgbToHcl([r, g, b]: [number, number, number]) => [number, number, number];
 ```
 
+##### hclToRgb
+
+Convert HCL to RGB.
+
 ```ts
-// Convert HCL to RGB
 hclToRgb([h, c, l]: [number, number, number]) => [number, number, number];
 ```
 
 ### DOM
 
+##### closest
+
+Find the closest parent that matches a selector.
+
 ```ts
-// Find the closest parent that matches a selector
 closest(element: Element, selector: Element | string) => Element | null;
 ```
 
+##### createCanvas
+
+Create a canvas and 2d context.
+
 ```ts
-// Create a canvas and 2d context
 createCanvas(width: number, height: number) => { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D };
 ```
 
+##### injectStyles
+
+Inject CSS styles in `document.head`.
+
 ```ts
-// Inject CSS styles in `document.head`
 injectStyles(cssContent: string) => void;
 ```
 
 ### Files
 
+##### download
+
+Download a Blob object into user files.
+
 ```ts
-// Download a Blob object into user files
 download(blob: Blob, filename: string) => void;
 ```
 
+##### upload
+
+Upload a file from user files.
+
 ```ts
-// Upload a file from user files
 upload(onLoad: (dataUrl: string) => void, accept?: string) => void;
 ```
 
 ### Functions
 
+##### noop
+
+No-op function.
+
 ```ts
-// No-op function
 noop() => void;
 ```
 
+##### wait
+
+Promise wrapped setTimeout.
+
 ```ts
-// Promise wrapped setTimeout
 wait(timeout: number) => Promise<void>;
 ```
 
+##### defer
+
+Deferred promise implementation.
+
 ```ts
-// Deferred promise implementation
 defer<T>() => Deferred<T>;
 ```
 
 ### Geometry
 
+##### toDegrees
+
+Convert a radians value into degrees.
+
 ```ts
-// Convert a radians value into degrees
 toDegrees(radians: number) => number;
 ```
 
+##### toRadians
+
+Convert a degrees value into radians.
+
 ```ts
-// Convert a degrees value into radians
 toRadians(degrees: number) => number;
 ```
 
+##### angle
+
+Calculate the angle from a point to another.
+
 ```ts
-// Calculate the angle from a point to another
 angle(x1: number, y1: number, x2: number, y2: number) => number;
 ```
 
+##### closestAngle
+
+Find the closest angle between to angles.
+
 ```ts
-// Find the closest angle between to angles
 closestAngle(source: number, target: number) => number;
 ```
 
+##### distance
+
+Calculate the distance between two points.
+
 ```ts
-// Calculate the distance between two points
 distance(x1: number, y1: number, x2: number, y2: number) => number;
 ```
 
+##### diagonal
+
+Calculate the length of the diagonal of a rectangle.
+
 ```ts
-// Calculate the length of the diagonal of a rectangle
 diagonal(width: number, height: number) => number;
 ```
 
+##### radToSphere
+
+Convert radians to a 3D point on the surface of a unit sphere.
+
 ```ts
-// Convert radians to a 3D point on the surface of a unit sphere
 radToSphere(radius: number, phi: number, theta: number, target?: Vector3) => Vector3;
 ```
 
+##### cover
+
+Make a target fit a container (cover mode).
+
 ```ts
-// Make a target fit a container (cover mode)
 cover(target: FitInput, container: FitInput) => FitOutput;
 ```
 
+##### contain
+
+Make a target fit a container (contain mode).
+
 ```ts
-// Make a target fit a container (contain mode)
 contain(target: FitInput, container: FitInput) => FitOutput;
 ```
 
 ### Maths
 
+##### isEven
+
+Check if a number is even.
+
 ```ts
-// Check if a number is even
 isEven(value: number) => boolean;
 ```
 
+##### isOdd
+
+Check if a number is odd.
+
 ```ts
-// Check if a number is odd
 isOdd(value: number) => boolean;
 ```
 
+##### isPowerOf2
+
+Check if a number is a power of 2.
+
 ```ts
-// Check if a number is a power of 2
 isPowerOf2(value: number) => boolean;
 ```
 
+##### toPowerOf2
+
+Find closest power of 2 that fits a number.
+
 ```ts
-// Find closest power of 2 that fits a number
 toPowerOf2(value: number, mode?: 'floor' | 'ceil' | 'round') => number;
 ```
 
+##### sign
+
+Return the sign (positive or negative) of a number.
+
 ```ts
-// Return the sign (positive or negative) of a number
 sign(number: number) => number;
 ```
 
+##### clamp
+
+Clamp a value between two bounds.
+
 ```ts
-// Clamp a value between two bounds
 clamp(value: number, min?: number, max?: number) => number;
 ```
 
+##### lerp
+
+Linear interpolation between two values (lerping).
+
 ```ts
-// Linear interpolation between two values (lerping)
 lerp(value: number, min: number, max: number) => number;
 ```
 
+##### triLerp
+
+Triangular interpolation between two values.
+
 ```ts
-// Triangular interpolation between two values
 triLerp(value: number, min: number, max: number, target: number) => number;
 ```
 
+##### expLerp
+
+Exponential interpolation between two values.
+
 ```ts
-// Exponential interpolation between two values
 expLerp(value: number, min: number, max: number) => number;
 ```
 
+##### normalize
+
+Normalize a value between two bounds.
+
 ```ts
-// Normalize a value between two bounds
 normalize(value: number, min: number, max: number) => number;
 ```
 
+##### map
+
+Re-map a number from one range to another.
+
 ```ts
-// Re-map a number from one range to another
 map(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number) => number;
 ```
 
+##### roundTo
+
+Round a number up to a nearest multiple.
+
 ```ts
-// Round a number up to a nearest multiple
 roundTo(value: number, multiple?: number) => number;
 ```
 
+##### modAbs
+
+Modulo absolute a value based on a length.
+
 ```ts
-// Modulo absolute a value based on a length
 modAbs(value: number, length: number) => number;
 ```
 
+##### pingPong
+
+Move back and forth a value between 0 and length, so that it is never larger than length and never smaller than 0.
+
 ```ts
-// Move back and forth a value between 0 and length, so that it is never larger than length and never smaller than 0
 pingPong(value: number, length: number) => number;
 ```
 
+##### smoothstep
+
+Smooth a value using cubic Hermite interpolation.
+
 ```ts
-// Smooth a value using cubic Hermite interpolation
 smoothstep(value: number, min?: number, max?: number) => number;
 ```
 
+##### parabola
+
+Re-map the [0, 1] interval into [0, 1] parabola, such that corners are remaped to 0 and the center to 1.
+
 ```ts
-// Re-map the [0, 1] interval into [0, 1] parabola, such that corners are remaped to 0 and the center to 1
 parabola(x: number, power?: number) => number;
 ```
 
+##### sum
+
+Return the sum of numbers.
+
 ```ts
-// Return the sum of numbers
 sum(array: number[]) => number;
 ```
 
+##### average
+
+Return the average of numbers.
+
 ```ts
-// Return the average of numbers
 average(array: number[]) => number;
 ```
 
+##### damp
+
+Smoothly interpolate a number toward another.
+
 ```ts
-// Smoothly interpolate a number toward another
 damp(value: number, target: number, damping: number, delta: number) => number;
 ```
 
 ### Now
 
+##### now
+
+Polyfill for "now()" functions.
+
 ```ts
-// Polyfill for "now()" functions
 now() => number;
 ```
 
 ### Random
 
+##### randomBoolean
+
+Generate a random boolean (true or false).
+
 ```ts
-// Generate a random boolean (true or false)
 randomBoolean(probability?: number) => boolean;
 ```
 
+##### randomSign
+
+Generate a random sign (1 or -1).
+
 ```ts
-// Generate a random sign (1 or -1)
 randomSign(probability?: number) => number;
 ```
 
+##### randomFloat
+
+Generate a random floating-point numbers within a specified range.
+
 ```ts
-// Generate a random float number
 randomFloat(min?: number, max?: number, precision?: number) => number;
 ```
 
+##### randomInt
+
+Generate a random integer number within a specified range.
+
 ```ts
-// Generate a random integer number
 randomInt(min: number, max: number) => number;
 ```
 
+##### randomHexColor
+
+Generate a random hexadecimal color.
+
 ```ts
-// Generate a random hexadecimal color
 randomHexColor() => string;
 ```
 
+##### randomItem
+
+Pick a random item from a given array.
+
 ```ts
-// Pick a random item from an array
 randomItem<T>(array: T[] = []) => T | undefined;
 ```
 
+##### randomObjectProperty
+
+Pick a random property value from a given object.
+
 ```ts
-// Pick a random property from an object
 randomObjectProperty<T>(object: { [key: string]: T }) => T | undefined;
 ```
 
+##### randomIndex
+
+Select a random index from an array of weighted items.
+
 ```ts
-// Return a random index from an array of weights
 randomIndex(weights?: number[]) => number;
 ```
 
+##### onCircle
+
+Produce a random 2D point around the perimiter of a unit circle.
+
 ```ts
-// Produce a random 2D point around the perimiter of a unit circle
 onCircle(radius?: number, target?: Vector2) => Vector2;
 ```
 
+##### insideCircle
+
+Produce a random 2D point inside a unit circle.
+
 ```ts
-// Produce a random 2D point inside a unit circle
 insideCircle(radius?: number, target?: Vector2) => Vector2;
 ```
 
+##### onSphere
+
+Produce a random 3D point on the surface of a unit sphere.
+
 ```ts
-// Produce a random 3D point on the surface of a unit sphere
 onSphere(radius?: number, target?: Vector3) => Vector3;
 ```
 
+##### insideSphere
+
+Produce a random 3D point inside a unit sphere.
+
 ```ts
-// Produce a random 3D point inside a unit sphere
 insideSphere(radius?: number, target?: Vector3) => Vector3;
 ```
 
 ### Strings
 
+##### capitalize
+
+Capitalize a string.
+
 ```ts
-// Capitalize a string
 capitalize(string: string) => string;
 ```
 
+##### cleanPath
+
+Clean a path by removing params.
+
 ```ts
-// Clean a path by removing params
 cleanPath(path: string) => string;
 ```
 

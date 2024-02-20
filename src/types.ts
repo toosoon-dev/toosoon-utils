@@ -1,3 +1,10 @@
+import { W3CX11 } from './constants';
+
+// *********************
+// Colors
+// *********************
+export type ColorName = keyof typeof W3CX11;
+
 // *********************
 // Geometry
 // *********************

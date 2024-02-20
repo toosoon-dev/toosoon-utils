@@ -8,7 +8,7 @@ import { clamp } from './maths';
 /**
  * Normalize an hexadecimal string
  *
- * @param  {string} hex Hexadecimal string
+ * @param {string} hex Hexadecimal string
  * @returns {string} Normalized hexadecimal string
  */
 export function normalizeHexString(hex: string): string {

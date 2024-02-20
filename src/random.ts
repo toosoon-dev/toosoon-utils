@@ -22,7 +22,7 @@ export function randomSign(probability: number = 0.5): number {
 }
 
 /**
- * Generate a random float number
+ * Generate a random floating-point numbers within a specified range
  *
  * @param  {number} [min=0]       Minimum boundary
  * @param  {number} [max=1]       Maximum boundary
@@ -34,7 +34,7 @@ export function randomFloat(min: number = 0, max: number = 1, precision: number 
 }
 
 /**
- * Generate a random integer number
+ * Generate a random integer number within a specified range
  *
  * @param {number} min Minimum boundary
  * @param {number} max Maximum boundary
@@ -54,7 +54,7 @@ export function randomHexColor(): string {
 }
 
 /**
- * Pick a random item from an array
+ * Pick a random item from a given array
  *
  * @param {T[]} [array=[]] Array to pick the item from
  * @returns {T|undefined} Random item picked
@@ -65,7 +65,7 @@ export function randomItem<T = unknown>(array: T[] = []): T | undefined {
 }
 
 /**
- * Pick a random property from an object
+ * Pick a random property value from a given object
  *
  * @param {object} object Object to pick the property from
  * @returns {unknown|undefined} Random item picked
@@ -79,7 +79,7 @@ export function randomObjectProperty<T = unknown>(object: { [key: string]: T }):
 }
 
 /**
- * Return a random index from an array of weights
+ * Select a random index from an array of weighted items
  *
  * @param {number[]} weights Array of weights
  * @returns {number} Random index based on weights
