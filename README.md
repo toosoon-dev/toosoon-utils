@@ -18,7 +18,7 @@ $ npm install toosoon-utils
 
 ## Usage
 
-```js
+```ts
 import { lerp } from 'toosoon-utils/maths';
 
 console.log(lerp(0.5, 0, 5)); // 2.5
@@ -500,7 +500,7 @@ randomSign(probability?: number) => number;
 
 ##### randomFloat
 
-Generate a random floating-point numbers within a specified range.
+Generate a random floating-point number within a specified range.
 
 ```ts
 randomFloat(min?: number, max?: number, precision?: number) => number;

@@ -22,7 +22,7 @@ export function randomSign(probability: number = 0.5): number {
 }
 
 /**
- * Generate a random floating-point numbers within a specified range
+ * Generate a random floating-point number within a specified range
  *
  * @param  {number} [min=0]       Minimum boundary
  * @param  {number} [max=1]       Maximum boundary
