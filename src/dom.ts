@@ -39,11 +39,11 @@ export function createCanvas(
 /**
  * Inject CSS styles in `document.head`
  *
- * @param {string} cssContent CSS style to inject
+ * @param {string} styles CSS styles to inject
  */
-export function injectStyles(cssContent: string): void {
+export function injectStyles(styles: string): void {
   const $style = document.createElement('style');
-  $style.innerHTML = cssContent;
+  $style.innerHTML = styles;
   const $before = document.querySelector('head link[rel=stylesheet], head style');
   if ($before) document.head.insertBefore($style, $before);
   else document.head.appendChild($style);

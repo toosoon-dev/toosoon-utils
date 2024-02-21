@@ -20,7 +20,7 @@ export function download(blob: Blob, filename: string): void {
  * Upload a file from user files
  *
  * @param {Function} onLoad    Callback called once the file is loaded
- * @param {string} [accept=''] Types the file input should accept
+ * @param {string} [accept=''] MIME type the file input should accept
  */
 export function upload(onLoad: (dataUrl: string) => void, accept: string = ''): void {
   const input = document.createElement('input');

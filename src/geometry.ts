@@ -76,8 +76,8 @@ export function diagonal(width: number, height: number): number {
  * Convert radians to a 3D point on the surface of a unit sphere
  *
  * @param  {number} radius  Radius of the sphere
- * @param  {number} phi     Polar angle from the y (up) axis     : 0 to PI
- * @param  {number} theta   Equator angle around the y (up) axis : 0 to 2 PI
+ * @param  {number} phi     Polar angle from the y (up) axis     : [0, PI]
+ * @param  {number} theta   Equator angle around the y (up) axis : [0, 2*PI]
  * @param  {Vector3} target Target vector
  * @returns {Vector3}
  */

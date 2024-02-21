@@ -42,12 +42,12 @@ export function toPowerOf2(value: number, mode: 'floor' | 'ceil' | 'round' = 'ce
 /**
  * Return the sign (positive or negative) of a number
  *
- * @param {number} number Value to check
+ * @param {number} value Value to check
  * @returns {number} 1 if the given number is positive, -1 if it is negative, otherwise 0
  */
-export function sign(number: number): number {
-  if (number > 0) return 1;
-  else if (number < 0) return -1;
+export function sign(value: number): number {
+  if (value > 0) return 1;
+  else if (value < 0) return -1;
   return 0;
 }
 
@@ -137,7 +137,7 @@ export function map(
  * Round a number up to a nearest multiple
  *
  * @param {number} value        Value to round
- * @param {number} [multiple=1] Multiple
+ * @param {number} [multiple=1] Multiple to round to
  * @returns {number} Closest multiple
  */
 export function roundTo(value: number, multiple: number = 1): number {
@@ -199,7 +199,7 @@ export function parabola(x: number, power: number = 1): number {
 /**
  * Return the sum of numbers
  *
- * @param {number[]} array Array of number
+ * @param {number[]} array Array of numbers
  * @returns {number} Total sum
  */
 export function sum(array: number[]): number {
@@ -209,7 +209,7 @@ export function sum(array: number[]): number {
 /**
  * Return the average of numbers
  *
- * @param {number[]} array Array of number
+ * @param {number[]} array Array of numbers
  * @returns {number} Total average
  */
 export function average(array: number[]): number {

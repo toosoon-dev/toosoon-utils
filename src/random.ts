@@ -4,7 +4,7 @@ import { Vector2, Vector3 } from './types';
 /**
  * Generate a random boolean (true or false)
  *
- * @param {number} [probability=0.5] Probability to get true
+ * @param {number} [probability=0.5] Probability to get `true`
  * @returns {boolean} Either true or false
  */
 export function randomBoolean(probability: number = 0.5): boolean {
@@ -14,7 +14,7 @@ export function randomBoolean(probability: number = 0.5): boolean {
 /**
  * Generate a random sign (1 or -1)
  *
- * @param {number} [probability=0.5] Probability to get 1
+ * @param {number} [probability=0.5] Probability to get `1`
  * @returns {number} Either 1 or -1
  */
 export function randomSign(probability: number = 0.5): number {
@@ -56,10 +56,10 @@ export function randomHexColor(): string {
 /**
  * Pick a random item from a given array
  *
- * @param {T[]} [array=[]] Array to pick the item from
+ * @param {T[]} array Array to pick the item from
  * @returns {T|undefined} Random item picked
  */
-export function randomItem<T = unknown>(array: T[] = []): T | undefined {
+export function randomItem<T = unknown>(array: T[]): T | undefined {
   if (array.length === 0) return undefined;
   return array[randomInt(0, array.length - 1)];
 }
@@ -84,7 +84,7 @@ export function randomObjectProperty<T = unknown>(object: { [key: string]: T }):
  * @param {number[]} weights Array of weights
  * @returns {number} Random index based on weights
  */
-export function randomIndex(weights: number[] = []): number {
+export function randomIndex(weights: number[]): number {
   if (weights.length === 0) return -1;
 
   let totalWeight = 0;
@@ -111,8 +111,8 @@ export function randomIndex(weights: number[] = []): number {
 /**
  * Produce a random 2D point around the perimiter of a unit circle
  *
- * @param  {number} [radius=1] Radius of the circle
- * @param  {Vector2} target    Target vector
+ * @param  {number} [radius=1]        Radius of the circle
+ * @param  {Vector2} [target] Target vector
  * @returns {Vector2} Random 2D point on circle
  */
 export function onCircle(radius: number = 1, target: Vector2 = { x: 0, y: 0 }): Vector2 {
@@ -125,8 +125,8 @@ export function onCircle(radius: number = 1, target: Vector2 = { x: 0, y: 0 }): 
 /**
  * Produce a random 2D point inside a unit circle
  *
- * @param  {number} [radius=1] Radius of the circle
- * @param  {Vector2} target    Target vector
+ * @param  {number} [radius=1]        Radius of the circle
+ * @param  {Vector2} [target] Target vector
  * @returns {Vector2} Random 2D point inside circle
  */
 export function insideCircle(radius: number = 1, target: Vector2 = { x: 0, y: 0 }): Vector2 {
@@ -137,8 +137,8 @@ export function insideCircle(radius: number = 1, target: Vector2 = { x: 0, y: 0 
 /**
  * Produce a random 3D point on the surface of a unit sphere
  *
- * @param  {number} [radius=1] Radius of the sphere
- * @param  {Vector3} target    Target vector
+ * @param  {number} [radius=1]        Radius of the sphere
+ * @param  {Vector3} [target] Target vector
  * @returns {Vector3} Random 3D point on sphere
  */
 export function onSphere(radius: number = 1, target: Vector3 = { x: 0, y: 0, z: 0 }): Vector3 {
@@ -152,8 +152,8 @@ export function onSphere(radius: number = 1, target: Vector3 = { x: 0, y: 0, z: 
 /**
  * Produce a random 3D point inside a unit sphere
  *
- * @param  {number} [radius=1] Radius of the sphere
- * @param  {Vector3} target    Target vector
+ * @param  {number} [radius=1]        Radius of the sphere
+ * @param  {Vector3} [target] Target vector
  * @returns {Vector3} Random 3D point inside sphere
  */
 export function insideSphere(radius: number = 1, target: Vector3 = { x: 0, y: 0, z: 0 }): Vector3 {

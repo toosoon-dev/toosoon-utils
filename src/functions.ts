@@ -8,10 +8,10 @@ export const noop: () => void = () => {};
 /**
  * Promise wrapped setTimeout
  *
- * @param {number} timeout Time in ms
+ * @param {number} [timeout=0] Time to wait (in milliseconds)
  * @returns {Promise}
  */
-export function wait(timeout: number): Promise<void> {
+export function wait(timeout: number = 0): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, timeout));
 }
 
