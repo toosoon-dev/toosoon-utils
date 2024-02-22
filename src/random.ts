@@ -2,10 +2,10 @@ import { radToSphere } from './geometry';
 import { Vector2, Vector3 } from './types';
 
 /**
- * Generate a random boolean (true or false)
+ * Generate a random boolean (`true` or `false`)
  *
  * @param {number} [probability=0.5] Probability to get `true`
- * @returns {boolean} Either true or false
+ * @returns {boolean} Either `true` or `false`
  */
 export function randomBoolean(probability: number = 0.5): boolean {
   return Math.random() < probability;
@@ -14,7 +14,7 @@ export function randomBoolean(probability: number = 0.5): boolean {
 /**
  * Generate a random sign (1 or -1)
  *
- * @param {number} [probability=0.5] Probability to get `1`
+ * @param {number} [probability=0.5] Probability to get 1
  * @returns {number} Either 1 or -1
  */
 export function randomSign(probability: number = 0.5): number {
@@ -24,9 +24,9 @@ export function randomSign(probability: number = 0.5): number {
 /**
  * Generate a random floating-point number within a specified range
  *
- * @param  {number} [min=0]       Minimum boundary
- * @param  {number} [max=1]       Maximum boundary
- * @param  {number} [precision=2] Number of digits after the decimal point
+ * @param {number} [min=0]       Minimum boundary
+ * @param {number} [max=1]       Maximum boundary
+ * @param {number} [precision=2] Number of digits after the decimal point
  * @returns {number} Generated float
  */
 export function randomFloat(min: number = 0, max: number = 1, precision: number = 2): number {
@@ -47,7 +47,7 @@ export function randomInt(min: number, max: number): number {
 /**
  * Generate a random hexadecimal color
  *
- * @returns {string} Hexadecimal color
+ * @returns {string} Generated hexadecimal color
  */
 export function randomHexColor(): string {
   return '#' + ('00000' + ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6);
@@ -68,7 +68,7 @@ export function randomItem<T = unknown>(array: T[]): T | undefined {
  * Pick a random property value from a given object
  *
  * @param {object} object Object to pick the property from
- * @returns {unknown|undefined} Random item picked
+ * @returns {T|undefined} Random item picked
  */
 export function randomObjectProperty<T = unknown>(object: { [key: string]: T }): T | undefined {
   const keys = Object.keys(object);

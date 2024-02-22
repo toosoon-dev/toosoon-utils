@@ -1,6 +1,6 @@
 # TOOSOON UTILS
 
-TOOSOON utility functions.
+Utility functions.
 
 ## Installation
 
@@ -645,7 +645,7 @@ randomBoolean(probability?: number) => boolean;
 
 Generate a random sign (1 or -1).
 
-- `[probability=0.5]`: Probability to get `1`.
+- `[probability=0.5]`: Probability to get 1.
 
 ```ts
 randomSign(probability?: number) => number;

@@ -49,11 +49,11 @@ export function rgbToHex([r, g, b]: [number, number, number]): number {
  * @returns {string} Hexadecimal string
  */
 export function rgbToHexString([r, g, b]: [number, number, number]): string {
-  const red = clamp(Math.round(r * 255), 0, 255);
-  const green = clamp(Math.round(g * 255), 0, 255);
-  const blue = clamp(Math.round(b * 255), 0, 255);
+  r = clamp(Math.round(r * 255), 0, 255);
+  g = clamp(Math.round(g * 255), 0, 255);
+  b = clamp(Math.round(b * 255), 0, 255);
 
-  const result = (blue | (green << 8) | (red << 16) | (1 << 24)).toString(16).slice(1);
+  const result = (b | (g << 8) | (r << 16) | (1 << 24)).toString(16).slice(1);
   return `#${result}`;
 }
 
@@ -72,11 +72,11 @@ export function hexToRgb(hex: number | string): [number, number, number] {
     hex = parseInt(hex, 16);
   }
 
-  const red = ((hex >> 16) & 255) / 255;
-  const green = ((hex >> 8) & 255) / 255;
-  const blue = (hex & 255) / 255;
+  const r = ((hex >> 16) & 255) / 255;
+  const g = ((hex >> 8) & 255) / 255;
+  const b = (hex & 255) / 255;
 
-  return [red, green, blue];
+  return [r, g, b];
 }
 
 /**
@@ -96,14 +96,9 @@ export function lighten(hex: string, amount: number = 0): string {
 
   const value = parseInt(hex, 16);
 
-  let r = (value >> 16) + amount;
-  r = clamp(r, 0, 255);
-
-  let b = ((value >> 8) & 0x00ff) + amount;
-  b = clamp(b, 0, 255);
-
-  let g = (value & 0x0000ff) + amount;
-  g = clamp(g, 0, 255);
+  const r = clamp((value >> 16) + amount, 0, 255);
+  const b = clamp(((value >> 8) & 0x00ff) + amount, 0, 255);
+  const g = clamp((value & 0x0000ff) + amount, 0, 255);
 
   let result: number | string = g | (b << 8) | (r << 16);
   if (r === 0 && g === 0 && b === 0 && amount !== 0) {
@@ -136,8 +131,8 @@ export function darken(hex: string, amount: number = 0): string {
  * @returns {[number, number, number]} Normalized HSL color
  */
 export function normalizeHslString(hsl: string): [number, number, number] {
-  const [hue, saturation, lightness] = hsl.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
-  return [hue, saturation / 100, lightness / 100];
+  const [h, s, l] = hsl.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
+  return [h, s / 100, l / 100];
 }
 
 /**
