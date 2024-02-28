@@ -1,5 +1,23 @@
+import { W3CX11 } from './constants';
 import { toDegrees, toRadians } from './geometry';
 import { clamp } from './maths';
+import { ColorName, ColorRepresentation } from './types';
+
+/**
+ * Normalize a color representation into RGB
+ *
+ * @param {ColorRepresentation} color Color representation
+ * @returns {[number,number,number]} Normalized RGB color
+ */
+export function normalizeColor(color: ColorRepresentation): [number, number, number] {
+  if (typeof color === 'string') {
+    return hexToRgb(W3CX11[color as ColorName] ?? color);
+  } else if (typeof color === 'number') {
+    return hexToRgb(color);
+  } else {
+    return color;
+  }
+}
 
 // ******************************************
 // RGB & Hexadecimal color spaces

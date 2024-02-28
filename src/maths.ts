@@ -92,13 +92,24 @@ export function triLerp(value: number, min: number, max: number, target: number)
 /**
  * Exponential interpolation between two values
  *
- * @param {number} value Normalized value to interpolate
- * @param {number} min   Minimum value
- * @param {number} max   Maximum value
+ * @param {number} value      Value to interpolate
+ * @param {number} currentMin Lower bound of the value's current range
+ * @param {number} currentMax Upper bound of the value's current range
+ * @param {number} targetMin  Lower bound of the value's target range
+ * @param {number} targetMax  Upper bound of the value's target range
  * @returns {number} Interpolated value
  */
-export function expLerp(value: number, min: number, max: number): number {
-  return Math.pow(min, 1 - value) * Math.pow(max, value);
+export function expLerp(
+  value: number,
+  currentMin: number,
+  currentMax: number,
+  targetMin: number,
+  targetMax: number
+): number {
+  return (
+    targetMin *
+    Math.pow(targetMax / targetMin, (clamp(value, currentMin, currentMax) - currentMin) / (currentMax - currentMin))
+  );
 }
 
 /**

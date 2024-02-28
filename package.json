@@ -1,7 +1,7 @@
 {
   "name": "toosoon-utils",
-  "version": "1.1.0",
-  "description": "Utility functions",
+  "version": "1.2.0",
+  "description": "Utility functions & classes",
   "main": "",
   "exports": {
     "./colors": "./lib/colors.js",
@@ -10,10 +10,11 @@
     "./functions": "./lib/functions.js",
     "./geometry": "./lib/geometry.js",
     "./maths": "./lib/maths.js",
-    "./now": "./lib/now.js",
     "./random": "./lib/random.js",
     "./strings": "./lib/strings.js",
     "./constants": "./lib/constants.js",
+    "./color-scale": "./lib/classes/color-scale.js",
+    "./frame-rate": "./lib/classes/frame-rate.js",
     "./types": "./lib/types.d.ts"
   },
   "scripts": {

@@ -1,6 +1,6 @@
 # TOOSOON UTILS
 
-Utility functions.
+Utility functions & classes.
 
 ## Installation
 
@@ -24,7 +24,7 @@ import { lerp } from 'toosoon-utils/maths';
 console.log(lerp(0.5, 0, 5)); // 2.5
 ```
 
-## Functions
+## Utility functions
 
 ### Colors
 
@@ -35,7 +35,7 @@ Normalize an hexadecimal string.
 - `hex`: Hexadecimal string.
 
 ```ts
-normalizeHexString(hex: string) => string;
+normalizeHexString(hex: string): string;
 ```
 
 ##### rgbToHex(rgb)
@@ -45,7 +45,7 @@ Convert RGB to hexadecimal.
 - `rgb`: RGB color.
 
 ```ts
-rgbToHex([r, g, b]: [number, number, number]) => number;
+rgbToHex([r, g, b]: [number, number, number]): number;
 ```
 
 ##### rgbToHexString(rgb)
@@ -55,7 +55,7 @@ Convert RGB to hexadecimal string.
 - `rgb`: RGB color.
 
 ```ts
-rgbToHexString([r, g, b]: [number, number, number]) => string;
+rgbToHexString([r, g, b]: [number, number, number]): string;
 ```
 
 ##### hexToRgb(hex)
@@ -65,7 +65,7 @@ Convert hexadecimal to RGB.
 - `hex`: Hexadecimal color.
 
 ```ts
-hexToRgb(hex: number | string) => [number, number, number];
+hexToRgb(hex: number | string): [number, number, number];
 ```
 
 ##### lighten(hex, amount)
@@ -76,7 +76,7 @@ Lighten a color.
 - `[amount=0]`: Amount of the color offset.
 
 ```ts
-lighten(hex: string, amount?: number) => string;
+lighten(hex: string, amount?: number): string;
 ```
 
 ##### darken(hex, amount)
@@ -87,7 +87,7 @@ Darken a color.
 - `[amount=0]`: Amount of the color offset.
 
 ```ts
-darken(hex: string, amount?: number) => string;
+darken(hex: string, amount?: number): string;
 ```
 
 ##### normalizeHslString(hsl)
@@ -97,7 +97,7 @@ Normalize an HSL string.
 - `hsl`: HSL string (format: `'hsl(360, 100%, 100%)'`).
 
 ```ts
-normalizeHslString(hsl: string) => [number, number, number];
+normalizeHslString(hsl: string): [number, number, number];
 ```
 
 ##### rgbToHsl(rgb)
@@ -107,7 +107,7 @@ Convert RGB to HSL.
 - `rgb`: RGB color.
 
 ```ts
-rgbToHsl([r, g, b]: [number, number, number]) => [number, number, number];
+rgbToHsl([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### hslToRgb(hsl)
@@ -117,7 +117,7 @@ Convert HSL to RGB.
 - `hsl`: HSL color.
 
 ```ts
-hslToRgb([h, s, l]: [number, number, number]) => [number, number, number];
+hslToRgb([h, s, l]: [number, number, number]): [number, number, number];
 ```
 
 ##### rgbToHsb(rgb)
@@ -127,7 +127,7 @@ Convert RGB to HSB.
 - `rgb`: RGB color.
 
 ```ts
-rgbToHsb([r, g, b]: [number, number, number]) => [number, number, number];
+rgbToHsb([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### hsbToRgb(hsb)
@@ -137,7 +137,7 @@ Convert HSB to RGB.
 - `hsb`: HSB color.
 
 ```ts
-hsbToRgb([h, s, b]: [number, number, number]) => [number, number, number];
+hsbToRgb([h, s, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### labToHcl(lab)
@@ -147,7 +147,7 @@ Convert LAB to HCL.
 - `lab`: LAB color.
 
 ```ts
-labToHcl([l, a, b]: [number, number, number]) => [number, number, number];
+labToHcl([l, a, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### hclToLab(hcl)
@@ -157,7 +157,7 @@ Convert HCL to LAB.
 - `hcl`: HCL color.
 
 ```ts
-hclToLab([h, c, l]: [number, number, number]) => [number, number, number];
+hclToLab([h, c, l]: [number, number, number]): [number, number, number];
 ```
 
 ##### labToRgb(lab)
@@ -167,7 +167,7 @@ Convert LAB to RGB.
 - `lab`: LAB color.
 
 ```ts
-labToRgb([l, a, b]: [number, number, number]) => [number, number, number];
+labToRgb([l, a, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### rgbToLab(rgb)
@@ -177,7 +177,7 @@ Convert RGB to LAB.
 - `rgb`: RGB color.
 
 ```ts
-rgbToLab([r, g, b]: [number, number, number]) => [number, number, number];
+rgbToLab([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### deltaE(labA, labB)
@@ -188,7 +188,7 @@ Get the delta from two LAB colors.
 - `labB`: Second LAB color.
 
 ```ts
-deltaE(labA: [number, number, number], labB: [number, number, number]) => number;
+deltaE(labA: [number, number, number], labB: [number, number, number]): number;
 ```
 
 ##### rgbToHcl(rgb)
@@ -198,7 +198,7 @@ Convert RGB to HCL.
 - `rgb`: RGB color.
 
 ```ts
-rgbToHcl([r, g, b]: [number, number, number]) => [number, number, number];
+rgbToHcl([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
 ##### hclToRgb(hcl)
@@ -208,7 +208,7 @@ Convert HCL to RGB.
 - `hcl`: HCL color.
 
 ```ts
-hclToRgb([h, c, l]: [number, number, number]) => [number, number, number];
+hclToRgb([h, c, l]: [number, number, number]): [number, number, number];
 ```
 
 ### DOM
@@ -221,7 +221,7 @@ Find the closest parent that matches a selector.
 - `selector`: Selector or parent to match.
 
 ```ts
-closest(element: Element, selector: Element | string) => Element | null;
+closest(element: Element, selector: Element | string): Element | null;
 ```
 
 ##### createCanvas(width, height)
@@ -232,7 +232,7 @@ Create a canvas and 2d context.
 - `height`: Height of the canvas.
 
 ```ts
-createCanvas(width: number, height: number) => { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D };
+createCanvas(width: number, height: number): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D };
 ```
 
 ##### injectStyles(styles)
@@ -242,7 +242,7 @@ Inject CSS styles in `document.head`.
 - `styles`: CSS styles to inject.
 
 ```ts
-injectStyles(styles: string) => void;
+injectStyles(styles: string): void;
 ```
 
 ### Files
@@ -255,7 +255,7 @@ Download a Blob object into user files.
 - `filename`: Downloaded file name.
 
 ```ts
-download(blob: Blob, filename: string) => void;
+download(blob: Blob, filename: string): void;
 ```
 
 ##### upload(onLoad)
@@ -266,7 +266,7 @@ Upload a file from user files.
 - `[accept='']` MIME type the file input should accept.
 
 ```ts
-upload(onLoad: (dataUrl: string) => void, accept?: string) => void;
+upload(onLoad: (dataUrl: string) => void, accept?: string): void;
 ```
 
 ### Functions
@@ -276,7 +276,7 @@ upload(onLoad: (dataUrl: string) => void, accept?: string) => void;
 No-op function.
 
 ```ts
-noop() => void;
+noop(): void;
 ```
 
 ##### wait(timeout)
@@ -286,7 +286,7 @@ Promise wrapped setTimeout.
 - `[timeout=0]`: Time to wait (in milliseconds).
 
 ```ts
-wait(timeout?: number) => Promise<void>;
+wait(timeout?: number): Promise<void>;
 ```
 
 ##### defer()
@@ -294,7 +294,15 @@ wait(timeout?: number) => Promise<void>;
 Deferred promise implementation.
 
 ```ts
-defer<T>() => Deferred<T>;
+defer<T>(): Deferred<T>;
+```
+
+##### now()
+
+Polyfill for `now()` functions.
+
+```ts
+now(): number;
 ```
 
 ### Geometry
@@ -306,7 +314,7 @@ Convert a radians value into degrees.
 - `radians`: Angle in radians.
 
 ```ts
-toDegrees(radians: number) => number;
+toDegrees(radians: number): number;
 ```
 
 ##### toRadians(degrees)
@@ -316,7 +324,7 @@ Convert a degrees value into radians.
 - `degrees`: Angle in degrees.
 
 ```ts
-toRadians(degrees: number) => number;
+toRadians(degrees: number): number;
 ```
 
 ##### angle(x1, y1, x2, y2)
@@ -329,7 +337,7 @@ Calculate the angle from a point to another.
 - `y2`: Y value of the second point.
 
 ```ts
-angle(x1: number, y1: number, x2: number, y2: number) => number;
+angle(x1: number, y1: number, x2: number, y2: number): number;
 ```
 
 ##### closestAngle(source, target)
@@ -340,7 +348,7 @@ Find the closest angle between to angles.
 - `target`: Target angle in radians.
 
 ```ts
-closestAngle(source: number, target: number) => number;
+closestAngle(source: number, target: number): number;
 ```
 
 ##### distance(x1, y1, x2, y2)
@@ -353,7 +361,7 @@ Calculate the distance between two points.
 - `y2`: Y coord of the second point.
 
 ```ts
-distance(x1: number, y1: number, x2: number, y2: number) => number;
+distance(x1: number, y1: number, x2: number, y2: number): number;
 ```
 
 ##### diagonal(width, height)
@@ -364,7 +372,7 @@ Calculate the length of the diagonal of a rectangle.
 - `height`: Height of the rectangle.
 
 ```ts
-diagonal(width: number, height: number) => number;
+diagonal(width: number, height: number): number;
 ```
 
 ##### radToSphere(radius, phi, theta)
@@ -377,7 +385,7 @@ Convert radians to a 3D point on the surface of a unit sphere.
 - `[target]`: Target vector
 
 ```ts
-radToSphere(radius: number, phi: number, theta: number, target?: Vector3) => Vector3;
+radToSphere(radius: number, phi: number, theta: number, target?: Vector3): Vector3;
 ```
 
 ##### cover(target, container)
@@ -388,7 +396,7 @@ Make a target fit a container (cover mode).
 - `container`: Dimension of the container.
 
 ```ts
-cover(target: object, container: object) => object;
+cover(target: object, container: object): object;
 ```
 
 ##### contain(target, container)
@@ -399,7 +407,7 @@ Make a target fit a container (contain mode).
 - `container`: Dimension of the container.
 
 ```ts
-contain(target: object, container: object) => object;
+contain(target: object, container: object): object;
 ```
 
 ### Maths
@@ -411,7 +419,7 @@ Check if a number is even.
 - `value`: Value to check.
 
 ```ts
-isEven(value: number) => boolean;
+isEven(value: number): boolean;
 ```
 
 ##### isOdd(value)
@@ -421,7 +429,7 @@ Check if a number is odd.
 - `value`: Value to check.
 
 ```ts
-isOdd(value: number) => boolean;
+isOdd(value: number): boolean;
 ```
 
 ##### isPowerOf2(value)
@@ -431,7 +439,7 @@ Check if a number is a power of 2.
 - `value`: Value to check.
 
 ```ts
-isPowerOf2(value: number) => boolean;
+isPowerOf2(value: number): boolean;
 ```
 
 ##### toPowerOf2(value)
@@ -442,7 +450,7 @@ Find closest power of 2 that fits a number.
 - `[mode='ceil']`: Can be `'floor'`, `'ceil'` or `'round'`.
 
 ```ts
-toPowerOf2(value: number, mode?: string) => number;
+toPowerOf2(value: number, mode?: string): number;
 ```
 
 ##### sign(value)
@@ -452,7 +460,7 @@ Return the sign (positive or negative) of a number.
 - `value`: Value to check.
 
 ```ts
-sign(value: number) => number;
+sign(value: number): number;
 ```
 
 ##### clamp(value, min, max)
@@ -464,7 +472,7 @@ Clamp a value between two bounds.
 - `[max=1]`: Maximum boundary.
 
 ```ts
-clamp(value: number, min?: number, max?: number) => number;
+clamp(value: number, min?: number, max?: number): number;
 ```
 
 ##### lerp(value, min, max)
@@ -476,7 +484,7 @@ Linear interpolation between two values (lerping).
 - `max`: Maximum value.
 
 ```ts
-lerp(value: number, min: number, max: number) => number;
+lerp(value: number, min: number, max: number): number;
 ```
 
 ##### triLerp(value, min, max, target)
@@ -489,19 +497,21 @@ Triangular interpolation between two values.
 - `target`: Triangle target value.
 
 ```ts
-triLerp(value: number, min: number, max: number, target: number) => number;
+triLerp(value: number, min: number, max: number, target: number): number;
 ```
 
-##### expLerp(value, min, max)
+##### expLerp(value, currentMin, currentMax, targetMin, targetMax)
 
 Exponential interpolation between two values.
 
-- `value`: Normalized value to interpolate.
-- `min`: Minimum value.
-- `max`: Maximum value.
+- `value`: Value to interpolate.
+- `currentMin`: Lower bound of the value's current range.
+- `currentMax`: Upper bound of the value's current range.
+- `targetMin`: Lower bound of the value's target range.
+- `targetMax`: Upper bound of the value's target range.
 
 ```ts
-expLerp(value: number, min: number, max: number) => number;
+expLerp(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
 ##### normalize(value, min, max)
@@ -513,7 +523,7 @@ Normalize a value between two bounds.
 - `max`: Maximum boundary.
 
 ```ts
-normalize(value: number, min: number, max: number) => number;
+normalize(value: number, min: number, max: number): number;
 ```
 
 ##### map(value, currentMin, currentMax, targetMin, targetMax)
@@ -527,7 +537,7 @@ Re-map a number from one range to another.
 - `targetMax`: Upper bound of the value's target range.
 
 ```ts
-map(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number) => number;
+map(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
 ##### roundTo(value, multiple)
@@ -538,7 +548,7 @@ Round a number up to a nearest multiple.
 - `[multiple=1]`: Multiple to round to.
 
 ```ts
-roundTo(value: number, multiple?: number) => number;
+roundTo(value: number, multiple?: number): number;
 ```
 
 ##### modAbs(value, length)
@@ -549,7 +559,7 @@ Modulo absolute a value based on a length.
 - `length`: Total length.
 
 ```ts
-modAbs(value: number, length: number) => number;
+modAbs(value: number, length: number): number;
 ```
 
 ##### pingPong(value, length)
@@ -560,7 +570,7 @@ Move back and forth a value between 0 and length, so that it is never larger tha
 - `length`: Total length.
 
 ```ts
-pingPong(value: number, length: number) => number;
+pingPong(value: number, length: number): number;
 ```
 
 ##### smoothstep(value, min, max)
@@ -572,7 +582,7 @@ Smooth a value using cubic Hermite interpolation.
 - `[max=1]`: Maximum boundary.
 
 ```ts
-smoothstep(value: number, min?: number, max?: number) => number;
+smoothstep(value: number, min?: number, max?: number): number;
 ```
 
 ##### parabola(x, power)
@@ -583,7 +593,7 @@ Re-map the [0, 1] interval into [0, 1] parabola, such that corners are remaped t
 - `[power=1]`: Parabola power.
 
 ```ts
-parabola(x: number, power?: number) => number;
+parabola(x: number, power?: number): number;
 ```
 
 ##### sum(array)
@@ -593,7 +603,7 @@ Return the sum of numbers.
 - `array`: Array of numbers.
 
 ```ts
-sum(array: number[]) => number;
+sum(array: number[]): number;
 ```
 
 ##### average(array)
@@ -603,7 +613,7 @@ Return the average of numbers.
 - `array`: Array of numbers.
 
 ```ts
-average(array: number[]) => number;
+average(array: number[]): number;
 ```
 
 ##### damp(value, target, damping, delta)
@@ -616,17 +626,7 @@ Smoothly interpolate a number toward another.
 - `delta`: Delta time (in seconds).
 
 ```ts
-damp(value: number, target: number, damping: number, delta: number) => number;
-```
-
-### Now
-
-##### now
-
-Polyfill for "now()" functions.
-
-```ts
-now() => number;
+damp(value: number, target: number, damping: number, delta: number): number;
 ```
 
 ### Random
@@ -638,7 +638,7 @@ Generate a random boolean (true or false).
 - `[probability=0.5]`: Probability to get `true`.
 
 ```ts
-randomBoolean(probability?: number) => boolean;
+randomBoolean(probability?: number): boolean;
 ```
 
 ##### randomSign(probability)
@@ -648,7 +648,7 @@ Generate a random sign (1 or -1).
 - `[probability=0.5]`: Probability to get 1.
 
 ```ts
-randomSign(probability?: number) => number;
+randomSign(probability?: number): number;
 ```
 
 ##### randomFloat(min, max)
@@ -660,7 +660,7 @@ Generate a random floating-point number within a specified range.
 - `[precision=2]`: Number of digits after the decimal point.
 
 ```ts
-randomFloat(min?: number, max?: number, precision?: number) => number;
+randomFloat(min?: number, max?: number, precision?: number): number;
 ```
 
 ##### randomInt(min, max)
@@ -671,7 +671,7 @@ Generate a random integer number within a specified range.
 - `max`: Maximum boundary.
 
 ```ts
-randomInt(min: number, max: number) => number;
+randomInt(min: number, max: number): number;
 ```
 
 ##### randomHexColor()
@@ -679,7 +679,7 @@ randomInt(min: number, max: number) => number;
 Generate a random hexadecimal color.
 
 ```ts
-randomHexColor() => string;
+randomHexColor(): string;
 ```
 
 ##### randomItem(array)
@@ -689,7 +689,7 @@ Pick a random item from a given array.
 - `array`: Array to pick the item from.
 
 ```ts
-randomItem<T>(array: T[]) => T | undefined;
+randomItem<T>(array: T[]): T | undefined;
 ```
 
 ##### randomObjectProperty(object)
@@ -699,7 +699,7 @@ Pick a random property value from a given object.
 - `object`: Object to pick the property from.
 
 ```ts
-randomObjectProperty<T>(object: { [key: string]: T }) => T | undefined;
+randomObjectProperty<T>(object: { [key: string]: T }): T | undefined;
 ```
 
 ##### randomIndex(weights)
@@ -709,7 +709,7 @@ Select a random index from an array of weighted items.
 - `weights`: Array of weights.
 
 ```ts
-randomIndex(weights?: number[]) => number;
+randomIndex(weights?: number[]): number;
 ```
 
 ##### onCircle(radius)
@@ -720,7 +720,7 @@ Produce a random 2D point around the perimiter of a unit circle.
 - `[target]`: Target vector.
 
 ```ts
-onCircle(radius?: number, target?: Vector2) => Vector2;
+onCircle(radius?: number, target?: Vector2): Vector2;
 ```
 
 ##### insideCircle(radius)
@@ -731,7 +731,7 @@ Produce a random 2D point inside a unit circle.
 - `[target]` Target vector.
 
 ```ts
-insideCircle(radius?: number, target?: Vector2) => Vector2;
+insideCircle(radius?: number, target?: Vector2): Vector2;
 ```
 
 ##### onSphere(radius)
@@ -742,7 +742,7 @@ Produce a random 3D point on the surface of a unit sphere.
 - `[target]`: Target vector.
 
 ```ts
-onSphere(radius?: number, target?: Vector3) => Vector3;
+onSphere(radius?: number, target?: Vector3): Vector3;
 ```
 
 ##### insideSphere(radius)
@@ -753,7 +753,7 @@ Produce a random 3D point inside a unit sphere.
 - `[target]`: Target vector.
 
 ```ts
-insideSphere(radius?: number, target?: Vector3) => Vector3;
+insideSphere(radius?: number, target?: Vector3): Vector3;
 ```
 
 ### Strings
@@ -765,7 +765,7 @@ Capitalize a string.
 - `string`: String to capitalize.
 
 ```ts
-capitalize(string: string) => string;
+capitalize(string: string): string;
 ```
 
 ##### cleanPath(path)
@@ -775,7 +775,125 @@ Clean a path by removing params.
 - `path`: Path to clean.
 
 ```ts
-cleanPath(path: string) => string;
+cleanPath(path: string): string;
+```
+
+## Utility classes
+
+### Color scale
+
+Utility class for generating color scales and interpolating between colors.
+
+- [new ColorScale(input, target)](#color-scale-constructor)
+  - [.colors](#color-scale-colors): `Array<[number, number, number]>`
+  - `static` [.generate(input, target, length)](#color-scale-static-generate-method): `Array<[number, number, number]>`
+  - `static` [.interpolate(inputColor, targetColor, value)](#color-scale-static-interpolate-method): `[number, number, number]`
+
+#### Constructor <a id="color-scale-constructor"></a>
+
+| Parameter             | Type                               | Default                 | Description                                 |
+| --------------------- | ---------------------------------- | ----------------------- | ------------------------------------------- |
+| input                 | `ColorRepresentation`              |                         | Input color representation.                 |
+| target                | `ColorRepresentation`              |                         | Target color representation.                |
+| length                | `number`                           | `5`                     | Amount of colors composing the color scale. |
+| settings              | `ColorScaleSettings`               | `{ colorSpace: 'rgb' }` | Color scale generation settings.            |
+| [settings.colorSpace] | `'rgb' \| 'hsl' \| 'hsb' \| 'hcl'` | `'rgb'`                 | Color scale color space.                    |
+
+##### HCL color scales
+
+HCL color scales come with a bunch of other settings, so when `settings.colorSpace` is equal to `'hcl'`, the following settings are parameterable:
+
+| Parameter                  | Type                                           | Default | Description                              |
+| -------------------------- | ---------------------------------------------- | ------- | ---------------------------------------- |
+| [settings.mode]            | `'qualitative' \| 'sequential' \| 'diverging'` |         | Color scale mode.                        |
+| [settings.triangular]      | `number`                                       |         | Triangular interpolation `target` value. |
+| [settings.powerStrength]   | `number`                                       | `1`     | Interpolation power strength value.      |
+| [settings.hueOffset]       | `number`                                       | `0`     | Target color hue offset.                 |
+| [settings.chromaOffset]    | `number`                                       | `0`     | Target color chroma offset.              |
+| [settings.luminanceOffset] | `number`                                       | `0`     | Target color luminance offset.           |
+
+Learn more about [HCL-Based Color Palettes](https://colorspace.r-forge.r-project.org/articles/hcl_palettes.html).
+
+#### Properties
+
+##### colors <a id="color-scale-colors"></a>
+
+Array of colors composing the color scale.
+
+```ts
+ColorScale.colors: Array<[number, number, number]>;
+```
+
+#### Methods
+
+##### `static` generate(input, target, length) <a id="color-scale-static-generate-method"></a>
+
+Static method for generating a color scale.
+
+- `input`: Input color representation.
+- `target`: Target color representation.
+- `length`: Amount of colors composing the color scale.
+- `[settings]`: Color scale generation settings.
+
+```ts
+static ColorScale.generate(
+  input: ColorRepresentation,
+  target: ColorRepresentation,
+  length: number,
+  settings?: ColorScaleSettings
+): Array<[number, number, number]>;
+```
+
+##### `static` interpolate(inputColor, targetColor, value) <a id="color-scale-static-interpolate-method"></a>
+
+Static method for interpolating between colors.
+
+- `inputColor`: Input color.
+- `targetColor`: Target color.
+- `value`: Interpolation normalized value.
+- `[settings]`: Color scale settings.
+
+```ts
+static ColorScale.interpolate(
+  inputColor: [number, number, number],
+  targetColor: [number, number, number],
+  value: number,
+  settings?: ColorScaleSettings
+): [number, number, number];
+```
+
+### Frame rate
+
+Utility class for controlling FPS calls.
+
+- [new FrameRate()](#frame-rate-constructor)
+  - [.fps](#frame-rate-fps): `number`
+  - [.update()](#frame-rate-update-method): `boolean`
+
+#### Constructor <a id="frame-rate-constructor"></a>
+
+| Parameter | Type     | Default | Description             |
+| --------- | -------- | ------- | ----------------------- |
+| fps       | `number` | `30`    | Frame per second limit. |
+
+#### Properties
+
+##### fps <a id="frame-rate-fps"></a>
+
+Frame per second limit.
+
+```ts
+FrameRate.fps: number;
+```
+
+#### Methods
+
+##### update() <a id="frame-rate-update-method"></a>
+
+Return true if elapsed time since last update is higher than current FPS.
+
+```ts
+FrameRate.update(): boolean;
 ```
 
 ## Constants
