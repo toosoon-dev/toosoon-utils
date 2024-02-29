@@ -1,6 +1,6 @@
 {
   "name": "toosoon-utils",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Utility functions & classes",
   "main": "",
   "exports": {
@@ -10,6 +10,7 @@
     "./functions": "./lib/functions.js",
     "./geometry": "./lib/geometry.js",
     "./maths": "./lib/maths.js",
+    "./prng": "./lib/prng.js",
     "./random": "./lib/random.js",
     "./strings": "./lib/strings.js",
     "./constants": "./lib/constants.js",
@@ -34,7 +35,7 @@
     "functions",
     "geometry",
     "maths",
-    "now",
+    "prng",
     "random",
     "strings"
   ],

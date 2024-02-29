@@ -629,6 +629,60 @@ Smoothly interpolate a number toward another.
 damp(value: number, target: number, damping: number, delta: number): number;
 ```
 
+### Pseudo-Random Number Generator (PRNG)
+
+**Credits**: [Seeding random number generator](https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript)
+
+##### cyrb128(seed)
+
+Produce a 128-bit hash value from a string.
+
+`seed`: Initial seed state.
+
+```ts
+cyrb128(seed: string): [number, number, number, number];
+```
+
+##### sfc32(a, b, c, d)
+
+_Simple Fast Counter_, Generator with a 128-bit state.
+
+```ts
+sfc32(a: number, b: number, c: number, d: number): number;
+```
+
+##### splitmix32(a)
+
+_SplitMix32_, Generator with a 32-bit state.
+
+```ts
+splitmix32(a: number): number;
+```
+
+##### mulberry32(a)
+
+_Mulberry32_, Generator with a 32-bit state.
+
+```ts
+mulberry32(a: number): number;
+```
+
+##### jsf32(a, b, c, d)
+
+_Jenkins' Small Fast_, Generator with a 32-bit state.
+
+```ts
+jsf32(a: number, b: number, c: number, d: number): number;
+```
+
+##### xoshiro128ss(a, b, c, d)
+
+_xoshiro128\*\*_, Generator with a 128-bit state.
+
+```ts
+xoshiro128ss(a: number, b: number, c: number, d: number): number;
+```
+
 ### Random
 
 ##### randomBoolean(probability)
