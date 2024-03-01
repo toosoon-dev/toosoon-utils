@@ -631,6 +631,8 @@ damp(value: number, target: number, damping: number, delta: number): number;
 
 ### Pseudo-Random Number Generator (PRNG)
 
+#### PRNG Algorithms
+
 **Credits**: [Seeding random number generator](https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript)
 
 ##### cyrb128(seed)
@@ -640,7 +642,7 @@ Produce a 128-bit hash value from a string.
 `seed`: Initial seed state.
 
 ```ts
-cyrb128(seed: string): [number, number, number, number];
+cyrb128(prng: string | object): [number, number, number, number];
 ```
 
 ##### sfc32(a, b, c, d)
@@ -683,13 +685,119 @@ _xoshiro128\*\*_, Generator with a 128-bit state.
 xoshiro128ss(a: number, b: number, c: number, d: number): number;
 ```
 
+#### PRNG functions
+
+Thanks to the above algorithms, a seed-based version of most of the [random functions](#random) are available with a `seed` string and a PRNG `algorithm` function additionnal parameters.
+
+##### random(seed)
+
+Generate a pseudo-random number in the interval [0, 1]. It's the PRNG equivalent of `Math.random()`.
+
+- `prng`: Can be a seed string or a PRNG parameters object containing the seed and a PRNG algorithm function.
+  - `[prng.seed]`: Seed used for pseudo-random number generation.
+  - `[prng.algorithm=splitmix32]`: PRNG algorithm function generating a pseudo-random number.
+
+```ts
+random(prng: string | object): number;
+```
+
+##### randomBoolean(prng)
+
+Generate a pseudo-random boolean (true or false).
+
+- `prng`
+- `[probability=0.5]`: Probability to get true.
+
+```ts
+randomBoolean(prng: string | object, probability?: number): boolean;
+```
+
+##### randomSign(prng)
+
+Generate a pseudo-random sign (1 or -1).
+
+- `prng`
+- `[probability=0.5]`: Probability to get 1.
+
+```ts
+randomSign(prng: string | object, probability?: number): number;
+```
+
+##### randomFloat(prng, min, max)
+
+Generate a pseudo-random floating-point number within a specified range.
+
+- `prng`
+- `[min=0]`: Minimum boundary.
+- `[max=1]`: Maximum boundary.
+- `[precision=2]`: Number of digits after the decimal point.
+
+```ts
+randomFloat(prng: string | object, min?: number, max?: number, precision?: number): number;
+```
+
+##### randomInt(prng, min, max)
+
+Generate a pseudo-random integer number within a specified range.
+
+- `prng`
+- `min`: Minimum boundary.
+- `max`: Maximum boundary.
+
+```ts
+randomInt(prng: string | object, min: number, max: number): number;
+```
+
+##### randomHexColor(prng)
+
+Generate a pseudo-random hexadecimal color.
+
+- `prng`
+
+```ts
+randomHexColor(prng: string | object): string;
+```
+
+##### randomItem(prng, array)
+
+Pick a pseudo-random item from a given array.
+
+- `prng`
+- `array`: Array to pick the item from.
+
+```ts
+randomItem<T>(prng: string | object, array: T[]): T | undefined;
+```
+
+##### randomObjectProperty(prng)
+
+Pick a pseudo-random property value from a given object.
+
+- `prng`
+- `object`: Object to pick the property from.
+
+```ts
+randomObjectProperty<T>(prng: string | object, object: Record<string, T>): T | undefined;
+```
+
+##### randomIndex(prng)
+
+Select a pseudo-random index from an array of weighted items.
+
+- `prng`
+- `weights`: Array of weights.
+
+```ts
+randomIndex(prng: string | object, weights: number[]): number;
+```
+
 ### Random
 
 ##### randomBoolean(probability)
 
 Generate a random boolean (true or false).
 
-- `[probability=0.5]`: Probability to get `true`.
+- `[probability=0.5]`: Probability to get true.
 
 ```ts
 randomBoolean(probability?: number): boolean;
@@ -753,7 +861,7 @@ Pick a random property value from a given object.
 - `object`: Object to pick the property from.
 
 ```ts
-randomObjectProperty<T>(object: { [key: string]: T }): T | undefined;
+randomObjectProperty<T>(object: Record<string, T>): T | undefined;
 ```
 
 ##### randomIndex(weights)
@@ -763,7 +871,7 @@ Select a random index from an array of weighted items.
 - `weights`: Array of weights.
 
 ```ts
-randomIndex(weights?: number[]): number;
+randomIndex(weights: number[]): number;
 ```
 
 ##### onCircle(radius)

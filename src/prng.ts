@@ -117,3 +117,134 @@ export function xoshiro128ss(a: number, b: number, c: number, d: number): number
   d = (d << 11) | (d >>> 21);
   return (r >>> 0) / 4294967296;
 }
+
+// *********************
+// PRNG Functions
+// *********************
+
+type PRNGParameters = string | { seed: string; algorithm: (...args: number[]) => number };
+
+/**
+ * Generate a pseudo-random number in the interval [0, 1]
+ * PRNG equivalent of `Math.random()`
+ *
+ * @param {string|object} prng
+ * @returns {number} Pseudo-random number
+ */
+export function random(prng: PRNGParameters): number {
+  const seed = typeof prng === 'string' ? prng : prng.seed;
+  const algorithm = typeof prng === 'string' ? splitmix32 : prng.algorithm;
+
+  const hashes = cyrb128(seed);
+  return algorithm(...hashes);
+}
+
+/**
+ * Generate a pseudo-random boolean (true or false)
+ *
+ * @param {string|object} prng
+ * @param {number} [probability=0.5] Probability to get true
+ * @returns {boolean} Either `true` or `false`
+ */
+export function randomBoolean(prng: PRNGParameters, probability: number = 0.5): boolean {
+  return random(prng) < probability;
+}
+
+/**
+ * Generate a pseudo-random sign (1 or -1)
+ *
+ * @param {string|object} prng
+ * @param {number} [probability=0.5] Probability to get 1
+ * @returns {number} Either 1 or -1
+ */
+export function randomSign(prng: PRNGParameters, probability: number = 0.5): number {
+  return randomBoolean(prng, probability) ? 1 : -1;
+}
+
+/**
+ * Generate a pseudo-random floating-point number within a specified range
+ *
+ * @param {string|object} prng
+ * @param {number} [min=0]       Minimum boundary
+ * @param {number} [max=1]       Maximum boundary
+ * @param {number} [precision=2] Number of digits after the decimal point
+ * @returns {number} Generated float
+ */
+export function randomFloat(prng: PRNGParameters, min: number = 0, max: number = 1, precision: number = 2): number {
+  return parseFloat(Math.min(min + random(prng) * (max - min), max).toFixed(precision));
+}
+
+/**
+ * Generate a pseudo-random integer number within a specified range
+ *
+ * @param {string|object} prng
+ * @param {number} min Minimum boundary
+ * @param {number} max Maximum boundary
+ * @returns {number} Generated integer
+ */
+export function randomInt(prng: PRNGParameters, min: number, max: number): number {
+  return Math.floor(random(prng) * (max - min + 1) + min);
+}
+
+/**
+ * Generate a pseudo-random hexadecimal color
+ *
+ * @param {string|object} prng
+ * @returns {string} Generated hexadecimal color
+ */
+export function randomHexColor(prng: PRNGParameters): string {
+  return '#' + ('00000' + ((random(prng) * (1 << 24)) | 0).toString(16)).slice(-6);
+}
+
+/**
+ * Pick a pseudo-random item from a given array
+ *
+ * @param {string|object} prng
+ * @param {T[]} array Array to pick the item from
+ * @returns {T|undefined} Random item picked
+ */
+export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | undefined {
+  if (array.length === 0) return undefined;
+  return array[randomInt(prng, 0, array.length - 1)];
+}
+
+/**
+ * Pick a pseudo-random property value from a given object
+ *
+ * @param {string|object} prng
+ * @param {object} object Object to pick the property from
+ * @returns {T|undefined} Random item picked
+ */
+export function randomObjectProperty<T = unknown>(prng: PRNGParameters, object: Record<string, T>): T | undefined {
+  const keys = Object.keys(object);
+  const key = randomItem(prng, keys);
+  if (key && object.hasOwnProperty(key)) {
+    return object[key as keyof object];
+  }
+}
+
+/**
+ * Select a pseudo-random index from an array of weighted items
+ *
+ * @param {string|object} prng
+ * @param {number[]} weights Array of weights
+ * @returns {number} Random index based on weights
+ */
+export function randomIndex(prng: PRNGParameters, weights: number[]): number {
+  if (weights.length === 0) return -1;
+
+  let totalWeight = 0;
+  for (let weight of weights) {
+    totalWeight += weight;
+  }
+
+  if (totalWeight <= 0) console.warn('PRNG randomIndex()', 'Weights must sum to > 0', totalWeight);
+
+  let weight = random(prng) * totalWeight;
+  for (let i = 0; i < weights.length; i++) {
+    if (weight < weights[i]) return i;
+    weight -= weights[i];
+  }
+
+  return 0;
+}

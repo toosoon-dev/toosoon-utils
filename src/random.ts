@@ -2,9 +2,9 @@ import { radToSphere } from './geometry';
 import { Vector2, Vector3 } from './types';
 
 /**
- * Generate a random boolean (`true` or `false`)
+ * Generate a random boolean (true or false)
  *
- * @param {number} [probability=0.5] Probability to get `true`
+ * @param {number} [probability=0.5] Probability to get true
  * @returns {boolean} Either `true` or `false`
  */
 export function randomBoolean(probability: number = 0.5): boolean {
@@ -70,7 +70,7 @@ export function randomItem<T = unknown>(array: T[]): T | undefined {
  * @param {object} object Object to pick the property from
  * @returns {T|undefined} Random item picked
  */
-export function randomObjectProperty<T = unknown>(object: { [key: string]: T }): T | undefined {
+export function randomObjectProperty<T = unknown>(object: Record<string, T>): T | undefined {
   const keys = Object.keys(object);
   const key = randomItem(keys);
   if (key && object.hasOwnProperty(key)) {
@@ -96,10 +96,10 @@ export function randomIndex(weights: number[]): number {
     console.warn('randomIndex()', 'Weights must sum to > 0', totalWeight);
   }
 
-  let random = Math.random() * totalWeight;
+  let weight = Math.random() * totalWeight;
   for (let i = 0; i < weights.length; i++) {
-    if (random < weights[i]) return i;
-    random -= weights[i];
+    if (weight < weights[i]) return i;
+    weight -= weights[i];
   }
 
   return 0;
