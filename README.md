@@ -687,104 +687,108 @@ xoshiro128ss(a: number, b: number, c: number, d: number): number;
 
 #### PRNG functions
 
-Thanks to the above algorithms, a seed-based version of most of the [random functions](#random) are available with a `seed` string and a PRNG `algorithm` function additionnal parameters.
+Thanks to the above algorithms, a seed-based version of most of the [random functions](#random) are exist with additionnal parameters for a `seed` string and a PRNG `algorithm` function.
 
-##### random(seed)
-
-Generate a pseudo-random number in the interval [0, 1]. It's the PRNG equivalent of `Math.random()`.
-
-- `prng`: Can be a seed string or a PRNG parameters object containing the seed and a PRNG algorithm function.
-  - `[prng.seed]`: Seed used for pseudo-random number generation.
-  - `[prng.algorithm=splitmix32]`: PRNG algorithm function generating a pseudo-random number.
+PRNG parameters:
 
 ```ts
-random(prng: string | object): number;
+type PRNGParameters = string | { seed: string; algorithm: (...args: number[]) => number };
+```
+
+##### random(prng)
+
+Generate a pseudo-random number in the interval [0, 1]. It is the PRNG equivalent of `Math.random()`.
+
+- `prng`: PRNG parameters.
+
+```ts
+random(prng: PRNGParameters): number;
 ```
 
 ##### randomBoolean(prng)
 
 Generate a pseudo-random boolean (true or false).
 
-- `prng`
+- `prng`: PRNG parameters.
 - `[probability=0.5]`: Probability to get true.
 
 ```ts
-randomBoolean(prng: string | object, probability?: number): boolean;
+randomBoolean(prng: PRNGParameters, probability?: number): boolean;
 ```
 
 ##### randomSign(prng)
 
 Generate a pseudo-random sign (1 or -1).
 
-- `prng`
+- `prng`: PRNG parameters.
 - `[probability=0.5]`: Probability to get 1.
 
 ```ts
-randomSign(prng: string | object, probability?: number): number;
+randomSign(prng: PRNGParameters, probability?: number): number;
 ```
 
 ##### randomFloat(prng, min, max)
 
 Generate a pseudo-random floating-point number within a specified range.
 
-- `prng`
+- `prng`: PRNG parameters.
 - `[min=0]`: Minimum boundary.
 - `[max=1]`: Maximum boundary.
 - `[precision=2]`: Number of digits after the decimal point.
 
 ```ts
-randomFloat(prng: string | object, min?: number, max?: number, precision?: number): number;
+randomFloat(prng: PRNGParameters, min?: number, max?: number, precision?: number): number;
 ```
 
 ##### randomInt(prng, min, max)
 
 Generate a pseudo-random integer number within a specified range.
 
-- `prng`
+- `prng`: PRNG parameters.
 - `min`: Minimum boundary.
 - `max`: Maximum boundary.
 
 ```ts
-randomInt(prng: string | object, min: number, max: number): number;
+randomInt(prng: PRNGParameters, min: number, max: number): number;
 ```
 
 ##### randomHexColor(prng)
 
 Generate a pseudo-random hexadecimal color.
 
-- `prng`
+- `prng`: PRNG parameters.
 
 ```ts
-randomHexColor(prng: string | object): string;
+randomHexColor(prng: PRNGParameters): string;
 ```
 
 ##### randomItem(prng, array)
 
 Pick a pseudo-random item from a given array.
 
-- `prng`
+- `prng`: PRNG parameters.
 - `array`: Array to pick the item from.
 
 ```ts
-randomItem<T>(prng: string | object, array: T[]): T | undefined;
+randomItem<T>(prng: PRNGParameters, array: T[]): T | undefined;
 ```
 
 ##### randomObjectProperty(prng)
 
 Pick a pseudo-random property value from a given object.
 
-- `prng`
+- `prng`: PRNG parameters.
 - `object`: Object to pick the property from.
 
 ```ts
-randomObjectProperty<T>(prng: string | object, object: Record<string, T>): T | undefined;
+randomObjectProperty<T>(prng: PRNGParameters, object: Record<string, T>): T | undefined;
 ```
 
 ##### randomIndex(prng)
 
 Select a pseudo-random index from an array of weighted items.
 
-- `prng`
+- `prng`: PRNG parameters.
 - `weights`: Array of weights.
 
 ```ts
@@ -1074,4 +1078,4 @@ FrameRate.update(): boolean;
 
 ## License
 
-MIT License, see [LICENSE](https://github.com/toosoon-dev/toosoon-utils/tree/master/LICENSE) for details
+MIT License, see [LICENSE](https://github.com/toosoon-dev/toosoon-utils/tree/master/LICENSE) for details.

@@ -121,14 +121,13 @@ export function xoshiro128ss(a: number, b: number, c: number, d: number): number
 // *********************
 // PRNG Functions
 // *********************
-
-type PRNGParameters = string | { seed: string; algorithm: (...args: number[]) => number };
+export type PRNGParameters = string | { seed: string; algorithm: (...args: number[]) => number };
 
 /**
  * Generate a pseudo-random number in the interval [0, 1]
  * PRNG equivalent of `Math.random()`
  *
- * @param {string|object} prng
+ * @param {PRNGParameters} prng PRNG parameters
  * @returns {number} Pseudo-random number
  */
 export function random(prng: PRNGParameters): number {
@@ -142,7 +141,7 @@ export function random(prng: PRNGParameters): number {
 /**
  * Generate a pseudo-random boolean (true or false)
  *
- * @param {string|object} prng
+ * @param {PRNGParameters} prng PRNG parameters
  * @param {number} [probability=0.5] Probability to get true
  * @returns {boolean} Either `true` or `false`
  */
@@ -153,7 +152,7 @@ export function randomBoolean(prng: PRNGParameters, probability: number = 0.5): 
 /**
  * Generate a pseudo-random sign (1 or -1)
  *
- * @param {string|object} prng
+ * @param {PRNGParameters} prng PRNG parameters
  * @param {number} [probability=0.5] Probability to get 1
  * @returns {number} Either 1 or -1
  */
@@ -164,7 +163,7 @@ export function randomSign(prng: PRNGParameters, probability: number = 0.5): num
 /**
  * Generate a pseudo-random floating-point number within a specified range
  *
- * @param {string|object} prng
+ * @param {PRNGParameters} prng  PRNG parameters
  * @param {number} [min=0]       Minimum boundary
  * @param {number} [max=1]       Maximum boundary
  * @param {number} [precision=2] Number of digits after the decimal point
@@ -177,9 +176,9 @@ export function randomFloat(prng: PRNGParameters, min: number = 0, max: number =
 /**
  * Generate a pseudo-random integer number within a specified range
  *
- * @param {string|object} prng
- * @param {number} min Minimum boundary
- * @param {number} max Maximum boundary
+ * @param {PRNGParameters} prng PRNG parameters
+ * @param {number} min          Minimum boundary
+ * @param {number} max          Maximum boundary
  * @returns {number} Generated integer
  */
 export function randomInt(prng: PRNGParameters, min: number, max: number): number {
@@ -189,7 +188,7 @@ export function randomInt(prng: PRNGParameters, min: number, max: number): numbe
 /**
  * Generate a pseudo-random hexadecimal color
  *
- * @param {string|object} prng
+ * @param {PRNGParameters} prng PRNG parameters
  * @returns {string} Generated hexadecimal color
  */
 export function randomHexColor(prng: PRNGParameters): string {
@@ -199,8 +198,8 @@ export function randomHexColor(prng: PRNGParameters): string {
 /**
  * Pick a pseudo-random item from a given array
  *
- * @param {string|object} prng
- * @param {T[]} array Array to pick the item from
+ * @param {PRNGParameters} prng PRNG parameters
+ * @param {T[]} array           Array to pick the item from
  * @returns {T|undefined} Random item picked
  */
 export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | undefined {
@@ -211,8 +210,8 @@ export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | u
 /**
  * Pick a pseudo-random property value from a given object
  *
- * @param {string|object} prng
- * @param {object} object Object to pick the property from
+ * @param {PRNGParameters} prng PRNG parameters
+ * @param {object} object       Object to pick the property from
  * @returns {T|undefined} Random item picked
  */
 export function randomObjectProperty<T = unknown>(prng: PRNGParameters, object: Record<string, T>): T | undefined {
@@ -226,8 +225,8 @@ export function randomObjectProperty<T = unknown>(prng: PRNGParameters, object: 
 /**
  * Select a pseudo-random index from an array of weighted items
  *
- * @param {string|object} prng
- * @param {number[]} weights Array of weights
+ * @param {PRNGParameters} prng PRNG parameters
+ * @param {number[]} weights    Array of weights
  * @returns {number} Random index based on weights
  */
 export function randomIndex(prng: PRNGParameters, weights: number[]): number {
