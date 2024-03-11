@@ -1,7 +1,11 @@
 {
   "name": "toosoon-utils",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "description": "Utility functions & classes",
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  },
   "main": "",
   "types": "./lib/types.d.ts",
   "exports": {
@@ -16,8 +20,7 @@
     "./strings": "./lib/strings.js",
     "./constants": "./lib/constants.js",
     "./color-scale": "./lib/classes/color-scale.js",
-    "./frame-rate": "./lib/classes/frame-rate.js",
-    "./types": "./lib/types.d.ts"
+    "./frame-rate": "./lib/classes/frame-rate.js"
   },
   "scripts": {
     "build": "npx tsc",
