@@ -1,6 +1,6 @@
 {
   "name": "toosoon-utils",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "Utility functions & classes",
   "type": "module",
   "engines": {
@@ -49,8 +49,8 @@
     "url": "https://github.com/toosoon-dev/toosoon-utils/issues"
   },
   "homepage": "https://github.com/toosoon-dev/toosoon-utils#readme",
-  "peerDependencies": {
-    "@types/node": "20.x",
-    "typescript": "5.x"
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "typescript": "^5.4.2"
   }
 }
