@@ -1,8 +1,7 @@
 {
   "name": "toosoon-utils",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Utility functions & classes",
-  "type": "module",
   "engines": {
     "node": ">=16"
   },
