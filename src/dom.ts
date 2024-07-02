@@ -3,17 +3,17 @@ const DOCUMENT_NODE_TYPE = 9;
 /**
  * Find the closest parent that matches a selector
  *
- * @param {Element}          element  Target element
+ * @param {Element|null}     element  Target element
  * @param {(Element|string)} selector Selector or parent to match
  * @returns {Element|null}
  */
-export function closest(element: Element, selector: Element | string): Element | null {
-  let current: Element | null = element;
+export function closest(element: Element | null, selector: Element | string): Element | null {
+  let current = element;
   while (current && current.nodeType !== DOCUMENT_NODE_TYPE) {
     if ((typeof selector === 'string' && current.matches(selector)) || current === selector) {
       return current;
     }
-    current = element.parentNode as Element | null;
+    current = current.parentElement;
   }
   return current;
 }

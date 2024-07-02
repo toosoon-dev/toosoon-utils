@@ -96,12 +96,12 @@ export function radToSphere(
 // *********************
 // Fit
 // *********************
-interface FitInput {
+export interface FitInput {
   width: number;
   height: number;
 }
 
-interface FitOutput {
+export interface FitOutput {
   left: number;
   top: number;
   width: number;

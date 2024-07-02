@@ -221,7 +221,7 @@ Find the closest parent that matches a selector.
 - `selector`: Selector or parent to match.
 
 ```ts
-closest(element: Element, selector: Element | string): Element | null;
+closest(element: Element | null, selector: Element | string): Element | null;
 ```
 
 ##### createCanvas(width, height)
