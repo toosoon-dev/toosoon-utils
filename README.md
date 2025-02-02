@@ -965,6 +965,26 @@ Utility class for generating color scales and interpolating between colors.
 | settings              | `ColorScaleSettings`               | `{ colorSpace: 'rgb' }` | Color scale generation settings.            |
 | [settings.colorSpace] | `'rgb' \| 'hsl' \| 'hsb' \| 'hcl'` | `'rgb'`                 | Color scale color space.                    |
 
+##### HSL color scales
+
+HSL color scales come with offsets settings, so when `settings.colorSpace` is equal to `'hsl'`, the following settings are parameterable:
+
+| Parameter                   | Type     | Default | Description                     |
+| --------------------------- | -------- | ------- | ------------------------------- |
+| [settings.hueOffset]        | `number` | `0`     | Target color hue offset.        |
+| [settings.saturationOffset] | `number` | `0`     | Target color saturation offset. |
+| [settings.lightnessOffset]  | `number` | `0`     | Target color lightness offset.  |
+
+##### HSB color scales
+
+HSB color scales come with offsets settings, so when `settings.colorSpace` is equal to `'hsb'`, the following settings are parameterable:
+
+| Parameter                   | Type     | Default | Description                     |
+| --------------------------- | -------- | ------- | ------------------------------- |
+| [settings.hueOffset]        | `number` | `0`     | Target color hue offset.        |
+| [settings.saturationOffset] | `number` | `0`     | Target color saturation offset. |
+| [settings.brightnessOffset] | `number` | `0`     | Target color brightness offset. |
+
 ##### HCL color scales
 
 HCL color scales come with a bunch of other settings, so when `settings.colorSpace` is equal to `'hcl'`, the following settings are parameterable:
