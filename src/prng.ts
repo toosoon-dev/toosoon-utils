@@ -247,3 +247,25 @@ export function randomIndex(prng: PRNGParameters, weights: number[]): number {
 
   return 0;
 }
+
+// *********************
+// Distribution
+// *********************
+/**
+ * Generate a pseudo-random number fitting a Gaussian (normal) distribution
+ *
+ * @param {PRNGParameters} prng PRNG parameters
+ * @param {number} [mean=0]     Central value
+ * @param {number} [spread=1]   Standard deviation
+ * @returns {number} Generated number
+ */
+export function randomGaussian(prng: PRNGParameters, mean: number = 0, spread: number = 1): number {
+  const seed = typeof prng === 'string' ? prng : prng.seed;
+  const algorithm = typeof prng === 'string' ? splitmix32 : prng.algorithm;
+
+  const hashes = cyrb128(seed);
+  const u = algorithm(...hashes);
+  const v = algorithm(...hashes.reverse());
+  const z = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+  return mean + z * spread;
+}

@@ -795,6 +795,18 @@ Select a pseudo-random index from an array of weighted items.
 randomIndex(prng: string | object, weights: number[]): number;
 ```
 
+##### randomGaussian(prng, mean, spread)
+
+Generate a pseudo-random number fitting a Gaussian (normal) distribution.
+
+- `prng`: PRNG parameters.
+- `[mean=0]`: Central value.
+- `[spread=1]`: Standard deviation.
+
+```ts
+randomGaussian(prng: string | object, mean?: number, spread?: number): number;
+```
+
 ### Random
 
 ##### randomBoolean(probability)
