@@ -248,9 +248,6 @@ export function randomIndex(prng: PRNGParameters, weights: number[]): number {
   return 0;
 }
 
-// *********************
-// Distribution
-// *********************
 /**
  * Generate a pseudo-random number fitting a Gaussian (normal) distribution
  *

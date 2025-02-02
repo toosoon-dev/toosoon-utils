@@ -105,9 +105,6 @@ export function randomIndex(weights: number[]): number {
   return 0;
 }
 
-// *********************
-// Distribution
-// *********************
 /**
  * Generate a random number fitting a Gaussian (normal) distribution
  *
@@ -125,6 +122,7 @@ export function randomGaussian(mean: number = 0, spread: number = 1): number {
 // *********************
 // Geometry
 // *********************
+
 /**
  * Produce a random 2D point around the perimiter of a unit circle
  *
