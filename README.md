@@ -878,6 +878,17 @@ Select a random index from an array of weighted items.
 randomIndex(weights: number[]): number;
 ```
 
+##### randomGaussian(mean, spread)
+
+Generate a random number fitting a Gaussian (normal) distribution.
+
+- `[mean=0]`: Central value.
+- `[spread=1]`: Standard deviation.
+
+```ts
+randomGaussian(mean?: number, spread?: number): number;
+```
+
 ##### onCircle(radius)
 
 Produce a random 2D point around the perimiter of a unit circle.
