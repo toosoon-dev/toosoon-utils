@@ -151,7 +151,7 @@ export function map(
  * @param {number} [multiple=1] Multiple to round to
  * @returns {number} Closest multiple
  */
-export function roundTo(value: number, multiple: number = 1): number {
+export function snap(value: number, multiple: number = 1): number {
   if (multiple === 0) return value;
   return Math.round(value / multiple) * multiple;
 }

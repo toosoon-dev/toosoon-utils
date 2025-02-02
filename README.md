@@ -540,7 +540,7 @@ Re-map a number from one range to another.
 map(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
-##### roundTo(value, multiple)
+##### snap(value, multiple)
 
 Round a number up to a nearest multiple.
 
@@ -548,7 +548,7 @@ Round a number up to a nearest multiple.
 - `[multiple=1]`: Multiple to round to.
 
 ```ts
-roundTo(value: number, multiple?: number): number;
+snap(value: number, multiple?: number): number;
 ```
 
 ##### modAbs(value, length)
