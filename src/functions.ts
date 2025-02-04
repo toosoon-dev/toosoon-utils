@@ -8,11 +8,50 @@ export const noop: () => void = () => {};
 /**
  * Promise wrapped setTimeout
  *
- * @param {number} [timeout=0] Time to wait (in milliseconds)
+ * @param {number} [delay=0] Time to wait (in milliseconds)
  * @returns {Promise}
  */
-export function wait(timeout: number = 0): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, timeout));
+export function wait(delay: number = 0): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+}
+
+/**
+ * Create a debounced function that delays the execution of `callback` until a specified `delay` time has passed since the last call
+ *
+ * @param {Function} callback Function to debounce
+ * @param {number} delay      Delay (in milliseconds)
+ * @returns {Function} Debounced function
+ */
+export function debounce<T extends (...args: any[]) => void>(
+  callback: T,
+  delay: number
+): (...args: Parameters<T>) => void {
+  let timeout: ReturnType<typeof setTimeout> | null = null;
+  return (...args: Parameters<T>) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => callback(...args), delay);
+  };
+}
+
+/**
+ * Create a throttled function that limits the execution of `callback` to once every `limit` time
+ *
+ * @param {Function} callback Function to throttle
+ * @param {number} limit      Minimum interval between two calls (in milliseconds)
+ * @returns {Function} Throttled function
+ */
+export function throttle<T extends (...args: any[]) => void>(
+  callback: T,
+  limit: number
+): (...args: Parameters<T>) => void {
+  let lastTime = 0;
+  return (...args: Parameters<T>) => {
+    const time = now();
+    if (time - lastTime >= limit) {
+      lastTime = time;
+      callback(...args);
+    }
+  };
 }
 
 /**

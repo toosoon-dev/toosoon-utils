@@ -279,14 +279,36 @@ No-op function.
 noop(): void;
 ```
 
-##### wait(timeout)
+##### wait(delay)
 
 Promise wrapped setTimeout.
 
-- `[timeout=0]`: Time to wait (in milliseconds).
+- `[delay=0]`: Time to wait (in milliseconds).
 
 ```ts
-wait(timeout?: number): Promise<void>;
+wait(delay?: number): Promise<void>;
+```
+
+##### debounce(callback, delay)
+
+Create a debounced function that delays the execution of `callback` until a specified `delay` time has passed since the last call.
+
+- `callback`: Function to debounce.
+- `delay`: Delay (in milliseconds).
+
+```ts
+debounce(callback: Function, delay: number): Function;
+```
+
+##### throttle(callback, limit)
+
+Create a throttled function that limits the execution of `callback` to once every `limit` time.
+
+- `callback`: Function to throttle.
+- `limit`: Minimum interval between two calls (in milliseconds).
+
+```ts
+throttle(callback: Function, limit: number): Function;
 ```
 
 ##### defer()
