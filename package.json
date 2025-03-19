@@ -1,6 +1,6 @@
 {
   "name": "toosoon-utils",
-  "version": "3.0.4",
+  "version": "3.1.0",
   "description": "Utility functions & classes",
   "engines": {
     "node": ">=16"
@@ -15,6 +15,7 @@
     "./geometry": "./lib/geometry.js",
     "./maths": "./lib/maths.js",
     "./prng": "./lib/prng.js",
+    "./query": "./lib/query.js",
     "./random": "./lib/random.js",
     "./strings": "./lib/strings.js",
     "./constants": "./lib/constants.js",

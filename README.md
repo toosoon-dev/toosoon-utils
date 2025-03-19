@@ -651,6 +651,144 @@ Smoothly interpolate a number toward another.
 damp(value: number, target: number, damping: number, delta: number): number;
 ```
 
+### Random
+
+##### randomBoolean(probability)
+
+Generate a random boolean (true or false).
+
+- `[probability=0.5]`: Probability to get true.
+
+```ts
+randomBoolean(probability?: number): boolean;
+```
+
+##### randomSign(probability)
+
+Generate a random sign (1 or -1).
+
+- `[probability=0.5]`: Probability to get 1.
+
+```ts
+randomSign(probability?: number): number;
+```
+
+##### randomFloat(min, max)
+
+Generate a random floating-point number within a specified range.
+
+- `[min=0]`: Minimum boundary.
+- `[max=1]`: Maximum boundary.
+- `[precision=2]`: Number of digits after the decimal point.
+
+```ts
+randomFloat(min?: number, max?: number, precision?: number): number;
+```
+
+##### randomInt(min, max)
+
+Generate a random integer number within a specified range.
+
+- `min`: Minimum boundary.
+- `max`: Maximum boundary.
+
+```ts
+randomInt(min: number, max: number): number;
+```
+
+##### randomHexColor()
+
+Generate a random hexadecimal color.
+
+```ts
+randomHexColor(): string;
+```
+
+##### randomItem(array)
+
+Pick a random item from a given array.
+
+- `array`: Array to pick the item from.
+
+```ts
+randomItem<T>(array: T[]): T | undefined;
+```
+
+##### randomObjectProperty(object)
+
+Pick a random property value from a given object.
+
+- `object`: Object to pick the property from.
+
+```ts
+randomObjectProperty<T>(object: Record<string, T>): T | undefined;
+```
+
+##### randomIndex(weights)
+
+Select a random index from an array of weighted items.
+
+- `weights`: Array of weights.
+
+```ts
+randomIndex(weights: number[]): number;
+```
+
+##### randomGaussian(mean, spread)
+
+Generate a random number fitting a Gaussian (normal) distribution.
+
+- `[mean=0]`: Central value.
+- `[spread=1]`: Standard deviation.
+
+```ts
+randomGaussian(mean?: number, spread?: number): number;
+```
+
+##### onCircle(radius)
+
+Produce a random 2D point around the perimiter of a unit circle.
+
+- `[radius=1]`: Radius of the circle.
+- `[target]`: Target vector.
+
+```ts
+onCircle(radius?: number, target?: Vector2): Vector2;
+```
+
+##### insideCircle(radius)
+
+Produce a random 2D point inside a unit circle.
+
+- `[radius=1]`: Radius of the circle.
+- `[target]` Target vector.
+
+```ts
+insideCircle(radius?: number, target?: Vector2): Vector2;
+```
+
+##### onSphere(radius)
+
+Produce a random 3D point on the surface of a unit sphere.
+
+- `[radius=1]`: Radius of the sphere.
+- `[target]`: Target vector.
+
+```ts
+onSphere(radius?: number, target?: Vector3): Vector3;
+```
+
+##### insideSphere(radius)
+
+Produce a random 3D point inside a unit sphere.
+
+- `[radius=1]`: Radius of the sphere.
+- `[target]`: Target vector.
+
+```ts
+insideSphere(radius?: number, target?: Vector3): Vector3;
+```
+
 ### Pseudo-Random Number Generator (PRNG)
 
 #### PRNG Algorithms
@@ -829,145 +967,42 @@ Generate a pseudo-random number fitting a Gaussian (normal) distribution.
 randomGaussian(prng: string | object, mean?: number, spread?: number): number;
 ```
 
-### Random
+### Query parameters
 
-##### randomBoolean(probability)
+##### getQuery(property)
 
-Generate a random boolean (true or false).
+Get a query parameter.
 
-- `[probability=0.5]`: Probability to get true.
+- `property`: Query property to check.
 
 ```ts
-randomBoolean(probability?: number): boolean;
+getQuery(property: string): string | null;
 ```
 
-##### randomSign(probability)
+##### setQuery(property)
 
-Generate a random sign (1 or -1).
+Set a query parameter.
 
-- `[probability=0.5]`: Probability to get 1.
+- `property`: Query property to set.
+- `value`: Value to set.
 
 ```ts
-randomSign(probability?: number): number;
+setQuery(property: string, value: string): void;
 ```
 
-##### randomFloat(min, max)
+##### hasQuery(property)
 
-Generate a random floating-point number within a specified range.
+Check if a query parameter exists.
 
-- `[min=0]`: Minimum boundary.
-- `[max=1]`: Maximum boundary.
-- `[precision=2]`: Number of digits after the decimal point.
+- `property`: Query property to check.
 
 ```ts
-randomFloat(min?: number, max?: number, precision?: number): number;
-```
-
-##### randomInt(min, max)
-
-Generate a random integer number within a specified range.
-
-- `min`: Minimum boundary.
-- `max`: Maximum boundary.
-
-```ts
-randomInt(min: number, max: number): number;
-```
-
-##### randomHexColor()
-
-Generate a random hexadecimal color.
-
-```ts
-randomHexColor(): string;
-```
-
-##### randomItem(array)
-
-Pick a random item from a given array.
-
-- `array`: Array to pick the item from.
-
-```ts
-randomItem<T>(array: T[]): T | undefined;
-```
-
-##### randomObjectProperty(object)
-
-Pick a random property value from a given object.
-
-- `object`: Object to pick the property from.
-
-```ts
-randomObjectProperty<T>(object: Record<string, T>): T | undefined;
-```
-
-##### randomIndex(weights)
-
-Select a random index from an array of weighted items.
-
-- `weights`: Array of weights.
-
-```ts
-randomIndex(weights: number[]): number;
-```
-
-##### randomGaussian(mean, spread)
-
-Generate a random number fitting a Gaussian (normal) distribution.
-
-- `[mean=0]`: Central value.
-- `[spread=1]`: Standard deviation.
-
-```ts
-randomGaussian(mean?: number, spread?: number): number;
-```
-
-##### onCircle(radius)
-
-Produce a random 2D point around the perimiter of a unit circle.
-
-- `[radius=1]`: Radius of the circle.
-- `[target]`: Target vector.
-
-```ts
-onCircle(radius?: number, target?: Vector2): Vector2;
-```
-
-##### insideCircle(radius)
-
-Produce a random 2D point inside a unit circle.
-
-- `[radius=1]`: Radius of the circle.
-- `[target]` Target vector.
-
-```ts
-insideCircle(radius?: number, target?: Vector2): Vector2;
-```
-
-##### onSphere(radius)
-
-Produce a random 3D point on the surface of a unit sphere.
-
-- `[radius=1]`: Radius of the sphere.
-- `[target]`: Target vector.
-
-```ts
-onSphere(radius?: number, target?: Vector3): Vector3;
-```
-
-##### insideSphere(radius)
-
-Produce a random 3D point inside a unit sphere.
-
-- `[radius=1]`: Radius of the sphere.
-- `[target]`: Target vector.
-
-```ts
-insideSphere(radius?: number, target?: Vector3): Vector3;
+hasQuery(property: string): boolean;
 ```
 
 ### Strings
+
+#### Cases
 
 ##### capitalize(string)
 
@@ -979,14 +1014,96 @@ Capitalize a string.
 capitalize(string: string): string;
 ```
 
+##### toKebabCase(string)
+
+Convert a string to kebab-case: 'Hello world' -> 'hello-world'.
+
+- `string`: String to convert.
+
+```ts
+toKebabCase(string: string): string;
+```
+
+##### toSnakeCase(string)
+
+Convert a string to snake_case: 'Hello world' -> 'hello_world'.
+
+- `string`: String to convert.
+
+```ts
+toSnakeCase(string: string): string;
+```
+
+##### toCamelCase(string)
+
+Convert a string to camelCase: 'Hello world' -> 'helloWorld'.
+
+- `string`: String to convert.
+
+```ts
+toCamelCase(string: string): string;
+```
+
+##### toPascalCase(string)
+
+Convert a string to PascalCase: 'Hello world' -> 'HelloWorld'.
+
+- `string`: String to convert.
+
+```ts
+toPascalCase(string: string): string;
+```
+
+##### toTrainCase(string)
+
+Convert a string to Train-Case: 'Hello world' -> 'Hello-World'.
+
+- `string`: String to convert.
+
+```ts
+toTrainCase(string: string): string;
+```
+
+##### toConstantCase(string)
+
+Convert a string to CONSTANT_CASE: 'Hello world' -> 'HELLO_WORLD'.
+
+- `string`: String to convert.
+
+```ts
+toConstantCase(string: string): string;
+```
+
+#### Paths
+
 ##### cleanPath(path)
 
-Clean a path by removing params.
+Clean a path by removing its parameters.
 
 - `path`: Path to clean.
 
 ```ts
 cleanPath(path: string): string;
+```
+
+##### addTrailingSlash(path)
+
+Convert a path by ensuring it has a trailing slash.
+
+- `path`: Path to convert.
+
+```ts
+addTrailingSlash(path: string): string;
+```
+
+##### removeTrailingSlash(path)
+
+Convert a path by ensuring it has not a trailing slash.
+
+- `path`: Path to convert.
+
+```ts
+removeTrailingSlash(path: string): string;
 ```
 
 ## Utility classes

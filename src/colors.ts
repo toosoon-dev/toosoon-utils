@@ -79,7 +79,7 @@ export function rgbToHexString([r, g, b]: [number, number, number]): string {
  * Convert hexadecimal to RGB
  * Note: rgb values are contained in the interval [0, 1]
  *
- * @param  {(number|string)} hex Hexadecimal color
+ * @param  {number|string} hex Hexadecimal color
  * @returns {[number, number, number]} RGB color
  */
 export function hexToRgb(hex: number | string): [number, number, number] {

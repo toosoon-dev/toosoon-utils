@@ -7,17 +7,16 @@ import { now } from '../functions';
  * @class FrameRate
  */
 export default class FrameRate {
-  private _fps: number;
-  private interval = 0;
-  private time = 0;
-  private elapsedTime = 0;
-  private lastUpdate = 0;
+  private _fps!: number;
+  private _interval: number = 0;
+  private _time: number = 0;
+  private _elapsedTime: number = 0;
+  private _lastUpdate: number = 0;
 
   /**
    * @param {number} [fps=30] Frame per second limit
    */
   constructor(fps: number = 30) {
-    this._fps = fps;
     this.fps = fps;
   }
 
@@ -26,15 +25,15 @@ export default class FrameRate {
    *
    * @returns {boolean}
    */
-  update(): boolean {
-    this.time = now();
-    this.elapsedTime = this.time - this.lastUpdate;
+  public update(): boolean {
+    this._time = now();
+    this._elapsedTime = this._time - this._lastUpdate;
 
-    if (this.elapsedTime < this.interval) {
+    if (this._elapsedTime < this._interval) {
       return false;
     }
 
-    this.lastUpdate = this.time - (this.elapsedTime % this.interval);
+    this._lastUpdate = this._time - (this._elapsedTime % this._interval);
     return true;
   }
 
@@ -44,6 +43,6 @@ export default class FrameRate {
 
   set fps(fps: number) {
     this._fps = fps;
-    this.interval = 1000 / fps;
+    this._interval = 1000 / fps;
   }
 }
