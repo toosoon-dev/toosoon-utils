@@ -1,5 +1,5 @@
 import { radToSphere } from './geometry';
-import { Vector2, Vector3 } from './types';
+import type { Vector2, Vector3 } from './types';
 
 /**
  * Generate a random boolean (true or false)

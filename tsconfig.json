@@ -5,6 +5,8 @@
     "baseUrl": ".",
     "outDir": "lib",
     "target": "ES5",
+    "module": "ES2015",
+    "moduleResolution": "bundler",
     "lib": ["DOM", "ESNext"],
     "allowJs": true,
     "allowSyntheticDefaultImports": true,

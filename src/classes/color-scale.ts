@@ -1,6 +1,6 @@
 import { lerp, triLerp } from '../maths';
 import { hclToRgb, hsbToRgb, hslToRgb, normalizeColor, rgbToHcl, rgbToHsb, rgbToHsl } from '../colors';
-import { ColorRepresentation } from '../types';
+import type { ColorRepresentation } from '../types';
 
 export type ColorScaleSettings =
   | {

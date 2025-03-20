@@ -847,7 +847,7 @@ xoshiro128ss(a: number, b: number, c: number, d: number): number;
 
 #### PRNG functions
 
-Thanks to the above algorithms, a seed-based version of most of the [random functions](#random) are exist with additionnal parameters for a `seed` string and a PRNG `algorithm` function.
+Thanks to the above algorithms, a seed-based version of most of the [random functions](#random) exist with additionnal parameters for a `seed` string and a PRNG `algorithm` function.
 
 PRNG parameters:
 

@@ -1,7 +1,7 @@
 import { W3CX11 } from './constants';
 import { toDegrees, toRadians } from './geometry';
 import { clamp } from './maths';
-import { ColorName, ColorRepresentation } from './types';
+import type { ColorName, ColorRepresentation } from './types';
 
 /**
  * Normalize a color representation into RGB

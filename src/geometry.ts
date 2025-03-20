@@ -1,5 +1,5 @@
 import { PI } from './constants';
-import { Vector3 } from './types';
+import type { Vector3 } from './types';
 
 /**
  * Convert a radians value into degrees
