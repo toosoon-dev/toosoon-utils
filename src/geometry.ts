@@ -96,26 +96,26 @@ export function radToSphere(
 // *********************
 // Fit
 // *********************
-export interface FitInput {
+export type FitInput = {
   width: number;
   height: number;
-}
+};
 
-export interface FitOutput {
+export type FitOutput = {
   left: number;
   top: number;
   width: number;
   height: number;
   scale: number;
-}
+};
 
 /**
  * Make a target fit a container
  *
- * @param {FitInput} target    Dimension of the target
- * @param {FitInput} container Dimension of the container
- * @param {string} mode        Can be 'contain' | 'cover'
- * @returns {FitOutput}
+ * @param {object} target    Dimensions of the target
+ * @param {object} container Dimensions of the container
+ * @param {string} mode      Can be 'contain' | 'cover'
+ * @returns {object}
  */
 function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): FitOutput {
   const ratioWidth = container.width / target.width;
@@ -140,9 +140,9 @@ function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): 
 /**
  * Make a target fit a container (cover mode)
  *
- * @param {FitInput} target    Dimension of the target
- * @param {FitInput} container Dimension of the container
- * @returns {FitOutput}
+ * @param {object} target    Dimensions of the target
+ * @param {object} container Dimensions of the container
+ * @returns {object}
  */
 export function cover(target: FitInput, container: FitInput): FitOutput {
   return fit(target, container, 'cover');
@@ -151,9 +151,9 @@ export function cover(target: FitInput, container: FitInput): FitOutput {
 /**
  * Make a target fit a container (contain mode)
  *
- * @param {FitInput} target    Dimension of the target
- * @param {FitInput} container Dimension of the container
- * @returns {FitOutput}
+ * @param {object} target    Dimensions of the target
+ * @param {object} container Dimensions of the container
+ * @returns {object}
  */
 export function contain(target: FitInput, container: FitInput): FitOutput {
   return fit(target, container, 'contain');

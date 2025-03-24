@@ -57,7 +57,7 @@ export function throttle<T extends (...args: any[]) => void>(
 /**
  * Deferred promise implementation
  *
- * @returns {Deferred}
+ * @returns {object}
  */
 export function defer<T = void>(): Deferred<T> {
   let resolve!: (value: T | PromiseLike<T>) => void;

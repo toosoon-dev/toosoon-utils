@@ -10,11 +10,11 @@ export const defaultSettings: Required<PoolSettings> = {
   max: Infinity
 };
 
-interface PoolItem {
+type PoolItem = {
   setup?: () => void;
   reset?: () => void;
   dispose?: () => void;
-}
+};
 
 /**
  * Abstract class for manipulating pool items

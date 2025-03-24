@@ -3,22 +3,26 @@
   "exclude": ["node_modules"],
   "compilerOptions": {
     "baseUrl": ".",
+
     "outDir": "lib",
-    "target": "ES5",
-    "module": "ES2015",
-    "moduleResolution": "bundler",
-    "lib": ["DOM", "ESNext"],
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "checkJs": true,
-    "declaration": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "incremental": true,
-    "noUnusedParameters": true,
-    "noUnusedLocals": true,
-    "resolveJsonModule": true,
+
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "strict": true
+    "incremental": true,
+
+    /* Bundler mode */
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "moduleDetection": "force",
+    "declaration": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+
+    /* Linting */
+    "strict": true,
+    "allowJs": true,
+    "checkJs": true,
+    "forceConsistentCasingInFileNames": true
   }
 }
