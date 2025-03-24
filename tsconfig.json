@@ -9,13 +9,13 @@
     "target": "ESNext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
+    "declaration": true,
     "incremental": true,
 
     /* Bundler mode */
     "module": "ESNext",
     "moduleResolution": "bundler",
     "moduleDetection": "force",
-    "declaration": true,
     "isolatedModules": true,
     "resolveJsonModule": true,
 
