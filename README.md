@@ -289,6 +289,16 @@ Promise wrapped setTimeout.
 wait(delay?: number): Promise<void>;
 ```
 
+##### isDefined(value)
+
+Check if a value is defined.
+
+- `value`: Value to check.
+
+```ts
+isDefined(value: any): boolean;
+```
+
 ##### debounce(callback, delay)
 
 Create a debounced function that delays the execution of `callback` until a specified `delay` time has passed since the last call.

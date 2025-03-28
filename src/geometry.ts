@@ -114,7 +114,7 @@ export type FitOutput = {
  *
  * @param {object} target    Dimensions of the target
  * @param {object} container Dimensions of the container
- * @param {string} mode      Can be 'contain' | 'cover'
+ * @param {'contain'|'cover'} mode      Can be 'contain' | 'cover'
  * @returns {object}
  */
 function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): FitOutput {
@@ -140,9 +140,9 @@ function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): 
 /**
  * Make a target fit a container (cover mode)
  *
- * @param {object} target    Dimensions of the target
- * @param {object} container Dimensions of the container
- * @returns {object}
+ * @param {FitInput} target    Dimensions of the target
+ * @param {FitInput} container Dimensions of the container
+ * @returns {FitOutput}
  */
 export function cover(target: FitInput, container: FitInput): FitOutput {
   return fit(target, container, 'cover');
@@ -151,9 +151,9 @@ export function cover(target: FitInput, container: FitInput): FitOutput {
 /**
  * Make a target fit a container (contain mode)
  *
- * @param {object} target    Dimensions of the target
- * @param {object} container Dimensions of the container
- * @returns {object}
+ * @param {FitInput} target    Dimensions of the target
+ * @param {FitInput} container Dimensions of the container
+ * @returns {FitOutput}
  */
 export function contain(target: FitInput, container: FitInput): FitOutput {
   return fit(target, container, 'contain');

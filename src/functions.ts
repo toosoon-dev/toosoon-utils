@@ -34,6 +34,17 @@ export function debounce<T extends (...args: any[]) => void>(
 }
 
 /**
+ * Check if a value is defined
+ *
+ * @param {any} value Value to check
+ * @returns {boolean}
+ */
+export function isDefined<T>(value: T): value is Exclude<T, undefined | null> {
+  if (typeof value === 'undefined' || value === null) return false;
+  return true;
+}
+
+/**
  * Create a throttled function that limits the execution of `callback` to once every `limit` time
  *
  * @param {Function} callback Function to throttle
@@ -57,7 +68,7 @@ export function throttle<T extends (...args: any[]) => void>(
 /**
  * Deferred promise implementation
  *
- * @returns {object}
+ * @returns {Deferred}
  */
 export function defer<T = void>(): Deferred<T> {
   let resolve!: (value: T | PromiseLike<T>) => void;
