@@ -452,7 +452,33 @@ cubicBezier(
 ): [number, number];
 ```
 
-##### quadraticBesier(t, x1, y1, cpx, cpy, x2, y2)
+##### computeCubicBezierCurvature(x1, y1, cpx, cpy, x2, y2)
+
+Compute the curvature of a Cubic Bézier curve.
+
+- `x1`: X-axis coordinate of the start point.
+- `y1`: Y-axis coordinate of the start point.
+- `cpx1`: X-axis coordinate of the first control point.
+- `cpy1`: Y-axis coordinate of the first control point.
+- `cpx2`: X-axis coordinate of the second control point.
+- `cpy2`: Y-axis coordinate of the second control point.
+- `x2`: X-axis coordinate of the end point.
+- `y2`: Y-axis coordinate of the end point.
+
+```ts
+computeCubicBezierCurvature(
+  x1: number,
+  y1: number,
+  cpx1: number,
+  cpy1: number,
+  cpx2: number,
+  cpy2: number,
+  x2: number,
+  y2: number
+): number;
+```
+
+##### quadraticBezier(t, x1, y1, cpx, cpy, x2, y2)
 
 Interpolate a point on an elliptical arc Quadratic Bézier curve.
 
@@ -465,7 +491,7 @@ Interpolate a point on an elliptical arc Quadratic Bézier curve.
 - `y2`: Y-axis coordinate of the end point.
 
 ```ts
-quadraticBesier(
+quadraticBezier(
   t: number,
   x1: number,
   y1: number,
@@ -476,7 +502,29 @@ quadraticBesier(
 ): [number, number];
 ```
 
-##### arc(t, x1, y1, x2, y2, rx, ry, angle, largeArc, sweep)
+##### computeQuadraticBezierCurvature(x1, y1, cpx, cpy, x2, y2)
+
+Compute the curvature of a Quadratic Bézier curve.
+
+- `x1`: X-axis coordinate of the start point.
+- `y1`: Y-axis coordinate of the start point.
+- `cpx`: X-axis coordinate of the control point.
+- `cpy`: Y-axis coordinate of the control point.
+- `x2`: X-axis coordinate of the end point.
+- `y2`: Y-axis coordinate of the end point.
+
+```ts
+computeQuadraticBezierCurvature(
+  x1: number,
+  y1: number,
+  cpx: number,
+  cpy: number,
+  x2: number,
+  y2: number
+): number;
+```
+
+##### arc(t, x1, y1, x2, y2, rx, ry, angle, largeArc, clockwise)
 
 Interpolate a point on an elliptical arc.
 
@@ -488,8 +536,8 @@ Interpolate a point on an elliptical arc.
 - `rx`: X-radius of the ellipse.
 - `ry`: Y-radius of the ellipse.
 - `angle`: Rotation angle of the ellipse (in radians).
-- `[largeArc=true]`: Flag indicating whether to draw the larger of the two possible arcs.
-- `[clockwise=true]`: Flag indicating the direction of the arc.
+- `[largeArc]`: Flag indicating whether to draw the larger of the two possible arcs.
+- `[clockwise]`: Flag indicating the direction of the arc.
 
 ```ts
 arc(
@@ -502,8 +550,36 @@ arc(
   ry: number,
   angle: number,
   largeArc?: boolean,
-  sweep?: boolean
+  clockwise?: boolean
 ): [number, number];
+```
+
+##### computeArcCurvature(x1, y1, x2, y2, rx, ry, angle, largeArc, clockwise)
+
+Compute the curvature of an elliptical arc.
+
+- `x1`: X-axis coordinate of the starting point of the arc.
+- `y1`: Y-axis coordinate of the starting point of the arc.
+- `x2`: X-axis coordinate of the ending point of the arc.
+- `y2`: Y-axis coordinate of the ending point of the arc.
+- `rx`: X-radius of the ellipse.
+- `ry`: Y-radius of the ellipse.
+- `angle`: Rotation angle of the ellipse (in radians).
+- `[largeArc]`: Flag indicating whether to draw the larger of the two possible arcs.
+- `[clockwise]`: Flag indicating the direction of the arc.
+
+```ts
+computeArcCurvature(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  rx: number,
+  ry: number,
+  angle: number,
+  largeArc?: boolean,
+  clockwise?: boolean
+): number;
 ```
 
 #### Fit

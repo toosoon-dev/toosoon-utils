@@ -133,6 +133,35 @@ export function cubicBezier(
 }
 
 /**
+ * Compute the curvature of a Cubic Bézier curve
+ *
+ * @param {number} x1   X-axis coordinate of the start point
+ * @param {number} y1   Y-axis coordinate of the start point
+ * @param {number} cpx1 X-axis coordinate of the first control point
+ * @param {number} cpy1 Y-axis coordinate of the first control point
+ * @param {number} cpx2 X-axis coordinate of the second control point
+ * @param {number} cpy2 Y-axis coordinate of the second control point
+ * @param {number} x2   X-axis coordinate of the end point
+ * @param {number} y2   Y-axis coordinate of the end point
+ * @returns {number} Computed curvature
+ */
+export function computeCubicBezierCurvature(
+  x1: number,
+  y1: number,
+  cpx1: number,
+  cpy1: number,
+  cpx2: number,
+  cpy2: number,
+  x2: number,
+  y2: number
+): number {
+  const d1 = Math.hypot(cpx1 - x1, cpy1 - y1);
+  const d2 = Math.hypot(cpx2 - x2, cpy2 - y2);
+  const d3 = Math.hypot(x2 - x1, y2 - y1);
+  return (d1 + d2) / d3;
+}
+
+/**
  * Interpolate a point on an elliptical arc Quadratic Bézier curve
  *
  * @param {number} t   Normalized time value to interpolate
@@ -144,7 +173,7 @@ export function cubicBezier(
  * @param {number} y2  Y-axis coordinate of the end point
  * @returns {[number, number]} Interpolated coordinates on the curve
  */
-export function quadraticBesier(
+export function quadraticBezier(
   t: number,
   x1: number,
   y1: number,
@@ -162,9 +191,40 @@ export function quadraticBesier(
 }
 
 /**
- * Interpolate a point on an elliptical arc
+ * Compute the curvature of a Quadratic Bézier curve
  *
- * @param {number} t     Normalized time value to interpolate
+ * @param {number} x1  X-axis coordinate of the start point
+ * @param {number} y1  Y-axis coordinate of the start point
+ * @param {number} cpx X-axis coordinate of the control point
+ * @param {number} cpy Y-axis coordinate of the control point
+ * @param {number} x2  X-axis coordinate of the end point
+ * @param {number} y2  Y-axis coordinate of the end point
+ * @returns {number} Computed curvature
+ */
+export function computeQuadraticBezierCurvature(
+  x1: number,
+  y1: number,
+  cpx: number,
+  cpy: number,
+  x2: number,
+  y2: number
+): number {
+  const d1 = Math.hypot(cpx - x1, cpy - y1);
+  const d2 = Math.hypot(cpx - x2, cpy - y2);
+  const d3 = Math.hypot(x2 - x1, y2 - y1);
+  return (d1 + d2) / d3;
+}
+
+type ComputedArc = {
+  cx: number;
+  cy: number;
+  cosAngle: number;
+  sinAngle: number;
+  startAngle: number;
+  deltaAngle: number;
+};
+
+/**
  * @param {number} x1    X-axis coordinate of the starting point of the arc
  * @param {number} y1    Y-axis coordinate of the starting point of the arc
  * @param {number} x2    X-axis coordinate of the ending point of the arc
@@ -174,10 +234,9 @@ export function quadraticBesier(
  * @param {number} angle Rotation angle of the ellipse (in radians)
  * @param {boolean} [largeArc=true]  Flag indicating whether to draw the larger of the two possible arcs
  * @param {boolean} [clockwise=true] Flag indicating the direction of the arc
- * @returns {[number, number]} Interpolated coordinates on the arc
+ * @returns {ComputedArc}
  */
-export function arc(
-  t: number,
+function computeArc(
   x1: number,
   y1: number,
   x2: number,
@@ -187,7 +246,7 @@ export function arc(
   angle: number,
   largeArc: boolean = true,
   clockwise: boolean = true
-): [number, number] {
+): ComputedArc {
   const centerX = (x1 - x2) / 2;
   const centerY = (y1 - y2) / 2;
   const cosAngle = Math.cos(angle);
@@ -231,11 +290,80 @@ export function arc(
     deltaAngle += 2 * PI;
   }
 
+  return {
+    cx,
+    cy,
+    cosAngle,
+    sinAngle,
+    startAngle,
+    deltaAngle
+  };
+}
+
+/**
+ * Interpolate a point on an elliptical arc
+ *
+ * @param {number} t     Normalized time value to interpolate
+ * @param {number} x1    X-axis coordinate of the starting point of the arc
+ * @param {number} y1    Y-axis coordinate of the starting point of the arc
+ * @param {number} x2    X-axis coordinate of the ending point of the arc
+ * @param {number} y2    Y-axis coordinate of the ending point of the arc
+ * @param {number} rx    X-radius of the ellipse
+ * @param {number} ry    Y-radius of the ellipse
+ * @param {number} angle Rotation angle of the ellipse (in radians)
+ * @param {boolean} [largeArc]  Flag indicating whether to draw the larger of the two possible arcs
+ * @param {boolean} [clockwise] Flag indicating the direction of the arc
+ * @returns {[number, number]} Interpolated coordinates on the arc
+ */
+export function arc(
+  t: number,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  rx: number,
+  ry: number,
+  angle: number,
+  largeArc?: boolean,
+  clockwise?: boolean
+): [number, number] {
+  const arc = computeArc(x1, y1, x2, y2, rx, ry, angle, largeArc, clockwise);
+  const { cx, cy, cosAngle, sinAngle, startAngle, deltaAngle } = arc;
+
   const theta = startAngle + t * deltaAngle;
   const x = cx + rx * Math.cos(theta) * cosAngle - ry * Math.sin(theta) * sinAngle;
   const y = cy + rx * Math.cos(theta) * sinAngle + ry * Math.sin(theta) * cosAngle;
 
   return [x, y];
+}
+
+/**
+ * Compute the curvature of an elliptical arc
+ *
+ * @param {number} x1    X-axis coordinate of the starting point of the arc
+ * @param {number} y1    Y-axis coordinate of the starting point of the arc
+ * @param {number} x2    X-axis coordinate of the ending point of the arc
+ * @param {number} y2    Y-axis coordinate of the ending point of the arc
+ * @param {number} rx    X-radius of the ellipse
+ * @param {number} ry    Y-radius of the ellipse
+ * @param {number} angle Rotation angle of the ellipse (in radians)
+ * @param {boolean} [largeArc]  Flag indicating whether to draw the larger of the two possible arcs
+ * @param {boolean} [clockwise] Flag indicating the direction of the arc
+ * @returns Computed curvature
+ */
+export function computeArcCurvature(
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  rx: number,
+  ry: number,
+  angle: number,
+  largeArc: boolean = true,
+  clockwise: boolean = true
+): number {
+  const { deltaAngle } = computeArc(x1, y1, x2, y2, rx, ry, angle, largeArc, clockwise);
+  return deltaAngle / PI;
 }
 
 // *********************
