@@ -66,33 +66,33 @@ export function clamp(value: number, min: number = 0, max: number = 1): number {
 /**
  * Linear interpolation between two values (lerping)
  *
- * @param {number} value Normalized value to interpolate
- * @param {number} min   Minimum value
- * @param {number} max   Maximum value
+ * @param {number} t   Normalized time value to interpolate
+ * @param {number} min Minimum value
+ * @param {number} max Maximum value
  * @returns {number} Lerped value
  */
-export function lerp(value: number, min: number, max: number): number {
-  return min + (max - min) * value;
+export function lerp(t: number, min: number, max: number): number {
+  return min + (max - min) * t;
 }
 
 /**
  * Triangular interpolation between two values
  *
- * @param {number} value  Normalized value to interpolate
+ * @param {number} t      Normalized time value to interpolate
  * @param {number} min    Minimum value
  * @param {number} max    Maximum value
  * @param {number} target Triangle target value
  * @returns {number} Interpolated value
  */
-export function triLerp(value: number, min: number, max: number, target: number): number {
+export function triLerp(t: number, min: number, max: number, target: number): number {
   const x = Math.pow(1 + Math.abs(target - max) / Math.abs(target - min), -1);
-  return value <= x ? min - (min - target) * (value / x) : target - (target - max) * ((value - x) / (1 - x));
+  return t <= x ? min - (min - target) * (t / x) : target - (target - max) * ((t - x) / (1 - x));
 }
 
 /**
  * Exponential interpolation between two values
  *
- * @param {number} value      Value to interpolate
+ * @param {number} t          Normalized time value to interpolate
  * @param {number} currentMin Lower bound of the value's current range
  * @param {number} currentMax Upper bound of the value's current range
  * @param {number} targetMin  Lower bound of the value's target range
@@ -100,7 +100,7 @@ export function triLerp(value: number, min: number, max: number, target: number)
  * @returns {number} Interpolated value
  */
 export function expLerp(
-  value: number,
+  t: number,
   currentMin: number,
   currentMax: number,
   targetMin: number,
@@ -108,7 +108,7 @@ export function expLerp(
 ): number {
   return (
     targetMin *
-    Math.pow(targetMax / targetMin, (clamp(value, currentMin, currentMax) - currentMin) / (currentMax - currentMin))
+    Math.pow(targetMax / targetMin, (clamp(t, currentMin, currentMax) - currentMin) / (currentMax - currentMin))
   );
 }
 

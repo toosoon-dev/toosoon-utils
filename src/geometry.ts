@@ -24,10 +24,10 @@ export function toRadians(degrees: number): number {
 /**
  * Calculate the angle from a point to another
  *
- * @param  {number} x1 X value of the first point
- * @param  {number} y1 Y value of the first point
- * @param  {number} x2 X value of the second point
- * @param  {number} y2 Y value of the second point
+ * @param  {number} x1 X-axis coordinate of the start point
+ * @param  {number} y1 Y-axis coordinate of the start point
+ * @param  {number} x2 X-axis coordinate of the end point
+ * @param  {number} y2 Y-axis coordinate of the end point
  * @returns {number} Angle
  */
 export function angle(x1: number, y1: number, x2: number, y2: number): number {
@@ -49,10 +49,10 @@ export function closestAngle(source: number, target: number): number {
 /**
  * Calculate the distance between two points
  *
- * @param {number} x1 X coord of the first point
- * @param {number} y1 Y coord of the first point
- * @param {number} x2 X coord of the second point
- * @param {number} y2 Y coord of the second point
+ * @param {number} x1 X-axis coordinate of the start point
+ * @param {number} y1 Y-axis coordinate of the start point
+ * @param {number} x2 X-axis coordinate of the end point
+ * @param {number} y2 Y-axis coordinate of the end point
  * @returns {number} Computed distance
  */
 export function distance(x1: number, y1: number, x2: number, y2: number): number {
@@ -91,6 +91,151 @@ export function radToSphere(
   target.y = radius * Math.cos(phi);
   target.z = radius * Math.sin(phi) * Math.cos(theta);
   return target;
+}
+
+// *********************
+// Curves
+// *********************
+
+/**
+ * Interpolate a point on an elliptical arc Cubic Bézier curve
+ *
+ * @param {number} t    Normalized time value to interpolate
+ * @param {number} x1   X-axis coordinate of the start point
+ * @param {number} y1   Y-axis coordinate of the start point
+ * @param {number} cpx1 X-axis coordinate of the first control point
+ * @param {number} cpy1 Y-axis coordinate of the first control point
+ * @param {number} cpx2 X-axis coordinate of the second control point
+ * @param {number} cpy2 Y-axis coordinate of the second control point
+ * @param {number} x2   X-axis coordinate of the end point
+ * @param {number} y2   Y-axis coordinate of the end point
+ * @returns {[number, number]} Interpolated coordinates on the curve
+ */
+export function cubicBezier(
+  t: number,
+  x1: number,
+  y1: number,
+  cpx1: number,
+  cpy1: number,
+  cpx2: number,
+  cpy2: number,
+  x2: number,
+  y2: number
+): [number, number] {
+  const t2 = t * t;
+  const t3 = t2 * t;
+  const T = 1 - t;
+  const T2 = T * T;
+  const T3 = T2 * T;
+  const x = T3 * x1 + 3 * T2 * t * cpx1 + 3 * T * t2 * cpx2 + t3 * x2;
+  const y = T3 * y1 + 3 * T2 * t * cpy1 + 3 * T * t2 * cpy2 + t3 * y2;
+  return [x, y];
+}
+
+/**
+ * Interpolate a point on an elliptical arc Quadratic Bézier curve
+ *
+ * @param {number} t   Normalized time value to interpolate
+ * @param {number} x1  X-axis coordinate of the start point
+ * @param {number} y1  Y-axis coordinate of the start point
+ * @param {number} cpx X-axis coordinate of the control point
+ * @param {number} cpy Y-axis coordinate of the control point
+ * @param {number} x2  X-axis coordinate of the end point
+ * @param {number} y2  Y-axis coordinate of the end point
+ * @returns {[number, number]} Interpolated coordinates on the curve
+ */
+export function quadraticBesier(
+  t: number,
+  x1: number,
+  y1: number,
+  cpx: number,
+  cpy: number,
+  x2: number,
+  y2: number
+): [number, number] {
+  const t2 = t * t;
+  const T = 1 - t;
+  const T2 = T * T;
+  const x = T2 * x1 + 2 * T * t * cpx + t2 * x2;
+  const y = T2 * y1 + 2 * T * t * cpy + t2 * y2;
+  return [x, y];
+}
+
+/**
+ * Interpolate a point on an elliptical arc
+ *
+ * @param {number} t     Normalized time value to interpolate
+ * @param {number} x1    X-axis coordinate of the starting point of the arc
+ * @param {number} y1    Y-axis coordinate of the starting point of the arc
+ * @param {number} x2    X-axis coordinate of the ending point of the arc
+ * @param {number} y2    Y-axis coordinate of the ending point of the arc
+ * @param {number} rx    X-radius of the ellipse
+ * @param {number} ry    Y-radius of the ellipse
+ * @param {number} angle Rotation angle of the ellipse (in radians)
+ * @param {boolean} [largeArc=true]  Flag indicating whether to draw the larger of the two possible arcs
+ * @param {boolean} [clockwise=true] Flag indicating the direction of the arc
+ * @returns {[number, number]} Interpolated coordinates on the arc
+ */
+export function arc(
+  t: number,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  rx: number,
+  ry: number,
+  angle: number,
+  largeArc: boolean = true,
+  clockwise: boolean = true
+): [number, number] {
+  const centerX = (x1 - x2) / 2;
+  const centerY = (y1 - y2) / 2;
+  const cosAngle = Math.cos(angle);
+  const sinAngle = Math.sin(angle);
+
+  const x1p = cosAngle * centerX + sinAngle * centerY;
+  const y1p = -sinAngle * centerX + cosAngle * centerY;
+
+  rx = Math.abs(rx);
+  ry = Math.abs(ry);
+
+  const lambda = x1p ** 2 / rx ** 2 + y1p ** 2 / ry ** 2;
+  if (lambda > 1) {
+    rx *= Math.sqrt(lambda);
+    ry *= Math.sqrt(lambda);
+  }
+
+  const sign = largeArc !== clockwise ? 1 : -1;
+  const factor =
+    sign *
+    Math.sqrt(
+      Math.max(
+        0,
+        (rx ** 2 * ry ** 2 - rx ** 2 * y1p ** 2 - ry ** 2 * x1p ** 2) / (rx ** 2 * y1p ** 2 + ry ** 2 * x1p ** 2)
+      )
+    );
+
+  const cxp = (factor * rx * y1p) / ry;
+  const cyp = (-factor * ry * x1p) / rx;
+
+  const cx = cosAngle * cxp - sinAngle * cyp + (x1 + x2) / 2;
+  const cy = sinAngle * cxp + cosAngle * cyp + (y1 + y2) / 2;
+
+  const startAngle = Math.atan2((y1p - cyp) / ry, (x1p - cxp) / rx);
+  const endAngle = Math.atan2((-y1p - cyp) / ry, (-x1p - cxp) / rx);
+
+  let deltaAngle = endAngle - startAngle;
+  if (clockwise === false && deltaAngle > 0) {
+    deltaAngle -= 2 * PI;
+  } else if (clockwise === true && deltaAngle < 0) {
+    deltaAngle += 2 * PI;
+  }
+
+  const theta = startAngle + t * deltaAngle;
+  const x = cx + rx * Math.cos(theta) * cosAngle - ry * Math.sin(theta) * sinAngle;
+  const y = cy + rx * Math.cos(theta) * sinAngle + ry * Math.sin(theta) * cosAngle;
+
+  return [x, y];
 }
 
 // *********************

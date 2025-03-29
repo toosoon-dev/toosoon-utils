@@ -413,13 +413,116 @@ diagonal(width: number, height: number): number;
 
 Convert radians to a 3D point on the surface of a unit sphere.
 
-- `radius`: Radius of the sphere
-- `phi`: Polar angle from the y (up) axis [0, PI]
-- `theta`: Equator angle around the y (up) axis [0, 2*PI]
-- `[target]`: Target vector
+- `radius`: Radius of the sphere.
+- `phi`: Polar angle from the y (up) axis [0, PI].
+- `theta`: Equator angle around the y (up) axis [0, 2*PI].
+- `[target]`: Target vector.
 
 ```ts
 radToSphere(radius: number, phi: number, theta: number, target?: Vector3): Vector3;
+```
+
+#### Curves
+
+##### cubicBezier(t, x1, y1, cpx1, cpy1, cpx2, cpy2, x2, y2)
+
+Interpolate a point on an elliptical arc Cubic Bézier curve.
+
+- `t`: Normalized time value to interpolate.
+- `x1`: X-axis coordinate of the start point.
+- `y1`: Y-axis coordinate of the start point.
+- `cpx1`: X-axis coordinate of the first control point.
+- `cpy1`: Y-axis coordinate of the first control point.
+- `cpx2`: X-axis coordinate of the second control point.
+- `cpy2`: Y-axis coordinate of the second control point.
+- `x2`: X-axis coordinate of the end point.
+- `y2`: Y-axis coordinate of the end point.
+
+```ts
+cubicBezier(
+  t: number,
+  x1: number,
+  y1: number,
+  cpx1: number,
+  cpy1: number,
+  cpx2: number,
+  cpy2: number,
+  x2: number,
+  y2: number
+): [number, number];
+```
+
+##### quadraticBesier(t, x1, y1, cpx, cpy, x2, y2)
+
+Interpolate a point on an elliptical arc Quadratic Bézier curve.
+
+- `t`: Normalized time value to interpolate.
+- `x1`: X-axis coordinate of the start point.
+- `y1`: Y-axis coordinate of the start point.
+- `cpx`: X-axis coordinate of the control point.
+- `cpy`: Y-axis coordinate of the control point.
+- `x2`: X-axis coordinate of the end point.
+- `y2`: Y-axis coordinate of the end point.
+
+```ts
+quadraticBesier(
+  t: number,
+  x1: number,
+  y1: number,
+  cpx: number,
+  cpy: number,
+  x2: number,
+  y2: number
+): [number, number];
+```
+
+##### arc(t, x1, y1, x2, y2, rx, ry, angle, largeArc, sweep)
+
+Interpolate a point on an elliptical arc.
+
+- `t`: Normalized time value to interpolate.
+- `x1`: X-axis coordinate of the starting point of the arc.
+- `y1`: Y-axis coordinate of the starting point of the arc.
+- `x2`: X-axis coordinate of the ending point of the arc.
+- `y2`: Y-axis coordinate of the ending point of the arc.
+- `rx`: X-radius of the ellipse.
+- `ry`: Y-radius of the ellipse.
+- `angle`: Rotation angle of the ellipse (in radians).
+- `[largeArc=true]`: Flag indicating whether to draw the larger of the two possible arcs.
+- `[clockwise=true]`: Flag indicating the direction of the arc.
+
+```ts
+arc(
+  t: number,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  rx: number,
+  ry: number,
+  angle: number,
+  largeArc?: boolean,
+  sweep?: boolean
+): [number, number];
+```
+
+#### Fit
+
+<!--  -->
+
+```ts
+type FitInput = {
+  width: number;
+  height: number;
+};
+
+type FitOutput = {
+  left: number;
+  top: number;
+  width: number;
+  height: number;
+  scale: number;
+};
 ```
 
 ##### cover(target, container)
@@ -430,7 +533,7 @@ Make a target fit a container (cover mode).
 - `container`: Dimension of the container.
 
 ```ts
-cover(target: object, container: object): object;
+cover(target: FitInput, container: FitInput): FitOutput;
 ```
 
 ##### contain(target, container)
@@ -441,7 +544,7 @@ Make a target fit a container (contain mode).
 - `container`: Dimension of the container.
 
 ```ts
-contain(target: object, container: object): object;
+contain(target: FitInput, container: FitInput): FitOutput;
 ```
 
 ### Maths
@@ -509,43 +612,43 @@ Clamp a value between two bounds.
 clamp(value: number, min?: number, max?: number): number;
 ```
 
-##### lerp(value, min, max)
+##### lerp(t, min, max)
 
 Linear interpolation between two values (lerping).
 
-- `value`: Normalized value to interpolate.
+- `t`: Normalized time value to interpolate.
 - `min`: Minimum value.
 - `max`: Maximum value.
 
 ```ts
-lerp(value: number, min: number, max: number): number;
+lerp(t: number, min: number, max: number): number;
 ```
 
-##### triLerp(value, min, max, target)
+##### triLerp(t, min, max, target)
 
 Triangular interpolation between two values.
 
-- `value`: Normalized value to interpolate.
+- `t`: Normalized time value to interpolate.
 - `min`: Minimum value.
 - `max`: Maximum value.
 - `target`: Triangle target value.
 
 ```ts
-triLerp(value: number, min: number, max: number, target: number): number;
+triLerp(t: number, min: number, max: number, target: number): number;
 ```
 
-##### expLerp(value, currentMin, currentMax, targetMin, targetMax)
+##### expLerp(t, currentMin, currentMax, targetMin, targetMax)
 
 Exponential interpolation between two values.
 
-- `value`: Value to interpolate.
+- `t`: Normalized time value to interpolate.
 - `currentMin`: Lower bound of the value's current range.
 - `currentMax`: Upper bound of the value's current range.
 - `targetMin`: Lower bound of the value's target range.
 - `targetMax`: Upper bound of the value's target range.
 
 ```ts
-expLerp(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
+expLerp(t: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
 ##### normalize(value, min, max)
