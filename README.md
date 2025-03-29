@@ -2,6 +2,8 @@
 
 Utility functions & classes.
 
+[![NPM](https://nodei.co/npm/toosoon-utils.png)](https://nodei.co/npm/toosoon-utils/)
+
 ## Installation
 
 Yarn:
@@ -1271,3 +1273,5 @@ FrameRate.update(): boolean;
 ## License
 
 MIT License, see [LICENSE](https://github.com/toosoon-dev/toosoon-utils/tree/master/LICENSE) for details.
+
+[![NPM](https://nodei.co/npm/toosoon-utils.png)](https://nodei.co/npm/toosoon-utils/)
