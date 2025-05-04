@@ -1,5 +1,5 @@
-import { radToSphere } from './geometry';
-import type { Vector2, Vector3 } from './types';
+import { Vector2, Vector3 } from './extras/geometry';
+import type { Point2, Point3 } from './types';
 
 /**
  * Generate a random boolean (true or false)
@@ -94,6 +94,7 @@ export function randomIndex(weights: number[]): number {
 
   if (totalWeight <= 0) {
     console.warn('randomIndex()', 'Weights must sum to > 0', totalWeight);
+    return 0;
   }
 
   let weight = Math.random() * totalWeight;
@@ -124,54 +125,46 @@ export function randomGaussian(mean: number = 0, spread: number = 1): number {
 // *********************
 
 /**
- * Produce a random 2D point around the perimiter of a unit circle
+ * Produce a random 2D point around the perimiter of a circle
  *
  * @param  {number} [radius=1] Radius of the circle
- * @param  {Vector2} [target]  Target vector
- * @returns {Vector2} Random 2D point on circle
+ * @returns {Point} Random 2D point on the circle
  */
-export function onCircle(radius: number = 1, target: Vector2 = { x: 0, y: 0 }): Vector2 {
-  const angle = Math.random() * 2.0 * Math.PI;
-  target.x = radius * Math.cos(angle);
-  target.y = radius * Math.sin(angle);
-  return target;
+export function onCircle(radius: number = 1): Point2 {
+  const angle = randomFloat(0, Math.PI * 2);
+  return Vector2.fromCircularCoords(angle, radius);
 }
 
 /**
- * Produce a random 2D point inside a unit circle
+ * Produce a random 2D point inside a circle
  *
  * @param  {number} [radius=1] Radius of the circle
- * @param  {Vector2} [target]  Target vector
- * @returns {Vector2} Random 2D point inside circle
+ * @returns {Point} Random 2D point inside the circle
  */
-export function insideCircle(radius: number = 1, target: Vector2 = { x: 0, y: 0 }): Vector2 {
+export function insideCircle(radius: number = 1): Point2 {
   radius *= Math.random();
-  return onCircle(radius, target);
+  return onCircle(radius);
 }
 
 /**
- * Produce a random 3D point on the surface of a unit sphere
+ * Produce a random 3D point on the surface of a sphere
  *
  * @param  {number} [radius=1] Radius of the sphere
- * @param  {Vector3} [target]  Target vector
- * @returns {Vector3} Random 3D point on sphere
+ * @returns {Point3} Random 3D point on the sphere
  */
-export function onSphere(radius: number = 1, target: Vector3 = { x: 0, y: 0, z: 0 }): Vector3 {
-  const u = Math.random() * Math.PI * 2;
-  const v = Math.random() * 2 - 1;
-  const phi = u;
-  const theta = Math.acos(v);
-  return radToSphere(radius, phi, theta, target);
+export function onSphere(radius: number = 1): Point3 {
+  const phi = randomFloat(0, Math.PI);
+  const theta = randomFloat(0, 2 * Math.PI);
+  return Vector3.fromSphericalCoords(phi, theta, radius);
 }
 
 /**
  * Produce a random 3D point inside a unit sphere
  *
  * @param  {number} [radius=1] Radius of the sphere
- * @param  {Vector3} [target]  Target vector
- * @returns {Vector3} Random 3D point inside sphere
+ * @returns {Point3} Random 3D point inside the sphere
  */
-export function insideSphere(radius: number = 1, target: Vector3 = { x: 0, y: 0, z: 0 }): Vector3 {
+export function insideSphere(radius: number = 1): Point3 {
   radius *= Math.random();
-  return onSphere(radius, target);
+  return onSphere(radius);
 }

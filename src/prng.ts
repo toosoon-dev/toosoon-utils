@@ -237,7 +237,10 @@ export function randomIndex(prng: PRNGParameters, weights: number[]): number {
     totalWeight += weight;
   }
 
-  if (totalWeight <= 0) console.warn('PRNG randomIndex()', 'Weights must sum to > 0', totalWeight);
+  if (totalWeight <= 0) {
+    console.warn('PRNG randomIndex()', 'Weights must sum to > 0', totalWeight);
+    return 0;
+  }
 
   let weight = random(prng) * totalWeight;
   for (let i = 0; i < weights.length; i++) {

@@ -2,10 +2,15 @@
 // Maths
 // *********************
 export const EPSILON = 1e-10;
+
+// *********************
+// Geometry
+// *********************
 export const PI = Math.PI;
-export const TWO_PI = Math.PI * 2;
-export const HALF_PI = Math.PI / 2;
-export const QUARTER_PI = Math.PI / 4;
+export const TWO_PI = PI * 2;
+export const TAU = PI * 2;
+export const HALF_PI = PI / 2;
+export const QUARTER_PI = PI / 4;
 
 // *********************
 // Colors

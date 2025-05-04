@@ -1,6 +1,6 @@
 {
   "name": "toosoon-utils",
-  "version": "4.0.5",
+  "version": "4.1.9",
   "description": "Utility functions & classes",
   "type": "module",
   "engines": {
@@ -20,8 +20,11 @@
     "./random": "./lib/random.js",
     "./strings": "./lib/strings.js",
     "./constants": "./lib/constants.js",
-    "./color-scale": "./lib/classes/color-scale.js",
-    "./frame-rate": "./lib/classes/frame-rate.js"
+    "./extras/geometry": "./lib/extras/geometry/index.js",
+    "./extras/curves": "./lib/extras/curves/index.js",
+    "./extras/paths": "./lib/extras/paths/index.js",
+    "./extras/color-scale": "./lib/extras/color-scale/ColorScale.js",
+    "./extras/frame-rate": "./lib/extras/frame-rate/FrameRate.js"
   },
   "scripts": {
     "build": "npx tsc",

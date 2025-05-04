@@ -19,15 +19,30 @@ export interface Deferred<T> {
 // *********************
 // Geometry
 // *********************
-export type Vector2 = {
-  x: number;
-  y: number;
-};
+export type Point2 = [number, number];
+export type Point3 = [number, number, number];
 
-export type Vector3 = Vector2 & {
-  z: number;
-};
-
-export type Vector4 = Vector3 & {
-  w: number;
-};
+// prettier-ignore
+export type Matrix2x2 = [ 
+  number, number,
+  number, number,
+];
+// prettier-ignore
+export type Matrix2x3 = [
+  number, number, 
+  number, number, 
+  number, number, 
+];
+// prettier-ignore
+export type Matrix3x3 = [
+  number, number, number,
+  number, number, number,
+  number, number, number,
+];
+// prettier-ignore
+export type Matrix4x4 = [
+  number, number, number, number,
+  number, number, number, number,
+  number, number, number, number,
+  number, number, number, number,
+];

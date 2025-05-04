@@ -378,8 +378,8 @@ angle(x1: number, y1: number, x2: number, y2: number): number;
 
 Find the closest angle between to angles.
 
-- `source`: Source angle in radians.
-- `target`: Target angle in radians.
+- `source`: Source angle (in radians).
+- `target`: Target angle (in radians).
 
 ```ts
 closestAngle(source: number, target: number): number;
@@ -389,10 +389,10 @@ closestAngle(source: number, target: number): number;
 
 Calculate the distance between two points.
 
-- `x1`: X coord of the first point.
-- `y1`: Y coord of the first point.
-- `x2`: X coord of the second point.
-- `y2`: Y coord of the second point.
+- `x1`: X-axis coordinate of the first point.
+- `y1`: Y-axis coordinate of the first point.
+- `x2`: X-axis coordinate of the second point.
+- `y2`: Y-axis coordinate of the second point.
 
 ```ts
 distance(x1: number, y1: number, x2: number, y2: number): number;
@@ -409,182 +409,7 @@ Calculate the length of the diagonal of a rectangle.
 diagonal(width: number, height: number): number;
 ```
 
-##### radToSphere(radius, phi, theta)
-
-Convert radians to a 3D point on the surface of a unit sphere.
-
-- `radius`: Radius of the sphere.
-- `phi`: Polar angle from the y (up) axis [0, PI].
-- `theta`: Equator angle around the y (up) axis [0, 2*PI].
-- `[target]`: Target vector.
-
-```ts
-radToSphere(radius: number, phi: number, theta: number, target?: Vector3): Vector3;
-```
-
-#### Curves
-
-##### cubicBezier(t, x1, y1, cpx1, cpy1, cpx2, cpy2, x2, y2)
-
-Interpolate a point on an elliptical arc Cubic Bézier curve.
-
-- `t`: Normalized time value to interpolate.
-- `x1`: X-axis coordinate of the start point.
-- `y1`: Y-axis coordinate of the start point.
-- `cpx1`: X-axis coordinate of the first control point.
-- `cpy1`: Y-axis coordinate of the first control point.
-- `cpx2`: X-axis coordinate of the second control point.
-- `cpy2`: Y-axis coordinate of the second control point.
-- `x2`: X-axis coordinate of the end point.
-- `y2`: Y-axis coordinate of the end point.
-
-```ts
-cubicBezier(
-  t: number,
-  x1: number,
-  y1: number,
-  cpx1: number,
-  cpy1: number,
-  cpx2: number,
-  cpy2: number,
-  x2: number,
-  y2: number
-): [number, number];
-```
-
-##### computeCubicBezierCurvature(x1, y1, cpx, cpy, x2, y2)
-
-Compute the curvature of a Cubic Bézier curve.
-
-- `x1`: X-axis coordinate of the start point.
-- `y1`: Y-axis coordinate of the start point.
-- `cpx1`: X-axis coordinate of the first control point.
-- `cpy1`: Y-axis coordinate of the first control point.
-- `cpx2`: X-axis coordinate of the second control point.
-- `cpy2`: Y-axis coordinate of the second control point.
-- `x2`: X-axis coordinate of the end point.
-- `y2`: Y-axis coordinate of the end point.
-
-```ts
-computeCubicBezierCurvature(
-  x1: number,
-  y1: number,
-  cpx1: number,
-  cpy1: number,
-  cpx2: number,
-  cpy2: number,
-  x2: number,
-  y2: number
-): number;
-```
-
-##### quadraticBezier(t, x1, y1, cpx, cpy, x2, y2)
-
-Interpolate a point on an elliptical arc Quadratic Bézier curve.
-
-- `t`: Normalized time value to interpolate.
-- `x1`: X-axis coordinate of the start point.
-- `y1`: Y-axis coordinate of the start point.
-- `cpx`: X-axis coordinate of the control point.
-- `cpy`: Y-axis coordinate of the control point.
-- `x2`: X-axis coordinate of the end point.
-- `y2`: Y-axis coordinate of the end point.
-
-```ts
-quadraticBezier(
-  t: number,
-  x1: number,
-  y1: number,
-  cpx: number,
-  cpy: number,
-  x2: number,
-  y2: number
-): [number, number];
-```
-
-##### computeQuadraticBezierCurvature(x1, y1, cpx, cpy, x2, y2)
-
-Compute the curvature of a Quadratic Bézier curve.
-
-- `x1`: X-axis coordinate of the start point.
-- `y1`: Y-axis coordinate of the start point.
-- `cpx`: X-axis coordinate of the control point.
-- `cpy`: Y-axis coordinate of the control point.
-- `x2`: X-axis coordinate of the end point.
-- `y2`: Y-axis coordinate of the end point.
-
-```ts
-computeQuadraticBezierCurvature(
-  x1: number,
-  y1: number,
-  cpx: number,
-  cpy: number,
-  x2: number,
-  y2: number
-): number;
-```
-
-##### arc(t, x1, y1, x2, y2, rx, ry, angle, largeArc, clockwise)
-
-Interpolate a point on an elliptical arc.
-
-- `t`: Normalized time value to interpolate.
-- `x1`: X-axis coordinate of the starting point of the arc.
-- `y1`: Y-axis coordinate of the starting point of the arc.
-- `x2`: X-axis coordinate of the ending point of the arc.
-- `y2`: Y-axis coordinate of the ending point of the arc.
-- `rx`: X-radius of the ellipse.
-- `ry`: Y-radius of the ellipse.
-- `angle`: Rotation angle of the ellipse (in radians).
-- `[largeArc]`: Flag indicating whether to draw the larger of the two possible arcs.
-- `[clockwise]`: Flag indicating the direction of the arc.
-
-```ts
-arc(
-  t: number,
-  x1: number,
-  y1: number,
-  x2: number,
-  y2: number,
-  rx: number,
-  ry: number,
-  angle: number,
-  largeArc?: boolean,
-  clockwise?: boolean
-): [number, number];
-```
-
-##### computeArcCurvature(x1, y1, x2, y2, rx, ry, angle, largeArc, clockwise)
-
-Compute the curvature of an elliptical arc.
-
-- `x1`: X-axis coordinate of the starting point of the arc.
-- `y1`: Y-axis coordinate of the starting point of the arc.
-- `x2`: X-axis coordinate of the ending point of the arc.
-- `y2`: Y-axis coordinate of the ending point of the arc.
-- `rx`: X-radius of the ellipse.
-- `ry`: Y-radius of the ellipse.
-- `angle`: Rotation angle of the ellipse (in radians).
-- `[largeArc]`: Flag indicating whether to draw the larger of the two possible arcs.
-- `[clockwise]`: Flag indicating the direction of the arc.
-
-```ts
-computeArcCurvature(
-  x1: number,
-  y1: number,
-  x2: number,
-  y2: number,
-  rx: number,
-  ry: number,
-  angle: number,
-  largeArc?: boolean,
-  clockwise?: boolean
-): number;
-```
-
 #### Fit
-
-<!--  -->
 
 ```ts
 type FitInput = {
@@ -688,9 +513,20 @@ Clamp a value between two bounds.
 clamp(value: number, min?: number, max?: number): number;
 ```
 
+##### snap(value, multiple)
+
+Round a number up to a nearest multiple.
+
+- `value`: Value to round.
+- `[multiple=1]`: Multiple to round to.
+
+```ts
+snap(value: number, multiple?: number): number;
+```
+
 ##### lerp(t, min, max)
 
-Linear interpolation between two values (lerping).
+Interpolate a value between two values using Linear interpolation (lerping).
 
 - `t`: Normalized time value to interpolate.
 - `min`: Minimum value.
@@ -698,33 +534,6 @@ Linear interpolation between two values (lerping).
 
 ```ts
 lerp(t: number, min: number, max: number): number;
-```
-
-##### triLerp(t, min, max, target)
-
-Triangular interpolation between two values.
-
-- `t`: Normalized time value to interpolate.
-- `min`: Minimum value.
-- `max`: Maximum value.
-- `target`: Triangle target value.
-
-```ts
-triLerp(t: number, min: number, max: number, target: number): number;
-```
-
-##### expLerp(t, currentMin, currentMax, targetMin, targetMax)
-
-Exponential interpolation between two values.
-
-- `t`: Normalized time value to interpolate.
-- `currentMin`: Lower bound of the value's current range.
-- `currentMax`: Upper bound of the value's current range.
-- `targetMin`: Lower bound of the value's target range.
-- `targetMax`: Upper bound of the value's target range.
-
-```ts
-expLerp(t: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
 ##### normalize(value, min, max)
@@ -753,15 +562,72 @@ Re-map a number from one range to another.
 map(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
-##### snap(value, multiple)
+##### triLerp(t, min, max, target)
 
-Round a number up to a nearest multiple.
+Interpolate a value between two values using Triangular interpolation.
 
-- `value`: Value to round.
-- `[multiple=1]`: Multiple to round to.
+- `t`: Normalized time value to interpolate.
+- `min`: Minimum value.
+- `max`: Maximum value.
+- `target`: Triangle target value.
 
 ```ts
-snap(value: number, multiple?: number): number;
+triLerp(t: number, min: number, max: number, target: number): number;
+```
+
+##### expLerp(t, currentMin, currentMax, targetMin, targetMax)
+
+Interpolate a value using Exponential interpolation.
+
+- `t`: Normalized time value to interpolate.
+- `currentMin`: Lower bound of the value's current range.
+- `currentMax`: Upper bound of the value's current range.
+- `targetMin`: Lower bound of the value's target range.
+- `targetMax`: Upper bound of the value's target range.
+
+```ts
+expLerp(t: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
+```
+
+##### quadraticBezier(t, p1, cp, p2)
+
+Interpolate a value using Quadratic Bézier interpolation.
+
+- `t`: Normalized time value to interpolate.
+- `p1`: Start point.
+- `cp`: Control point.
+- `p2`: End point.
+
+```ts
+quadraticBezier(t: number, p1: number, cp: number, p2: number): number;
+```
+
+##### cubicBezier(t, p1, cp1, cp2, p2)
+
+Interpolate a value using Cubic Bézier interpolation.
+
+- `t`: Normalized time value to interpolate.
+- `p1`: Start point.
+- `cp1`: First control point.
+- `cp2`: Second control point.
+- `p2`: End point.
+
+```ts
+cubicBezier(t: number, p1: number, cp1: number, cp2: number, p2: number): number;
+```
+
+##### catmullRom(t, p1, cp1, cp2, p2)
+
+Interpolate a value using Catmull-Rom interpolation.
+
+- `t`: Normalized time value to interpolate.
+- `p1`: Start point.
+- `cp1`: First control point.
+- `cp2`: Second control point.
+- `p2`: End point.
+
+```ts
+catmullRom(t: number, p1: number, cp1: number, cp2: number, p2: number): number;
 ```
 
 ##### modAbs(value, length)
@@ -941,10 +807,9 @@ randomGaussian(mean?: number, spread?: number): number;
 Produce a random 2D point around the perimiter of a unit circle.
 
 - `[radius=1]`: Radius of the circle.
-- `[target]`: Target vector.
 
 ```ts
-onCircle(radius?: number, target?: Vector2): Vector2;
+onCircle(radius?: number): [number, number];
 ```
 
 ##### insideCircle(radius)
@@ -952,32 +817,29 @@ onCircle(radius?: number, target?: Vector2): Vector2;
 Produce a random 2D point inside a unit circle.
 
 - `[radius=1]`: Radius of the circle.
-- `[target]` Target vector.
 
 ```ts
-insideCircle(radius?: number, target?: Vector2): Vector2;
+insideCircle(radius?: number): [number, number];
 ```
 
 ##### onSphere(radius)
 
-Produce a random 3D point on the surface of a unit sphere.
+Produce a random 3D point on the surface of a sphere.
 
 - `[radius=1]`: Radius of the sphere.
-- `[target]`: Target vector.
 
 ```ts
-onSphere(radius?: number, target?: Vector3): Vector3;
+onSphere(radius?: number): [number, number, number];
 ```
 
 ##### insideSphere(radius)
 
-Produce a random 3D point inside a unit sphere.
+Produce a random 3D point inside a sphere.
 
 - `[radius=1]`: Radius of the sphere.
-- `[target]`: Target vector.
 
 ```ts
-insideSphere(radius?: number, target?: Vector3): Vector3;
+insideSphere(radius?: number): [number, number, number];
 ```
 
 ### Pseudo-Random Number Generator (PRNG)
@@ -1299,6 +1161,58 @@ removeTrailingSlash(path: string): string;
 
 ## Utility classes
 
+### Geometry
+
+See documentation [here](./docs/GEOMETRY.md).
+
+#### [Vector2](./docs//GEOMETRY.md#vector-2)
+
+#### [Vector3](./docs//GEOMETRY.md#vector-3)
+
+### Curves
+
+See documentation [here](./docs/CURVES.md).
+
+#### [Curve](./docs/CURVES.md#curve)
+
+#### [LineCurve](./docs/CURVES.md#line-curve)
+
+#### [LineCurve3](./docs/CURVES.md#line-curve-3)
+
+#### [PolylineCurve](./docs/CURVES.md#polyline-curve)
+
+#### [PolylineCurve3](./docs/CURVES.md#polyline-curve-3)
+
+#### [QuadraticBezierCurve](./docs/CURVES.md#quadratic-bezier-curve)
+
+#### [QuadraticBezierCurve3](./docs/CURVES.md#quadratic-bezier-curve-3)
+
+#### [CubicBezierCurve](./docs/CURVES.md#cubic-bezier-curve)
+
+#### [CubicBezierCurve3](./docs/CURVES.md#cubic-bezier-curve-3)
+
+#### [CatmullRomCurve](./docs/CURVES.md#catmull-rom-curve)
+
+#### [CatmullRomCurve3](./docs/CURVES.md#catmull-rom-curve-3)
+
+#### [SplineCurve](./docs/CURVES.md#spline-curve)
+
+#### [SplineCurve3](./docs/CURVES.md#spline-curve-3)
+
+#### [EllipseCurve](./docs/CURVES.md#ellipse-curve)
+
+#### [ArcCurve](./docs/CURVES.md#arc-curve)
+
+### Paths
+
+See documentation [here](./docs/PATHS.md).
+
+#### [Path](./docs/PATHS.md#path)
+
+#### [PathContext](./docs/PATHS.md#path-context)
+
+#### [PathSVG](./docs/PATHS.md#path-svg)
+
 ### Color scale
 
 Utility class for generating color scales and interpolating between colors.
@@ -1314,8 +1228,8 @@ Utility class for generating color scales and interpolating between colors.
 | --------------------- | ---------------------------------- | ----------------------- | ------------------------------------------- |
 | input                 | `ColorRepresentation`              |                         | Input color representation.                 |
 | target                | `ColorRepresentation`              |                         | Target color representation.                |
-| length                | `number`                           | `5`                     | Amount of colors composing the color scale. |
-| settings              | `ColorScaleSettings`               | `{ colorSpace: 'rgb' }` | Color scale generation settings.            |
+| [length]              | `number`                           | `5`                     | Amount of colors composing the color scale. |
+| [settings]            | `ColorScaleSettings`               | `{ colorSpace: 'rgb' }` | Color scale generation settings.            |
 | [settings.colorSpace] | `'rgb' \| 'hsl' \| 'hsb' \| 'hcl'` | `'rgb'`                 | Color scale color space.                    |
 
 ##### HSL color scales
@@ -1367,7 +1281,7 @@ ColorScale.colors: Array<[number, number, number]>;
 
 ##### `static` generate(input, target, length) <a id="color-scale-static-generate-method"></a>
 
-Static method for generating a color scale.
+Generate a color scale.
 
 - `input`: Input color representation.
 - `target`: Target color representation.
@@ -1385,7 +1299,7 @@ static ColorScale.generate(
 
 ##### `static` interpolate(inputColor, targetColor, value) <a id="color-scale-static-interpolate-method"></a>
 
-Static method for interpolating between colors.
+Interpolate between colors.
 
 - `inputColor`: Input color.
 - `targetColor`: Target color.
@@ -1413,7 +1327,7 @@ Utility class for controlling FPS calls.
 
 | Parameter | Type     | Default | Description             |
 | --------- | -------- | ------- | ----------------------- |
-| fps       | `number` | `30`    | Frame per second limit. |
+| [fps]     | `number` | `30`    | Frame per second limit. |
 
 #### Properties
 
@@ -1437,20 +1351,25 @@ FrameRate.update(): boolean;
 
 ## Constants
 
+### Maths
+
 `EPSILON`
+
+### Geomery
 
 `PI`
 
 `TWO_PI`
+`TAU`
 
 `HALF_PI`
 
 `QUARTER_PI`
+
+### Colors
 
 `W3CX11`
 
 ## License
 
 MIT License, see [LICENSE](https://github.com/toosoon-dev/toosoon-utils/tree/master/LICENSE) for details.
-
-[![NPM](https://nodei.co/npm/toosoon-utils.png)](https://nodei.co/npm/toosoon-utils/)

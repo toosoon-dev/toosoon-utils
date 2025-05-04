@@ -1,6 +1,6 @@
-import { lerp, triLerp } from '../maths';
-import { hclToRgb, hsbToRgb, hslToRgb, normalizeColor, rgbToHcl, rgbToHsb, rgbToHsl } from '../colors';
-import type { ColorRepresentation } from '../types';
+import { lerp, triLerp } from '../../maths';
+import { hclToRgb, hsbToRgb, hslToRgb, normalizeColor, rgbToHcl, rgbToHsb, rgbToHsl } from '../../colors';
+import type { ColorRepresentation } from '../../types';
 
 export type ColorScaleSettings =
   | {
@@ -60,7 +60,7 @@ export default class ColorScale {
   }
 
   /**
-   * Static method for generating a color scale
+   * Generate a color scale
    *
    * @param {ColorRepresentation} input     Input color representation
    * @param {ColorRepresentation} target    Target color representation
@@ -88,7 +88,7 @@ export default class ColorScale {
   }
 
   /**
-   * Static method for interpolating between colors
+   * Interpolate between colors
    *
    * @param {[number,number,number]} inputColor  Input color
    * @param {[number,number,number]} targetColor Target color

@@ -1,4 +1,4 @@
-import { now } from '../functions';
+import { now } from '../../functions';
 
 /**
  * Utility class for controlling FPS calls
