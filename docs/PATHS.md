@@ -2,7 +2,7 @@
 
 ### Path <a id="path"></a>
 
-Utility class extending [Curve](#curve) for manipulating connected curves.
+Utility class extending [Curve](./CURVES.md#curve) for manipulating connected curves.
 
 - [new Path(params)](#path)
   - .isPath: `true`
