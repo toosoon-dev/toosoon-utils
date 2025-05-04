@@ -1,3 +1,3 @@
 export { default as Path } from './Path';
 export { default as PathContext } from './PathContext';
-export { default as PathSVG } from './PathSVG';
+export { default as PathSVG, type PathSVGSerializationParams } from './PathSVG';
