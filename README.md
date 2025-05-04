@@ -1163,7 +1163,7 @@ removeTrailingSlash(path: string): string;
 
 ### Geometry
 
-See documentation [here](./docs/GEOMETRY.md).
+See Geometry documentation [here](./docs/GEOMETRY.md).
 
 #### [Vector2](./docs//GEOMETRY.md#vector-2)
 
@@ -1171,7 +1171,7 @@ See documentation [here](./docs/GEOMETRY.md).
 
 ### Curves
 
-See documentation [here](./docs/CURVES.md).
+See Curves documentation [here](./docs/CURVES.md).
 
 #### [Curve](./docs/CURVES.md#curve)
 
@@ -1205,7 +1205,7 @@ See documentation [here](./docs/CURVES.md).
 
 ### Paths
 
-See documentation [here](./docs/PATHS.md).
+See Paths documentation [here](./docs/PATHS.md).
 
 #### [Path](./docs/PATHS.md#path)
 
