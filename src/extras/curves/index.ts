@@ -1,4 +1,4 @@
-export { default as Curve, type CurvePoint } from './Curve';
+export { default as Curve } from './Curve';
 export { default as LineCurve } from './LineCurve';
 export { default as LineCurve3 } from './LineCurve3';
 export { default as PolylineCurve } from './PolylineCurve';

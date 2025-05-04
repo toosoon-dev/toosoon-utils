@@ -673,13 +673,13 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   public isPointInPath!: CanvasRenderingContext2D['isPointInPath'];
   public isPointInStroke!: CanvasRenderingContext2D['isPointInStroke'];
 
-  public getContextAttributes(): ReturnType<CanvasRenderingContext2D['getContextAttributes']> {
+  public getContextAttributes(): CanvasRenderingContext2DSettings {
     return {
       alpha: false
     };
   }
 
-  public isContextLost(): ReturnType<CanvasRenderingContext2D['isContextLost']> {
+  public isContextLost(): boolean {
     return false;
   }
 }
