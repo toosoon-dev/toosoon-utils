@@ -472,7 +472,7 @@ static EllipseCurve.interpolate(
 
 ### ArcCurve <a id="arc-curve"></a>
 
-Utility class extending [Curve](#curve) for manipulating arcs.
+Utility class extending [EllipseCurve](#ellipse-curve) for manipulating arcs.
 
 - [new ArcCurve(cx, cy, radius, startAngle, endAngle, counterclockwise)](#arc-curve)
 
