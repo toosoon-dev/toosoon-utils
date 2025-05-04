@@ -51,20 +51,20 @@ export default class EllipseCurve extends Curve<Vector2> {
    * @param {number} cy Y-axis coordinate of the center of the ellipse
    * @param {number} rx X-radius of the ellipse
    * @param {number} ry Y-radius of the ellipse
-   * @param {number} [rotation]   Rotation angle of the ellipse (in radians), counterclockwise from the positive X-axis
-   * @param {number} [startAngle] Rotation angle of the arc (in radians)
-   * @param {number} [endAngle]   Rotation angle of the arc (in radians)
-   * @param {boolean} [counterclockwise] Flag indicating the direction of the arc
+   * @param {number} [rotation=0] Rotation angle of the ellipse (in radians), counterclockwise from the positive X-axis
+   * @param {number} [startAngle=0]  Start angle of the arc (in radians)
+   * @param {number} [endAngle=2*PI] End angle of the arc (in radians)
+   * @param {boolean} [counterclockwise=false] Flag indicating the direction of the arc
    */
   constructor(
     cx: number,
     cy: number,
     rx: number,
     ry: number,
-    rotation?: number,
-    startAngle?: number,
-    endAngle?: number,
-    counterclockwise?: boolean
+    rotation: number = 0,
+    startAngle: number = 0,
+    endAngle: number = TWO_PI,
+    counterclockwise: boolean = false
   ) {
     super();
 
@@ -72,10 +72,10 @@ export default class EllipseCurve extends Curve<Vector2> {
     this.cy = cy;
     this.rx = rx;
     this.ry = ry;
-    this.rotation = rotation ?? 0;
-    this.startAngle = startAngle ?? 0;
-    this.endAngle = endAngle ?? TWO_PI;
-    this.counterclockwise = counterclockwise ?? false;
+    this.rotation = rotation;
+    this.startAngle = startAngle;
+    this.endAngle = endAngle;
+    this.counterclockwise = counterclockwise;
   }
 
   /**

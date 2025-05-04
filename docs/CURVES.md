@@ -443,16 +443,16 @@ Utility class extending [Curve](#curve) for manipulating ellipses.
 - [new EllipseCurve(cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)](#ellipse-curve)
   - `static` [.interpolate(t, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)](#ellipse-curve-static-interpolate-method)
 
-| Parameter          | Type      | Default | Description                                                                            |
-| ------------------ | --------- | ------- | -------------------------------------------------------------------------------------- |
-| cx                 | `number`  |         | X-axis coordinate of the center of the ellipse.                                        |
-| cy                 | `number`  |         | Y-axis coordinate of the center of the ellipse.                                        |
-| rx                 | `number`  |         | X-radius of the ellipse.                                                               |
-| ry                 | `number`  |         | Y-radius of the ellipse.                                                               |
-| [rotation]         | `number`  |         | Rotation angle of the ellipse (in radians), counterclockwise from the positive X-axis. |
-| [startAngle]       | `number`  |         | Rotation angle of the arc (in radians).                                                |
-| [endAngle]         | `number`  |         | Rotation angle of the arc (in radians).                                                |
-| [counterclockwise] | `boolean` |         | Flag indicating the direction of the arc.                                              |
+| Parameter          | Type      | Default  | Description                                                                            |
+| ------------------ | --------- | -------- | -------------------------------------------------------------------------------------- |
+| cx                 | `number`  |          | X-axis coordinate of the center of the ellipse.                                        |
+| cy                 | `number`  |          | Y-axis coordinate of the center of the ellipse.                                        |
+| rx                 | `number`  |          | X-radius of the ellipse.                                                               |
+| ry                 | `number`  |          | Y-radius of the ellipse.                                                               |
+| [rotation]         | `number`  | `0`      | Rotation angle of the ellipse (in radians), counterclockwise from the positive X-axis. |
+| [startAngle]       | `number`  | `0`      | Start angle of the arc (in radians).                                                   |
+| [endAngle]         | `number`  | `2 * PI` | End angle of the arc (in radians).                                                     |
+| [counterclockwise] | `boolean` | `false`  | Flag indicating the direction of the arc.                                              |
 
 ##### `static` interpolate(t, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise) <a id="ellipse-curve-static-interpolate-method"></a>
 
@@ -476,11 +476,11 @@ Utility class extending [Curve](#curve) for manipulating arcs.
 
 - [new ArcCurve(cx, cy, radius, startAngle, endAngle, counterclockwise)](#arc-curve)
 
-| Parameter          | Type      | Default | Description                                    |
-| ------------------ | --------- | ------- | ---------------------------------------------- |
-| cx                 | `number`  |         | X-axis coordinate of the center of the circle. |
-| cy                 | `number`  |         | Y-axis coordinate of the center of the circle. |
-| radius             | `number`  |         | X-radius of the circle.                        |
-| [startAngle]       | `number`  |         | Rotation angle of the arc (in radians).        |
-| [endAngle]         | `number`  |         | Rotation angle of the arc (in radians).        |
-| [counterclockwise] | `boolean` |         | Flag indicating the direction of the arc.      |
+| Parameter          | Type      | Default  | Description                                    |
+| ------------------ | --------- | -------- | ---------------------------------------------- |
+| cx                 | `number`  |          | X-axis coordinate of the center of the circle. |
+| cy                 | `number`  |          | Y-axis coordinate of the center of the circle. |
+| radius             | `number`  |          | X-radius of the circle.                        |
+| [startAngle]       | `number`  | `0`      | Start angle of the arc (in radians).           |
+| [endAngle]         | `number`  | `2 * PI` | End angle of the arc (in radians).             |
+| [counterclockwise] | `boolean` | `false`  | Flag indicating the direction of the arc.      |
