@@ -133,32 +133,24 @@ export default class EllipseCurve extends Curve<Vector2> {
     while (deltaAngle > TWO_PI) deltaAngle -= TWO_PI;
 
     if (deltaAngle <= EPSILON) {
-      if (isEmpty) {
-        deltaAngle = 0;
-      } else {
-        deltaAngle = TWO_PI;
-      }
+      deltaAngle = isEmpty ? 0 : TWO_PI;
     }
 
-    if (counterclockwise === true && !isEmpty) {
-      if (deltaAngle === TWO_PI) {
-        deltaAngle = -TWO_PI;
-      } else {
-        deltaAngle = deltaAngle - TWO_PI;
-      }
+    if (counterclockwise && !isEmpty) {
+      deltaAngle = deltaAngle === TWO_PI ? -TWO_PI : deltaAngle - TWO_PI;
     }
 
     const angle = startAngle + t * deltaAngle;
     let x = cx + rx * Math.cos(angle);
     let y = cy + ry * Math.sin(angle);
 
-    if (rotation !== 0) {
+    if (Math.abs(rotation) > EPSILON) {
       const cos = Math.cos(rotation);
       const sin = Math.sin(rotation);
-      const deltaX = x - cx;
-      const deltaY = y - cy;
-      x = deltaX * cos - deltaY * sin + cx;
-      y = deltaX * sin + deltaY * cos + cy;
+      const dx = x - cx;
+      const dy = y - cy;
+      x = cx + dx * cos - dy * sin;
+      y = cy + dx * sin + dy * cos;
     }
 
     return [x, y];

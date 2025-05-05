@@ -1,5 +1,3 @@
-import { EPSILON } from './constants';
-
 /**
  * Check if a number is even
  *

@@ -296,6 +296,7 @@ Utility class extending [PathContext](#path-context) for manipulating connected 
 It works by serializing 2D Canvas API to SVG path data.
 
 - [new PathSVG()](#path-svg-constructor)
+  - [.toString(params)](#path-svg-to-string-method): `string`
   - `static` [.approximate(curve, params)](#path-svg-static-serialize-method): `string`
   - `static` [.serialize(curve, params)](#path-svg-static-serialize-method): `string`
   - `static` [.serializeLineCurve(curve)](#path-svg-static-serialize-line-curve-method): `string`
@@ -306,11 +307,20 @@ It works by serializing 2D Canvas API to SVG path data.
   - `static` [.serializeSplineCurve(curve, params)](#path-svg-static-serialize-spline-curve-method): `string`
   - `static` [.serializeEllipseCurve(curve)](#path-svg-static-serialize-ellipse-curve-method): `string`
   - `static` [.serializeArcCurve(curve)](#path-svg-static-serialize-arc-curve-method): `string`
-  - [.toString(params)](#path-svg-to-string-method): `string`
 
 #### Methods
 
-##### approximate(curve) <a id="path-svg-static-approximate-method"></a>
+##### toString(params) <a id="path-svg-to-string-method"></a>
+
+Serialize the path into a SVG path string.
+
+- `[params]`: Serialization parameters.
+
+```ts
+PathSVG.toString(params?: PathSVGSerializationParams): string;
+```
+
+##### `static` approximate(curve) <a id="path-svg-static-approximate-method"></a>
 
 Convert a [Curve](#curve) into straight segments.
 
@@ -321,7 +331,7 @@ Convert a [Curve](#curve) into straight segments.
 static PathSVG.approximate(curve: Curve, resolution?: number): Vector2[];
 ```
 
-##### serialize(curve) <a id="path-svg-static-serialize-method"></a>
+##### `static` serialize(curve) <a id="path-svg-static-serialize-method"></a>
 
 Serialize a [Curve](#curve).
 
@@ -334,7 +344,7 @@ Serialize a [Curve](#curve).
 static PathSVG.serialize(curve: Curve, params?: PathSVGSerializationParams): string;
 ```
 
-##### serializeLineCurve(curve) <a id="path-svg-static-serialize-line-curve-method"></a>
+##### `static` serializeLineCurve(curve) <a id="path-svg-static-serialize-line-curve-method"></a>
 
 Serialize a [LineCurve](#line-curve).
 
@@ -344,7 +354,7 @@ Serialize a [LineCurve](#line-curve).
 static PathSVG.serializeLineCurve(curve: LineCurve): string;
 ```
 
-##### serializePolylineCurve(curve) <a id="path-svg-static-serialize-polyline-curve-method"></a>
+##### `static` serializePolylineCurve(curve) <a id="path-svg-static-serialize-polyline-curve-method"></a>
 
 Serialize a [PolylineCurve](#polyline-curve).
 
@@ -354,7 +364,7 @@ Serialize a [PolylineCurve](#polyline-curve).
 static PathSVG.serializePolylineCurve(curve: PolylineCurve): string;
 ```
 
-##### serializeQuadraticBezierCurve(curve) <a id="path-svg-static-serialize-quadratic-bezier-curve-method"></a>
+##### `static` serializeQuadraticBezierCurve(curve) <a id="path-svg-static-serialize-quadratic-bezier-curve-method"></a>
 
 Serialize a [QuadraticBezierCurve](#quadratic-bezier-curve).
 
@@ -364,7 +374,7 @@ Serialize a [QuadraticBezierCurve](#quadratic-bezier-curve).
 static PathSVG.serializeQuadraticBezierCurve(curve: QuadraticBezierCurve): string;
 ```
 
-##### serializeCubicBezierCurve(curve) <a id="path-svg-static-serialize-cubic-bezier-curve-method"></a>
+##### `static` serializeCubicBezierCurve(curve) <a id="path-svg-static-serialize-cubic-bezier-curve-method"></a>
 
 Serialize a [CubicBezierCurve](#cubic-bezier-curve).
 
@@ -374,7 +384,7 @@ Serialize a [CubicBezierCurve](#cubic-bezier-curve).
 static PathSVG.serializeCubicBezierCurve(curve: CubicBezierCurve): string;
 ```
 
-##### serializeCatmullRomCurve(curve) <a id="path-svg-static-serialize-catmull-rom-curve-method"></a>
+##### `static` serializeCatmullRomCurve(curve) <a id="path-svg-static-serialize-catmull-rom-curve-method"></a>
 
 Serialize a [CatmullRomCurve](#catmull-rom-curve) by approximating it into straight lines.
 
@@ -385,7 +395,7 @@ Serialize a [CatmullRomCurve](#catmull-rom-curve) by approximating it into strai
 static PathSVG.serializeCatmullRomCurve(curve: CatmullRomCurve, curveResolution?: number): string;
 ```
 
-##### serializeSplineCurve(curve) <a id="path-svg-static-serialize-spline-curve-method"></a>
+##### `static` serializeSplineCurve(curve) <a id="path-svg-static-serialize-spline-curve-method"></a>
 
 Serialize a [SplineCurve](#spline-curve) by approximating it into straight lines.
 
@@ -396,7 +406,7 @@ Serialize a [SplineCurve](#spline-curve) by approximating it into straight lines
 static PathSVG.serializeSplineCurve(curve: SplineCurve, curveResolution?: number): string;
 ```
 
-##### serializeEllipseCurve(curve) <a id="path-svg-static-serialize-ellipse-curve-method"></a>
+##### `static` serializeEllipseCurve(curve) <a id="path-svg-static-serialize-ellipse-curve-method"></a>
 
 Serialize a [EllipseCurve](#ellipse-curve).
 
@@ -406,7 +416,7 @@ Serialize a [EllipseCurve](#ellipse-curve).
 static PathSVG.serializeEllipseCurve(curve: EllipseCurve): string;
 ```
 
-##### serializeArcCurve(curve) <a id="path-svg-static-serialize-arc-curve-method"></a>
+##### `static` serializeArcCurve(curve) <a id="path-svg-static-serialize-arc-curve-method"></a>
 
 Serialize a [ArcCurve](#arc-curve).
 
@@ -416,7 +426,7 @@ Serialize a [ArcCurve](#arc-curve).
 static PathSVG.serializeArcCurve(curve: ArcCurve): string;
 ```
 
-##### serializePath(path, params) <a id="path-svg-static-serialize-path-method"></a>
+##### `static` serializePath(path, params) <a id="path-svg-static-serialize-path-method"></a>
 
 Serialize a [Path](#path).
 
@@ -425,14 +435,4 @@ Serialize a [Path](#path).
 
 ```ts
 static PathSVG.serializePath(path: Path, params?: PathSVGSerializationParams): string;
-```
-
-##### toString(params) <a id="path-svg-to-string-method"></a>
-
-Return SVG path data string.
-
-- `[params]`: Serialization parameters.
-
-```ts
-PathSVG.toString(params?: PathSVGSerializationParams): string;
 ```

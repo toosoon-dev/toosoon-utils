@@ -1,4 +1,4 @@
-import { EPSILON, PI } from '../../constants';
+import { EPSILON, PI, TWO_PI } from '../../constants';
 import { angle, distance, toDegrees } from '../../geometry';
 import type { Point2 } from '../../types';
 import {
@@ -280,7 +280,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     endAngle: number,
     counterclockwise?: boolean
   ): this {
-    if (!this._isUniform) {
+    if (!this._isUniform || this._isRotated) {
       return this.ellipse(cx, cy, radius, radius, 0, startAngle, endAngle, counterclockwise);
     }
     const [tCx, tCy, tRadius] = this._transformEllipse(cx, cy, radius, radius, 0);
@@ -345,12 +345,14 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     const startAngle = angle(cx, cy, t1x, t1y);
     const endAngle = angle(cx, cy, t2x, t2y);
 
-    let clockwise = endAngle - startAngle > 0;
-    if (clockwise && endAngle - startAngle > PI) clockwise = false;
-    else if (!clockwise && startAngle - endAngle > PI) clockwise = true;
+    let deltaAngle = endAngle - startAngle;
+    while (deltaAngle > PI) deltaAngle -= TWO_PI;
+    while (deltaAngle < -PI) deltaAngle += TWO_PI;
+
+    const counterclockwise = deltaAngle < 0;
 
     this.lineTo(t1x, t1y);
-    this.arc(cx, cy, radius, startAngle, endAngle, !clockwise);
+    this.arc(cx, cy, radius, startAngle, endAngle, counterclockwise);
 
     return this;
   }
@@ -438,21 +440,8 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     return this;
   }
 
-  protected _hasCurrentPosition(): boolean {
-    return !isNaN(this.currentPosition.x) && !isNaN(this.currentPosition.y);
-  }
-
-  protected _setCurrentPosition(x: number, y: number): this {
-    this.currentPosition.set(x, y);
-    return this;
-  }
-
-  // ******************************************
-  // Canvas 2D context transformations
-  // ******************************************
   public setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
   public setTransform(matrix: DOMMatrix): void;
-
   public setTransform(a?: number | DOMMatrix, b?: number, c?: number, d?: number, e?: number, f?: number): void {
     if (a instanceof DOMMatrix) {
       const matrix = a;
@@ -503,9 +492,18 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     this._transformStack = [];
   }
 
-  // ******************************************
-  // Path context transformations
-  // ******************************************
+  protected _hasCurrentPosition(): boolean {
+    return !isNaN(this.currentPosition.x) && !isNaN(this.currentPosition.y);
+  }
+
+  protected _setCurrentPosition(x: number, y: number): this {
+    this.currentPosition.set(x, y);
+    return this;
+  }
+
+  // ****************************
+  // Matrix transformations
+  // ****************************
   protected _transformPoint(point: Point2, matrix: DOMMatrix = this.currentTransform): Point2 {
     if (this._isIdentity) return point;
     const { x, y } = matrix.transformPoint({ x: point[0], y: point[1] });
@@ -533,13 +531,13 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     matrix?: DOMMatrix
   ): [number, number, number, number, number] {
     if (this._isIdentity) return [cx, cy, rx, ry, rotation];
-    [cx, cy] = this._transformPoint([cx, cy], matrix);
-    const [rx1, ry1] = this._transformVector([rx, 0], matrix);
-    const [rx2, ry2] = this._transformVector([0, ry], matrix);
-    rx = Math.hypot(rx1, ry1);
-    ry = Math.hypot(rx2, ry2);
-    rotation += angle(0, 0, rx1, ry1);
-    return [cx, cy, rx, ry, rotation];
+    const [tCx, tCy] = this._transformPoint([cx, cy], matrix);
+    const [ux1, uy1] = this._transformVector([Math.cos(rotation) * rx, Math.sin(rotation) * rx], matrix);
+    const [ux2, uy2] = this._transformVector([-Math.sin(rotation) * ry, Math.cos(rotation) * ry], matrix);
+    const tRx = Math.hypot(ux1, uy1);
+    const tRy = Math.hypot(ux2, uy2);
+    const tRotation = Math.atan2(uy1, ux1);
+    return [tCx, tCy, tRx, tRy, tRotation];
   }
 
   protected _inversePoint(point: Point2) {
@@ -613,9 +611,9 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     return this.currentTransform.isIdentity;
   }
 
-  // ******************************************
+  // ****************************
   // Canvas 2D interface
-  // ******************************************
+  // ****************************
   public canvas!: CanvasRenderingContext2D['canvas'];
 
   public fillStyle!: CanvasRenderingContext2D['fillStyle'];

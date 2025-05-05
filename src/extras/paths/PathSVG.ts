@@ -31,6 +31,16 @@ export type PathSVGSerializationParams = {
  */
 export default class PathSVG extends PathContext {
   /**
+   * Serialize this path into a SVG path string
+   *
+   * @param {object} [params]
+   * @returns {string}
+   */
+  public toString(params: PathSVGSerializationParams = {}): string {
+    return PathSVG.serialize(this, params);
+  }
+
+  /**
    * Convert a {@link Curve} into spaced points
    *
    * @param {Curve} curve Curve to approximate
@@ -52,6 +62,10 @@ export default class PathSVG extends PathContext {
    * @returns string
    */
   static serialize(curve: Curve<Vector2>, { approximate, curveResolution }: PathSVGSerializationParams = {}): string {
+    if (curve instanceof Path) {
+      return PathSVG.serializePath(curve, { approximate, curveResolution });
+    }
+
     if (approximate === true) {
       const points = PathSVG.approximate(curve, curveResolution);
       return points.map(([x, y]) => `L${x},${y}`).join(' ');
@@ -81,6 +95,7 @@ export default class PathSVG extends PathContext {
     if (curve instanceof ArcCurve) {
       return PathSVG.serializeArcCurve(curve);
     }
+
     return '';
   }
 
@@ -164,21 +179,19 @@ export default class PathSVG extends PathContext {
     let deltaAngle = counterclockwise ? startAngle - endAngle : endAngle - startAngle;
     if (deltaAngle < 0) deltaAngle = (deltaAngle % TWO_PI) + TWO_PI;
 
+    const [x0, y0] = EllipseCurve.interpolate(0, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise);
+    const [x1, y1] = EllipseCurve.interpolate(1, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise);
     const xAxisRotation = toDegrees(rotation);
     const largeArcFlag = deltaAngle >= PI ? 1 : 0;
     const sweepFlag = counterclockwise ? 0 : 1;
 
     if (deltaAngle > TWO_PI - EPSILON) {
-      const dx = Math.cos(startAngle) * rx;
-      const dy = Math.sin(startAngle) * ry;
       return (
-        `A${rx},${ry},${xAxisRotation},1,${sweepFlag},${cx - dx},${cy - dy}` +
-        `A${rx},${ry},${xAxisRotation},1,${sweepFlag},${cx + dx},${cy + dy}`
+        `A${rx},${ry},${xAxisRotation},1,${sweepFlag},${x0},${y0}` +
+        `A${rx},${ry},${xAxisRotation},1,${sweepFlag},${x1},${y1}`
       );
     } else if (deltaAngle > EPSILON) {
-      const dx = Math.cos(endAngle) * rx;
-      const dy = Math.sin(endAngle) * ry;
-      return `A${rx},${ry},${xAxisRotation},${largeArcFlag},${sweepFlag},${cx + dx},${cy + dy}`;
+      return `A${rx},${ry},${xAxisRotation},${largeArcFlag},${sweepFlag},${x1},${y1}`;
     }
 
     return '';
@@ -208,27 +221,12 @@ export default class PathSVG extends PathContext {
         let commands = ``;
         const previousPoint = path.subpaths[index - 1]?.getPoint(1);
         const newPoint = curve.getPoint(0);
-        if (!previousPoint?.equals(newPoint)) {
+        if (index === 0 || !previousPoint?.equals(newPoint)) {
           commands += `M${newPoint.x},${newPoint.y}`;
         }
         commands += PathSVG.serialize(curve, params);
         return commands;
       })
       .join(' ');
-  }
-
-  /**
-   * Return SVG path data string
-   *
-   * @param {object} [params]
-   * @param {object} [params.curveResolution] Resolution used for curves approximations
-   * @returns {string}
-   */
-  public toString(params: PathSVGSerializationParams = {}): string {
-    let commands = ``;
-    const firstPoint = this.subpaths[0]?.getPoint(0);
-    commands += `M${firstPoint.x},${firstPoint.y}`;
-    commands += PathSVG.serialize(this, params);
-    return commands;
   }
 }
