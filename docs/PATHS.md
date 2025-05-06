@@ -238,7 +238,7 @@ PathContext.arc(cx: number, cy: number, radius: number, startAngle?: number, end
 ##### arcTo(x1, y1, x2, y2, radius) <a id="path-context-arc-to-method"></a>
 
 Draw an Arc curve from the current position, tangential to the 2 segments created by both control points
-Add an instance of [ArcCurve](#arc-curve) to the path.
+Add an instance of [EllipseCurve](#ellipse-curve) to the path.
 
 - `x1`: X-axis coordinate of the first control point.
 - `y1`: Y-axis coordinate of the first control point.

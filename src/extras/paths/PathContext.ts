@@ -294,7 +294,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
 
   /**
    * Draw an Arc curve from the current position, tangential to the 2 segments created by both control points
-   * Add an instance of {@link ArcCurve} to this path
+   * Add an instance of {@link EllipseCurve} to this path
    *
    * @param {number} x1 X-axis coordinate of the first control point
    * @param {number} y1 Y-axis coordinate of the first control point
