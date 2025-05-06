@@ -65,7 +65,6 @@ Path.getCurveLengths(): number[];
 Utility class extending [Path](#path) providing methods similar to the 2D Canvas API.
 
 - [new PathContext()](#path-context)
-  - [.currentPosition](#path-context-current-position): `[number, number]`
   - [.setFromPoints(points)](#path-context-set-from-points-method): `this`
   - [.beginPath()](#path-context-begin-path-method): `this`
   - [.closePath()](#path-context-close-path-method): `this`
@@ -81,16 +80,6 @@ Utility class extending [Path](#path) providing methods similar to the 2D Canvas
   - [.arcTo(x1, y1, x2, y2, radius)](#path-context-arc-to-method): `this`
   - [.rect(x, y, width, height)](#path-context-rect-method): `this`
   - [.roundRect(x, y, width, height, radius)](#path-context-round-rect-method): `this`
-
-#### Properties
-
-##### currentPosition <a id="path-context-current-position"></a>
-
-Path current position.
-
-```ts
-PathContext.currentPosition: [number, number];
-```
 
 #### Methods
 

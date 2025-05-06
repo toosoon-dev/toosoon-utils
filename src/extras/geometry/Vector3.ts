@@ -395,6 +395,20 @@ export default class Vector3 implements Vector<Vec3> {
   }
 
   /**
+   * Transform this vector by a given matrix
+   *
+   * @param {DOMMatrix} matrix Matrix to apply
+   * @returns {this}
+   */
+  public applyMatrix(matrix: DOMMatrix): this {
+    const { x, y, z } = matrix.transformPoint({ x: this.x, y: this.y, z: this.z });
+    this.x = x;
+    this.y = y;
+    this.z = z;
+    return this;
+  }
+
+  /**
    * Set this vector values to the same direction but with a given length
    *
    * @param {number} length Length value

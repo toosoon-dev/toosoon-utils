@@ -34,6 +34,7 @@ Utility class for manipulating a 2D vectors.
   - [.rotateAround(center, angle)](#vector-2-rotate-around): `this`
   - [.lerp(vector, t)](#vector-2-lerp): `this`
   - [.normalize()](#vector-2-normalize): `this`
+  - [.applyMatrix(matrix)](#vector-2-apply-matrix): `this`
   - [.setLength(length)](#vector-2-set-length): `this`
   - [.length()](#vector-2-length): `number`
   - [.squaredLength()](#vector-2-squared-length): `number`
@@ -348,6 +349,16 @@ Convert the vector to a unit vector.
 
 ```ts
 Vector2.normalize(): this;
+```
+
+##### applyMatrix(matrix) <a id="vector-2-apply-matrix"></a>
+
+Transform the vector by a given matrix.
+
+- `matrix`: Matrix to apply.
+
+```ts
+Vector2.applyMatrix(matrix: DOMMatrix): this;
 ```
 
 ##### setLength(length) <a id="vector-2-set-length"></a>
@@ -752,6 +763,7 @@ Utility class for manipulating a 3D vectors.
   - [.negate()](#vector-3-negate): `this`
   - [.lerp(vector, t)](#vector-3-lerp): `this`
   - [.normalize()](#vector-3-normalize): `this`
+  - [.applyMatrix(matrix)](#vector-3-apply-matrix): `this`
   - [.setLength(length)](#vector-3-set-length): `this`
   - [.projectOnVector(vector)](#vector-3-project-on-vector): `this`
   - [.length()](#vector-3-length): `number`
@@ -1075,6 +1087,16 @@ Convert the vector to a unit vector.
 
 ```ts
 Vector3.normalize(): this;
+```
+
+##### applyMatrix(matrix) <a id="vector-3-apply-matrix"></a>
+
+Transform the vector by a given matrix.
+
+- `matrix`: Matrix to apply.
+
+```ts
+Vector3.applyMatrix(matrix: DOMMatrix): this;
 ```
 
 ##### setLength(length) <a id="vector-3-set-length"></a>

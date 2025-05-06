@@ -361,6 +361,19 @@ export default class Vector2 implements Vector<Vec2> {
   }
 
   /**
+   * Transform this vector by a given matrix
+   *
+   * @param {DOMMatrix} matrix Matrix to apply
+   * @returns {this}
+   */
+  public applyMatrix(matrix: DOMMatrix): this {
+    const { x, y } = matrix.transformPoint({ x: this.x, y: this.y });
+    this.x = x;
+    this.y = y;
+    return this;
+  }
+
+  /**
    * Set this vector values to the same direction but with a given length
    *
    * @param {number} length Length value
