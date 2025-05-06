@@ -1,5 +1,5 @@
-import { EPSILON, PI, TWO_PI } from '../../constants';
-import { angle, distance, toDegrees } from '../../geometry';
+import { EPSILON } from '../../constants';
+import { toDegrees } from '../../geometry';
 import type { Point2 } from '../../types';
 import {
   LineCurve,
@@ -25,7 +25,6 @@ import Path from './Path';
 export default class PathContext extends Path<Vector2> implements CanvasRenderingContext2D {
   protected _currentPosition: Vector2 = new Vector2(NaN, NaN);
   protected _currentTransform: DOMMatrix = new DOMMatrix();
-  protected _positionTransform: DOMMatrix = new DOMMatrix();
 
   private _transformStack: DOMMatrix[] = [];
 
@@ -501,7 +500,6 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
 
   protected _setCurrentPosition(x: number, y: number): this {
     this._currentPosition.set(x, y);
-    this._positionTransform = this.getTransform();
     return this;
   }
 
@@ -535,11 +533,11 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   ): [number, number, number, number, number] {
     if (this._isIdentity) return [cx, cy, rx, ry, rotation];
     [cx, cy] = this._transformPoint([cx, cy]);
-    const [ux1, uy1] = this._transformVector([Math.cos(rotation) * rx, Math.sin(rotation) * rx]);
-    const [ux2, uy2] = this._transformVector([-Math.sin(rotation) * ry, Math.cos(rotation) * ry]);
-    rx = Math.hypot(ux1, uy1);
-    ry = Math.hypot(ux2, uy2);
-    rotation = Math.atan2(uy1, ux1);
+    const [u1x, u1y] = this._transformVector([Math.cos(rotation) * rx, Math.sin(rotation) * rx]);
+    const [u2x, u2y] = this._transformVector([-Math.sin(rotation) * ry, Math.cos(rotation) * ry]);
+    rx = Math.hypot(u1x, u1y);
+    ry = Math.hypot(u2x, u2y);
+    rotation = Math.atan2(u1y, u1x);
     return [cx, cy, rx, ry, rotation];
   }
 
@@ -566,22 +564,6 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     return Math.atan2(b, a);
   }
 
-  protected get _skewX(): number {
-    const { c, d } = this._currentTransform;
-    const cos = Math.cos(this._rotation);
-    const sin = Math.sin(this._rotation);
-    const m11 = c * cos + d * sin;
-    return Math.atan(m11 / this._scaleX);
-  }
-
-  protected get _skewY(): number {
-    const { a, b } = this._currentTransform;
-    const cos = Math.cos(this._rotation);
-    const sin = Math.sin(this._rotation);
-    const m21 = a * sin - b * cos;
-    return Math.atan(m21 / this._scaleY);
-  }
-
   protected get _isTranslated(): boolean {
     return Math.abs(this._translateX) > EPSILON || Math.abs(this._translateY) > EPSILON;
   }
@@ -593,13 +575,6 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   protected get _isRotated(): boolean {
     const { b, c } = this._currentTransform;
     return Math.abs(b) > EPSILON || Math.abs(c) > EPSILON;
-  }
-
-  protected get _isSkewed(): boolean {
-    const { a, b, c, d } = this._currentTransform;
-    const angleX = Math.atan2(b, a);
-    const angleY = Math.atan2(-c, d);
-    return Math.abs(angleX - angleY) > EPSILON;
   }
 
   protected get _isUniform(): boolean {
