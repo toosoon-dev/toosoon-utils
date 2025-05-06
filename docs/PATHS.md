@@ -6,7 +6,7 @@ Utility class extending [Curve](./CURVES.md#curve) for manipulating connected cu
 
 - [new Path(params)](#path)
   - .isPath: `true`
-  - [.subpaths](#path-subpaths): `Curve[]`
+  - [.curves](#path-curves): `Curve[]`
   - [.points](#path-points): `Vector[]`
   - [.autoClose](#path-auto-close): `boolean`
   - [.add()](#path-add-method): `void`
@@ -18,12 +18,12 @@ Utility class extending [Curve](./CURVES.md#curve) for manipulating connected cu
 
 #### Properties
 
-##### subpaths <a id="path-subpaths"></a>
+##### curves <a id="path-curves"></a>
 
 Array of curves composing the path.
 
 ```ts
-Path.subpaths: Curve[];
+Path.curves: Curve[];
 ```
 
 ##### points <a id="path-points"></a>

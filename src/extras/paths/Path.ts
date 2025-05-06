@@ -17,14 +17,14 @@ import { type Vector, Vector2, Vector3 } from '../geometry';
  * @class Path
  * @extends Curve
  */
-export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<V> = Curve<V>> extends Curve<V> {
+export default class Path<V extends Vector = Vector2 | Vector3, C extends Curve<V> = Curve<V>> extends Curve<V> {
   readonly isPath = true;
   readonly type: string = 'Path';
 
   /**
    * Array of curves composing this path
    */
-  public subpaths: S[] = [];
+  public curves: C[] = [];
 
   /**
    * Array of points composing this path
@@ -47,8 +47,8 @@ export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<
    *
    * @param {Curve} curve Curve to add
    */
-  public add(curve: S) {
-    this.subpaths.push(curve);
+  public add(curve: C) {
+    this.curves.push(curve);
   }
 
   /**
@@ -66,7 +66,7 @@ export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<
     while (i < curveLengths.length) {
       if (curveLengths[i] >= d) {
         const delta = curveLengths[i] - d;
-        const curve = this.subpaths[i];
+        const curve = this.curves[i];
 
         const segmentLength = curve.getLength();
         const u = segmentLength === 0 ? 0 : 1 - delta / segmentLength;
@@ -79,7 +79,7 @@ export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<
 
     console.warn(`Path.getPoint()`, `No point found in curve.`, this);
 
-    return this.subpaths[0].getPoint(0);
+    return this.curves[0].getPoint(0);
   }
 
   /**
@@ -93,8 +93,8 @@ export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<
 
     let lastPoint: V | null = null;
 
-    for (let i = 0; i < this.subpaths.length; i++) {
-      const curve = this.subpaths[i];
+    for (let i = 0; i < this.curves.length; i++) {
+      const curve = this.curves[i];
 
       let resolution: number = divisions;
       if (curve instanceof LineCurve || curve instanceof LineCurve3) {
@@ -107,7 +107,7 @@ export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<
         resolution *= 2;
       }
 
-      const pts = this.subpaths[i].getPoints(resolution);
+      const pts = this.curves[i].getPoints(resolution);
       for (let j = 0; j < pts.length; j++) {
         const point = pts[j];
         if (point?.equals(lastPoint)) continue;
@@ -161,15 +161,15 @@ export default class Path<V extends Vector = Vector2 | Vector3, S extends Curve<
    * @returns {number[]}
    */
   public getCurveLengths(): number[] {
-    if (this._cacheArcLengths.length === this.subpaths.length) {
+    if (this._cacheArcLengths.length === this.curves.length) {
       return this._cacheArcLengths;
     }
 
     const lengths = [];
     let sums = 0;
 
-    for (let i = 0, j = this.subpaths.length; i < j; i++) {
-      sums += this.subpaths[i].getLength();
+    for (let i = 0, j = this.curves.length; i < j; i++) {
+      sums += this.curves[i].getLength();
       lengths.push(sums);
     }
 

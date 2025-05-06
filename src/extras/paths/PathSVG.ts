@@ -216,10 +216,10 @@ export default class PathSVG extends PathContext {
    * @returns string
    */
   static serializePath(path: Path<Vector2>, params: PathSVGSerializationParams = {}): string {
-    return path.subpaths
+    return path.curves
       .map((curve, index) => {
         let commands = ``;
-        const previousPoint = path.subpaths[index - 1]?.getPoint(1);
+        const previousPoint = path.curves[index - 1]?.getPoint(1);
         const newPoint = curve.getPoint(0);
         if (index === 0 || !previousPoint?.equals(newPoint)) {
           commands += `M${newPoint.x},${newPoint.y}`;

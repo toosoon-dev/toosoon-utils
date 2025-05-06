@@ -59,8 +59,8 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public closePath(): this {
-    const startPoint = this.subpaths[0]?.getPoint(0);
-    const endPoint = this.subpaths[this.subpaths.length - 1]?.getPoint(1);
+    const startPoint = this.curves[0]?.getPoint(0);
+    const endPoint = this.curves[this.curves.length - 1]?.getPoint(1);
     if (!startPoint.equals(endPoint)) {
       const curve = new LineCurve(endPoint.x, endPoint.y, startPoint.x, startPoint.y);
       this.add(curve);
