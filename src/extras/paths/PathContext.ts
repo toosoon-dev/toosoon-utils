@@ -77,8 +77,8 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public moveTo(x: number, y: number): this {
-    const [tX, tY] = this._transformPoint([x, y]);
-    this._setCurrentPosition(tX, tY);
+    [x, y] = this._transformPoint([x, y]);
+    this._setCurrentPosition(x, y);
     return this;
   }
 
@@ -91,11 +91,11 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public lineTo(x: number, y: number): this {
-    const [tX, tY] = this._transformPoint([x, y]);
-    if (!this._hasCurrentPosition()) return this._setCurrentPosition(tX, tY);
-    const curve = new LineCurve(this._currentPosition.x, this._currentPosition.y, tX, tY);
+    [x, y] = this._transformPoint([x, y]);
+    if (!this._hasCurrentPosition()) return this._setCurrentPosition(x, y);
+    const curve = new LineCurve(this._currentPosition.x, this._currentPosition.y, x, y);
     this.add(curve);
-    this._setCurrentPosition(tX, tY);
+    this._setCurrentPosition(x, y);
     return this;
   }
 
@@ -107,11 +107,11 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @returns {this}
    */
   public polylineTo(points: Point2[]): this {
-    const tPoints = this._transformPoints(points);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(...tPoints[0]);
-    const curve = new PolylineCurve([this._currentPosition.toArray()].concat(tPoints));
+    points = this._transformPoints(points);
+    if (!this._hasCurrentPosition()) this._setCurrentPosition(...points[0]);
+    const curve = new PolylineCurve([this._currentPosition.toArray()].concat(points));
     this.add(curve);
-    this._setCurrentPosition(...tPoints[tPoints.length - 1]);
+    this._setCurrentPosition(...points[points.length - 1]);
     return this;
   }
 
@@ -126,12 +126,12 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public quadraticCurveTo(cpx: number, cpy: number, x2: number, y2: number): this {
-    const [tCpx, tCpy] = this._transformPoint([cpx, cpy]);
-    const [tX2, tY2] = this._transformPoint([x2, y2]);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(tCpx, tCpy);
-    const curve = new QuadraticBezierCurve(this._currentPosition.x, this._currentPosition.y, tCpx, tCpy, tX2, tY2);
+    [cpx, cpy] = this._transformPoint([cpx, cpy]);
+    [x2, y2] = this._transformPoint([x2, y2]);
+    if (!this._hasCurrentPosition()) this._setCurrentPosition(cpx, cpy);
+    const curve = new QuadraticBezierCurve(this._currentPosition.x, this._currentPosition.y, cpx, cpy, x2, y2);
     this.add(curve);
-    this._setCurrentPosition(tX2, tY2);
+    this._setCurrentPosition(x2, y2);
     return this;
   }
 
@@ -148,22 +148,22 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x2: number, y2: number): this {
-    const [tCp1x, tCp1y] = this._transformPoint([cp1x, cp1y]);
-    const [tCp2x, tCp2y] = this._transformPoint([cp2x, cp2y]);
-    const [tX2, tY2] = this._transformPoint([x2, y2]);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(tCp1x, tCp1y);
+    [cp1x, cp1y] = this._transformPoint([cp1x, cp1y]);
+    [cp2x, cp2y] = this._transformPoint([cp2x, cp2y]);
+    [x2, y2] = this._transformPoint([x2, y2]);
+    if (!this._hasCurrentPosition()) this._setCurrentPosition(cp1x, cp1y);
     const curve = new CubicBezierCurve(
       this._currentPosition.x,
       this._currentPosition.y,
-      tCp1x,
-      tCp1y,
-      tCp2x,
-      tCp2y,
-      tX2,
-      tY2
+      cp1x,
+      cp1y,
+      cp2x,
+      cp2y,
+      x2,
+      y2
     );
     this.add(curve);
-    this._setCurrentPosition(tX2, tY2);
+    this._setCurrentPosition(x2, y2);
     return this;
   }
 
@@ -180,22 +180,13 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public catmullRomCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x2: number, y2: number): this {
-    const [tCp1x, tCp1y] = this._transformPoint([cp1x, cp1y]);
-    const [tCp2x, tCp2y] = this._transformPoint([cp2x, cp2y]);
-    const [tX2, tY2] = this._transformPoint([x2, y2]);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(tCp1x, tCp1y);
-    const curve = new CatmullRomCurve(
-      this._currentPosition.x,
-      this._currentPosition.y,
-      tCp1x,
-      tCp1y,
-      tCp2x,
-      tCp2y,
-      tX2,
-      tY2
-    );
+    [cp1x, cp1y] = this._transformPoint([cp1x, cp1y]);
+    [cp2x, cp2y] = this._transformPoint([cp2x, cp2y]);
+    [x2, y2] = this._transformPoint([x2, y2]);
+    if (!this._hasCurrentPosition()) this._setCurrentPosition(cp1x, cp1y);
+    const curve = new CatmullRomCurve(this._currentPosition.x, this._currentPosition.y, cp1x, cp1y, cp2x, cp2y, x2, y2);
     this.add(curve);
-    this._setCurrentPosition(tX2, tY2);
+    this._setCurrentPosition(x2, y2);
     return this;
   }
 
@@ -207,11 +198,11 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @return {this}
    */
   public splineTo(points: Point2[]): this {
-    const tPoints = this._transformPoints(points);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(...tPoints[0]);
-    const curve = new SplineCurve([this._currentPosition.toArray()].concat(tPoints));
+    points = this._transformPoints(points);
+    if (!this._hasCurrentPosition()) this._setCurrentPosition(...points[0]);
+    const curve = new SplineCurve([this._currentPosition.toArray()].concat(points));
     this.add(curve);
-    this._setCurrentPosition(...tPoints[tPoints.length - 1]);
+    this._setCurrentPosition(...points[points.length - 1]);
     return this;
   }
 
@@ -239,16 +230,15 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     endAngle: number,
     counterclockwise?: boolean
   ): this {
-    const [tCx, tCy, tRx, tRy, tRotation] = this._transformEllipse(cx, cy, rx, ry, rotation);
-    const start = EllipseCurve.interpolate(0, tCx, tCy, tRx, tRy, tRotation, startAngle, endAngle, counterclockwise);
-    const end = EllipseCurve.interpolate(1, tCx, tCy, tRx, tRy, tRotation, startAngle, endAngle, counterclockwise);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(...start);
-    else if (!this._currentPosition.equals(start)) {
-      const curve = new LineCurve(this._currentPosition.x, this._currentPosition.y, ...start);
-      this.add(curve);
+    [cx, cy, rx, ry, rotation] = this._transformEllipse(cx, cy, rx, ry, rotation);
+    const start = EllipseCurve.interpolate(0, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise);
+    const end = EllipseCurve.interpolate(1, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise);
+    if (this._hasCurrentPosition() && !this._currentPosition.equals(start)) {
+      const line = new LineCurve(this._currentPosition.x, this._currentPosition.y, ...start);
+      this.add(line);
     }
-    if (tRx <= EPSILON && tRy <= EPSILON) return this;
-    const curve = new EllipseCurve(tCx, tCy, tRx, tRy, tRotation, startAngle, endAngle, counterclockwise);
+    if (rx <= EPSILON && ry <= EPSILON) return this;
+    const curve = new EllipseCurve(cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise);
     this.add(curve);
     this._setCurrentPosition(...end);
     return this;
@@ -277,16 +267,15 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     if (!this._isUniform || this._isRotated) {
       return this.ellipse(cx, cy, radius, radius, 0, startAngle, endAngle, counterclockwise);
     }
-    const [tCx, tCy, tRadius] = this._transformEllipse(cx, cy, radius, radius, 0);
-    const start = EllipseCurve.interpolate(0, tCx, tCy, tRadius, tRadius, 0, startAngle, endAngle, counterclockwise);
-    const end = EllipseCurve.interpolate(1, tCx, tCy, tRadius, tRadius, 0, startAngle, endAngle, counterclockwise);
-    if (!this._hasCurrentPosition()) this._setCurrentPosition(...start);
-    else if (!this._currentPosition.equals(start)) {
-      const curve = new LineCurve(this._currentPosition.x, this._currentPosition.y, ...start);
-      this.add(curve);
+    [cx, cy, radius] = this._transformEllipse(cx, cy, radius, radius, 0);
+    const start = EllipseCurve.interpolate(0, cx, cy, radius, radius, 0, startAngle, endAngle, counterclockwise);
+    const end = EllipseCurve.interpolate(1, cx, cy, radius, radius, 0, startAngle, endAngle, counterclockwise);
+    if (this._hasCurrentPosition() && !this._currentPosition.equals(start)) {
+      const line = new LineCurve(this._currentPosition.x, this._currentPosition.y, ...start);
+      this.add(line);
     }
-    if (tRadius <= EPSILON) return this;
-    const curve = new ArcCurve(tCx, tCy, tRadius, startAngle, endAngle, counterclockwise);
+    if (radius <= EPSILON) return this;
+    const curve = new ArcCurve(cx, cy, radius, startAngle, endAngle, counterclockwise);
     this.add(curve);
     this._setCurrentPosition(...end);
     return this;
@@ -419,7 +408,6 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
 
     const curve = new PathContext({ autoClose: true });
     curve.setTransform(this.getTransform());
-    this.add(curve);
 
     // Top-Right corner
     if (topRightRadius > 0) {
@@ -449,6 +437,8 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     } else {
       curve.lineTo(x, y);
     }
+
+    this.add(curve);
 
     return this;
   }
@@ -518,21 +508,21 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   // ****************************
   // Matrix transformations
   // ****************************
-  protected _transformPoint(point: Point2, matrix: DOMMatrix = this._currentTransform): Point2 {
-    if (matrix.isIdentity) return point;
-    const { x, y } = matrix.transformPoint({ x: point[0], y: point[1] });
+  protected _transformPoint(point: Point2): Point2 {
+    if (this._isIdentity) return point;
+    const { x, y } = this._currentTransform.transformPoint({ x: point[0], y: point[1] });
     return [x, y];
   }
 
-  protected _transformPoints(points: Point2[], matrix: DOMMatrix = this._currentTransform): Point2[] {
-    if (matrix.isIdentity) return points;
-    return points.map((point) => this._transformPoint(point, matrix));
+  protected _transformPoints(points: Point2[]): Point2[] {
+    if (this._isIdentity) return points;
+    return points.map((point) => this._transformPoint(point));
   }
 
-  protected _transformVector(vector: Point2, matrix: DOMMatrix = this._currentTransform): Point2 {
-    if (matrix.isIdentity) return vector;
-    const [x0, y0] = this._transformPoint([0, 0], matrix);
-    const [vx, vy] = this._transformPoint(vector, matrix);
+  protected _transformVector(vector: Point2): Point2 {
+    if (this._isIdentity) return vector;
+    const [x0, y0] = this._transformPoint([0, 0]);
+    const [vx, vy] = this._transformPoint(vector);
     return [vx - x0, vy - y0];
   }
 
@@ -541,21 +531,16 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     cy: number,
     rx: number,
     ry: number,
-    rotation: number,
-    matrix: DOMMatrix = this._currentTransform
+    rotation: number
   ): [number, number, number, number, number] {
-    if (matrix.isIdentity) return [cx, cy, rx, ry, rotation];
-    const [tCx, tCy] = this._transformPoint([cx, cy], matrix);
-    const [ux1, uy1] = this._transformVector([Math.cos(rotation) * rx, Math.sin(rotation) * rx], matrix);
-    const [ux2, uy2] = this._transformVector([-Math.sin(rotation) * ry, Math.cos(rotation) * ry], matrix);
-    const tRx = Math.hypot(ux1, uy1);
-    const tRy = Math.hypot(ux2, uy2);
-    const tRotation = Math.atan2(uy1, ux1);
-    return [tCx, tCy, tRx, tRy, tRotation];
-  }
-
-  protected _inversePoint(point: Point2, matrix: DOMMatrix = this._currentTransform) {
-    return this._transformPoint(point, matrix.inverse());
+    if (this._isIdentity) return [cx, cy, rx, ry, rotation];
+    [cx, cy] = this._transformPoint([cx, cy]);
+    const [ux1, uy1] = this._transformVector([Math.cos(rotation) * rx, Math.sin(rotation) * rx]);
+    const [ux2, uy2] = this._transformVector([-Math.sin(rotation) * ry, Math.cos(rotation) * ry]);
+    rx = Math.hypot(ux1, uy1);
+    ry = Math.hypot(ux2, uy2);
+    rotation = Math.atan2(uy1, ux1);
+    return [cx, cy, rx, ry, rotation];
   }
 
   protected get _translateX() {
