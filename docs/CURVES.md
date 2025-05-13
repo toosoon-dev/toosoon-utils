@@ -4,7 +4,7 @@
 
 Utility abstract class for manipulating curves.
 
-- [new Curve()](#curve)
+- new Curve()
   - .isCurve: `true`
   - [.arcLengthDivisions](#curve-arc-length-divisions): `number`
   - [.needsUpdate](#curve-needs-update): `boolean`
@@ -149,7 +149,7 @@ Curve.isClosed(): boolean;
 
 Utility class extending [Curve](#curve) for manipulating lines.
 
-- [new LineCurve(x1, y1, x2, y2)](#line-curve)
+- new LineCurve(x1, y1, x2, y2)
   - `static` [.interpolate(t, x1, y1, x2, y2)](#line-curve-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                           |
@@ -175,7 +175,7 @@ static LineCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating 3D lines.
 
-- [new LineCurve3(x1, y1, z1, x2, y2, z2)](#line-curve-3)
+- new LineCurve3(x1, y1, z1, x2, y2, z2)
   - `static` [.interpolate(t, x1, y1, z1, x2, y2, z2)](#line-curve-3-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                           |
@@ -203,7 +203,7 @@ static LineCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating polylines.
 
-- [new PolylineCurve(points)](#polyline-curve)
+- new PolylineCurve(points)
 
 | Parameter | Type                      | Default | Description                         |
 | --------- | ------------------------- | ------- | ----------------------------------- |
@@ -213,7 +213,7 @@ Utility class extending [Curve](#curve) for manipulating polylines.
 
 Utility class extending [Curve](#curve) for manipulating 3D polylines.
 
-- [new PolylineCurve3(points)](#polyline-curve-3)
+- new PolylineCurve3(points)
 
 | Parameter | Type                              | Default | Description                         |
 | --------- | --------------------------------- | ------- | ----------------------------------- |
@@ -223,7 +223,7 @@ Utility class extending [Curve](#curve) for manipulating 3D polylines.
 
 Utility class extending [Curve](#curve) for manipulating Quadratic Bézier curves.
 
-- [new QuadraticBezierCurve(x1, y1, cpx, cpy, x2, y2)](#quadratic-bezier-curve)
+- new QuadraticBezierCurve(x1, y1, cpx, cpy, x2, y2)
   - `static` [.interpolate(t, x1, y1, cpx, cpy, x2, y2)](#quadratic-bezier-curve-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                             |
@@ -252,7 +252,7 @@ static QuadraticBezierCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Quadratic Bézier 3D curves.
 
-- [new QuadraticBezierCurve3(x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)](#quadratic-bezier-curve-3)
+- new QuadraticBezierCurve3(x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)
   - `static` [.interpolate(t, x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)](#quadratic-bezier-curve-3-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                             |
@@ -284,7 +284,7 @@ static QuadraticBezierCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Cubic Bézier curves.
 
-- [new CubicBezierCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#cubic-bezier-curve)
+- new CubicBezierCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)
   - `static` [.interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#cubic-bezier-curve-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                                    |
@@ -316,7 +316,7 @@ static CubicBezierCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Cubic Bézier 3D curves.
 
-- [new CubicBezierCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#cubic-bezier-curve-3)
+- new CubicBezierCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)
   - `static` [.interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#cubic-bezier-curve-3-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                                    |
@@ -352,7 +352,7 @@ static CubicBezierCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Catmull-Rom curves.
 
-- [new CatmullRomCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#catmull-rom-bezier-curve)
+- new CatmullRomCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)
   - `static` [.interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#catmull-rom-curve-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                                    |
@@ -384,7 +384,7 @@ static CatmullRomCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Catmull-Rom 3D curves.
 
-- [new CatmullRomCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#catmull-rom-bezier-curve-3)
+- new CatmullRomCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)
   - `static` [.interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#catmull-rom-curve-3-static-interpolate-method)
 
 | Parameter | Type     | Default | Description                                    |
@@ -420,7 +420,7 @@ static CatmullRomCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating splines.
 
-- [new SplineCurve(points)](#spline-curve)
+- new SplineCurve(points)
 
 | Parameter | Type                      | Default | Description                         |
 | --------- | ------------------------- | ------- | ----------------------------------- |
@@ -430,7 +430,7 @@ Utility class extending [Curve](#curve) for manipulating splines.
 
 Utility class extending [Curve](#curve) for manipulating 3D splines.
 
-- [new SplineCurve3(points)](#spline-curve-3)
+- new SplineCurve3(points)
 
 | Parameter | Type                              | Default | Description                         |
 | --------- | --------------------------------- | ------- | ----------------------------------- |
@@ -440,7 +440,7 @@ Utility class extending [Curve](#curve) for manipulating 3D splines.
 
 Utility class extending [Curve](#curve) for manipulating ellipses.
 
-- [new EllipseCurve(cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)](#ellipse-curve)
+- new EllipseCurve(cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)
   - `static` [.interpolate(t, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)](#ellipse-curve-static-interpolate-method)
 
 | Parameter          | Type      | Default  | Description                                                                            |
@@ -474,7 +474,7 @@ static EllipseCurve.interpolate(
 
 Utility class extending [EllipseCurve](#ellipse-curve) for manipulating arcs.
 
-- [new ArcCurve(cx, cy, radius, startAngle, endAngle, counterclockwise)](#arc-curve)
+- new ArcCurve(cx, cy, radius, startAngle, endAngle, counterclockwise)
 
 | Parameter          | Type      | Default  | Description                                    |
 | ------------------ | --------- | -------- | ---------------------------------------------- |

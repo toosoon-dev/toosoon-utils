@@ -1,15 +1,24 @@
 import { W3CX11 } from './constants';
 import { toDegrees, toRadians } from './geometry';
 import { clamp } from './maths';
-import type { ColorName, ColorRepresentation } from './types';
+import type {
+  ColorName,
+  ColorHex,
+  ColorRgb,
+  ColorHsl,
+  ColorHsb,
+  ColorHcl,
+  ColorLab,
+  ColorRepresentation
+} from './types';
 
 /**
  * Normalize a color representation into RGB
  *
  * @param {ColorRepresentation} color Color representation
- * @returns {[number,number,number]} Normalized RGB color
+ * @returns {ColorRgb} Normalized RGB color
  */
-export function normalizeColor(color: ColorRepresentation): [number, number, number] {
+export function normalizeColor(color: ColorRepresentation): ColorRgb {
   if (typeof color === 'string') {
     return hexToRgb(W3CX11[color as ColorName] ?? color);
   } else if (typeof color === 'number') {
@@ -50,23 +59,27 @@ export function normalizeHexString(hex: string): string {
 
 /**
  * Convert RGB to hexadecimal
- * Note: rgb values are contained in the interval [0, 1]
  *
- * @param  {[number, number, number]} rgb RGB color
- * @returns {number} Hexadecimal color
+ * Note:
+ *  - RGB values are contained in the interval [0, 1]
+ *
+ * @param  {ColorRgb} rgb RGB color
+ * @returns {ColorHex} Hexadecimal color
  */
-export function rgbToHex([r, g, b]: [number, number, number]): number {
+export function rgbToHex([r, g, b]: ColorRgb): ColorHex {
   return ((r * 255) << 16) ^ ((g * 255) << 8) ^ ((b * 255) << 0);
 }
 
 /**
  * Convert RGB to hexadecimal string
- * Note: rgb values are contained in the interval [0, 1]
  *
- * @param  {[number, number, number]} rgb RGB color
+ * Note:
+ *  - RGB values are contained in the interval [0, 1]
+ *
+ * @param  {ColorRgb} rgb RGB color
  * @returns {string} Hexadecimal string
  */
-export function rgbToHexString([r, g, b]: [number, number, number]): string {
+export function rgbToHexString([r, g, b]: ColorRgb): string {
   r = clamp(Math.round(r * 255), 0, 255);
   g = clamp(Math.round(g * 255), 0, 255);
   b = clamp(Math.round(b * 255), 0, 255);
@@ -77,12 +90,14 @@ export function rgbToHexString([r, g, b]: [number, number, number]): string {
 
 /**
  * Convert hexadecimal to RGB
- * Note: rgb values are contained in the interval [0, 1]
  *
- * @param  {number|string} hex Hexadecimal color
- * @returns {[number, number, number]} RGB color
+ * Note:
+ *  - RGB values are contained in the interval [0, 1]
+ *
+ * @param  {ColorHex|string} hex Hexadecimal color
+ * @returns {ColorRgb} RGB color
  */
-export function hexToRgb(hex: number | string): [number, number, number] {
+export function hexToRgb(hex: ColorHex | string): ColorRgb {
   if (typeof hex === 'number') {
     hex = Math.floor(hex);
   } else if (typeof hex === 'string') {
@@ -143,26 +158,35 @@ export function darken(hex: string, amount: number = 0): string {
 
 /**
  * Normalize an HSL string
- * Note: hsl values are contained in the intervals H: [0, 360], S: [0, 1], L: [0, 1]
+ *
+ * Note:
+ *   - HSL values are contained in the intervals:
+ *     - Hue:        [0, 360]
+ *     - Saturation: [0, 1]
+ *     - Lightness:  [0, 1]
  *
  * @param  {string} hsl HSL string (format: 'hsl(360, 100%, 100%)')
- * @returns {[number, number, number]} Normalized HSL color
+ * @returns {ColorHsl} Normalized HSL color
  */
-export function normalizeHslString(hsl: string): [number, number, number] {
+export function normalizeHslString(hsl: string): ColorHsl {
   const [h, s, l] = hsl.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
   return [h, s / 100, l / 100];
 }
 
 /**
  * Convert RGB to HSL
- * Notes:
- *  - rgb values are contained in the interval [0, 1]
- *  - hsl values are contained in the intervals H: [0, 360], S: [0, 1], L: [0, 1]
  *
- * @param  {[number, number, number]} rgb RGB color
- * @returns {[number, number, number]} HSL color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - HSL values are contained in the intervals:
+ *     - Hue:        [0, 360]
+ *     - Saturation: [0, 1]
+ *     - Lightness:  [0, 1]
+ *
+ * @param  {ColorHgb} rgb RGB color
+ * @returns {ColorHsl} HSL color
  */
-export function rgbToHsl([r, g, b]: [number, number, number]): [number, number, number] {
+export function rgbToHsl([r, g, b]: ColorRgb): ColorHsl {
   const l = Math.max(r, g, b);
   const s = l - Math.min(r, g, b);
   const h = s ? (l === r ? (g - b) / s : l === g ? 2 + (b - r) / s : 4 + (r - g) / s) : 0;
@@ -176,14 +200,18 @@ export function rgbToHsl([r, g, b]: [number, number, number]): [number, number, 
 
 /**
  * Convert HSL to RGB
- * Notes:
- *  - rgb values are contained in the interval [0, 1]
- *  - hsl values are contained in the intervals H: [0, 360], S: [0, 1], L: [0, 1]
  *
- * @param  {[number, number, number]} hsl HSL color
- * @returns {[number, number, number]} RGB color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - HSL values are contained in the intervals:
+ *     - Hue:        [0, 360]
+ *     - Saturation: [0, 1]
+ *     - Lightness:  [0, 1]
+ *
+ * @param  {ColorHsl} hsl HSL color
+ * @returns {ColorRgb} RGB color
  */
-export function hslToRgb([h, s, l]: [number, number, number]): [number, number, number] {
+export function hslToRgb([h, s, l]: ColorHsl): ColorRgb {
   const a = s * Math.min(l, 1 - l);
   const k = (v: number) => (v + h / 30) % 12;
   const f = (v: number) => l - a * Math.max(-1, Math.min(k(v) - 3, Math.min(9 - k(v), 1)));
@@ -196,14 +224,18 @@ export function hslToRgb([h, s, l]: [number, number, number]): [number, number, 
 
 /**
  * Convert RGB to HSB
- * Notes:
- *  - rgb values are contained in the interval [0, 1]
- *  - hsb values are contained in the intervals H: [0, 360], S: [0, 1], B: [0, 1]
  *
- * @param  {[number, number, number]} rgb RGB color
- * @returns {[number, number, number]} HSB color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - HSB values are contained in the intervals:
+ *     - Hue:        [0, 360]
+ *     - Saturation: [0, 1]
+ *     - Brightness: [0, 1]
+ *
+ * @param  {ColorRgb} rgb RGB color
+ * @returns {ColorHsb} HSB color
  */
-export function rgbToHsb([r, g, b]: [number, number, number]): [number, number, number] {
+export function rgbToHsb([r, g, b]: ColorRgb): ColorHsb {
   const max = Math.max(r, g, b);
   const min = Math.min(r, g, b);
   const delta = max - min;
@@ -214,55 +246,84 @@ export function rgbToHsb([r, g, b]: [number, number, number]): [number, number, 
 
 /**
  * Convert HSB to RGB
- * Notes:
- *  - rgb values are contained in the interval [0, 1]
- *  - hsb values are contained in the intervals H: [0, 360], S: [0, 1], B: [0, 1]
  *
- * @param  {[number, number, number]} hsb HSB color
- * @returns {[number, number, number]} RGB color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - HSB values are contained in the intervals:
+ *     - Hue:        [0, 360]
+ *     - Saturation: [0, 1]
+ *     - Brightness: [0, 1]
+ *
+ * @param  {ColorHsb} hsb HSB color
+ * @returns {ColorRgb} RGB color
  */
-export function hsbToRgb([h, s, b]: [number, number, number]): [number, number, number] {
+export function hsbToRgb([h, s, b]: ColorHsb): ColorRgb {
   const k = (v: number) => (v + h / 60) % 6;
   const f = (v: number) => b * (1 - s * Math.max(0, Math.min(k(v), 4 - k(v), 1)));
   return [f(5), f(3), f(1)];
 }
 
-// *********************************************
-// LAB & Hue-Chroma-Luminance (HCL) color spaces
-// *********************************************
+// ************************************************
+// L*a*b* & Hue-Chroma-Luminance (HCL) color spaces
+// ************************************************
 
 /**
- * Convert LAB to HCL
- * -> http://www.brucelindbloom.com/index.html?Eqn_Lab_to_LCH.html
+ * Convert L*a*b* to HCL
+ *   -> http://www.brucelindbloom.com/index.html?Eqn_Lab_to_LCH.html
  *
- * @param {[number, number, number]} lab LAB color
- * @returns {[number, number, number]} HCL color
+ * Notes:
+ *   - L*a*b* values are contained in the intervals:
+ *     - Lightness:        [0 à 100]
+ *     - a (green, red):   [~-128, ~+128]
+ *     - b (blue, yellow): [~-128, ~+128]
+ *   - HCL values are contained in the intervals:
+ *     - Hue:       [0, 360]
+ *     - Chroma:    [0, ~150]
+ *     - Lightness: [0, 100]
+ *
+ * @param {ColorLab} lab LAB color
+ * @returns {ColorHcl} HCL color
  */
-export function labToHcl([l, a, b]: [number, number, number]): [number, number, number] {
+export function labToHcl([l, a, b]: ColorLab): ColorHcl {
   const c = Math.sqrt(a * a + b * b);
   const h = abToHue(a, b);
   return [h, c, l];
 }
 
 /**
- * Convert HCL to LAB
- * -> http://www.brucelindbloom.com/index.html?Eqn_LCH_to_Lab.html
+ * Convert HCL to L*a*b*
+ *   -> http://www.brucelindbloom.com/index.html?Eqn_LCH_to_Lab.html
  *
- * @param {[number, number, number]} hcl HCL color
- * @returns {[number, number, number]} LAB color space
+ * Notes:
+ *   - HCL values are contained in the intervals:
+ *     - Hue:       [0, 360]
+ *     - Chroma:    [0, ~150]
+ *     - Lightness: [0, 100]
+ *   - L*a*b* values are contained in the intervals:
+ *     - Lightness:        [0 à 100]
+ *     - a (green, red):   [~-128, ~+128]
+ *     - b (blue, yellow): [~-128, ~+128]
+ *
+ * @param {ColorHcl} hcl HCL color
+ * @returns {ColorLab} LAB color
  */
-export function hclToLab([h, c, l]: [number, number, number]): [number, number, number] {
+export function hclToLab([h, c, l]: ColorHcl): ColorLab {
   const a = c * Math.cos(toRadians(h));
   const b = c * Math.sin(toRadians(h));
   return [l, a, b];
 }
 
 /**
- * Convert A and B of LAB to Hue of LCH
- * -> https://stackoverflow.com/questions/53733379/conversion-of-cielab-to-cielchab-not-yielding-correct-result
+ * Convert a and b of L*a*b* to Hue of HCL
+ *   -> https://stackoverflow.com/questions/53733379/conversion-of-cielab-to-cielchab-not-yielding-correct-result
  *
- * @param {number} a A value of LAB color
- * @param {number} b B value of LAB color
+ * Note:
+ *   - ab values are contained in the intervals:
+ *     - a (green, red):   [~-128, ~+128]
+ *     - b (blue, yellow): [~-128, ~+128]
+ *
+ * @param {number} a
+ * @param {number} b
  * @returns {number} Hue value
  */
 function abToHue(a: number, b: number): number {
@@ -292,7 +353,7 @@ function abToHue(a: number, b: number): number {
 }
 
 // ******************************************
-// LAB & RGB color spaces
+// L*a*b* & RGB color spaces
 // ******************************************
 const f1 = (v: number) => (v * v * v > 0.008856 ? v * v * v : (v - 16 / 116) / 7.787);
 const f2 = (v: number) => (v > 0.0031308 ? 1.055 * Math.pow(v, 1 / 2.4) - 0.055 : 12.92 * v);
@@ -300,12 +361,19 @@ const f3 = (v: number) => (v > 0.04045 ? Math.pow((v + 0.055) / 1.055, 2.4) : v 
 const f4 = (v: number) => (v > 0.008856 ? Math.pow(v, 1 / 3) : 7.787 * v + 16 / 116);
 
 /**
- * Converts LAB to RGB
+ * Convert L*a*b* to RGB
  *
- * @param {[number, number, number]} lab LAB color
- * @returns {[number, number, number]} RGB color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - L*a*b* values are contained in the intervals:
+ *     - Lightness:        [0 à 100]
+ *     - a (green, red):   [~-128, ~+128]
+ *     - b (blue, yellow): [~-128, ~+128]
+ *
+ * @param {ColorLab} lab L*a*b* color
+ * @returns {ColorRgb} RGB color
  */
-export function labToRgb([l, a, b]: [number, number, number]): [number, number, number] {
+export function labToRgb([l, a, b]: ColorLab): ColorRgb {
   let y = (l + 16) / 116;
   let x = a / 500 + y;
   let z = y - b / 200;
@@ -322,12 +390,19 @@ export function labToRgb([l, a, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Converts RGB to LAB
+ * Convert RGB to L*a*b*
  *
- * @param {[number, number, number]} rgb RGB color
- * @returns {[number, number, number]} LAB color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - L*a*b* values are contained in the intervals:
+ *     - Lightness:        [0 à 100]
+ *     - a (green, red):   [~-128, ~+128]
+ *     - b (blue, yellow): [~-128, ~+128]
+ *
+ * @param {ColorRgb} rgb RGB color
+ * @returns {ColorLab} L*a*b* color
  */
-export function rgbToLab([r, g, b]: [number, number, number]): [number, number, number] {
+export function rgbToLab([r, g, b]: ColorRgb): ColorLab {
   r = f3(r);
   g = f3(g);
   b = f3(b);
@@ -340,18 +415,24 @@ export function rgbToLab([r, g, b]: [number, number, number]): [number, number, 
 }
 
 /**
- * Get the delta from two LAB colors
+ * Get the delta from two L*a*b* colors
  *
- * @param {[number, number, number]} labA First LAB color
- * @param {[number, number, number]} labB Second LAB color
- * @returns {number} Delta
+ * Note:
+ *   - L*a*b* values are contained in the intervals:
+ *     - Lightness:        [0 à 100]
+ *     - a (green, red):   [~-128, ~+128]
+ *     - b (blue, yellow): [~-128, ~+128]
+ *
+ * @param {ColorLab} lab1 First L*a*b* color
+ * @param {ColorLab} lab2 Second L*a*b* color
+ * @returns {number}
  */
-export function deltaE(labA: [number, number, number], labB: [number, number, number]): number {
-  const deltaL = labA[0] - labB[0];
-  const deltaA = labA[1] - labB[1];
-  const deltaB = labA[2] - labB[2];
-  const c1 = Math.sqrt(labA[1] * labA[1] + labA[2] * labA[2]);
-  const c2 = Math.sqrt(labB[1] * labB[1] + labB[2] * labB[2]);
+export function deltaE(lab1: ColorLab, lab2: ColorLab): number {
+  const deltaL = lab1[0] - lab2[0];
+  const deltaA = lab1[1] - lab2[1];
+  const deltaB = lab1[2] - lab2[2];
+  const c1 = Math.sqrt(lab1[1] * lab1[1] + lab1[2] * lab1[2]);
+  const c2 = Math.sqrt(lab2[1] * lab2[1] + lab2[2] * lab2[2]);
   const deltaC = c1 - c2;
   let deltaH = deltaA * deltaA + deltaB * deltaB - deltaC * deltaC;
   deltaH = deltaH < 0 ? 0 : Math.sqrt(deltaH);
@@ -371,19 +452,33 @@ export function deltaE(labA: [number, number, number], labB: [number, number, nu
 /**
  * Convert RGB to HCL
  *
- * @param {[number, number, number]} rgb RGB color
- * @returns {[number, number, number]} HCL color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - HCL values are contained in the intervals:
+ *     - Hue:       [0, 360]
+ *     - Chroma:    [0, ~150]
+ *     - Luminance: [0, 100]
+ *
+ * @param {ColorRgb} rgb RGB color
+ * @returns {ColorHcl} HCL color
  */
-export function rgbToHcl([r, g, b]: [number, number, number]): [number, number, number] {
+export function rgbToHcl([r, g, b]: ColorRgb): ColorHcl {
   return labToHcl(rgbToLab([r, g, b]));
 }
 
 /**
  * Converts HCL to RGB
  *
- * @param {[number, number, number]} hcl RGB color
- * @returns {[number, number, number]} RGB color
+ * Notes:
+ *   - RGB values are contained in the interval [0, 1]
+ *   - HCL values are contained in the intervals:
+ *     - Hue:       [0, 360]
+ *     - Chroma:    [0, ~150]
+ *     - Luminance: [0, 100]
+ *
+ * @param {ColorHcl} hcl RGB color
+ * @returns {ColorRgb} RGB color
  */
-export function hclToRgb([h, c, l]: [number, number, number]): [number, number, number] {
+export function hclToRgb([h, c, l]: ColorHcl): ColorRgb {
   return labToRgb(hclToLab([h, c, l]));
 }

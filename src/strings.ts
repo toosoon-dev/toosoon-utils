@@ -13,7 +13,8 @@ export function capitalize(string: string): string {
 }
 
 /**
- * Convert a string to kebab-case: 'Hello world' -> 'hello-world'
+ * Convert a string to kebab-case
+ *  - 'Hello world' -> 'hello-world'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -30,7 +31,8 @@ export function toKebabCase(string: string): string {
 }
 
 /**
- * Convert a string to snake_case: 'Hello world' -> 'hello_world'
+ * Convert a string to snake_case
+ *   - 'Hello world' -> 'hello_world'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -47,7 +49,8 @@ export function toSnakeCase(string: string): string {
 }
 
 /**
- * Convert a string to camelCase: 'Hello world' -> 'helloWorld'
+ * Convert a string to camelCase
+ *   - 'Hello world' -> 'helloWorld'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -63,7 +66,8 @@ export function toCamelCase(string: string): string {
 }
 
 /**
- * Convert a string to PascalCase: 'Hello world' -> 'HelloWorld'
+ * Convert a string to PascalCase
+ *   - 'Hello world' -> 'HelloWorld'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -79,7 +83,8 @@ export function toPascalCase(string: string): string {
 }
 
 /**
- * Convert a string to Train-Case: 'Hello world' -> 'Hello-World'
+ * Convert a string to Train-Case
+ *   - 'Hello world' -> 'Hello-World'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -98,7 +103,8 @@ export function toTrainCase(string: string): string {
 }
 
 /**
- * Convert a string to CONSTANT_CASE: 'Hello world' -> 'HELLO_WORLD'
+ * Convert a string to CONSTANT_CASE
+ *   - 'Hello world' -> 'HELLO_WORLD'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -132,7 +138,7 @@ export function cleanPath(path: string): string {
  * Convert a path by ensuring it has a trailing slash
  *
  * @param {string} path Path to convert
- * @returns {string}
+ * @returns {string} Converted path
  */
 export function addTrailingSlash(path: string): string {
   if (path.match(/\.[a-z]{2,4}$/i) || path.match(/^mailto:/) || path.endsWith('/')) return path;
@@ -143,7 +149,7 @@ export function addTrailingSlash(path: string): string {
  * Convert a path by ensuring it has not a trailing slash
  *
  * @param {string} path Path to convert
- * @returns {string}
+ * @returns {string} Converted path
  */
 export function removeTrailingSlash(path: string): string {
   if (path.endsWith('/')) return path.slice(0, -1);

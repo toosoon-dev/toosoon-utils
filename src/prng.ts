@@ -143,7 +143,7 @@ export function random(prng: PRNGParameters): number {
  *
  * @param {PRNGParameters} prng PRNG parameters
  * @param {number} [probability=0.5] Probability to get true
- * @returns {boolean} Either `true` or `false`
+ * @returns {boolean} Either true or false
  */
 export function randomBoolean(prng: PRNGParameters, probability: number = 0.5): boolean {
   return random(prng) < probability;
@@ -199,8 +199,8 @@ export function randomHexColor(prng: PRNGParameters): string {
  * Pick a pseudo-random item from a given array
  *
  * @param {PRNGParameters} prng PRNG parameters
- * @param {T[]} array           Array to pick the item from
- * @returns {T|undefined} Random item picked
+ * @param {unknown[]} array     Array to pick the item from
+ * @returns {unknown|undefined} Random item picked
  */
 export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | undefined {
   if (array.length === 0) return undefined;
@@ -212,7 +212,7 @@ export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | u
  *
  * @param {PRNGParameters} prng PRNG parameters
  * @param {object} object       Object to pick the property from
- * @returns {T|undefined} Random item picked
+ * @returns {unknown|undefined} Random item picked
  */
 export function randomObjectProperty<T = unknown>(prng: PRNGParameters, object: Record<string, T>): T | undefined {
   const keys = Object.keys(object);

@@ -5,7 +5,7 @@ import type { Point2, Point3 } from './types';
  * Generate a random boolean (true or false)
  *
  * @param {number} [probability=0.5] Probability to get true
- * @returns {boolean} Either `true` or `false`
+ * @returns {boolean} Either true or false
  */
 export function randomBoolean(probability: number = 0.5): boolean {
   return Math.random() < probability;
@@ -56,8 +56,8 @@ export function randomHexColor(): string {
 /**
  * Pick a random item from a given array
  *
- * @param {T[]} array Array to pick the item from
- * @returns {T|undefined} Random item picked
+ * @param {unknown[]} array Array to pick the item from
+ * @returns {unknown|undefined} Random item picked
  */
 export function randomItem<T = unknown>(array: T[]): T | undefined {
   if (array.length === 0) return undefined;
@@ -68,7 +68,7 @@ export function randomItem<T = unknown>(array: T[]): T | undefined {
  * Pick a random property value from a given object
  *
  * @param {object} object Object to pick the property from
- * @returns {T|undefined} Random item picked
+ * @returns {unknown|undefined} Random item picked
  */
 export function randomObjectProperty<T = unknown>(object: Record<string, T>): T | undefined {
   const keys = Object.keys(object);

@@ -8,51 +8,53 @@ Utility class for manipulating a 2D vectors.
   - .isVector2: `true`
   - [.x](#vector-2-x): `number`
   - [.y](#vector-2-y): `number`
-  - [.set(x, y)](#vector-2-set): `this`
-  - [.setScalar(scalar)](#vector-2-set-scalar): `this`
-  - [.setX(x)](#vector-2-set-x): `this`
-  - [.setY(Y)](#vector-2-set-y): `this`
-  - [.setValue(index, value)](#vector-2-set-value): `this`
-  - [.getValue(index)](#vector-2-get-value): `number`
-  - [.add(vector)](#vector-2-add): `this`
-  - [.addScalar(scalar)](#vector-2-add-scalar): `this`
-  - [.sub(vector)](#vector-2-sub): `this`
-  - [.subScalar(scalar)](#vector-2-sub-scalar): `this`
-  - [.multiply(vector)](#vector-2-multiply): `this`
-  - [.multiplyScalar(scalar)](#vector-2-multiply-scalar): `this`
-  - [.divide(vector)](#vector-2-divide): `this`
-  - [.divideScalar(scalar)](#vector-2-divide-scalar): `this`
-  - [.min(vector)](#vector-2-min): `this`
-  - [.max(vector)](#vector-2-max): `this`
-  - [.clamp(min, max)](#vector-2-clamp): `this`
-  - [.clampScalar(min, max)](#vector-2-clamp-scalar): `this`
-  - [.floor()](#vector-2-floor): `this`
-  - [.ceil()](#vector-2-ceil): `this`
-  - [.round()](#vector-2-round): `this`
-  - [.trunc()](#vector-2-trunc): `this`
-  - [.negate()](#vector-2-negate): `this`
-  - [.rotateAround(center, angle)](#vector-2-rotate-around): `this`
-  - [.lerp(vector, t)](#vector-2-lerp): `this`
-  - [.normalize()](#vector-2-normalize): `this`
-  - [.applyMatrix(matrix)](#vector-2-apply-matrix): `this`
-  - [.setLength(length)](#vector-2-set-length): `this`
-  - [.length()](#vector-2-length): `number`
-  - [.squaredLength()](#vector-2-squared-length): `number`
-  - [.manhattanLength()](#vector-2-manhattan-length): `number`
-  - [.equals(vector)](#vector-2-equals): `boolean`
-  - [.collinear(vector1, vector2)](#vector-2-collinear): `boolean`
-  - [.dot(vector)](#vector-2-dot): `number`
-  - [.cross(vector)](#vector-2-cross): `number`
-  - [.angle()](#vector-2-angle): `number`
-  - [.angleTo(vector)](#vector-2-angle-to): `number`
-  - [.distanceTo(vector)](#vector-2-distance-to): `number`
-  - [.squaredDistanceTo(vector)](#vector-2-squared-distance-to): `number`
-  - [.manhattanDistanceTo(vector)](#vector-2-manhattan-distance-to): `number`
-  - [.toArray()](#vector-2-to-array): `[number, number]`
-  - [.fromArray(values)](#vector-2-from-array): `this`
-  - [.fromCircular(angle, radius)](#vector-2-from-circular): `this`
-  - [.copy(vector)](#vector-2-copy): `this`
-  - [.clone()](#vector-2-clone): `Vector2`
+  - [.width](#vector-width): `width`
+  - [.height](#vector-height): `height`
+  - [.set(x, y)](#vector-2-set-method): `this`
+  - [.setScalar(scalar)](#vector-2-set-scalar-method): `this`
+  - [.setX(x)](#vector-2-set-x-method): `this`
+  - [.setY(Y)](#vector-2-set-y-method): `this`
+  - [.setValue(index, value)](#vector-2-set-value-method): `this`
+  - [.getValue(index)](#vector-2-get-value-method): `number`
+  - [.add(vector)](#vector-2-add-method): `this`
+  - [.addScalar(scalar)](#vector-2-add-scalar-method): `this`
+  - [.sub(vector)](#vector-2-sub-method): `this`
+  - [.subScalar(scalar)](#vector-2-sub-scalar-method): `this`
+  - [.multiply(vector)](#vector-2-multiply-method): `this`
+  - [.multiplyScalar(scalar)](#vector-2-multiply-scalar-method): `this`
+  - [.divide(vector)](#vector-2-divide-method): `this`
+  - [.divideScalar(scalar)](#vector-2-divide-scalar-method): `this`
+  - [.min(vector)](#vector-2-min-method): `this`
+  - [.max(vector)](#vector-2-max-method): `this`
+  - [.clamp(min, max)](#vector-2-clamp-method): `this`
+  - [.clampScalar(min, max)](#vector-2-clamp-scalar-method): `this`
+  - [.floor()](#vector-2-floor-method): `this`
+  - [.ceil()](#vector-2-ceil-method): `this`
+  - [.round()](#vector-2-round-method): `this`
+  - [.trunc()](#vector-2-trunc-method): `this`
+  - [.negate()](#vector-2-negate-method): `this`
+  - [.rotateAround(center, angle)](#vector-2-rotate-around-method): `this`
+  - [.lerp(t, vector)](#vector-2-lerp-method): `this`
+  - [.normalize()](#vector-2-normalize-method): `this`
+  - [.applyMatrix(matrix)](#vector-2-apply-matrix-method): `this`
+  - [.setLength(length)](#vector-2-set-length-method): `this`
+  - [.length()](#vector-2-length-method): `number`
+  - [.squaredLength()](#vector-2-squared-length-method): `number`
+  - [.manhattanLength()](#vector-2-manhattan-length-method): `number`
+  - [.equals(vector)](#vector-2-equals-method): `boolean`
+  - [.collinear(vector1, vector2)](#vector-2-collinear-method): `boolean`
+  - [.dot(vector)](#vector-2-dot-method): `number`
+  - [.cross(vector)](#vector-2-cross-method): `number`
+  - [.angle()](#vector-2-angle-method): `number`
+  - [.angleTo(vector)](#vector-2-angle-to-method): `number`
+  - [.distanceTo(vector)](#vector-2-distance-to-method): `number`
+  - [.squaredDistanceTo(vector)](#vector-2-squared-distance-to-method): `number`
+  - [.manhattanDistanceTo(vector)](#vector-2-manhattan-distance-to-method): `number`
+  - [.toArray()](#vector-2-to-array-method): `[number, number]`
+  - [.fromArray(values)](#vector-2-from-array-method): `this`
+  - [.fromCircular(angle, radius)](#vector-2-from-circular-method): `this`
+  - [.copy(vector)](#vector-2-copy-method): `this`
+  - [.clone()](#vector-2-clone-method): `Vector2`
   - `static` [.add(vector1, vector2)](#vector-2-static-add-method)
   - `static` [.sub(vector1, vector2)](#vector-2-static-sub-method)
   - `static` [.multiply(vector1, vector2)](#vector-2-static-multiply-method)
@@ -95,9 +97,25 @@ Y-axis value of the vector.
 Vector2.y: number;
 ```
 
+##### width <a id="vector-2-width"></a>
+
+X-axis value of the vector.
+
+```ts
+Vector2.width: number;
+```
+
+##### height <a id="vector-2-height"></a>
+
+Y-axis value of the vector.
+
+```ts
+Vector2.height: number;
+```
+
 #### Methods
 
-##### set(x, y) <a id="vector-2-set"></a>
+##### set(x, y) <a id="vector-2-set-method"></a>
 
 Set the vector values.
 
@@ -108,17 +126,17 @@ Set the vector values.
 Vector2.set(x: number, y: number): this;
 ```
 
-##### setScalar(scalar) <a id="vector-2-set-scalar"></a>
+##### setScalar(scalar) <a id="vector-2-set-scalar-method"></a>
 
 Set a given scalar value to all values of the vector.
 
-- `scalar`: Value to set for all vector values.
+- `scalar`: Value to set for all values.
 
 ```ts
 Vector2.setScalar(scalar: number): this;
 ```
 
-##### setX(x) <a id="vector-2-set-x"></a>
+##### setX(x) <a id="vector-2-set-x-method"></a>
 
 Set the vector X-axis value.
 
@@ -128,7 +146,7 @@ Set the vector X-axis value.
 Vector2.setX(x: number): this;
 ```
 
-##### setY(y) <a id="vector-2-set-y"></a>
+##### setY(y) <a id="vector-2-set-y-method"></a>
 
 Set the vector Y-axis value.
 
@@ -138,7 +156,7 @@ Set the vector Y-axis value.
 Vector2.setY(y: number): this;
 ```
 
-##### setValue(index, value) <a id="vector-2-set-value"></a>
+##### setValue(index, value) <a id="vector-2-set-value-method"></a>
 
 Set a given value from the vector.
 
@@ -149,7 +167,7 @@ Set a given value from the vector.
 Vector2.setValue(index: 'x' | 'y' | number, value: number): this;
 ```
 
-##### getValue(index) <a id="vector-2-get-value"></a>
+##### getValue(index) <a id="vector-2-get-value-method"></a>
 
 Return a value from the vector.
 
@@ -159,7 +177,7 @@ Return a value from the vector.
 Vector2.getValue(index: 'x' | 'y' | number): number;
 ```
 
-##### add(vector) <a id="vector-2-add"></a>
+##### add(vector) <a id="vector-2-add-method"></a>
 
 Add a given vector to the vector.
 
@@ -169,7 +187,7 @@ Add a given vector to the vector.
 Vector2.add(vector: Vector2 | [number, number]): this;
 ```
 
-##### addScalar(scalar) <a id="vector-2-add-scalar"></a>
+##### addScalar(scalar) <a id="vector-2-add-scalar-method"></a>
 
 Add a given scalar value to all values of the vector.
 
@@ -179,7 +197,7 @@ Add a given scalar value to all values of the vector.
 Vector2.addScalar(scalar: number): this;
 ```
 
-##### sub(vector) <a id="vector-2-sub"></a>
+##### sub(vector) <a id="vector-2-sub-method"></a>
 
 Subtract a given vector to the vector.
 
@@ -189,7 +207,7 @@ Subtract a given vector to the vector.
 Vector2.sub(vector: Vector2 | [number, number]): this;
 ```
 
-##### subScalar(scalar) <a id="vector-2-sub-scalar"></a>
+##### subScalar(scalar) <a id="vector-2-sub-scalar-method"></a>
 
 Subtract a given scalar value to all values of the vector.
 
@@ -199,7 +217,7 @@ Subtract a given scalar value to all values of the vector.
 Vector2.subScalar(scalar: number): this;
 ```
 
-##### multiply(vector) <a id="vector-2-multiply"></a>
+##### multiply(vector) <a id="vector-2-multiply-method"></a>
 
 Multiply a given vector to the vector.
 
@@ -209,7 +227,7 @@ Multiply a given vector to the vector.
 Vector2.multiply(vector: Vector2 | [number, number]): this;
 ```
 
-##### multiplyScalar(scalar) <a id="vector-2-multiply-scalar"></a>
+##### multiplyScalar(scalar) <a id="vector-2-multiply-scalar-method"></a>
 
 Multiply a given scalar value to all values of the vector.
 
@@ -219,7 +237,7 @@ Multiply a given scalar value to all values of the vector.
 Vector2.multiplyScalar(scalar: number): this;
 ```
 
-##### divide(vector) <a id="vector-2-divide"></a>
+##### divide(vector) <a id="vector-2-divide-method"></a>
 
 Divide a given vector to the vector.
 
@@ -229,7 +247,7 @@ Divide a given vector to the vector.
 Vector2.divide(vector: Vector2 | [number, number]): this;
 ```
 
-##### divideScalar(scalar) <a id="vector-2-divide-scalar"></a>
+##### divideScalar(scalar) <a id="vector-2-divide-scalar-method"></a>
 
 Divide a given scalar value to all values of the vector.
 
@@ -239,7 +257,7 @@ Divide a given scalar value to all values of the vector.
 Vector2.divideScalar(scalar: number): this;
 ```
 
-##### min(vector) <a id="vector-2-min"></a>
+##### min(vector) <a id="vector-2-min-method"></a>
 
 Set the vector values to the min values compared to a given vector.
 
@@ -249,7 +267,7 @@ Set the vector values to the min values compared to a given vector.
 Vector2.min(vector: Vector2 | [number, number]): this;
 ```
 
-##### max(vector) <a id="vector-2-max"></a>
+##### max(vector) <a id="vector-2-max-method"></a>
 
 Set the vector values to the max values compared to a given vector.
 
@@ -259,7 +277,7 @@ Set the vector values to the max values compared to a given vector.
 Vector2.max(vector: Vector2 | [number, number]): this;
 ```
 
-##### clamp(min, max) <a id="vector-2-clamp"></a>
+##### clamp(min, max) <a id="vector-2-clamp-method"></a>
 
 Clamp the vector values to given boundaries.
 
@@ -270,7 +288,7 @@ Clamp the vector values to given boundaries.
 Vector2.clamp(min: Vector2 | [number, number], max: Vector2 | [number, number]): this;
 ```
 
-##### clampScalar(min, max) <a id="vector-2-clamp-scalar"></a>
+##### clampScalar(min, max) <a id="vector-2-clamp-scalar-method"></a>
 
 Clamp the vector values to given scalar values.
 
@@ -281,7 +299,7 @@ Clamp the vector values to given scalar values.
 Vector2.clampScalar(min: number, max: number): this;
 ```
 
-##### floor() <a id="vector-2-floor"></a>
+##### floor() <a id="vector-2-floor-method"></a>
 
 Round down to the nearest integer value the vector values.
 
@@ -289,7 +307,7 @@ Round down to the nearest integer value the vector values.
 Vector2.floor(): this;
 ```
 
-##### ceil() <a id="vector-2-ceil"></a>
+##### ceil() <a id="vector-2-ceil-method"></a>
 
 Round up to the nearest integer value the vector values.
 
@@ -297,7 +315,7 @@ Round up to the nearest integer value the vector values.
 Vector2.ceil(): this;
 ```
 
-##### round() <a id="vector-2-round"></a>
+##### round() <a id="vector-2-round-method"></a>
 
 Round to the nearest integer value the vector values.
 
@@ -305,7 +323,7 @@ Round to the nearest integer value the vector values.
 Vector2.round(): this;
 ```
 
-##### trunc() <a id="vector-2-trunc"></a>
+##### trunc() <a id="vector-2-trunc-method"></a>
 
 Remove any fractional digits of the vector values.
 
@@ -313,7 +331,7 @@ Remove any fractional digits of the vector values.
 Vector2.trunc(): this;
 ```
 
-##### negate() <a id="vector-2-negate"></a>
+##### negate() <a id="vector-2-negate-method"></a>
 
 Set the vector values to their negative values.
 
@@ -321,7 +339,7 @@ Set the vector values to their negative values.
 Vector2.negate(): this;
 ```
 
-##### rotateAround(center, angle) <a id="vector-2-rotate-around"></a>
+##### rotateAround(center, angle) <a id="vector-2-rotate-around-method"></a>
 
 Rotate the vector around a given center by the given angle.
 
@@ -332,18 +350,18 @@ Rotate the vector around a given center by the given angle.
 Vector2.rotateAround(center: Vector2 | [number, number], angle: number): this;
 ```
 
-##### lerp(vector, t) <a id="vector-2-lerp"></a>
+##### lerp(t, vector) <a id="vector-2-lerp-method"></a>
 
-Interpolate the vector values between a given vector and the vector.
+Linearly interpolate the vector values towards a given vector values.
 
-- `vector`: Vector to interpolate values towards.
 - `t`: Normalized time value to interpolate.
+- `vector`: Vector to interpolate values towards.
 
 ```ts
-Vector2.lerp(vector: Vector2 | [number, number], t: number): this;
+Vector2.lerp(t: number, vector: Vector2 | [number, number]): this;
 ```
 
-##### normalize() <a id="vector-2-normalize"></a>
+##### normalize() <a id="vector-2-normalize-method"></a>
 
 Convert the vector to a unit vector.
 
@@ -351,7 +369,7 @@ Convert the vector to a unit vector.
 Vector2.normalize(): this;
 ```
 
-##### applyMatrix(matrix) <a id="vector-2-apply-matrix"></a>
+##### applyMatrix(matrix) <a id="vector-2-apply-matrix-method"></a>
 
 Transform the vector by a given matrix.
 
@@ -361,7 +379,7 @@ Transform the vector by a given matrix.
 Vector2.applyMatrix(matrix: DOMMatrix): this;
 ```
 
-##### setLength(length) <a id="vector-2-set-length"></a>
+##### setLength(length) <a id="vector-2-set-length-method"></a>
 
 Set the vector values to the same direction but with a given length.
 
@@ -371,7 +389,7 @@ Set the vector values to the same direction but with a given length.
 Vector2.setLength(length: number): this;
 ```
 
-##### length() <a id="vector-2-length"></a>
+##### length() <a id="vector-2-length-method"></a>
 
 Calculate the Euclidean length of the vector.
 
@@ -379,7 +397,7 @@ Calculate the Euclidean length of the vector.
 Vector2.length(): number;
 ```
 
-##### squaredLength() <a id="vector-2-squared-length"></a>
+##### squaredLength() <a id="vector-2-squared-length-method"></a>
 
 Calculate the squared length of the vector.
 
@@ -387,7 +405,7 @@ Calculate the squared length of the vector.
 Vector2.squaredLength(): number;
 ```
 
-##### manhattanLength() <a id="vector-2-manhattan-length"></a>
+##### manhattanLength() <a id="vector-2-manhattan-length-method"></a>
 
 Calculate the Manhattan length of the vector.
 
@@ -395,7 +413,7 @@ Calculate the Manhattan length of the vector.
 Vector2.manhattanLength(): number;
 ```
 
-##### equals(vector) <a id="vector-2-equals"></a>
+##### equals(vector) <a id="vector-2-equals-method"></a>
 
 Check if the vector is equal with a given vector.
 
@@ -405,7 +423,7 @@ Check if the vector is equal with a given vector.
 Vector2.equals(vector: Vector2 | [number, number]): boolean;
 ```
 
-##### collinear(v1, v2) <a id="vector-2-collinear"></a>
+##### collinear(v1, v2) <a id="vector-2-collinear-method"></a>
 
 Check if the vector is collinear with given vectors.
 
@@ -416,7 +434,7 @@ Check if the vector is collinear with given vectors.
 Vector2.collinear(v1: Vector2 | [number, number], v2: Vector2 | [number, number]): boolean;
 ```
 
-##### dot(vector) <a id="vector-2-dot"></a>
+##### dot(vector) <a id="vector-2-dot-method"></a>
 
 Calculate the dot product of a given vector with the vector.
 
@@ -426,7 +444,7 @@ Calculate the dot product of a given vector with the vector.
 Vector2.dot(vector: Vector2 | [number, number]): number;
 ```
 
-##### cross(vector) <a id="vector-2-cross"></a>
+##### cross(vector) <a id="vector-2-cross-method"></a>
 
 Calculate the cross product of a given vector with the vector.
 
@@ -436,7 +454,7 @@ Calculate the cross product of a given vector with the vector.
 Vector2.cross(vector: Vector2 | [number, number]): number;
 ```
 
-##### angle() <a id="vector-2-angle"></a>
+##### angle() <a id="vector-2-angle-method"></a>
 
 Calculate the angle of the vector with respect to the positive X-axis.
 
@@ -444,7 +462,7 @@ Calculate the angle of the vector with respect to the positive X-axis.
 Vector2.angle(): number;
 ```
 
-##### angleTo(vector) <a id="vector-2-angle-to"></a>
+##### angleTo(vector) <a id="vector-2-angle-to-method"></a>
 
 Calculate the angle between a given vector and the vector.
 
@@ -454,7 +472,7 @@ Calculate the angle between a given vector and the vector.
 Vector2.angleTo(vector: Vector2 | [number, number]): number;
 ```
 
-##### distanceTo(vector) <a id="vector-2-distance-to"></a>
+##### distanceTo(vector) <a id="vector-2-distance-to-method"></a>
 
 Calculate the Euclidean distance from a given vector to the vector.
 
@@ -464,7 +482,7 @@ Calculate the Euclidean distance from a given vector to the vector.
 Vector2.distanceTo(vector: Vector2 | [number, number]): number;
 ```
 
-##### squaredDistanceTo(vector) <a id="vector-2-squared-distance-to"></a>
+##### squaredDistanceTo(vector) <a id="vector-2-squared-distance-to-method"></a>
 
 Calculate the squared distance from a given vector to the vector.
 
@@ -474,7 +492,7 @@ Calculate the squared distance from a given vector to the vector.
 Vector2.squaredDistanceTo(vector: Vector2 | [number, number]): number;
 ```
 
-##### manhattanDistanceTo(vector) <a id="vector-2-manhattan-distance-to"></a>
+##### manhattanDistanceTo(vector) <a id="vector-2-manhattan-distance-to-method"></a>
 
 Calculate the Manhattan distance from a given vector to the vector.
 
@@ -484,7 +502,7 @@ Calculate the Manhattan distance from a given vector to the vector.
 Vector2.manhattanDistanceTo(vector: Vector2 | [number, number]): number;
 ```
 
-##### toArray() <a id="vector-2-to-array"></a>
+##### toArray() <a id="vector-2-to-array-method"></a>
 
 Return the vector values into an array.
 
@@ -492,7 +510,7 @@ Return the vector values into an array.
 Vector2.toArray(): [number, number];
 ```
 
-##### fromArray(values) <a id="vector-2-from-array"></a>
+##### fromArray(values) <a id="vector-2-from-array-method"></a>
 
 Set the vector values from a given array.
 
@@ -502,7 +520,7 @@ Set the vector values from a given array.
 Vector2.fromArray(values: number[]): this;
 ```
 
-##### fromCircularCoords(angle, radius?) <a id="vector-2-from-circular"></a>
+##### fromCircularCoords(angle, radius?) <a id="vector-2-from-circular-method"></a>
 
 Set the vector values from given circular coordinates.
 
@@ -513,7 +531,7 @@ Set the vector values from given circular coordinates.
 Vector2.fromCircularCoords(angle: number, radius?: number): this;
 ```
 
-##### copy(vector) <a id="vector-2-copy"></a>
+##### copy(vector) <a id="vector-2-copy-method"></a>
 
 Copy the values of a given vector to the vector.
 
@@ -523,7 +541,7 @@ Copy the values of a given vector to the vector.
 Vector2.copy(vector: Vector2 | [number, number]): this;
 ```
 
-##### clone() <a id="vector-2-clone"></a>
+##### clone() <a id="vector-2-clone-method"></a>
 
 Create a new 2D vector with copied values from the vector.
 
@@ -589,7 +607,7 @@ static Vector2.rotate(vector: Vector2 | [number, number], center: Vector2 | [num
 
 ##### `static` lerp(t, min, max) <a id="vector-2-static-lerp-method"></a>
 
-Interpolate a point between two vectors.
+Linearly interpolate a point between two vectors.
 
 - `t`: Normalized time value to interpolate.
 - `min`: Minimum boundaries.
@@ -737,52 +755,52 @@ Utility class for manipulating a 3D vectors.
   - [.x](#vector-3-x): `number`
   - [.y](#vector-3-y): `number`
   - [.z](#vector-3-z): `number`
-  - [.set(x, y, z)](#vector-3-set): `this`
-  - [.setScalar(scalar)](#vector-3-set-scalar): `this`
-  - [.setX(x)](#vector-3-set-x): `this`
-  - [.setY(y)](#vector-3-set-y): `this`
-  - [.setZ(z)](#vector-3-set-z): `this`
-  - [.setValue(index, value)](#vector-3-set-value): `this`
-  - [.getValue(index)](#vector-3-get-value): `number`
-  - [.add(vector)](#vector-3-add): `this`
-  - [.addScalar(scalar)](#vector-3-add-scalar): `this`
-  - [.sub(vector)](#vector-3-sub): `this`
-  - [.subScalar(scalar)](#vector-3-sub-scalar): `this`
-  - [.multiply(vector)](#vector-3-multiply): `this`
-  - [.multiplyScalar(scalar)](#vector-3-multiply-scalar): `this`
-  - [.divide(vector)](#vector-3-divide): `this`
-  - [.divideScalar(scalar)](#vector-3-divide-scalar): `this`
-  - [.min(vector)](#vector-3-min): `this`
-  - [.max(vector)](#vector-3-max): `this`
-  - [.clamp(min, max)](#vector-3-clamp): `this`
-  - [.clampScalar(min, max)](#vector-3-clamp-scalar): `this`
-  - [.floor()](#vector-3-floor): `this`
-  - [.ceil()](#vector-3-ceil): `this`
-  - [.round()](#vector-3-round): `this`
-  - [.trunc()](#vector-3-trunc): `this`
-  - [.negate()](#vector-3-negate): `this`
-  - [.lerp(vector, t)](#vector-3-lerp): `this`
-  - [.normalize()](#vector-3-normalize): `this`
-  - [.applyMatrix(matrix)](#vector-3-apply-matrix): `this`
-  - [.setLength(length)](#vector-3-set-length): `this`
-  - [.projectOnVector(vector)](#vector-3-project-on-vector): `this`
-  - [.length()](#vector-3-length): `number`
-  - [.squaredLength()](#vector-3-squared-length): `number`
-  - [.manhattanLength()](#vector-3-manhattan-length): `number`
-  - [.equals(vector)](#vector-3-equals): `boolean`
-  - [.collinear(vector1, vector2)](#vector-3-collinear): `boolean`
-  - [.dot(vector)](#vector-3-dot): `number`
-  - [.cross(vector)](#vector-3-cross): `[number, number, number]`
-  - [.angleTo(vector)](#vector-3-angle-to): `number`
-  - [.distanceTo(vector)](#vector-3-distance-to): `number`
-  - [.squaredDistanceTo(vector)](#vector-3-squared-distance-to): `number`
-  - [.manhattanDistanceTo(vector)](#vector-3-manhattan-distance-to): `number`
-  - [.toArray()](#vector-3-to-array): `[number, number, number]`
-  - [.fromArray(values)](#vector-3-from-array): `this`
-  - [.fromSphericalCoords(radius, phi, theta)](#vector-3-from-spherical): `this`
-  - [.fromCylindricalCoords(radius, theta, y)](#vector-3-from-cylindrical): `this`
-  - [.copy(vector)](#vector-3-copy): `this`
-  - [.clone()](#vector-3-clone): `Vector3`
+  - [.set(x, y, z)](#vector-3-set-method): `this`
+  - [.setScalar(scalar)](#vector-3-set-scalar-method): `this`
+  - [.setX(x)](#vector-3-set-x-method): `this`
+  - [.setY(y)](#vector-3-set-y-method): `this`
+  - [.setZ(z)](#vector-3-set-z-method): `this`
+  - [.setValue(index, value)](#vector-3-set-value-method): `this`
+  - [.getValue(index)](#vector-3-get-value-method): `number`
+  - [.add(vector)](#vector-3-add-method): `this`
+  - [.addScalar(scalar)](#vector-3-add-scalar-method): `this`
+  - [.sub(vector)](#vector-3-sub-method): `this`
+  - [.subScalar(scalar)](#vector-3-sub-scalar-method): `this`
+  - [.multiply(vector)](#vector-3-multiply-method): `this`
+  - [.multiplyScalar(scalar)](#vector-3-multiply-scalar-method): `this`
+  - [.divide(vector)](#vector-3-divide-method): `this`
+  - [.divideScalar(scalar)](#vector-3-divide-scalar-method): `this`
+  - [.min(vector)](#vector-3-min-method): `this`
+  - [.max(vector)](#vector-3-max-method): `this`
+  - [.clamp(min, max)](#vector-3-clamp-method): `this`
+  - [.clampScalar(min, max)](#vector-3-clamp-scalar-method): `this`
+  - [.floor()](#vector-3-floor-method): `this`
+  - [.ceil()](#vector-3-ceil-method): `this`
+  - [.round()](#vector-3-round-method): `this`
+  - [.trunc()](#vector-3-trunc-method): `this`
+  - [.negate()](#vector-3-negate-method): `this`
+  - [.lerp(t, vector)](#vector-3-lerp-method): `this`
+  - [.normalize()](#vector-3-normalize-method): `this`
+  - [.applyMatrix(matrix)](#vector-3-apply-matrix-method): `this`
+  - [.setLength(length)](#vector-3-set-length-method): `this`
+  - [.projectOnVector(vector)](#vector-3-project-on-vector-method): `this`
+  - [.length()](#vector-3-length-method): `number`
+  - [.squaredLength()](#vector-3-squared-length-method): `number`
+  - [.manhattanLength()](#vector-3-manhattan-length-method): `number`
+  - [.equals(vector)](#vector-3-equals-method): `boolean`
+  - [.collinear(vector1, vector2)](#vector-3-collinear-method): `boolean`
+  - [.dot(vector)](#vector-3-dot-method): `number`
+  - [.cross(vector)](#vector-3-cross-method): `[number, number, number]`
+  - [.angleTo(vector)](#vector-3-angle-to-method): `number`
+  - [.distanceTo(vector)](#vector-3-distance-to-method): `number`
+  - [.squaredDistanceTo(vector)](#vector-3-squared-distance-to-method): `number`
+  - [.manhattanDistanceTo(vector)](#vector-3-manhattan-distance-to-method): `number`
+  - [.toArray()](#vector-3-to-array-method): `[number, number, number]`
+  - [.fromArray(values)](#vector-3-from-array-method): `this`
+  - [.fromSphericalCoords(radius, phi, theta)](#vector-3-from-spherical-method): `this`
+  - [.fromCylindricalCoords(radius, theta, y)](#vector-3-from-cylindrical-method): `this`
+  - [.copy(vector)](#vector-3-copy-method): `this`
+  - [.clone()](#vector-3-clone-method): `Vector3`
   - `static` [.add(vector1, vector2)](#vector-3-static-add-method)
   - `static` [.sub(vector1, vector2)](#vector-3-static-sub-method)
   - `static` [.multiply(vector1, vector2)](#vector-3-static-multiply-method)
@@ -835,7 +853,7 @@ Vector3.z: number;
 
 #### Methods
 
-##### set(x, y, z) <a id="vector-3-set"></a>
+##### set(x, y, z) <a id="vector-3-set-method"></a>
 
 Set the vector values.
 
@@ -847,17 +865,17 @@ Set the vector values.
 Vector3.set(x: number, y: number, z: number): this;
 ```
 
-##### setScalar(scalar) <a id="vector-3-set-scalar"></a>
+##### setScalar(scalar) <a id="vector-3-set-scalar-method"></a>
 
 Set a given scalar value to all values of the vector.
 
-- `scalar`: Value to set for all vector values.
+- `scalar`: Value to set for all values.
 
 ```ts
 Vector3.setScalar(scalar: number): this;
 ```
 
-##### setX(x) <a id="vector-3-set-x"></a>
+##### setX(x) <a id="vector-3-set-x-method"></a>
 
 Set the vector X-axis value.
 
@@ -867,7 +885,7 @@ Set the vector X-axis value.
 Vector3.setX(x: number): this;
 ```
 
-##### setY(y) <a id="vector-3-set-y"></a>
+##### setY(y) <a id="vector-3-set-y-method"></a>
 
 Set the vector Y-axis value.
 
@@ -877,7 +895,7 @@ Set the vector Y-axis value.
 Vector3.setY(y: number): this;
 ```
 
-##### setZ(z) <a id="vector-3-set-z"></a>
+##### setZ(z) <a id="vector-3-set-z-method"></a>
 
 Set the vector Z-axis value.
 
@@ -887,7 +905,7 @@ Set the vector Z-axis value.
 Vector3.setZ(z: number): this;
 ```
 
-##### setValue(index, value) <a id="vector-3-set-value"></a>
+##### setValue(index, value) <a id="vector-3-set-value-method"></a>
 
 Set a given value of the vector.
 
@@ -898,7 +916,7 @@ Set a given value of the vector.
 Vector3.setValue(index: 'x' | 'y' | 'z' | number, value: number): this;
 ```
 
-##### getValue(index) <a id="vector-3-get-value"></a>
+##### getValue(index) <a id="vector-3-get-value-method"></a>
 
 Return a value from the vector.
 
@@ -908,7 +926,7 @@ Return a value from the vector.
 Vector3.getValue(index: 'x' | 'y' | 'z' | number): number;
 ```
 
-##### add(vector) <a id="vector-3-add"></a>
+##### add(vector) <a id="vector-3-add-method"></a>
 
 Add a given vector to the vector.
 
@@ -918,7 +936,7 @@ Add a given vector to the vector.
 Vector3.add(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### addScalar(scalar) <a id="vector-3-add-scalar"></a>
+##### addScalar(scalar) <a id="vector-3-add-scalar-method"></a>
 
 Add a given scalar value to all values of the vector.
 
@@ -928,7 +946,7 @@ Add a given scalar value to all values of the vector.
 Vector3.addScalar(scalar: number): this;
 ```
 
-##### sub(vector) <a id="vector-3-sub"></a>
+##### sub(vector) <a id="vector-3-sub-method"></a>
 
 Subtract a given vector to the vector.
 
@@ -938,7 +956,7 @@ Subtract a given vector to the vector.
 Vector3.sub(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### subScalar(scalar) <a id="vector-3-sub-scalar"></a>
+##### subScalar(scalar) <a id="vector-3-sub-scalar-method"></a>
 
 Subtract a given scalar value to all values of the vector.
 
@@ -948,7 +966,7 @@ Subtract a given scalar value to all values of the vector.
 Vector3.subScalar(scalar: number): this;
 ```
 
-##### multiply(vector) <a id="vector-3-multiply"></a>
+##### multiply(vector) <a id="vector-3-multiply-method"></a>
 
 Multiply a given vector to the vector.
 
@@ -958,7 +976,7 @@ Multiply a given vector to the vector.
 Vector3.multiply(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### multiplyScalar(scalar) <a id="vector-3-multiply-scalar"></a>
+##### multiplyScalar(scalar) <a id="vector-3-multiply-scalar-method"></a>
 
 Multiply a given scalar value to all values of the vector.
 
@@ -968,7 +986,7 @@ Multiply a given scalar value to all values of the vector.
 Vector3.multiplyScalar(scalar: number): this;
 ```
 
-##### divide(vector) <a id="vector-3-divide"></a>
+##### divide(vector) <a id="vector-3-divide-method"></a>
 
 Divide a given vector to the vector.
 
@@ -978,7 +996,7 @@ Divide a given vector to the vector.
 Vector3.divide(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### divideScalar(scalar) <a id="vector-3-divide-scalar"></a>
+##### divideScalar(scalar) <a id="vector-3-divide-scalar-method"></a>
 
 Divide a given scalar value to all values of the vector.
 
@@ -988,7 +1006,7 @@ Divide a given scalar value to all values of the vector.
 Vector3.divideScalar(scalar: number): this;
 ```
 
-##### min(vector) <a id="vector-3-min"></a>
+##### min(vector) <a id="vector-3-min-method"></a>
 
 Set the vector values to the min values compared to a given vector.
 
@@ -998,7 +1016,7 @@ Set the vector values to the min values compared to a given vector.
 Vector3.min(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### max(vector) <a id="vector-3-max"></a>
+##### max(vector) <a id="vector-3-max-method"></a>
 
 Set the vector values to the max values compared to a given vector.
 
@@ -1008,7 +1026,7 @@ Set the vector values to the max values compared to a given vector.
 Vector3.max(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### clamp(min, max) <a id="vector-3-clamp"></a>
+##### clamp(min, max) <a id="vector-3-clamp-method"></a>
 
 Clamp the vector values to given boundaries.
 
@@ -1019,7 +1037,7 @@ Clamp the vector values to given boundaries.
 Vector3.clamp(min: Vector3 | [number, number, number], max: Vector3 | [number, number, number]): this;
 ```
 
-##### clampScalar(min, max) <a id="vector-3-clamp-scalar"></a>
+##### clampScalar(min, max) <a id="vector-3-clamp-scalar-method"></a>
 
 Clamp the vector values to given scalar values.
 
@@ -1030,7 +1048,7 @@ Clamp the vector values to given scalar values.
 Vector3.clampScalar(min: number, max: number): this;
 ```
 
-##### floor() <a id="vector-3-floor"></a>
+##### floor() <a id="vector-3-floor-method"></a>
 
 Round down to the nearest integer value the vector values.
 
@@ -1038,7 +1056,7 @@ Round down to the nearest integer value the vector values.
 Vector3.floor(): this;
 ```
 
-##### ceil() <a id="vector-3-ceil"></a>
+##### ceil() <a id="vector-3-ceil-method"></a>
 
 Round up to the nearest integer value the vector values.
 
@@ -1046,7 +1064,7 @@ Round up to the nearest integer value the vector values.
 Vector3.ceil(): this;
 ```
 
-##### round() <a id="vector-3-round"></a>
+##### round() <a id="vector-3-round-method"></a>
 
 Round to the nearest integer value the vector values.
 
@@ -1054,7 +1072,7 @@ Round to the nearest integer value the vector values.
 Vector3.round(): this;
 ```
 
-##### trunc() <a id="vector-3-trunc"></a>
+##### trunc() <a id="vector-3-trunc-method"></a>
 
 Remove any fractional digits of the vector values.
 
@@ -1062,7 +1080,7 @@ Remove any fractional digits of the vector values.
 Vector3.trunc(): this;
 ```
 
-##### negate() <a id="vector-3-negate"></a>
+##### negate() <a id="vector-3-negate-method"></a>
 
 Set the vector values to their negative values.
 
@@ -1070,18 +1088,18 @@ Set the vector values to their negative values.
 Vector3.negate(): this;
 ```
 
-##### lerp(vector, t) <a id="vector-3-lerp"></a>
+##### lerp(t, vector) <a id="vector-3-lerp-method"></a>
 
-Interpolate the vector values between a given vector and the vector.
+Linearly interpolate the vector values towards a given vector values.
 
-- `vector`: Vector to interpolate values towards.
 - `t`: Normalized time value to interpolate.
+- `vector`: Vector to interpolate values towards.
 
 ```ts
-Vector3.lerp(vector: Vector3 | [number, number, number], t: number): this;
+Vector3.lerp(t: number, vector: Vector3 | [number, number, number]): this;
 ```
 
-##### normalize() <a id="vector-3-normalize"></a>
+##### normalize() <a id="vector-3-normalize-method"></a>
 
 Convert the vector to a unit vector.
 
@@ -1089,7 +1107,7 @@ Convert the vector to a unit vector.
 Vector3.normalize(): this;
 ```
 
-##### applyMatrix(matrix) <a id="vector-3-apply-matrix"></a>
+##### applyMatrix(matrix) <a id="vector-3-apply-matrix-method"></a>
 
 Transform the vector by a given matrix.
 
@@ -1099,7 +1117,7 @@ Transform the vector by a given matrix.
 Vector3.applyMatrix(matrix: DOMMatrix): this;
 ```
 
-##### setLength(length) <a id="vector-3-set-length"></a>
+##### setLength(length) <a id="vector-3-set-length-method"></a>
 
 Set the vector values to the same direction but with a given length.
 
@@ -1109,7 +1127,7 @@ Set the vector values to the same direction but with a given length.
 Vector3.setLength(length: number): this;
 ```
 
-##### projectOnVector(vector) <a id="vector-3-project-on-vector"></a>
+##### projectOnVector(vector) <a id="vector-3-project-on-vector-method"></a>
 
 Project the vector onto a given vector.
 
@@ -1119,7 +1137,7 @@ Project the vector onto a given vector.
 Vector3.projectOnVector(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### length() <a id="vector-3-length"></a>
+##### length() <a id="vector-3-length-method"></a>
 
 Calculate the Euclidean length of the vector.
 
@@ -1127,7 +1145,7 @@ Calculate the Euclidean length of the vector.
 Vector3.length(): number;
 ```
 
-##### squaredLength() <a id="vector-3-squared-length"></a>
+##### squaredLength() <a id="vector-3-squared-length-method"></a>
 
 Calculate the squared length of the vector.
 
@@ -1135,7 +1153,7 @@ Calculate the squared length of the vector.
 Vector3.squaredLength(): number;
 ```
 
-##### manhattanLength() <a id="vector-3-manhattan-length"></a>
+##### manhattanLength() <a id="vector-3-manhattan-length-method"></a>
 
 Calculate the Manhattan length of the vector.
 
@@ -1143,7 +1161,7 @@ Calculate the Manhattan length of the vector.
 Vector3.manhattanLength(): number;
 ```
 
-##### equals(vector) <a id="vector-3-equals"></a>
+##### equals(vector) <a id="vector-3-equals-method"></a>
 
 Check if the vector is equal with a given vector.
 
@@ -1153,7 +1171,7 @@ Check if the vector is equal with a given vector.
 Vector3.equals(vector: Vector3 | [number, number, number]): boolean;
 ```
 
-##### collinear(vector1, vector2) <a id="vector-3-collinear"></a>
+##### collinear(vector1, vector2) <a id="vector-3-collinear-method"></a>
 
 Check if the vector is collinear with given vectors.
 
@@ -1164,7 +1182,7 @@ Check if the vector is collinear with given vectors.
 Vector3.collinear(vector1: Vector3 | [number, number, number], vector2: Vector3 | [number, number, number]): boolean;
 ```
 
-##### dot(vector) <a id="vector-3-dot"></a>
+##### dot(vector) <a id="vector-3-dot-method"></a>
 
 Calculate the dot product of a given vector with the vector.
 
@@ -1174,7 +1192,7 @@ Calculate the dot product of a given vector with the vector.
 Vector3.dot(vector: Vector3 | [number, number, number]): number;
 ```
 
-##### cross(vector) <a id="vector-3-cross"></a>
+##### cross(vector) <a id="vector-3-cross-method"></a>
 
 Calculate the cross product of a given vector with the vector.
 
@@ -1184,7 +1202,7 @@ Calculate the cross product of a given vector with the vector.
 Vector3.cross(vector: Vector3 | [number, number, number]): [number, number, number];
 ```
 
-##### angleTo(vector) <a id="vector-3-angle-to"></a>
+##### angleTo(vector) <a id="vector-3-angle-to-method"></a>
 
 Calculate the angle between a given vector and the vector.
 
@@ -1194,7 +1212,7 @@ Calculate the angle between a given vector and the vector.
 Vector3.angleTo(vector: Vector3 | [number, number, number]): number;
 ```
 
-##### distanceTo(vector) <a id="vector-3-distance-to"></a>
+##### distanceTo(vector) <a id="vector-3-distance-to-method"></a>
 
 Calculate the Euclidean distance from a given vector to the vector.
 
@@ -1204,7 +1222,7 @@ Calculate the Euclidean distance from a given vector to the vector.
 Vector3.distanceTo(vector: Vector3 | [number, number, number]): number;
 ```
 
-##### squaredDistanceTo(vector) <a id="vector-3-squared-distance-to"></a>
+##### squaredDistanceTo(vector) <a id="vector-3-squared-distance-to-method"></a>
 
 Calculate the squared distance from a given vector to the vector.
 
@@ -1214,7 +1232,7 @@ Calculate the squared distance from a given vector to the vector.
 Vector3.squaredDistanceTo(vector: Vector3 | [number, number, number]): number;
 ```
 
-##### manhattanDistanceTo(vector) <a id="vector-3-manhattan-distance-to"></a>
+##### manhattanDistanceTo(vector) <a id="vector-3-manhattan-distance-to-method"></a>
 
 Calculate the Manhattan distance from a given vector to the vector.
 
@@ -1224,7 +1242,7 @@ Calculate the Manhattan distance from a given vector to the vector.
 Vector3.manhattanDistanceTo(vector: Vector3 | [number, number, number]): number;
 ```
 
-##### toArray() <a id="vector-3-to-array"></a>
+##### toArray() <a id="vector-3-to-array-method"></a>
 
 Return the vector values into an array.
 
@@ -1232,7 +1250,7 @@ Return the vector values into an array.
 Vector3.toArray(): [number, number, number];
 ```
 
-##### fromArray(values) <a id="vector-3-from-array"></a>
+##### fromArray(values) <a id="vector-3-from-array-method"></a>
 
 Set the vector values from a given array.
 
@@ -1242,7 +1260,7 @@ Set the vector values from a given array.
 Vector3.fromArray(values: number[]): this;
 ```
 
-##### fromSphericalCoords(radius, phi, theta) <a id="vector-3-from-spherical-coords"></a>
+##### fromSphericalCoords(radius, phi, theta) <a id="vector-3-from-spherical-coords-method"></a>
 
 Set the vector values from given spherical coordinates.
 
@@ -1254,7 +1272,7 @@ Set the vector values from given spherical coordinates.
 Vector3.fromSphericalCoords(radius: number, phi: number, theta: number): this;
 ```
 
-##### fromCylindricalCoords(radius, theta, y) <a id="vector-3-from-cylindrical-coords"></a>
+##### fromCylindricalCoords(radius, theta, y) <a id="vector-3-from-cylindrical-coords-method"></a>
 
 Set the vector values from given cylindrical coordinates.
 
@@ -1266,7 +1284,7 @@ Set the vector values from given cylindrical coordinates.
 Vector3.fromCylindricalCoords(radius: number, theta: number, y: number): this;
 ```
 
-##### copy(vector) <a id="vector-3-copy"></a>
+##### copy(vector) <a id="vector-3-copy-method"></a>
 
 Copy the values of a given vector to the vector.
 
@@ -1276,7 +1294,7 @@ Copy the values of a given vector to the vector.
 Vector3.copy(vector: Vector3 | [number, number, number]): this;
 ```
 
-##### clone() <a id="vector-3-clone"></a>
+##### clone() <a id="vector-3-clone-method"></a>
 
 Create a new 3D vector with copied values from the vector.
 
@@ -1330,7 +1348,7 @@ static Vector3.divide(vector1: Vector3 | [number, number, number], vector2: Vect
 
 ##### `static` lerp(t, min, max) <a id="vector-3-static-lerp-method"></a>
 
-Interpolate a point between two vectors.
+Linearly interpolate a point between two vectors.
 
 - `t`: Normalized time value to interpolate.
 - `min`: Minimum boundaries.

@@ -17,7 +17,7 @@ export const QUARTER_PI = PI / 4;
 // *********************
 
 // X11 colors
-// -> https://www.w3.org/TR/css-color-3/#svg-color
+//   -> https://www.w3.org/TR/css-color-3/#svg-color
 export const W3CX11 = {
   aliceblue: 0xf0f8ff,
   antiquewhite: 0xfaebd7,

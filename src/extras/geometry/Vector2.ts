@@ -25,6 +25,11 @@ export default class Vector2 implements Vector<Vec2> {
    */
   public y: number;
 
+  *[Symbol.iterator](): Iterator<number> {
+    yield this.x;
+    yield this.y;
+  }
+
   /**
    * @param {number} [x=0] X-axis value
    * @param {number} [y=0] Y-axis value
@@ -50,7 +55,7 @@ export default class Vector2 implements Vector<Vec2> {
   /**
    * Set a given scalar value to all values of this vector
    *
-   * @param {number} scalar Value to set for all vector values
+   * @param {number} scalar Value to set for all values
    * @returns {this}
    */
   public setScalar(scalar: number): this {
@@ -339,13 +344,13 @@ export default class Vector2 implements Vector<Vec2> {
   }
 
   /**
-   * Interpolate this vector values between a given vector and this vector
+   * Linearly interpolate this vector values towards a given vector values
    *
-   * @param {Vector2|Point2} vector Vector to interpolate values towards
    * @param {number} t Normalized time value to interpolate
+   * @param {Vector2|Point2} vector Vector to interpolate values towards
    * @returns {this}
    */
-  public lerp([x, y]: Vec2, t: number): this {
+  public lerp(t: number, [x, y]: Vec2): this {
     this.x += (x - this.x) * t;
     this.y += (y - this.y) * t;
     return this;
@@ -516,7 +521,7 @@ export default class Vector2 implements Vector<Vec2> {
    * Set this vector values from a given array
    *
    * @param {number[]} values Values to set
-   * @returns
+   * @returns {this}
    */
   public fromArray([x, y]: number[]): this {
     this.x = x;
@@ -554,6 +559,28 @@ export default class Vector2 implements Vector<Vec2> {
    */
   public clone(): Vector2 {
     return new Vector2(this.x, this.y);
+  }
+
+  /**
+   * X-axis value of this vector
+   */
+  set width(width: number) {
+    this.x = width;
+  }
+
+  get width(): number {
+    return this.x;
+  }
+
+  /**
+   * Y-axis value of this vector
+   */
+  set height(height: number) {
+    this.y = height;
+  }
+
+  get height(): number {
+    return this.y;
   }
 
   /**
@@ -627,7 +654,7 @@ export default class Vector2 implements Vector<Vec2> {
   }
 
   /**
-   * Interpolate a point between two vectors
+   * Linearly interpolate a point between two vectors
    *
    * @param {number} t Normalized time value to interpolate
    * @param {Vector2|Point2} min Minimum boundaries
@@ -703,7 +730,7 @@ export default class Vector2 implements Vector<Vec2> {
    * @returns {number} Computed Euclidean distance
    */
   static distance(vector1: Vec2, vector2: Vec2): number {
-    return Math.sqrt(Vector2.squaredDistance(vector1, vector2));
+    return Math.sqrt(this.squaredDistance(vector1, vector2));
   }
 
   /**
@@ -771,26 +798,5 @@ export default class Vector2 implements Vector<Vec2> {
     const x = radius * Math.cos(angle);
     const y = radius * Math.sin(angle);
     return [x, y];
-  }
-
-  set width(width: number) {
-    this.x = width;
-  }
-
-  get width(): number {
-    return this.x;
-  }
-
-  set height(height: number) {
-    this.y = height;
-  }
-
-  get height(): number {
-    return this.y;
-  }
-
-  *[Symbol.iterator](): Iterator<number> {
-    yield this.x;
-    yield this.y;
   }
 }

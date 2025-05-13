@@ -4,13 +4,15 @@
 
 Utility class extending [Curve](./CURVES.md#curve) for manipulating connected curves.
 
-- [new Path(params)](#path)
+- [new Path(params)](#path-constructor)
   - .isPath: `true`
   - [.curves](#path-curves): `Curve[]`
   - [.points](#path-points): `Vector[]`
   - [.autoClose](#path-auto-close): `boolean`
   - [.add()](#path-add-method): `void`
   - [.getCurveLengths()](#path-get-curve-lengths-method): `number[]`
+
+#### Constructor <a id="path-constructor"></a>
 
 | Parameter          | Type      | Default | Description                                                             |
 | ------------------ | --------- | ------- | ----------------------------------------------------------------------- |
@@ -284,7 +286,7 @@ PathContext.roundRect(x: number, y: number, width: number, height: number, radiu
 Utility class extending [PathContext](#path-context) for manipulating connected curves and generating SVG path.
 It works by serializing 2D Canvas API to SVG path data.
 
-- [new PathSVG()](#path-svg-constructor)
+- new PathSVG()
   - [.toString(params)](#path-svg-to-string-method): `string`
   - `static` [.approximate(curve, params)](#path-svg-static-serialize-method): `string`
   - `static` [.serialize(curve, params)](#path-svg-static-serialize-method): `string`
@@ -297,16 +299,36 @@ It works by serializing 2D Canvas API to SVG path data.
   - `static` [.serializeEllipseCurve(curve)](#path-svg-static-serialize-ellipse-curve-method): `string`
   - `static` [.serializeArcCurve(curve)](#path-svg-static-serialize-arc-curve-method): `string`
 
+#### Types
+
+PathSVG serialization parameters: <a id="path-svg-serialization-parameters"></a>
+
+```ts
+/**
+ * Parameters used for SVG serialization of a path
+ */
+type PathSVGSerializationParameters = {
+  /**
+   * Flag indicating if given curve should be approximated into straight lines
+   */
+  approximate?: boolean;
+  /**
+   * Resolution used for approximations
+   */
+  resolution?: number;
+};
+```
+
 #### Methods
 
 ##### toString(params) <a id="path-svg-to-string-method"></a>
 
 Serialize the path into a SVG path string.
 
-- `[params]`: Serialization parameters.
+- `[params]`: [Serialization parameters](#path-svg-serialization-parameters).
 
 ```ts
-PathSVG.toString(params?: PathSVGSerializationParams): string;
+PathSVG.toString(params?: PathSVGSerializationParameters): string;
 ```
 
 ##### `static` approximate(curve) <a id="path-svg-static-approximate-method"></a>
@@ -325,12 +347,10 @@ static PathSVG.approximate(curve: Curve, resolution?: number): Vector2[];
 Serialize a [Curve](#curve).
 
 - `curve`: Curve to serialize.
-- `[params]`: Serialization parameters.
-- `[params.approximate]`: Flag indicating if given curve should be approximated into straight lines.
-- `[params.curveResolution]`: Resolution used for curve approximations.
+- `[params]`: [Serialization parameters](#path-svg-serialization-parameters).
 
 ```ts
-static PathSVG.serialize(curve: Curve, params?: PathSVGSerializationParams): string;
+static PathSVG.serialize(curve: Curve, params?: PathSVGSerializationParameters): string;
 ```
 
 ##### `static` serializeLineCurve(curve) <a id="path-svg-static-serialize-line-curve-method"></a>
@@ -420,8 +440,8 @@ static PathSVG.serializeArcCurve(curve: ArcCurve): string;
 Serialize a [Path](#path).
 
 - `path`: Path to serialize.
-- `[params]`: Serialization parameters.
+- `[params]`: [Serialization parameters](#path-svg-serialization-parameters).
 
 ```ts
-static PathSVG.serializePath(path: Path, params?: PathSVGSerializationParams): string;
+static PathSVG.serializePath(path: Path, params?: PathSVGSerializationParameters): string;
 ```

@@ -92,7 +92,7 @@ export type FitOutput = {
  *
  * @param {object} target    Dimensions of the target
  * @param {object} container Dimensions of the container
- * @param {'contain'|'cover'} mode      Can be 'contain' | 'cover'
+ * @param {string} mode      Can be 'contain' | 'cover'
  * @returns {object}
  */
 function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): FitOutput {

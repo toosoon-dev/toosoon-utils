@@ -3,7 +3,7 @@ const DOCUMENT_NODE_TYPE = 9;
 /**
  * Find the closest parent that matches a selector
  *
- * @param {Element|null}     element  Target element
+ * @param {Element|null}   element  Target element
  * @param {Element|string} selector Selector or parent to match
  * @returns {Element|null}
  */

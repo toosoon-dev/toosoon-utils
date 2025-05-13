@@ -21,7 +21,7 @@ export interface Vector<V = any> {
   round(): this;
   trunc(): this;
   negate(): this;
-  lerp(vector: V, t: number): this;
+  lerp(t: number, vector: V): this;
   normalize(): this;
   setLength(length: number): this;
 

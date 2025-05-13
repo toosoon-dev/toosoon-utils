@@ -14,9 +14,9 @@ export default class FrameRate {
   private _lastUpdate: number = 0;
 
   /**
-   * @param {number} [fps=30] Frame per second limit
+   * @param {number} [fps=60] Frame per second limit
    */
-  constructor(fps: number = 30) {
+  constructor(fps: number = 60) {
     this.fps = fps;
   }
 

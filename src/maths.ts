@@ -33,7 +33,7 @@ export function isPowerOf2(value: number): boolean {
  *
  * @param {number} value         Incoming value
  * @param {string} [mode='ceil'] Can be 'floor' | 'ceil' | 'round'
- * @returns {number} Power of 2
+ * @returns {number} Computed power of 2
  */
 export function toPowerOf2(value: number, mode: 'floor' | 'ceil' | 'round' = 'ceil'): number {
   return Math.pow(2, Math[mode](Math.log(value) / Math.log(2)));
@@ -122,38 +122,35 @@ export function map(
 /**
  * Interpolate a value between two values using Triangular interpolation
  *
- * @param {number} t      Normalized time value to interpolate
- * @param {number} min    Minimum value
- * @param {number} max    Maximum value
- * @param {number} target Triangle target value
+ * @param {number} t    Normalized time value to interpolate
+ * @param {number} min  Minimum value
+ * @param {number} max  Maximum value
+ * @param {number} peak Peak value controling the interpolation triangle shape
+ *                        - peak <= min : linear (same as lerp)
+ *                        - peak <= max : linear (same as lerp)
+ *                        - peak > min && peak > max : triangular
  * @returns {number} Interpolated value
  */
-export function triLerp(t: number, min: number, max: number, target: number): number {
-  const x = Math.pow(1 + Math.abs(target - max) / Math.abs(target - min), -1);
-  return t <= x ? min - (min - target) * (t / x) : target - (target - max) * ((t - x) / (1 - x));
+export function triLerp(t: number, min: number, max: number, peak: number): number {
+  const x = Math.pow(1 + Math.abs(peak - max) / Math.abs(peak - min), -1);
+  return t <= x ? min - (min - peak) * (t / x) : peak - (peak - max) * ((t - x) / (1 - x));
 }
 
 /**
  * Interpolate a value using Exponential interpolation
  *
- * @param {number} t          Normalized time value to interpolate
- * @param {number} currentMin Lower bound of the value's current range
- * @param {number} currentMax Upper bound of the value's current range
- * @param {number} targetMin  Lower bound of the value's target range
- * @param {number} targetMax  Upper bound of the value's target range
+ * @param {number} t     Normalized time value to interpolate
+ * @param {number} min   Minimum value
+ * @param {number} max   Maximum value
+ * @param {number} power Exponent controling the interpolation curve shape
+ *                         - power > 1 : ease-in
+ *                         - power < 1 : ease-out
+ *                         - power = 1 : linear (same as lerp)
  * @returns {number} Interpolated value
  */
-export function expLerp(
-  t: number,
-  currentMin: number,
-  currentMax: number,
-  targetMin: number,
-  targetMax: number
-): number {
-  return (
-    targetMin *
-    Math.pow(targetMax / targetMin, (clamp(t, currentMin, currentMax) - currentMin) / (currentMax - currentMin))
-  );
+export function expLerp(t: number, min: number, max: number, power: number): number {
+  const factor = Math.pow(t, power);
+  return min + (max - min) * factor;
 }
 
 /**
@@ -250,7 +247,8 @@ export function smoothstep(value: number, min: number = 0, max: number = 1): num
 
 /**
  * Re-map the [0, 1] interval into [0, 1] parabola, such that corners are remaped to 0 and the center to 1
- * -> parabola(0) = parabola(1) = 0, and parabola(0.5) = 1
+ *  - parabola(0) = parabola(1) = 0
+ *  - parabola(0.5) = 1
  *
  * @param {number} x         Normalized coordinate on X axis
  * @param {number} [power=1] Parabola power

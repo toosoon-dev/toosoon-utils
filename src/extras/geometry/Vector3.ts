@@ -29,6 +29,12 @@ export default class Vector3 implements Vector<Vec3> {
    */
   public z: number;
 
+  *[Symbol.iterator](): Iterator<number> {
+    yield this.x;
+    yield this.y;
+    yield this.z;
+  }
+
   /**
    * @param {number} [x=0] X-axis value
    * @param {number} [y=0] Y-axis value
@@ -372,13 +378,13 @@ export default class Vector3 implements Vector<Vec3> {
   }
 
   /**
-   * Interpolate this vector values between a given vector and this vector
+   * Linearly interpolate this vector values towards a given vector values
    *
-   * @param {Vector3|Point3} vector Vector to interpolate values towards
    * @param {number} t Normalized time value to interpolate
+   * @param {Vector3|Point3} vector Vector to interpolate values towards
    * @returns {this}
    */
-  public lerp([x, y, z]: Vec3, t: number): this {
+  public lerp(t: number, [x, y, z]: Vec3): this {
     this.x += (x - this.x) * t;
     this.y += (y - this.y) * t;
     this.z += (z - this.z) * t;
@@ -675,7 +681,7 @@ export default class Vector3 implements Vector<Vec3> {
   }
 
   /**
-   * Interpolate a point between two vectors
+   * Linearly interpolate a point between two vectors
    *
    * @param {number} t Normalized time value to interpolate
    * @param {Vector3|Point3} min Minimum boundaries
@@ -753,7 +759,7 @@ export default class Vector3 implements Vector<Vec3> {
    * @returns {number} Computed Euclidean distance
    */
   static distance(vector1: Vec3, vector2: Vec3): number {
-    return Math.sqrt(Vector3.squaredDistance(vector1, vector2));
+    return Math.sqrt(this.squaredDistance(vector1, vector2));
   }
 
   /**
@@ -838,11 +844,5 @@ export default class Vector3 implements Vector<Vec3> {
     const x = radius * Math.sin(theta);
     const z = radius * Math.cos(theta);
     return [x, y, z];
-  }
-
-  *[Symbol.iterator](): Iterator<number> {
-    yield this.x;
-    yield this.y;
-    yield this.z;
   }
 }

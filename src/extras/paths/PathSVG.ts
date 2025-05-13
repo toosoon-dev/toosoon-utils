@@ -15,9 +15,18 @@ import { type Vector2 } from '../geometry';
 import PathContext from './PathContext';
 import Path from './Path';
 
-export type PathSVGSerializationParams = {
+/**
+ * Parameters used for SVG serialization of a path
+ */
+export type PathSVGSerializationParameters = {
+  /**
+   * Flag indicating if given curve should be approximated into straight lines
+   */
   approximate?: boolean;
-  curveResolution?: number;
+  /**
+   * Resolution used for approximations
+   */
+  resolution?: number;
 };
 
 /**
@@ -33,10 +42,10 @@ export default class PathSVG extends PathContext {
   /**
    * Serialize this path into a SVG path string
    *
-   * @param {object} [params]
+   * @param {PathSVGSerializationParameters} [params] Serialization parameters
    * @returns {string}
    */
-  public toString(params: PathSVGSerializationParams = {}): string {
+  public toString(params?: PathSVGSerializationParameters): string {
     return PathSVG.serialize(this, params);
   }
 
@@ -56,44 +65,42 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link Curve}
    *
    * @param {Curve} curve Curve to serialize
-   * @param {object} [params] Serialization parameters
-   * @param {boolean} [params.approximate]    Flag indicating if given curve should be approximated into straight lines
-   * @param {number} [params.curveResolution] Resolution used for curve approximations
-   * @returns string
+   * @param {PathSVGSerializationParameters} [params] Serialization parameters
+   * @returns {string}
    */
-  static serialize(curve: Curve<Vector2>, { approximate, curveResolution }: PathSVGSerializationParams = {}): string {
+  static serialize(curve: Curve<Vector2>, { approximate, resolution }: PathSVGSerializationParameters = {}): string {
     if (curve instanceof Path) {
-      return PathSVG.serializePath(curve, { approximate, curveResolution });
+      return this.serializePath(curve, { approximate, resolution });
     }
 
     if (approximate === true) {
-      const points = PathSVG.approximate(curve, curveResolution);
+      const points = this.approximate(curve, resolution);
       return points.map(([x, y]) => `L${x},${y}`).join(' ');
     }
 
     if (curve instanceof LineCurve) {
-      return PathSVG.serializeLineCurve(curve);
+      return this.serializeLineCurve(curve);
     }
     if (curve instanceof PolylineCurve) {
-      return PathSVG.serializePolylineCurve(curve);
+      return this.serializePolylineCurve(curve);
     }
     if (curve instanceof QuadraticBezierCurve) {
-      return PathSVG.serializeQuadraticBezierCurve(curve);
+      return this.serializeQuadraticBezierCurve(curve);
     }
     if (curve instanceof CubicBezierCurve) {
-      return PathSVG.serializeCubicBezierCurve(curve);
+      return this.serializeCubicBezierCurve(curve);
     }
     if (curve instanceof CatmullRomCurve) {
-      return PathSVG.serializeCatmullRomCurve(curve, curveResolution);
+      return this.serializeCatmullRomCurve(curve, resolution);
     }
     if (curve instanceof SplineCurve) {
-      return PathSVG.serializeSplineCurve(curve, curveResolution);
+      return this.serializeSplineCurve(curve, resolution);
     }
     if (curve instanceof EllipseCurve) {
-      return PathSVG.serializeEllipseCurve(curve);
+      return this.serializeEllipseCurve(curve);
     }
     if (curve instanceof ArcCurve) {
-      return PathSVG.serializeArcCurve(curve);
+      return this.serializeArcCurve(curve);
     }
 
     return '';
@@ -103,7 +110,7 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link LineCurve}
    *
    * @param {LineCurve} curve LineCurve to serialize
-   * @returns string
+   * @returns {string}
    */
   static serializeLineCurve(curve: LineCurve): string {
     const { x2, y2 } = curve;
@@ -114,7 +121,7 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link PolylineCurve}
    *
    * @param {PolylineCurve} curve PolylineCurve to serialize
-   * @returns string
+   * @returns {string}
    */
   static serializePolylineCurve(curve: PolylineCurve): string {
     const { points } = curve;
@@ -125,7 +132,7 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link QuadraticBezierCurve}
    *
    * @param {QuadraticBezierCurve} curve QuadraticBezierCurve to serialize
-   * @returns string
+   * @returns {string}
    */
   static serializeQuadraticBezierCurve(curve: QuadraticBezierCurve): string {
     const { cpx, cpy, x2, y2 } = curve;
@@ -136,7 +143,7 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link CubicBezierCurve}
    *
    * @param {CubicBezierCurve} curve CubicBezierCurve to serialize
-   * @returns string
+   * @returns {string}
    */
   static serializeCubicBezierCurve(curve: CubicBezierCurve): string {
     const { cp1x, cp1y, cp2x, cp2y, x2, y2 } = curve;
@@ -147,11 +154,11 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link CatmullRomCurve} by approximating it into straight lines
    *
    * @param {CatmullRomCurve} curve CatmullRomCurve to serialize
-   * @param {number} [curveResolution] Approximation resolution
-   * @returns string
+   * @param {number} [resolution] Approximation resolution
+   * @returns {string}
    */
-  static serializeCatmullRomCurve(curve: CatmullRomCurve, curveResolution?: number): string {
-    const points = PathSVG.approximate(curve, curveResolution);
+  static serializeCatmullRomCurve(curve: CatmullRomCurve, resolution?: number): string {
+    const points = this.approximate(curve, resolution);
     return points.map(([x, y]) => `L${x},${y}`).join(' ');
   }
 
@@ -159,11 +166,11 @@ export default class PathSVG extends PathContext {
    * Serialize a {@link SplineCurve} by approximating it into straight lines
    *
    * @param {SplineCurve} curve SplineCurve to serialize
-   * @param {number} [curveResolution] Approximation resolution
-   * @returns string
+   * @param {number} [resolution] Approximation resolution
+   * @returns {string}
    */
-  static serializeSplineCurve(curve: SplineCurve, curveResolution?: number): string {
-    const points = PathSVG.approximate(curve, curveResolution);
+  static serializeSplineCurve(curve: SplineCurve, resolution?: number): string {
+    const points = this.approximate(curve, resolution);
     return points.map(([x, y]) => `L${x},${y}`).join(' ');
   }
 
@@ -171,7 +178,7 @@ export default class PathSVG extends PathContext {
    * Serialize an {@link EllipseCurve}
    *
    * @param {EllipseCurve} curve EllipseCurve to serialize
-   * @returns string
+   * @returns {string}
    */
   static serializeEllipseCurve(curve: EllipseCurve): string {
     const { cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise } = curve;
@@ -201,21 +208,20 @@ export default class PathSVG extends PathContext {
    * Serialize an {@link ArcCurve}
    *
    * @param {ArcCurve} curve ArcCurve to serialize
-   * @returns string
+   * @returns {string}
    */
   static serializeArcCurve(curve: ArcCurve): string {
-    return PathSVG.serializeEllipseCurve(curve);
+    return this.serializeEllipseCurve(curve);
   }
 
   /**
    * Serialize an {@link Path}
    *
    * @param {Path} path Path to serialize
-   * @param {object} [params]
-   * @param {object} [params.curveResolution] Resolution used for curves approximations
-   * @returns string
+   * @param {PathSVGSerializationParameters} [params] Serialization parameters
+   * @returns {string}
    */
-  static serializePath(path: Path<Vector2>, params: PathSVGSerializationParams = {}): string {
+  static serializePath(path: Path<Vector2>, params?: PathSVGSerializationParameters): string {
     return path.curves
       .map((curve, index) => {
         let commands = ``;
@@ -224,7 +230,7 @@ export default class PathSVG extends PathContext {
         if (index === 0 || !previousPoint?.equals(newPoint)) {
           commands += `M${newPoint.x},${newPoint.y}`;
         }
-        commands += PathSVG.serialize(curve, params);
+        commands += this.serialize(curve, params);
         return commands;
       })
       .join(' ');
