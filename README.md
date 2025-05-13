@@ -1246,37 +1246,7 @@ See Colors utility classes documentation [here](./docs/COLORS.md).
 
 ### Frame rate <a id="frame-rate-class"></a>
 
-Utility class for controlling FPS calls.
-
-- [new FrameRate()](#frame-rate-constructor)
-  - [.fps](#frame-rate-fps): `number`
-  - [.update()](#frame-rate-update-method): `boolean`
-
-#### Constructor <a id="frame-rate-constructor"></a>
-
-| Parameter | Type     | Default | Description             |
-| --------- | -------- | ------- | ----------------------- |
-| [fps]     | `number` | `60`    | Frame per second limit. |
-
-#### Properties
-
-##### fps <a id="frame-rate-fps"></a>
-
-Frame per second limit.
-
-```ts
-FrameRate.fps: number;
-```
-
-#### Methods
-
-##### update() <a id="frame-rate-update-method"></a>
-
-Return true if elapsed time since last update is higher than current FPS.
-
-```ts
-FrameRate.update(): boolean;
-```
+See `FrameRate` utility class documentation [here](./docs/FRAME_RATE.md).
 
 ## Constants
 
@@ -1287,9 +1257,13 @@ FrameRate.update(): boolean;
 ### Geometry
 
 `PI`
+
 `TWO_PI`
+
 `TAU`
+
 `HALF_PI`
+
 `QUARTER_PI`
 
 ### Colors

@@ -435,7 +435,7 @@ export default class ColorScale {
     return scale;
   }
 
-  private static _getInterpolateFunction<I extends ColorInterpolation>(
+  protected static _getInterpolateFunction<I extends ColorInterpolation>(
     interpolation: I,
     color1: Color,
     color2: Color,

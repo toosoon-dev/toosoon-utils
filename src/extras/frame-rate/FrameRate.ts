@@ -7,11 +7,12 @@ import { now } from '../../functions';
  * @class FrameRate
  */
 export default class FrameRate {
-  private _fps!: number;
-  private _interval: number = 0;
-  private _time: number = 0;
-  private _elapsedTime: number = 0;
-  private _lastUpdate: number = 0;
+  protected _fps!: number;
+  protected _interval: number = 0;
+
+  protected _time: number = 0;
+  protected _elapsedTime: number = 0;
+  protected _lastUpdate: number = 0;
 
   /**
    * @param {number} [fps=60] Frame per second limit
@@ -21,9 +22,9 @@ export default class FrameRate {
   }
 
   /**
-   * Return true if elapsed time since last update is higher than current FPS
+   * Check if elapsed time since last update is higher than current FPS
    *
-   * @returns {boolean}
+   * @returns {boolean} True if elapsed time since last update is higher than current FPS, false otherwise
    */
   public update(): boolean {
     this._time = now();
@@ -34,15 +35,19 @@ export default class FrameRate {
     }
 
     this._lastUpdate = this._time - (this._elapsedTime % this._interval);
+
     return true;
+  }
+
+  /**
+   * Frame per second limit
+   */
+  set fps(fps: number) {
+    this._fps = fps;
+    this._interval = 1000 / fps;
   }
 
   get fps(): number {
     return this._fps;
-  }
-
-  set fps(fps: number) {
-    this._fps = fps;
-    this._interval = 1000 / fps;
   }
 }
