@@ -1242,6 +1242,8 @@ See Colors utility classes documentation [here](./docs/COLORS.md).
 
 #### [ColorScale](./docs/COLORS.md#color-scale)
 
+#### [ColorPalette](./docs/COLORS.md#color-palette)
+
 ### Frame rate <a id="frame-rate-class"></a>
 
 Utility class for controlling FPS calls.
