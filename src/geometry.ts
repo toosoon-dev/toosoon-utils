@@ -36,22 +36,22 @@ export function angle(x1: number, y1: number, x2: number, y2: number): number {
 /**
  * Find the closest angle between to angles
  *
- * @param {number} source Source angle (in radians)
- * @param {number} target Target angle (in radians)
+ * @param {number} startAngle Start angle (in radians)
+ * @param {number} endAngle End angle (in radians)
  * @returns {number} Closest angle
  */
-export function closestAngle(source: number, target: number): number {
-  const delta = target - source;
-  return delta > PI ? target - 2 * PI : target < -PI ? delta + 2 * PI : target;
+export function closestAngle(startAngle: number, endAngle: number): number {
+  const delta = endAngle - startAngle;
+  return delta > PI ? endAngle - 2 * PI : endAngle < -PI ? delta + 2 * PI : endAngle;
 }
 
 /**
  * Calculate the distance between two points
  *
- * @param {number} x1 X-axis coordinate of the first point
- * @param {number} y1 Y-axis coordinate of the first point
- * @param {number} x2 X-axis coordinate of the second point
- * @param {number} y2 Y-axis coordinate of the second point
+ * @param {number} x1 X-axis coordinate of the start point
+ * @param {number} y1 Y-axis coordinate of the start point
+ * @param {number} x2 X-axis coordinate of the end point
+ * @param {number} y2 Y-axis coordinate of the end point
  * @returns {number} Computed distance
  */
 export function distance(x1: number, y1: number, x2: number, y2: number): number {
@@ -90,10 +90,10 @@ export type FitOutput = {
 /**
  * Make a target fit a container
  *
- * @param {object} target    Dimensions of the target
- * @param {object} container Dimensions of the container
- * @param {string} mode      Can be 'contain' | 'cover'
- * @returns {object}
+ * @param {FitInput} target    Dimensions of the target
+ * @param {FitInput} container Dimensions of the container
+ * @param {string} mode        Can be 'contain' | 'cover'
+ * @returns {FitOutput}
  */
 function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): FitOutput {
   const ratioWidth = container.width / target.width;

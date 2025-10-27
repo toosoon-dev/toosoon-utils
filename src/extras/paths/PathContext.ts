@@ -1,4 +1,4 @@
-import { EPSILON } from '../../constants';
+import { EPSILON, HALF_PI, TWO_PI } from '../../constants';
 import { toDegrees } from '../../geometry';
 import type { Point2 } from '../../types';
 import {
@@ -27,6 +27,14 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   protected _currentTransform: DOMMatrix = new DOMMatrix();
 
   private _transformStack: DOMMatrix[] = [];
+
+  public readonly autoClose: false;
+
+  constructor() {
+    super({ autoClose: false });
+
+    this.autoClose = false;
+  }
 
   /**
    * Create a path from a given list of points
@@ -336,8 +344,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     const startAngle = Math.atan2(t1.y - c.y, t1.x - c.x);
     const endAngle = Math.atan2(t2.y - c.y, t2.x - c.x);
 
-    const deltaAngle = endAngle - startAngle;
-    const counterclockwise = deltaAngle < 0;
+    const counterclockwise = (p0.y - p1.y) * (p2.x - p0.x) <= (p0.x - p1.x) * (p2.y - p0.y);
 
     t1.applyMatrix(this._currentTransform);
     t2.applyMatrix(this._currentTransform);
@@ -405,7 +412,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
     bottomRightRadius = Math.min(bottomRightRadius, maxRadius);
     bottomLeftRadius = Math.min(bottomLeftRadius, maxRadius);
 
-    const curve = new PathContext({ autoClose: true });
+    const curve = new PathContext();
     curve.setTransform(this.getTransform());
 
     // Top-Right corner
@@ -437,7 +444,10 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
       curve.lineTo(x, y);
     }
 
+    curve.closePath();
     this.add(curve);
+
+    this.moveTo(x, y);
 
     return this;
   }

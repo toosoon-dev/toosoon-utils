@@ -335,34 +335,34 @@ toRadians(degrees: number): number;
 
 Calculate the angle from a point to another.
 
-- `x1`: X value of the first point.
-- `y1`: Y value of the first point.
-- `x2`: X value of the second point.
-- `y2`: Y value of the second point.
+- `x1`: X-axis coordinate of the start point.
+- `y1`: Y-axis coordinate of the start point.
+- `x2`: X-axis coordinate of the end point.
+- `y2`: Y-axis coordinate of the end point.
 
 ```ts
 angle(x1: number, y1: number, x2: number, y2: number): number;
 ```
 
-##### closestAngle(source, target)
+##### closestAngle(startAngle, endAngle)
 
 Find the closest angle between to angles.
 
-- `source`: Source angle (in radians).
-- `target`: Target angle (in radians).
+- `startAngle`: Start angle (in radians).
+- `endAngle`: End angle (in radians).
 
 ```ts
-closestAngle(source: number, target: number): number;
+closestAngle(startAngle: number, endAngle: number): number;
 ```
 
 ##### distance(x1, y1, x2, y2)
 
 Calculate the distance between two points.
 
-- `x1`: X-axis coordinate of the first point.
-- `y1`: Y-axis coordinate of the first point.
-- `x2`: X-axis coordinate of the second point.
-- `y2`: Y-axis coordinate of the second point.
+- `x1`: X-axis coordinate of the start point.
+- `y1`: Y-axis coordinate of the start point.
+- `x2`: X-axis coordinate of the end point.
+- `y2`: Y-axis coordinate of the end point.
 
 ```ts
 distance(x1: number, y1: number, x2: number, y2: number): number;
@@ -1258,9 +1258,7 @@ See `FrameRate` utility class documentation [here](./docs/FRAME_RATE.md).
 
 `PI`
 
-`TWO_PI`
-
-`TAU`
+`TWO_PI` / `TAU`
 
 `HALF_PI`
 
