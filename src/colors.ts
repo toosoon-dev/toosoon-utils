@@ -115,7 +115,7 @@ export function hexToRgb(hex: ColorHex | string): ColorRgb {
 /**
  * Lighten a color
  *
- * @param {string} hex        Hexadecimal string
+ * @param {string} hex Hexadecimal string
  * @param {number} [amount=0] Amount of the color offset
  * @returns {string} Computed hexadecimal
  */
@@ -144,7 +144,7 @@ export function lighten(hex: string, amount: number = 0): string {
 /**
  * Darken a color
  *
- * @param {string} hex        Hexadecimal string
+ * @param {string} hex Hexadecimal string
  * @param {number} [amount=0] Amount of the color offset
  * @returns {string} Computed hexadecimal
  */
@@ -281,7 +281,7 @@ export function hsbToRgb([h, s, b]: ColorHsb): ColorRgb {
  *     - Chroma:    [0, ~150]
  *     - Lightness: [0, 100]
  *
- * @param {ColorLab} lab LAB color
+ * @param {ColorLab} lab L*a*b* color
  * @returns {ColorHcl} HCL color
  */
 export function labToHcl([l, a, b]: ColorLab): ColorHcl {

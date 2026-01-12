@@ -3,7 +3,7 @@ const DOCUMENT_NODE_TYPE = 9;
 /**
  * Find the closest parent that matches a selector
  *
- * @param {Element|null}   element  Target element
+ * @param {Element|null} element Target element
  * @param {Element|string} selector Selector or parent to match
  * @returns {Element|null}
  */
@@ -21,7 +21,7 @@ export function closest(element: Element | null, selector: Element | string): El
 /**
  * Create a canvas and 2d context
  *
- * @param {number} width  Width of the canvas
+ * @param {number} width Width of the canvas
  * @param {number} height Height of the canvas
  * @returns {{ canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D }}
  */
@@ -44,7 +44,7 @@ export function createCanvas(
 export function injectStyles(styles: string): void {
   const $style = document.createElement('style');
   $style.innerHTML = styles;
-  const $before = document.querySelector('head link[rel=stylesheet], head style');
-  if ($before) document.head.insertBefore($style, $before);
+  const $headStyle = document.querySelector('head link[rel=stylesheet], head style');
+  if ($headStyle) document.head.insertBefore($style, $headStyle);
   else document.head.appendChild($style);
 }

@@ -333,7 +333,7 @@ toRadians(degrees: number): number;
 
 ##### angle(x1, y1, x2, y2)
 
-Calculate the angle from a point to another.
+Calculate the angle (in radians) from a point to another.
 
 - `x1`: X-axis coordinate of the start point.
 - `y1`: Y-axis coordinate of the start point.
@@ -346,7 +346,7 @@ angle(x1: number, y1: number, x2: number, y2: number): number;
 
 ##### closestAngle(startAngle, endAngle)
 
-Find the closest angle between to angles.
+Find the closest angle (in radians) between two angles.
 
 - `startAngle`: Start angle (in radians).
 - `endAngle`: End angle (in radians).
@@ -534,9 +534,9 @@ hsbToRgb([h, s, b]: [number, number, number]): [number, number, number];
 
 ##### labToHcl(lab)
 
-Convert LAB to HCL.
+Convert L*a*b\* to HCL.
 
-- `lab`: LAB color.
+- `lab`: L*a*b\* color.
 
 ```ts
 labToHcl([l, a, b]: [number, number, number]): [number, number, number];
@@ -544,7 +544,7 @@ labToHcl([l, a, b]: [number, number, number]): [number, number, number];
 
 ##### hclToLab(hcl)
 
-Convert HCL to LAB.
+Convert HCL to L\*a\*b\*.
 
 - `hcl`: HCL color.
 
@@ -554,9 +554,9 @@ hclToLab([h, c, l]: [number, number, number]): [number, number, number];
 
 ##### labToRgb(lab)
 
-Convert LAB to RGB.
+Convert L\*a\*b\* to RGB.
 
-- `lab`: LAB color.
+- `lab`: L\*a\*b\* color.
 
 ```ts
 labToRgb([l, a, b]: [number, number, number]): [number, number, number];
@@ -564,7 +564,7 @@ labToRgb([l, a, b]: [number, number, number]): [number, number, number];
 
 ##### rgbToLab(rgb)
 
-Convert RGB to LAB.
+Convert RGB to L\*a\*b\*.
 
 - `rgb`: RGB color.
 
@@ -574,10 +574,10 @@ rgbToLab([r, g, b]: [number, number, number]): [number, number, number];
 
 ##### deltaE(labA, labB)
 
-Get the delta from two LAB colors.
+Get the delta from two L\*a\*b\* colors.
 
-- `labA`: First LAB color.
-- `labB`: Second LAB color.
+- `labA`: First L\*a\*b\* color.
+- `labB`: Second L\*a\*b\* color.
 
 ```ts
 deltaE(labA: [number, number, number], labB: [number, number, number]): number;
@@ -846,15 +846,26 @@ injectStyles(styles: string): void;
 
 ### Files <a id="files-functions"></a>
 
+##### load(file)
+
+Load a file.
+
+- `file`: File to load.
+
+```ts
+async load(file: File): Promise<string>;
+```
+
 ##### download(blob, filename)
 
 Download a Blob object into user files.
 
 - `blob`: Blob object to download.
-- `filename`: Downloaded file name.
+- `params`: Download parameters.
+- `params.filename`: Downloaded file name.
 
 ```ts
-download(blob: Blob, filename: string): void;
+download(blob: Blob, { filename }: { filename: string }): void;
 ```
 
 ##### upload(onLoad)
@@ -866,6 +877,18 @@ Upload a file from user files.
 
 ```ts
 upload(onLoad: (dataUrl: string) => void, accept?: string): void;
+```
+
+##### share(blob)
+
+Share a Blob object with the user's device.
+
+- `blob`: Blob object to share.
+- `params`: Share parameters.
+- `params.filename`: Shared file name.
+
+```ts
+async share(blob: Blob, { filename, ...data }: { filename: string } & ShareData): Promise<void>;
 ```
 
 ### Random <a id="random-functions"></a>

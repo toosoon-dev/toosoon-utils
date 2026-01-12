@@ -19,7 +19,7 @@ export function wait(delay: number = 0): Promise<void> {
  * Create a debounced function that delays the execution of `callback` until a specified `delay` time has passed since the last call
  *
  * @param {Function} callback Function to debounce
- * @param {number} delay      Delay (in milliseconds)
+ * @param {number} delay Delay (in milliseconds)
  * @returns {Function} Debounced function
  */
 export function debounce<T extends (...args: any[]) => void>(
@@ -48,7 +48,7 @@ export function isDefined<T>(value: T): value is Exclude<T, undefined | null> {
  * Create a throttled function that limits the execution of `callback` to once every `limit` time
  *
  * @param {Function} callback Function to throttle
- * @param {number} limit      Minimum interval between two calls (in milliseconds)
+ * @param {number} limit Minimum interval between two calls (in milliseconds)
  * @returns {Function} Throttled function
  */
 export function throttle<T extends (...args: any[]) => void>(

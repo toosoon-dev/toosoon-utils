@@ -31,7 +31,7 @@ export function isPowerOf2(value: number): boolean {
 /**
  * Find closest power of 2 that fits a number
  *
- * @param {number} value         Incoming value
+ * @param {number} value Incoming value
  * @param {string} [mode='ceil'] Can be 'floor' | 'ceil' | 'round'
  * @returns {number} Computed power of 2
  */
@@ -54,7 +54,7 @@ export function sign(value: number): number {
 /**
  * Clamp a value between two bounds
  *
- * @param {number} value   Value to clamp
+ * @param {number} value Value to clamp
  * @param {number} [min=0] Minimum boundary
  * @param {number} [max=1] Maximum boundary
  * @returns {number} Clamped value
@@ -66,7 +66,7 @@ export function clamp(value: number, min: number = 0, max: number = 1): number {
 /**
  * Round a number up to a nearest multiple
  *
- * @param {number} value        Value to round
+ * @param {number} value Value to round
  * @param {number} [multiple=1] Multiple to round to
  * @returns {number} Closest multiple
  */
@@ -78,7 +78,7 @@ export function snap(value: number, multiple: number = 1): number {
 /**
  * Interpolate a value between two values using Linear interpolation (lerping)
  *
- * @param {number} t   Normalized time value to interpolate
+ * @param {number} t Normalized time value to interpolate
  * @param {number} min Minimum value
  * @param {number} max Maximum value
  * @returns {number} Lerped value
@@ -91,8 +91,8 @@ export function lerp(t: number, min: number, max: number): number {
  * Normalize a value between two bounds
  *
  * @param {number} value Value to normalize
- * @param {number} min   Minimum boundary
- * @param {number} max   Maximum boundary
+ * @param {number} min Minimum boundary
+ * @param {number} max Maximum boundary
  * @returns {number} Normalized value
  */
 export function normalize(value: number, min: number, max: number): number {
@@ -102,11 +102,11 @@ export function normalize(value: number, min: number, max: number): number {
 /**
  * Re-map a number from one range to another
  *
- * @param {number} value      Value to re-map
+ * @param {number} value Value to re-map
  * @param {number} currentMin Lower bound of the value's current range
  * @param {number} currentMax Upper bound of the value's current range
- * @param {number} targetMin  Lower bound of the value's target range
- * @param {number} targetMax  Upper bound of the value's target range
+ * @param {number} targetMin Lower bound of the value's target range
+ * @param {number} targetMax Upper bound of the value's target range
  * @returns {number} Re-mapped value
  */
 export function map(
@@ -122,9 +122,9 @@ export function map(
 /**
  * Interpolate a value between two values using Triangular interpolation
  *
- * @param {number} t    Normalized time value to interpolate
- * @param {number} min  Minimum value
- * @param {number} max  Maximum value
+ * @param {number} t Normalized time value to interpolate
+ * @param {number} min Minimum value
+ * @param {number} max Maximum value
  * @param {number} peak Peak value controling the interpolation triangle shape
  *                        - peak <= min : linear (same as lerp)
  *                        - peak <= max : linear (same as lerp)
@@ -139,9 +139,9 @@ export function triLerp(t: number, min: number, max: number, peak: number): numb
 /**
  * Interpolate a value using Exponential interpolation
  *
- * @param {number} t     Normalized time value to interpolate
- * @param {number} min   Minimum value
- * @param {number} max   Maximum value
+ * @param {number} t Normalized time value to interpolate
+ * @param {number} min Minimum value
+ * @param {number} max Maximum value
  * @param {number} power Exponent controling the interpolation curve shape
  *                         - power > 1 : ease-in
  *                         - power < 1 : ease-out
@@ -156,7 +156,7 @@ export function expLerp(t: number, min: number, max: number, power: number): num
 /**
  * Interpolate a value using Quadratic Bézier interpolation
  *
- * @param {number} t  Normalized time value to interpolate
+ * @param {number} t Normalized time value to interpolate
  * @param {number} p1 Start point
  * @param {number} cp Control point
  * @param {number} p2 End point
@@ -172,7 +172,7 @@ export function quadraticBezier(t: number, p1: number, cp: number, p2: number): 
 /**
  * Interpolate a value using Cubic Bézier interpolation
  *
- * @param {number} t   Normalized time value to interpolate
+ * @param {number} t Normalized time value to interpolate
  * @param {number} p1  Start point
  * @param {number} cp1 First control point
  * @param {number} cp2 Second control point
@@ -191,7 +191,7 @@ export function cubicBezier(t: number, p1: number, cp1: number, cp2: number, p2:
 /**
  * Interpolate a value using Catmull-Rom interpolation
  *
- * @param {number} t   Normalized time value to interpolate
+ * @param {number} t Normalized time value to interpolate
  * @param {number} p1  Start point
  * @param {number} cp1 First control point
  * @param {number} cp2 Second control point
@@ -209,7 +209,7 @@ export function catmullRom(t: number, p1: number, cp1: number, cp2: number, p2: 
 /**
  * Modulo absolute a value based on a length
  *
- * @param {number} value  Value to modulate
+ * @param {number} value Value to modulate
  * @param {number} length Total length
  * @returns {number} Modulated value
  */
@@ -223,7 +223,7 @@ export function modAbs(value: number, length: number): number {
 /**
  * Move back and forth a value between 0 and length, so that it is never larger than length and never smaller than 0
  *
- * @param {number} value  Value to modulate
+ * @param {number} value Value to modulate
  * @param {number} length Total length
  * @returns {number} PingPonged value
  */
@@ -235,7 +235,7 @@ export function pingPong(value: number, length: number): number {
 /**
  * Smooth a value using cubic Hermite interpolation
  *
- * @param {number} value   Value to smooth
+ * @param {number} value Value to smooth
  * @param {number} [min=0] Minimum boundary
  * @param {number} [max=1] Maximum boundary
  * @returns {number} Normalized smoothed value
@@ -250,7 +250,7 @@ export function smoothstep(value: number, min: number = 0, max: number = 1): num
  *  - parabola(0) = parabola(1) = 0
  *  - parabola(0.5) = 1
  *
- * @param {number} x         Normalized coordinate on X axis
+ * @param {number} x Normalized coordinate on X axis
  * @param {number} [power=1] Parabola power
  * @returns {number} Normalized re-mapped value
  */
@@ -281,10 +281,10 @@ export function average(array: number[]): number {
 /**
  * Smoothly interpolate a number toward another
  *
- * @param {number} value   Value to interpolate
- * @param {number} target  Destination of the interpolation
+ * @param {number} value Value to interpolate
+ * @param {number} target Destination of the interpolation
  * @param {number} damping A higher value will make the movement more sudden, and a lower value will make the movement more gradual
- * @param {number} delta   Delta time (in seconds)
+ * @param {number} delta Delta time (in seconds)
  * @returns {number} Interpolated number
  */
 export function damp(value: number, target: number, damping: number, delta: number): number {

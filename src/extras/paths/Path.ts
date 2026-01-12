@@ -93,9 +93,7 @@ export default class Path<V extends Vector = Vector2 | Vector3, C extends Curve<
 
     let lastPoint: V | null = null;
 
-    for (let i = 0; i < this.curves.length; i++) {
-      const curve = this.curves[i];
-
+    for (const curve of this.curves) {
       let resolution: number = divisions;
       if (curve instanceof LineCurve || curve instanceof LineCurve3) {
         resolution = 1;
@@ -107,9 +105,7 @@ export default class Path<V extends Vector = Vector2 | Vector3, C extends Curve<
         resolution *= 2;
       }
 
-      const pts = this.curves[i].getPoints(resolution);
-      for (let j = 0; j < pts.length; j++) {
-        const point = pts[j];
+      for (const point of curve.getPoints(resolution)) {
         if (point?.equals(lastPoint)) continue;
         points.push(point);
         lastPoint = point;
@@ -168,8 +164,8 @@ export default class Path<V extends Vector = Vector2 | Vector3, C extends Curve<
     const lengths = [];
     let sums = 0;
 
-    for (let i = 0, j = this.curves.length; i < j; i++) {
-      sums += this.curves[i].getLength();
+    for (const curve of this.curves) {
+      sums += curve.getLength();
       lengths.push(sums);
     }
 

@@ -163,9 +163,9 @@ export function randomSign(prng: PRNGParameters, probability: number = 0.5): num
 /**
  * Generate a pseudo-random floating-point number within a specified range
  *
- * @param {PRNGParameters} prng  PRNG parameters
- * @param {number} [min=0]       Minimum boundary
- * @param {number} [max=1]       Maximum boundary
+ * @param {PRNGParameters} prng PRNG parameters
+ * @param {number} [min=0] Minimum boundary
+ * @param {number} [max=1] Maximum boundary
  * @param {number} [precision=2] Number of digits after the decimal point
  * @returns {number} Generated float
  */
@@ -177,8 +177,8 @@ export function randomFloat(prng: PRNGParameters, min: number = 0, max: number =
  * Generate a pseudo-random integer number within a specified range
  *
  * @param {PRNGParameters} prng PRNG parameters
- * @param {number} min          Minimum boundary
- * @param {number} max          Maximum boundary
+ * @param {number} min Minimum boundary
+ * @param {number} max Maximum boundary
  * @returns {number} Generated integer
  */
 export function randomInt(prng: PRNGParameters, min: number, max: number): number {
@@ -199,7 +199,7 @@ export function randomHexColor(prng: PRNGParameters): string {
  * Pick a pseudo-random item from a given array
  *
  * @param {PRNGParameters} prng PRNG parameters
- * @param {unknown[]} array     Array to pick the item from
+ * @param {unknown[]} array Array to pick the item from
  * @returns {unknown|undefined} Random item picked
  */
 export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | undefined {
@@ -211,7 +211,7 @@ export function randomItem<T = unknown>(prng: PRNGParameters, array: T[]): T | u
  * Pick a pseudo-random property value from a given object
  *
  * @param {PRNGParameters} prng PRNG parameters
- * @param {object} object       Object to pick the property from
+ * @param {object} object Object to pick the property from
  * @returns {unknown|undefined} Random item picked
  */
 export function randomObjectProperty<T = unknown>(prng: PRNGParameters, object: Record<string, T>): T | undefined {
@@ -226,7 +226,7 @@ export function randomObjectProperty<T = unknown>(prng: PRNGParameters, object: 
  * Select a pseudo-random index from an array of weighted items
  *
  * @param {PRNGParameters} prng PRNG parameters
- * @param {number[]} weights    Array of weights
+ * @param {number[]} weights Array of weights
  * @returns {number} Random index based on weights
  */
 export function randomIndex(prng: PRNGParameters, weights: number[]): number {
@@ -255,8 +255,8 @@ export function randomIndex(prng: PRNGParameters, weights: number[]): number {
  * Generate a pseudo-random number fitting a Gaussian (normal) distribution
  *
  * @param {PRNGParameters} prng PRNG parameters
- * @param {number} [mean=0]     Central value
- * @param {number} [spread=1]   Standard deviation
+ * @param {number} [mean=0] Central value
+ * @param {number} [spread=1] Standard deviation
  * @returns {number} Generated number
  */
 export function randomGaussian(prng: PRNGParameters, mean: number = 0, spread: number = 1): number {

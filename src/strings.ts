@@ -32,7 +32,7 @@ export function toKebabCase(string: string): string {
 
 /**
  * Convert a string to snake_case
- *   - 'Hello world' -> 'hello_world'
+ *  - 'Hello World' -> 'hello_world'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -50,7 +50,7 @@ export function toSnakeCase(string: string): string {
 
 /**
  * Convert a string to camelCase
- *   - 'Hello world' -> 'helloWorld'
+ *  - 'Hello world' -> 'helloWorld'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -67,7 +67,7 @@ export function toCamelCase(string: string): string {
 
 /**
  * Convert a string to PascalCase
- *   - 'Hello world' -> 'HelloWorld'
+ *  - 'Hello world' -> 'HelloWorld'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -84,7 +84,7 @@ export function toPascalCase(string: string): string {
 
 /**
  * Convert a string to Train-Case
- *   - 'Hello world' -> 'Hello-World'
+ *  - 'Hello world' -> 'Hello-World'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string
@@ -104,7 +104,7 @@ export function toTrainCase(string: string): string {
 
 /**
  * Convert a string to CONSTANT_CASE
- *   - 'Hello world' -> 'HELLO_WORLD'
+ *  - 'Hello world' -> 'HELLO_WORLD'
  *
  * @param {string} string String to convert
  * @returns {string} Converted string

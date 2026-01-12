@@ -162,7 +162,7 @@ Color.hsb: [number, number, number];
 
 ##### lab <a id="color-lab"></a>
 
-L*a*b\* values of the color.
+L\*a\*b\* values of the color.
 
 ```ts
 Color.lab: [number, number, number];
@@ -240,9 +240,9 @@ Color.setHsb(hsb: [number, number, number]): this;
 
 ##### setLab(lab) <a id="color-set-lab-method"></a>
 
-Set the color values from a given LAB color.
+Set the color values from a given L\*a\*b\* color.
 
-- `lab`: LAB color.
+- `lab`: L\*a\*b\* color.
 
 ```ts
 Color.setLab(lab: [number, number, number]): this;

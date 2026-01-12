@@ -44,8 +44,8 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    */
   public setFromPoints(points: Point2[]): this {
     this.moveTo(...points[0]);
-    for (let i = 1, l = points.length; i < l; i++) {
-      this.lineTo(...points[i]);
+    for (const point of points) {
+      this.lineTo(...point);
     }
     return this;
   }
@@ -221,7 +221,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * @param {number} cy Y-axis coordinate of the center of the circle
    * @param {number} rx X-radius of the ellipse
    * @param {number} ry Y-radius of the ellipse
-   * @param {number} rotation 	Rotation angle of the ellipse (in radians), counterclockwise from the positive X-axis
+   * @param {number} rotation Rotation angle of the ellipse (in radians), counterclockwise from the positive X-axis
    * @param {number} startAngle Start angle of the arc (in radians)
    * @param {number} endAngle   End angle of the arc (in radians)
    * @param {boolean} [counterclockwise] Flag indicating the direction of the arc
@@ -369,9 +369,9 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * Draw a rectangular path from the start position specified by `x` and `y` to the end position using `width` and `height`
    * Add an instance of {@link PolylineCurve} to this path
    *
-   * @param {number} x 		  X-axis coordinate of the rectangle starting point
-   * @param {number} y      Y-axis coordinate of the rectangle starting point
-   * @param {number} width	Rectangle width (Positive values are to the right and negative to the left)
+   * @param {number} x X-axis coordinate of the rectangle starting point
+   * @param {number} y Y-axis coordinate of the rectangle starting point
+   * @param {number} width  Rectangle width (Positive values are to the right and negative to the left)
    * @param {number} height Rectangle height (Positive values are down, and negative are up)
    * @return {this}
    */
@@ -391,9 +391,9 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
    * Draw a rounded rectangular path from the start position specified by `x` and `y` to the end position using `width` and `height`
    * Add an instance of {@link Path} to this path
    *
-   * @param {number} x 		  X-axis coordinate of the rectangle starting point
-   * @param {number} y      Y-axis coordinate of the rectangle starting point
-   * @param {number} width	Rectangle width (Positive values are to the right and negative to the left)
+   * @param {number} x X-axis coordinate of the rectangle starting point
+   * @param {number} y Y-axis coordinate of the rectangle starting point
+   * @param {number} width  Rectangle width (Positive values are to the right and negative to the left)
    * @param {number} height Rectangle height (Positive values are down, and negative are up)
    * @param {number|number[]} radius Radius of the circular arc to be used for the corners of the rectangle
    * @return {this}
@@ -610,8 +610,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   public getLineDash!: CanvasRenderingContext2D['getLineDash'];
   public fillText!: CanvasRenderingContext2D['fillText'];
   public strokeText!: CanvasRenderingContext2D['strokeText'];
-  public miterLimit!: CanvasRenderingContext2D['miterLimit'];
-
+  
   public fill!: CanvasRenderingContext2D['fill'];
   public stroke!: CanvasRenderingContext2D['stroke'];
   public clearRect!: CanvasRenderingContext2D['clearRect'];
@@ -620,6 +619,7 @@ export default class PathContext extends Path<Vector2> implements CanvasRenderin
   public drawImage!: CanvasRenderingContext2D['drawImage'];
   public clip!: CanvasRenderingContext2D['clip'];
   public filter!: CanvasRenderingContext2D['filter'];
+  public miterLimit!: CanvasRenderingContext2D['miterLimit'];
   public globalAlpha!: CanvasRenderingContext2D['globalAlpha'];
   public globalCompositeOperation!: CanvasRenderingContext2D['globalCompositeOperation'];
 

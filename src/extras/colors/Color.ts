@@ -118,7 +118,6 @@ export default class Color {
 
   /**
    * Set this color values from a given RGB color
-   *
    * Note:
    *   - RGB values are contained in the interval [0, 1]
    *
@@ -145,7 +144,6 @@ export default class Color {
 
   /**
    * Set this color values from a given HSL color
-   *
    * Note:
    *   - HSL values are contained in the intervals:
    *     - Hue:        [0, 360]
@@ -166,7 +164,6 @@ export default class Color {
 
   /**
    * Set this color values from a given HSB color
-   *
    * Note:
    *   - HSB values are contained in the intervals:
    *     - Hue:        [0, 360]
@@ -183,7 +180,6 @@ export default class Color {
 
   /**
    * Set this color values from a given L*a*b* color
-   *
    * Note:
    *   - L*a*b* values are contained in the intervals:
    *     - Lightness:        [0 à 100]
@@ -200,7 +196,6 @@ export default class Color {
 
   /**
    * Set this color values from a given HCL color
-   *
    * Note:
    *   - HCL values are contained in the intervals:
    *     - Hue:       [0, 360]
@@ -234,7 +229,7 @@ export default class Color {
    *
    * @param {number} t Normalized time value to interpolate
    * @param {ColorRgb} rgb RGB values to interpolate towards
-   * @param {object} [params]       Interpolation parameters
+   * @param {Object} [params]       Interpolation parameters
    * @param {number} [params.power] Interpolation exponent
    * @returns {this}
    */
@@ -247,7 +242,7 @@ export default class Color {
    *
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHsl} hsl HSL values to interpolate towards
-   * @param {object} [params]                Interpolation parameters
+   * @param {Object} [params]                Interpolation parameters
    * @param {number|number[]} [params.power] Interpolation exponent(s) : [h, s, l]
    * @param {string} [params.hueMode]        Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @returns {this}
@@ -261,7 +256,7 @@ export default class Color {
    *
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHsb} hsb HSB values to interpolate towards
-   * @param {object} [params]                Interpolation parameters
+   * @param {Object} [params]                Interpolation parameters
    * @param {number|number[]} [params.power] Interpolation exponent(s) : [h, s, b]
    * @param {string} [params.hueMode]        Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @returns {this}
@@ -275,7 +270,7 @@ export default class Color {
    *
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHcl} hcl HCL values to interpolate towards
-   * @param {object} [params]         Interpolation parameters
+   * @param {Object} [params]         Interpolation parameters
    * @param {string} [params.hueMode] Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @returns {this}
    */
@@ -292,7 +287,7 @@ export default class Color {
    *
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHcl} hcl HCL values to interpolate towards
-   * @param {object} [params]                Interpolation parameters
+   * @param {Object} [params]                Interpolation parameters
    * @param {number|number[]} [params.power] Interpolation exponent(s) : [c, l]
    * @param {string} [params.hueMode]        Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @param {number} [params.chromaMax]      Maximum chroma value
@@ -311,7 +306,7 @@ export default class Color {
    *
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHcl} hcl HCL values to interpolate towards
-   * @param {object} [params]                Interpolation parameters
+   * @param {Object} [params]                Interpolation parameters
    * @param {number|number[]} [params.power] Interpolation exponent(s) : ([c, l])
    * @returns {this}
    */
@@ -464,7 +459,7 @@ export default class Color {
    * @param {number} t Normalized time value to interpolate
    * @param {Color|ColorRgb} rgb1 Start color
    * @param {Color|ColorRgb} rgb2 End color
-   * @param {object} [params]         Interpolation parameters
+   * @param {Object} [params]         Interpolation parameters
    * @param {number} [params.power=1] Interpolation exponent
    * @returns {ColorRgb} Interpolated RGB color
    */
@@ -487,7 +482,7 @@ export default class Color {
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHsl} hsl1 Start color
    * @param {ColorHsl} hsl2 End color
-   * @param {object} [params]                  Interpolation parameters
+   * @param {Object} [params]                  Interpolation parameters
    * @param {number|number[]} [params.power=1] Interpolation exponent(s) : [h, s, l]
    * @param {string} [params.hueMode]          Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @returns {ColorHsl} Interpolated HSL color
@@ -516,7 +511,7 @@ export default class Color {
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHsb} hsb1 Start color
    * @param {ColorHsb} hsb2 End color
-   * @param {object} [params]                  Interpolation parameters
+   * @param {Object} [params]                  Interpolation parameters
    * @param {number|number[]} [params.power=1] Interpolation exponent(s) : [h, s, b]
    * @param {string} [params.hueMode]          Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @returns {ColorHsb} Interpolated HSB color
@@ -555,7 +550,7 @@ export default class Color {
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHcl} hcl1 Start color
    * @param {ColorHcl} hcl2 End color
-   * @param {object} [params]         Interpolation parameters
+   * @param {Object} [params]         Interpolation parameters
    * @param {string} [params.hueMode] Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @returns {ColorHcl} Interpolated HCL color
    */
@@ -587,7 +582,7 @@ export default class Color {
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHcl} hcl1 Start color
    * @param {ColorHcl} hcl2 End color
-   * @param {object} [params]                  Interpolation parameters
+   * @param {Object} [params]                  Interpolation parameters
    * @param {number|number[]} [params.power=1] Interpolation exponent(s) : [c, l]
    * @param {string} [params.hueMode]          Hue interpolation mode. Can be 'direct' | 'shortest' | 'longest'
    * @param {number} [params.chromaMax]        Maximum chroma value
@@ -628,7 +623,7 @@ export default class Color {
    * @param {number} t Normalized time value to interpolate
    * @param {ColorHcl} hcl1 Start color
    * @param {ColorHcl} hcl2 End color
-   * @param {object} [params]                  Interpolation parameters
+   * @param {Object} [params]                  Interpolation parameters
    * @param {number|number[]} [params.power=1] Interpolation exponent(s) : ([c, l])
    * @returns {ColorHcl} Interpolated HCL color
    */

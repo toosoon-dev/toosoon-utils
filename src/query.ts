@@ -16,7 +16,7 @@ export function getQuery(property: string): string | null {
  * Set a query parameter
  *
  * @param {string} property Query property to set
- * @param {string} value    Value to set
+ * @param {string} value Value to set
  */
 export function setQuery(property: string, value: string): void {
   const params = new URLSearchParams(search);

@@ -21,24 +21,24 @@ export function toRadians(degrees: number): number {
 }
 
 /**
- * Calculate the angle from a point to another
+ * Calculate the angle (in radians) from a point to another
  *
  * @param  {number} x1 X-axis coordinate of the start point
  * @param  {number} y1 Y-axis coordinate of the start point
  * @param  {number} x2 X-axis coordinate of the end point
  * @param  {number} y2 Y-axis coordinate of the end point
- * @returns {number} Angle
+ * @returns {number} Angle (in radians)
  */
 export function angle(x1: number, y1: number, x2: number, y2: number): number {
   return Math.atan2(y2 - y1, x2 - x1);
 }
 
 /**
- * Find the closest angle between to angles
+ * Find the closest angle (in radians) between two angles
  *
  * @param {number} startAngle Start angle (in radians)
- * @param {number} endAngle End angle (in radians)
- * @returns {number} Closest angle
+ * @param {number} endAngle   End angle (in radians)
+ * @returns {number} Closest angle (in radians)
  */
 export function closestAngle(startAngle: number, endAngle: number): number {
   const delta = endAngle - startAngle;
@@ -90,9 +90,9 @@ export type FitOutput = {
 /**
  * Make a target fit a container
  *
- * @param {FitInput} target    Dimensions of the target
+ * @param {FitInput} target Dimensions of the target
  * @param {FitInput} container Dimensions of the container
- * @param {string} mode        Can be 'contain' | 'cover'
+ * @param {string} mode Can be 'contain' | 'cover'
  * @returns {FitOutput}
  */
 function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): FitOutput {
@@ -118,7 +118,7 @@ function fit(target: FitInput, container: FitInput, mode: 'contain' | 'cover'): 
 /**
  * Make a target fit a container (cover mode)
  *
- * @param {FitInput} target    Dimensions of the target
+ * @param {FitInput} target Dimensions of the target
  * @param {FitInput} container Dimensions of the container
  * @returns {FitOutput}
  */
@@ -129,7 +129,7 @@ export function cover(target: FitInput, container: FitInput): FitOutput {
 /**
  * Make a target fit a container (contain mode)
  *
- * @param {FitInput} target    Dimensions of the target
+ * @param {FitInput} target Dimensions of the target
  * @param {FitInput} container Dimensions of the container
  * @returns {FitOutput}
  */

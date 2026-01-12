@@ -24,8 +24,8 @@ export function randomSign(probability: number = 0.5): number {
 /**
  * Generate a random floating-point number within a specified range
  *
- * @param {number} [min=0]       Minimum boundary
- * @param {number} [max=1]       Maximum boundary
+ * @param {number} [min=0] Minimum boundary
+ * @param {number} [max=1] Maximum boundary
  * @param {number} [precision=2] Number of digits after the decimal point
  * @returns {number} Generated float
  */
@@ -109,7 +109,7 @@ export function randomIndex(weights: number[]): number {
 /**
  * Generate a random number fitting a Gaussian (normal) distribution
  *
- * @param {number} [mean=0]   Central value
+ * @param {number} [mean=0] Central value
  * @param {number} [spread=1] Standard deviation
  * @returns {number} Generated number
  */
