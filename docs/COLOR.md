@@ -440,8 +440,7 @@ static Color.lerpRgb(
 ): [number, number, number];
 ```
 
-##### `static` Color.`lerpHsl(t, hsl1, hsl2
- params?)` <a id="color-lerp-hsl-static-method"></a>
+##### `static` Color.`lerpHsl(t, hsl1, hsl2, params?)` <a id="color-lerp-hsl-static-method"></a>
 
 Linearly interpolate a color between two colors in the HSL color space.
 
@@ -1172,4 +1171,3 @@ palette.getColor('dark', 1); // Very dark red: #390000
 ```
 
 ![Screen capture of the 4 predefined color scales](./assets/color-palette.png)
-¨
