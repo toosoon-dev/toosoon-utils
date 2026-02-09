@@ -10,19 +10,19 @@ Utility abstract class for manipulating curves.
   - [.needsUpdate](#curve-needs-update): `boolean`
   - [.getPoint(t)](#curve-get-point-method): `Vector`
   - [.getPointAt(u)](#curve-get-point-at-method): `Vector`
-  - [.getPoints(divisions)](#curve-get-points-method): `Vector[]`
-  - [.getSpacedPoints(divisions)](#curve-get-spaced-points-method): `Vector[]`
-  - [.getLengths()](#curve-get-length-method): `number`
-  - [.getLengths()](#curve-get-lengths-method): `number[]`
+  - [.getPoints(divisions?)](#curve-get-points-method): `Vector[]`
+  - [.getSpacedPoints(divisions?)](#curve-get-spaced-points-method): `Vector[]`
+  - [.getLength()](#curve-get-length-method): `number`
+  - [.getLengths(divisions?)](#curve-get-lengths-method): `number[]`
   - [.updateArcLengths()](#curve-update-arc-lengths-method): `void`
-  - [.getUtoTmapping(t, targetArcLength)](#curve-get-u-to-t-mapping-method): `number`
+  - [.getUtoTmapping(t, targetArcLength?)](#curve-get-u-to-t-mapping-method): `number`
   - [.getTangent(t)](#curve-get-tangent-method): `Vector`
   - [.getTangentAt(u)](#curve-get-tangent-at-method): `Vector`
   - [.isClosed()](#curve-is-closed-method): `boolean`
 
 #### Properties
 
-##### arcLengthDivisions <a id="curve-arc-length-divisions"></a>
+##### .`arcLengthDivisions` <a id="curve-arc-length-divisions"></a>
 
 Amount of divisions when calculating the cumulative segment lengths of a curve.
 
@@ -30,7 +30,7 @@ Amount of divisions when calculating the cumulative segment lengths of a curve.
 Curve.arcLengthDivisions: number;
 ```
 
-##### needsUpdate <a id="curve-needs-update"></a>
+##### .`needsUpdate` <a id="curve-needs-update"></a>
 
 Must be set to `true` if the curve parameters have changed.
 
@@ -40,7 +40,7 @@ Curve.needsUpdate: boolean;
 
 #### Methods
 
-##### getPoint(t) <a id="curve-get-point-method"></a>
+##### .`getPoint(t)` <a id="curve-get-point-method"></a>
 
 Interpolate a point on the curve.
 
@@ -50,7 +50,7 @@ Interpolate a point on the curve.
 Curve.getPoint(t: number): Vector;
 ```
 
-##### getPointAt(u) <a id="curve-get-point-at-method"></a>
+##### .`getPointAt(u)` <a id="curve-get-point-at-method"></a>
 
 Interpolate a point on the curve.
 
@@ -60,7 +60,7 @@ Interpolate a point on the curve.
 Curve.getPointAt(u: number): Vector;
 ```
 
-##### getPoints(divisions) <a id="curve-get-points-method"></a>
+##### .`getPoints(divisions?)` <a id="curve-get-points-method"></a>
 
 Compute the curve shape into an array of points.
 
@@ -70,7 +70,7 @@ Compute the curve shape into an array of points.
 Curve.getPoints(divisions?: number): Vector[];
 ```
 
-##### getSpacedPoints(divisions) <a id="curve-get-spaced-points-method"></a>
+##### .`getSpacedPoints(divisions?)` <a id="curve-get-spaced-points-method"></a>
 
 Compute the curve shape into an array of equi-spaced points across the entire curve.
 
@@ -80,7 +80,7 @@ Compute the curve shape into an array of equi-spaced points across the entire cu
 Curve.getSpacedPoints(divisions?: number): Vector[];
 ```
 
-##### getLength() <a id="curve-get-lengt-methodh"></a>
+##### .`getLength()` <a id="curve-get-length-method"></a>
 
 Compute the total arc length of the curve.
 
@@ -88,7 +88,7 @@ Compute the total arc length of the curve.
 Curve.getLength(): number;
 ```
 
-##### getLengths() <a id="curve-get-lengths-method"></a>
+##### .`getLengths(divisions?)` <a id="curve-get-lengths-method"></a>
 
 Compute the cumulative segment lengths of the curve.
 
@@ -98,7 +98,7 @@ Compute the cumulative segment lengths of the curve.
 Curve.getLengths(divisions?: number): number[];
 ```
 
-##### updateArcLengths() <a id="curve-get-point-method"></a>
+##### .`updateArcLengths()` <a id="curve-get-point-method"></a>
 
 Update the cached cumulative segment lengths.
 
@@ -106,7 +106,7 @@ Update the cached cumulative segment lengths.
 Curve.updateArcLengths(): void;
 ```
 
-##### getUtoTmapping(t, targetArcLength) <a id="curve-get-u-to-t)mapping-method"></a>
+##### .`getUtoTmapping(t, targetArcLength?)` <a id="curve-get-u-to-t-mapping-method"></a>
 
 Re-map a normalized position value into normalized time.
 
@@ -117,7 +117,7 @@ Re-map a normalized position value into normalized time.
 Curve.getUtoTmapping(u: number, targetArcLength?: number): number;
 ```
 
-##### getTangent(t) <a id="curve-get-tangent-method"></a>
+##### .`getTangent(t)` <a id="curve-get-tangent-method"></a>
 
 Compute an unit vector tangent for a given normalized time value.
 
@@ -127,7 +127,7 @@ Compute an unit vector tangent for a given normalized time value.
 Curve.getTangent(t: number): Vector;
 ```
 
-##### getTangentAt(u) <a id="curve-get-tangent-at-method"></a>
+##### .`getTangentAt(u)` <a id="curve-get-tangent-at-method"></a>
 
 Compute an unit vector tangent for a given normalized position value.
 
@@ -137,7 +137,7 @@ Compute an unit vector tangent for a given normalized position value.
 Curve.getTangentAt(u: number): Vector;
 ```
 
-##### isClosed() <a id="curve-is-closed-method"></a>
+##### .`isClosed()` <a id="curve-is-closed-method"></a>
 
 Check if the curve is closed.
 
@@ -149,8 +149,10 @@ Curve.isClosed(): boolean;
 
 Utility class extending [Curve](#curve) for manipulating lines.
 
-- new LineCurve(x1, y1, x2, y2)
-  - `static` [.interpolate(t, x1, y1, x2, y2)](#line-curve-static-interpolate-method)
+- [new LineCurve(x1, y1, x2, y2)](#line-curve-constructor)
+  - `static` [.interpolate(t, x1, y1, x2, y2)](#line-curve-static-interpolate-method): `[number, number]`
+
+#### Constructor <a id="line-curve-constructor"></a>
 
 | Parameter | Type     | Default | Description                           |
 | --------- | -------- | ------- | ------------------------------------- |
@@ -159,7 +161,7 @@ Utility class extending [Curve](#curve) for manipulating lines.
 | x2        | `number` |         | X-axis coordinate of the end point.   |
 | y2        | `number` |         | Y-axis coordinate of the end point.   |
 
-##### `static` interpolate(t, x1, y1, x2, y2) <a id="line-curve-static-interpolate-method"></a>
+##### `static` LineCurve.`interpolate(t, x1, y1, x2, y2)` <a id="line-curve-static-interpolate-method"></a>
 
 Interpolate a point on a line.
 
@@ -175,8 +177,10 @@ static LineCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating 3D lines.
 
-- new LineCurve3(x1, y1, z1, x2, y2, z2)
-  - `static` [.interpolate(t, x1, y1, z1, x2, y2, z2)](#line-curve-3-static-interpolate-method)
+- [new LineCurve3(x1, y1, z1, x2, y2, z2)](#line-curve-3-constructor)
+  - `static` [.interpolate(t, x1, y1, z1, x2, y2, z2)](#line-curve-3-static-interpolate-method): `[number, number, number]`
+
+#### Constructor <a id="line-curve-3-constructor"></a>
 
 | Parameter | Type     | Default | Description                           |
 | --------- | -------- | ------- | ------------------------------------- |
@@ -187,7 +191,7 @@ Utility class extending [Curve](#curve) for manipulating 3D lines.
 | y2        | `number` |         | Y-axis coordinate of the end point.   |
 | z2        | `number` |         | Z-axis coordinate of the end point.   |
 
-##### `static` interpolate(t, x1, y1, z1, x2, y2, z2) <a id="line-curve-3-static-interpolate-method"></a>
+##### `static` LineCurve3.`interpolate(t, x1, y1, z1, x2, y2, z2)` <a id="line-curve-3-static-interpolate-method"></a>
 
 Interpolate a point on a 3D line.
 
@@ -203,7 +207,9 @@ static LineCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating polylines.
 
-- new PolylineCurve(points)
+- [new PolylineCurve(points?)](#polyline-curve-constructor)
+
+#### Constructor <a id="polyline-curve-constructor"></a>
 
 | Parameter | Type                      | Default | Description                         |
 | --------- | ------------------------- | ------- | ----------------------------------- |
@@ -213,7 +219,9 @@ Utility class extending [Curve](#curve) for manipulating polylines.
 
 Utility class extending [Curve](#curve) for manipulating 3D polylines.
 
-- new PolylineCurve3(points)
+- [new PolylineCurve3(points?)](#polyline-curve-3-constructor)
+
+#### Constructor <a id="polyline-curve-3-constructor"></a>
 
 | Parameter | Type                              | Default | Description                         |
 | --------- | --------------------------------- | ------- | ----------------------------------- |
@@ -223,8 +231,10 @@ Utility class extending [Curve](#curve) for manipulating 3D polylines.
 
 Utility class extending [Curve](#curve) for manipulating Quadratic Bézier curves.
 
-- new QuadraticBezierCurve(x1, y1, cpx, cpy, x2, y2)
-  - `static` [.interpolate(t, x1, y1, cpx, cpy, x2, y2)](#quadratic-bezier-curve-static-interpolate-method)
+- [new QuadraticBezierCurve(x1, y1, cpx, cpy, x2, y2)](#quadratic-bezier-curve-constructor)
+  - `static` [.interpolate(t, x1, y1, cpx, cpy, x2, y2)](#quadratic-bezier-curve-static-interpolate-method): `[number, number]`
+
+#### Constructor <a id="quadratic-bezier-curve-constructor"></a>
 
 | Parameter | Type     | Default | Description                             |
 | --------- | -------- | ------- | --------------------------------------- |
@@ -235,7 +245,7 @@ Utility class extending [Curve](#curve) for manipulating Quadratic Bézier curve
 | x2        | `number` |         | X-axis coordinate of the end point.     |
 | y2        | `number` |         | Y-axis coordinate of the end point.     |
 
-##### `static` interpolate(t, x1, y1, cpx, cpy, x2, y2) <a id="quadratic-bezier-curve-static-interpolate-method"></a>
+##### `static` QuadraticBezierCurve.`interpolate(t, x1, y1, cpx, cpy, x2, y2)` <a id="quadratic-bezier-curve-static-interpolate-method"></a>
 
 Interpolate a point on a 2D Quadratic Bézier curve.
 
@@ -252,8 +262,10 @@ static QuadraticBezierCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Quadratic Bézier 3D curves.
 
-- new QuadraticBezierCurve3(x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)
-  - `static` [.interpolate(t, x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)](#quadratic-bezier-curve-3-static-interpolate-method)
+- [new QuadraticBezierCurve3(x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)](#quadratic-bezier-curve-3-constructor)
+  - `static` [.interpolate(t, x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)](#quadratic-bezier-curve-3-static-interpolate-method): `[number, number, number]`
+
+#### Constructor <a id="quadratic-bezier-curve-3-constructor"></a>
 
 | Parameter | Type     | Default | Description                             |
 | --------- | -------- | ------- | --------------------------------------- |
@@ -267,7 +279,7 @@ Utility class extending [Curve](#curve) for manipulating Quadratic Bézier 3D cu
 | y2        | `number` |         | Y-axis coordinate of the end point.     |
 | z2        | `number` |         | Z-axis coordinate of the end point.     |
 
-##### `static` interpolate(t, x1, y1, z1, cpx, cpy, cpz, x2, y2, z2) <a id="quadratic-bezier-curve-3-static-interpolate-method"></a>
+##### `static` QuadraticBezierCurve3.`interpolate(t, x1, y1, z1, cpx, cpy, cpz, x2, y2, z2)` <a id="quadratic-bezier-curve-3-static-interpolate-method"></a>
 
 Interpolate a point on a 3D Quadratic Bézier curve.
 
@@ -284,8 +296,10 @@ static QuadraticBezierCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Cubic Bézier curves.
 
-- new CubicBezierCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)
-  - `static` [.interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#cubic-bezier-curve-static-interpolate-method)
+- [new CubicBezierCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#cubic-bezier-curve-constructor)
+  - `static` [.interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#cubic-bezier-curve-static-interpolate-method): `[number, number]`
+
+#### Constructor <a id="cubic-bezier-curve-constructor"></a>
 
 | Parameter | Type     | Default | Description                                    |
 | --------- | -------- | ------- | ---------------------------------------------- |
@@ -298,7 +312,7 @@ Utility class extending [Curve](#curve) for manipulating Cubic Bézier curves.
 | x2        | `number` |         | X-axis coordinate of the end point.            |
 | y2        | `number` |         | Y-axis coordinate of the end point.            |
 
-##### `static` interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2) <a id="cubic-bezier-curve-static-interpolate-method"></a>
+##### `static` CubicBezierCurve.`interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)` <a id="cubic-bezier-curve-static-interpolate-method"></a>
 
 Interpolate a point on a 2D Cubic Bézier curve.
 
@@ -316,8 +330,10 @@ static CubicBezierCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Cubic Bézier 3D curves.
 
-- new CubicBezierCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)
-  - `static` [.interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#cubic-bezier-curve-3-static-interpolate-method)
+- [new CubicBezierCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#cubic-bezier-curve-3-constructor)
+  - `static` [.interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#cubic-bezier-curve-3-static-interpolate-method): `[number, number, number]`
+
+#### Constructor <a id="cubic-bezier-curve-3-constructor"></a>
 
 | Parameter | Type     | Default | Description                                    |
 | --------- | -------- | ------- | ---------------------------------------------- |
@@ -334,7 +350,7 @@ Utility class extending [Curve](#curve) for manipulating Cubic Bézier 3D curves
 | y2        | `number` |         | Y-axis coordinate of the end point.            |
 | z2        | `number` |         | Z-axis coordinate of the end point.            |
 
-##### `static` interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2) <a id="cubic-bezier-curve-3-static-interpolate-method"></a>
+##### `static` CubicBezierCurve3.`interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)` <a id="cubic-bezier-curve-3-static-interpolate-method"></a>
 
 Interpolate a point on a 3D Cubic Bézier curve.
 
@@ -352,8 +368,10 @@ static CubicBezierCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Catmull-Rom curves.
 
-- new CatmullRomCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)
-  - `static` [.interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#catmull-rom-curve-static-interpolate-method)
+- [new CatmullRomCurve(x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#catmull-rom-curve-constructor)
+  - `static` [.interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)](#catmull-rom-curve-static-interpolate-method): `[number, number]`
+
+#### Constructor <a id="catmull-rom-curve-constructor"></a>
 
 | Parameter | Type     | Default | Description                                    |
 | --------- | -------- | ------- | ---------------------------------------------- |
@@ -366,7 +384,7 @@ Utility class extending [Curve](#curve) for manipulating Catmull-Rom curves.
 | x2        | `number` |         | X-axis coordinate of the end point.            |
 | y2        | `number` |         | Y-axis coordinate of the end point.            |
 
-##### `static` interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2) <a id="catmull-rom-curve-static-interpolate-method"></a>
+##### `static` CatmullRomCurve.`interpolate(t, x1, y1, cp1x, cp1y, cp2x, cp2y, x2, y2)` <a id="catmull-rom-curve-static-interpolate-method"></a>
 
 Interpolate a point on a 2D Catmull-Rom spline.
 
@@ -384,8 +402,10 @@ static CatmullRomCurve.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating Catmull-Rom 3D curves.
 
-- new CatmullRomCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)
-  - `static` [.interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#catmull-rom-curve-3-static-interpolate-method)
+- [new CatmullRomCurve3(x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#catmull-rom-curve-3-constructor)
+  - `static` [.interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)](#catmull-rom-curve-3-static-interpolate-method): `[number, number, number]`
+
+#### Constructor <a id="catmull-rom-curve-3-constructor"></a>
 
 | Parameter | Type     | Default | Description                                    |
 | --------- | -------- | ------- | ---------------------------------------------- |
@@ -402,7 +422,7 @@ Utility class extending [Curve](#curve) for manipulating Catmull-Rom 3D curves.
 | y2        | `number` |         | Y-axis coordinate of the end point.            |
 | z2        | `number` |         | Z-axis coordinate of the end point.            |
 
-##### `static` interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2) <a id="catmull-rom-curve-3-static-interpolate-method"></a>
+##### `static` CatmullRomCurve3.`interpolate(t, x1, y1, z1, cp1x, cp1y, cp1z, cp2x, cp2y, cp2z, x2, y2, z2)` <a id="catmull-rom-curve-3-static-interpolate-method"></a>
 
 Interpolate a point on a 3D Catmull-Rom spline.
 
@@ -420,7 +440,9 @@ static CatmullRomCurve3.interpolate(
 
 Utility class extending [Curve](#curve) for manipulating splines.
 
-- new SplineCurve(points)
+- [new SplineCurve(points?)](#spline-curve-constructor)
+
+#### Constructor <a id="spline-curve-constructor"></a>
 
 | Parameter | Type                      | Default | Description                         |
 | --------- | ------------------------- | ------- | ----------------------------------- |
@@ -430,7 +452,9 @@ Utility class extending [Curve](#curve) for manipulating splines.
 
 Utility class extending [Curve](#curve) for manipulating 3D splines.
 
-- new SplineCurve3(points)
+- [new SplineCurve3(points?)](#spline-curve-3-constructor)
+
+#### Constructor <a id="spline-curve-3-constructor"></a>
 
 | Parameter | Type                              | Default | Description                         |
 | --------- | --------------------------------- | ------- | ----------------------------------- |
@@ -440,8 +464,10 @@ Utility class extending [Curve](#curve) for manipulating 3D splines.
 
 Utility class extending [Curve](#curve) for manipulating ellipses.
 
-- new EllipseCurve(cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)
-  - `static` [.interpolate(t, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)](#ellipse-curve-static-interpolate-method)
+- [new EllipseCurve(cx, cy, rx, ry, rotation?, startAngle?, endAngle?, counterclockwise?)](#ellipse-curve-constructor)
+  - `static` [.interpolate(t, cx, cy, rx, ry, rotation?, startAngle?, endAngle?, counterclockwise?)](#ellipse-curve-static-interpolate-method): `[number, number]`
+
+#### Constructor <a id="ellipse-curve-constructor"></a>
 
 | Parameter          | Type      | Default  | Description                                                                            |
 | ------------------ | --------- | -------- | -------------------------------------------------------------------------------------- |
@@ -454,7 +480,7 @@ Utility class extending [Curve](#curve) for manipulating ellipses.
 | [endAngle]         | `number`  | `2 * PI` | End angle of the arc (in radians).                                                     |
 | [counterclockwise] | `boolean` | `false`  | Flag indicating the direction of the arc.                                              |
 
-##### `static` interpolate(t, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise) <a id="ellipse-curve-static-interpolate-method"></a>
+##### `static` EllipseCurve.`interpolate(t, cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise)` <a id="ellipse-curve-static-interpolate-method"></a>
 
 Interpolate a point on an elliptical arc.
 
@@ -474,7 +500,9 @@ static EllipseCurve.interpolate(
 
 Utility class extending [EllipseCurve](#ellipse-curve) for manipulating arcs.
 
-- new ArcCurve(cx, cy, radius, startAngle, endAngle, counterclockwise)
+- [new ArcCurve(cx, cy, radius, startAngle?, endAngle?, counterclockwise?)](#arc-curve-constructor)
+
+#### Constructor <a id="arc-curve-constructor"></a>
 
 | Parameter          | Type      | Default  | Description                                    |
 | ------------------ | --------- | -------- | ---------------------------------------------- |

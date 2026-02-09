@@ -1,5 +1,5 @@
 // *********************
-// Maths
+// Math
 // *********************
 export const EPSILON = 1e-10;
 
@@ -11,14 +11,15 @@ export const TWO_PI = PI * 2;
 export const TAU = PI * 2;
 export const HALF_PI = PI / 2;
 export const QUARTER_PI = PI / 4;
+export const RAD2DEG = 180 / PI;
+export const DEG2RAD = PI / 180;
 
 // *********************
-// Colors
+// Color
 // *********************
 
-// X11 colors
-//   -> https://www.w3.org/TR/css-color-3/#svg-color
-export const W3CX11 = {
+// X11 color names
+export const COLORS = {
   aliceblue: 0xf0f8ff,
   antiquewhite: 0xfaebd7,
   aqua: 0x00ffff,

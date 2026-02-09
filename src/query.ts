@@ -30,7 +30,7 @@ export function setQuery(property: string, value: string): void {
  * Check if a query parameter exists
  *
  * @param {string} property Query property to check
- * @returns {boolean} True if the given property has a query parameter value, false otherwise
+ * @returns {boolean} `true` if the given property has a query parameter value, `false` otherwise
  */
 export function hasQuery(property: string): boolean {
   return getQuery(property) !== null;

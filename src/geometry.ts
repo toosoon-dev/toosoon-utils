@@ -1,40 +1,40 @@
-import { PI } from './constants';
+import { PI, RAD2DEG, DEG2RAD } from './constants';
 
 /**
- * Convert a radians value into degrees
+ * Convert a radians angle into degrees
  *
  * @param {number} radians Angle in radians
  * @returns {number} Angle in degrees
  */
 export function toDegrees(radians: number): number {
-  return (radians * 180) / PI;
+  return radians * RAD2DEG;
 }
 
 /**
- * Convert a degrees value into radians
+ * Convert a degrees angle into radians
  *
  * @param {number} degrees Angle in degrees
  * @returns {number} Angle in radians
  */
 export function toRadians(degrees: number): number {
-  return (degrees * PI) / 180;
+  return degrees * DEG2RAD;
 }
 
 /**
- * Calculate the angle (in radians) from a point to another
+ * Compute the angle (in radians) from a point to another
  *
  * @param  {number} x1 X-axis coordinate of the start point
  * @param  {number} y1 Y-axis coordinate of the start point
  * @param  {number} x2 X-axis coordinate of the end point
  * @param  {number} y2 Y-axis coordinate of the end point
- * @returns {number} Angle (in radians)
+ * @returns {number} Computed angle (in radians)
  */
 export function angle(x1: number, y1: number, x2: number, y2: number): number {
   return Math.atan2(y2 - y1, x2 - x1);
 }
 
 /**
- * Find the closest angle (in radians) between two angles
+ * Compute the closest angle (in radians) between two angles
  *
  * @param {number} startAngle Start angle (in radians)
  * @param {number} endAngle   End angle (in radians)
@@ -46,7 +46,7 @@ export function closestAngle(startAngle: number, endAngle: number): number {
 }
 
 /**
- * Calculate the distance between two points
+ * Compute the distance between two points
  *
  * @param {number} x1 X-axis coordinate of the start point
  * @param {number} y1 Y-axis coordinate of the start point
@@ -61,7 +61,7 @@ export function distance(x1: number, y1: number, x2: number, y2: number): number
 }
 
 /**
- * Calculate the length of the diagonal of a rectangle
+ * Compute the length of the diagonal of a rectangle
  *
  * @param {number} width  Width of the rectangle
  * @param {number} height Height of the rectangle

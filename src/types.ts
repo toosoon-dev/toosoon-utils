@@ -1,15 +1,9 @@
-import { type W3CX11 } from './constants';
+import { type COLORS } from './constants';
 
 // *********************
-// Maths
+// Math
 // *********************
 export type Range = [number, number];
-
-// *********************
-// Geometry
-// *********************
-export type Point2 = [number, number];
-export type Point3 = [number, number, number];
 
 // prettier-ignore
 export type Matrix2x2 = [ 
@@ -37,9 +31,15 @@ export type Matrix4x4 = [
 ];
 
 // *********************
-// Colors
+// Geometry
 // *********************
-export type ColorName = keyof typeof W3CX11;
+export type Point2 = [number, number];
+export type Point3 = [number, number, number];
+
+// *********************
+// Color
+// *********************
+export type ColorName = keyof typeof COLORS;
 export type ColorHex = number;
 export type ColorRgb = [number, number, number];
 export type ColorHsl = [number, number, number];
@@ -48,12 +48,3 @@ export type ColorHcl = [number, number, number];
 export type ColorLab = [number, number, number];
 
 export type ColorRepresentation = ColorName | ColorRgb | ColorHex | string;
-
-// *********************
-// Functions
-// *********************
-export interface Deferred<T> {
-  promise: Promise<T>;
-  resolve: (value: T | PromiseLike<T>) => void;
-  reject: (reason?: unknown) => void;
-}

@@ -1,5 +1,3 @@
-import { Deferred } from './types';
-
 /**
  * No-op function
  */
@@ -16,11 +14,24 @@ export function wait(delay: number = 0): Promise<void> {
 }
 
 /**
- * Create a debounced function that delays the execution of `callback` until a specified `delay` time has passed since the last call
+ * Check if a value is defined
  *
- * @param {Function} callback Function to debounce
+ * @template {unknown} [T=unknown]
+ * @param {T} value Value to check
+ * @returns {boolean} `true` if the given value is defined, `false` otherwise
+ */
+export function isDefined<T = unknown>(value: T): value is Exclude<T, undefined | null> {
+  if (typeof value === 'undefined' || value === null) return false;
+  return true;
+}
+
+/**
+ * Create a debounced function that delays the execution of a given callback until a specified delay time has passed since the last call
+ *
+ * @template {Function} T
+ * @param {T} callback Function to debounce
  * @param {number} delay Delay (in milliseconds)
- * @returns {Function} Debounced function
+ * @returns {T} Debounced function
  */
 export function debounce<T extends (...args: any[]) => void>(
   callback: T,
@@ -34,22 +45,12 @@ export function debounce<T extends (...args: any[]) => void>(
 }
 
 /**
- * Check if a value is defined
+ * Create a throttled function that limits the execution of a given callback to once every specified limit time
  *
- * @param {any} value Value to check
- * @returns {boolean}
- */
-export function isDefined<T>(value: T): value is Exclude<T, undefined | null> {
-  if (typeof value === 'undefined' || value === null) return false;
-  return true;
-}
-
-/**
- * Create a throttled function that limits the execution of `callback` to once every `limit` time
- *
- * @param {Function} callback Function to throttle
+ * @template {Function} T
+ * @param {T} callback Function to throttle
  * @param {number} limit Minimum interval between two calls (in milliseconds)
- * @returns {Function} Throttled function
+ * @returns {T} Throttled function
  */
 export function throttle<T extends (...args: any[]) => void>(
   callback: T,
@@ -63,21 +64,6 @@ export function throttle<T extends (...args: any[]) => void>(
       callback(...args);
     }
   };
-}
-
-/**
- * Deferred promise implementation
- *
- * @returns {Deferred}
- */
-export function defer<T = void>(): Deferred<T> {
-  let resolve!: (value: T | PromiseLike<T>) => void;
-  let reject!: (reason?: unknown) => void;
-  const promise = new Promise<T>((_resolve, _reject) => {
-    resolve = _resolve;
-    reject = _reject;
-  });
-  return { promise, resolve, reject };
 }
 
 /**

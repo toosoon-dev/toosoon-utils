@@ -1,4 +1,4 @@
-# TOOSOON UTILS
+# TOOSOON Utils
 
 Utility functions & classes.
 
@@ -21,38 +21,37 @@ $ npm install toosoon-utils
 ## Usage
 
 ```ts
-import { lerp } from 'toosoon-utils/maths';
+import { lerp } from 'toosoon-utils/math';
 
-console.log(lerp(0.5, 0, 5)); // 2.5
+lerp(0.5, 0, 5); // 2.5
 ```
 
 ## Summary
 
 - [Utility functions](#utility-functions)
-  - [Maths](#maths-functions)
+  - [Math](#math-functions)
   - [Geometry](#geometry-functions)
-  - [Colors](#colors-functions)
+  - [Color](#color-functions)
   - [Functions](#functions-functions)
-  - [Strings](#strings-functions)
+  - [String](#string-functions)
   - [Query](#query-functions)
   - [DOM](#dom-functions)
-  - [Files](#files-functions)
+  - [File](#file-functions)
   - [Random](#random-functions)
-  - [PRNG](#prng-functions)
 - [Utility classes](#utility-classes)
   - [Geometry](#geometry-classes)
   - [Curves](#curves-classes)
   - [Paths](#paths-classes)
-  - [Colors](#colors-classes)
-  - [FrameRate](#frame-rate-class)
+  - [Color](#color-classes)
+  - [Performance](#performance-class)
 - [Constants](#constants)
 - [License](#license)
 
 ## Utility functions
 
-### Maths <a id="maths-functions"></a>
+### Math <a id="math-functions"></a>
 
-##### isEven(value)
+##### `isEven(value)`
 
 Check if a number is even.
 
@@ -62,7 +61,7 @@ Check if a number is even.
 isEven(value: number): boolean;
 ```
 
-##### isOdd(value)
+##### `isOdd(value)`
 
 Check if a number is odd.
 
@@ -72,7 +71,7 @@ Check if a number is odd.
 isOdd(value: number): boolean;
 ```
 
-##### isPowerOf2(value)
+##### `isPowerOf2(value)`
 
 Check if a number is a power of 2.
 
@@ -82,18 +81,17 @@ Check if a number is a power of 2.
 isPowerOf2(value: number): boolean;
 ```
 
-##### toPowerOf2(value)
+##### `toPowerOf2(value)`
 
-Find closest power of 2 that fits a number.
+Compute the closest greater power of 2 from a number.
 
-- `value`: Incoming value.
-- `[mode='ceil']`: Can be `'floor'`, `'ceil'` or `'round'`.
+- `value`: Value to compute power of 2 for.
 
 ```ts
-toPowerOf2(value: number, mode?: string): number;
+toPowerOf2(value: number): number;
 ```
 
-##### sign(value)
+##### `sign(value)`
 
 Return the sign (positive or negative) of a number.
 
@@ -103,11 +101,11 @@ Return the sign (positive or negative) of a number.
 sign(value: number): number;
 ```
 
-##### clamp(value, min, max)
+##### `clamp(value, min?, max?)`
 
-Clamp a value between two bounds.
+Constrain a number between two bounds.
 
-- `value`: Value to clamp.
+- `value`: Value to constrain.
 - `[min=0]`: Minimum boundary.
 - `[max=1]`: Maximum boundary.
 
@@ -115,7 +113,7 @@ Clamp a value between two bounds.
 clamp(value: number, min?: number, max?: number): number;
 ```
 
-##### snap(value, multiple)
+##### `snap(value, multiple?)`
 
 Round a number up to a nearest multiple.
 
@@ -126,21 +124,21 @@ Round a number up to a nearest multiple.
 snap(value: number, multiple?: number): number;
 ```
 
-##### lerp(t, min, max)
+##### `lerp(t, min, max)`
 
-Interpolate a value between two values using Linear interpolation (lerping).
+Interpolate a number between two bounds using Linear interpolation (lerping).
 
 - `t`: Normalized time value to interpolate.
-- `min`: Minimum value.
-- `max`: Maximum value.
+- `min`: Minimum boundary.
+- `max`: Maximum boundary.
 
 ```ts
 lerp(t: number, min: number, max: number): number;
 ```
 
-##### normalize(value, min, max)
+##### `normalize(value, min, max)`
 
-Normalize a value between two bounds.
+Normalize a number between two bounds.
 
 - `value`: Value to normalize.
 - `min`: Minimum boundary.
@@ -150,7 +148,7 @@ Normalize a value between two bounds.
 normalize(value: number, min: number, max: number): number;
 ```
 
-##### map(value, currentMin, currentMax, targetMin, targetMax)
+##### `map(value, currentMin, currentMax, targetMin, targetMax)`
 
 Re-map a number from one range to another.
 
@@ -164,35 +162,35 @@ Re-map a number from one range to another.
 map(value: number, currentMin: number, currentMax: number, targetMin: number, targetMax: number): number;
 ```
 
-##### triLerp(t, min, max, peak)
+##### `triLerp(t, min, max, peak)`
 
-Interpolate a value between two values using Triangular interpolation.
+Interpolate a number between two values using Triangular interpolation.
 
 - `t`: Normalized time value to interpolate.
-- `min`: Minimum value.
-- `max`: Maximum value.
+- `min`: Minimum boundary.
+- `max`: Maximum boundary.
 - `peak`: Peak value controling the interpolation triangle shape.
 
 ```ts
 triLerp(t: number, min: number, max: number, peak: number): number;
 ```
 
-##### expLerp(t, min, max, exponent)
+##### `expLerp(t, min, max, power)`
 
-Interpolate a value using Exponential interpolation.
+Interpolate a number between two bounds using Exponential interpolation.
 
 - `t`: Normalized time value to interpolate.
-- `min`: Minimum value.
-- `max`: Maximum value.
+- `min`: Minimum boundary.
+- `max`: Maximum boundary.
 - `power`: Exponent controling the interpolation curve shape.
 
 ```ts
 expLerp(t: number, min: number, max: number, power: number): number;
 ```
 
-##### quadraticBezier(t, p1, cp, p2)
+##### `quadraticBezier(t, p1, cp, p2)`
 
-Interpolate a value using Quadratic Bézier interpolation.
+Interpolate a number using Quadratic Bézier interpolation.
 
 - `t`: Normalized time value to interpolate.
 - `p1`: Start point.
@@ -203,9 +201,9 @@ Interpolate a value using Quadratic Bézier interpolation.
 quadraticBezier(t: number, p1: number, cp: number, p2: number): number;
 ```
 
-##### cubicBezier(t, p1, cp1, cp2, p2)
+##### `cubicBezier(t, p1, cp1, cp2, p2)`
 
-Interpolate a value using Cubic Bézier interpolation.
+Interpolate a number using Cubic Bézier interpolation.
 
 - `t`: Normalized time value to interpolate.
 - `p1`: Start point.
@@ -217,9 +215,9 @@ Interpolate a value using Cubic Bézier interpolation.
 cubicBezier(t: number, p1: number, cp1: number, cp2: number, p2: number): number;
 ```
 
-##### catmullRom(t, p1, cp1, cp2, p2)
+##### `catmullRom(t, p1, cp1, cp2, p2)`
 
-Interpolate a value using Catmull-Rom interpolation.
+Interpolate a number using Catmull-Rom interpolation.
 
 - `t`: Normalized time value to interpolate.
 - `p1`: Start point.
@@ -231,20 +229,68 @@ Interpolate a value using Catmull-Rom interpolation.
 catmullRom(t: number, p1: number, cp1: number, cp2: number, p2: number): number;
 ```
 
-##### modAbs(value, length)
+##### `parabola(x, power?)`
 
-Modulo absolute a value based on a length.
+Re-map the [0, 1] interval into [0, 1] parabola, such that corners are remaped to 0 and the center to 1.
 
-- `value`: Value to modulate.
-- `length`: Total length.
+- `x`: Normalized coordinate on X axis.
+- `[power=1]`: Parabola exponent.
 
 ```ts
-modAbs(value: number, length: number): number;
+parabola(x: number, power?: number): number;
 ```
 
-##### pingPong(value, length)
+##### `step(value, edge)`
 
-Move back and forth a value between 0 and length, so that it is never larger than length and never smaller than 0.
+Compare two numbers.
+
+- `value`: Value to compare to the edge.
+- `edge`: Value of the edge.
+
+```ts
+step(value: number, edge: number): number;
+```
+
+> The order of arguments is not the same as the one used in the GLSL language.
+
+##### `smoothstep(value, min?, max?)`
+
+Interpolate a number between two bounds using Hermite interpolation.
+
+- `value`: Value to interpolate.
+- `[min=0]`: Minimum boundary.
+- `[max=1]`: Maximum boundary.
+
+```ts
+smoothstep(value: number, min?: number, max?: number): number;
+```
+
+> The order of arguments is not the same as the one used in the GLSL language.
+
+##### `fract(value)`
+
+Compute the fractional part of a number.
+
+- `value`: Value to compute the fractional part of.
+
+```ts
+fract(value: number): number;
+```
+
+##### `mod(value, modulo)`
+
+Compute the value of a number modulo another.
+
+- `value`: Value to modulate.
+- `modulo`: Value to modulate by.
+
+```ts
+mod(value: number, modulo: number): number;
+```
+
+##### `pingPong(value, length)`
+
+Move back and forth a number between 0 and a length, so that it is never larger than length and never smaller than 0.
 
 - `value`: Value to modulate.
 - `length`: Total length.
@@ -253,50 +299,27 @@ Move back and forth a value between 0 and length, so that it is never larger tha
 pingPong(value: number, length: number): number;
 ```
 
-##### smoothstep(value, min, max)
+##### `sum(numbers)`
 
-Smooth a value using cubic Hermite interpolation.
+Compute the sum of an array of numbers.
 
-- `value`: Value to smooth.
-- `[min=0]`: Minimum boundary.
-- `[max=1]`: Maximum boundary.
+- `numbers`: Array of numbers to compute the sum from.
 
 ```ts
-smoothstep(value: number, min?: number, max?: number): number;
+sum(numbers: number[]): number;
 ```
 
-##### parabola(x, power)
+##### `average(numbers)`
 
-Re-map the [0, 1] interval into [0, 1] parabola, such that corners are remaped to 0 and the center to 1.
+Compute the average of an array of numbers.
 
-- `x`: Normalized coordinate on X axis.
-- `[power=1]`: Parabola power.
+- `numbers`: Array of numbers to compute the average from.
 
 ```ts
-parabola(x: number, power?: number): number;
+average(numbers: number[]): number;
 ```
 
-##### sum(array)
-
-Return the sum of numbers.
-
-- `array`: Array of numbers.
-
-```ts
-sum(array: number[]): number;
-```
-
-##### average(array)
-
-Return the average of numbers.
-
-- `array`: Array of numbers.
-
-```ts
-average(array: number[]): number;
-```
-
-##### damp(value, target, damping, delta)
+##### `damp(value, target, damping, delta)`
 
 Smoothly interpolate a number toward another.
 
@@ -311,9 +334,9 @@ damp(value: number, target: number, damping: number, delta: number): number;
 
 ### Geometry <a id="geometry-functions"></a>
 
-##### toDegrees(radians)
+##### `toDegrees(radians)`
 
-Convert a radians value into degrees.
+Convert a radians angle into degrees.
 
 - `radians`: Angle in radians.
 
@@ -321,9 +344,9 @@ Convert a radians value into degrees.
 toDegrees(radians: number): number;
 ```
 
-##### toRadians(degrees)
+##### `toRadians(degrees)`
 
-Convert a degrees value into radians.
+Convert a degrees angle into radians.
 
 - `degrees`: Angle in degrees.
 
@@ -331,9 +354,9 @@ Convert a degrees value into radians.
 toRadians(degrees: number): number;
 ```
 
-##### angle(x1, y1, x2, y2)
+##### `angle(x1, y1, x2, y2)`
 
-Calculate the angle (in radians) from a point to another.
+Compute the angle (in radians) from a point to another.
 
 - `x1`: X-axis coordinate of the start point.
 - `y1`: Y-axis coordinate of the start point.
@@ -344,9 +367,9 @@ Calculate the angle (in radians) from a point to another.
 angle(x1: number, y1: number, x2: number, y2: number): number;
 ```
 
-##### closestAngle(startAngle, endAngle)
+##### `closestAngle(startAngle, endAngle)`
 
-Find the closest angle (in radians) between two angles.
+Compute the closest angle (in radians) between two angles.
 
 - `startAngle`: Start angle (in radians).
 - `endAngle`: End angle (in radians).
@@ -355,9 +378,9 @@ Find the closest angle (in radians) between two angles.
 closestAngle(startAngle: number, endAngle: number): number;
 ```
 
-##### distance(x1, y1, x2, y2)
+##### `distance(x1, y1, x2, y2)`
 
-Calculate the distance between two points.
+Compute the distance between two points.
 
 - `x1`: X-axis coordinate of the start point.
 - `y1`: Y-axis coordinate of the start point.
@@ -368,9 +391,9 @@ Calculate the distance between two points.
 distance(x1: number, y1: number, x2: number, y2: number): number;
 ```
 
-##### diagonal(width, height)
+##### `diagonal(width, height)`
 
-Calculate the length of the diagonal of a rectangle.
+Compute the length of the diagonal of a rectangle.
 
 - `width`: Width of the rectangle.
 - `height`: Height of the rectangle.
@@ -396,7 +419,7 @@ type FitOutput = {
 };
 ```
 
-##### cover(target, container)
+##### `cover(target, container)`
 
 Make a target fit a container (cover mode).
 
@@ -407,7 +430,7 @@ Make a target fit a container (cover mode).
 cover(target: FitInput, container: FitInput): FitOutput;
 ```
 
-##### contain(target, container)
+##### `contain(target, container)`
 
 Make a target fit a container (contain mode).
 
@@ -418,9 +441,9 @@ Make a target fit a container (contain mode).
 contain(target: FitInput, container: FitInput): FitOutput;
 ```
 
-### Colors <a id="colors-functions"></a>
+### Color <a id="color-functions"></a>
 
-##### normalizeHexString(hex)
+##### `normalizeHexString(hex)`
 
 Normalize an hexadecimal string.
 
@@ -430,7 +453,7 @@ Normalize an hexadecimal string.
 normalizeHexString(hex: string): string;
 ```
 
-##### rgbToHex(rgb)
+##### `rgbToHex(rgb)`
 
 Convert RGB to hexadecimal.
 
@@ -440,7 +463,7 @@ Convert RGB to hexadecimal.
 rgbToHex([r, g, b]: [number, number, number]): number;
 ```
 
-##### rgbToHexString(rgb)
+##### `rgbToHexString(rgb)`
 
 Convert RGB to hexadecimal string.
 
@@ -450,7 +473,7 @@ Convert RGB to hexadecimal string.
 rgbToHexString([r, g, b]: [number, number, number]): string;
 ```
 
-##### hexToRgb(hex)
+##### `hexToRgb(hex)`
 
 Convert hexadecimal to RGB.
 
@@ -460,7 +483,7 @@ Convert hexadecimal to RGB.
 hexToRgb(hex: number | string): [number, number, number];
 ```
 
-##### lighten(hex, amount)
+##### `lighten(hex, amount?)`
 
 Lighten a color.
 
@@ -471,7 +494,7 @@ Lighten a color.
 lighten(hex: string, amount?: number): string;
 ```
 
-##### darken(hex, amount)
+##### `darken(hex, amount?)`
 
 Darken a color.
 
@@ -482,7 +505,7 @@ Darken a color.
 darken(hex: string, amount?: number): string;
 ```
 
-##### normalizeHslString(hsl)
+##### `normalizeHslString(hsl)`
 
 Normalize an HSL string.
 
@@ -492,7 +515,7 @@ Normalize an HSL string.
 normalizeHslString(hsl: string): [number, number, number];
 ```
 
-##### rgbToHsl(rgb)
+##### `rgbToHsl(rgb)`
 
 Convert RGB to HSL.
 
@@ -502,7 +525,7 @@ Convert RGB to HSL.
 rgbToHsl([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
-##### hslToRgb(hsl)
+##### `hslToRgb(hsl)`
 
 Convert HSL to RGB.
 
@@ -512,7 +535,7 @@ Convert HSL to RGB.
 hslToRgb([h, s, l]: [number, number, number]): [number, number, number];
 ```
 
-##### rgbToHsb(rgb)
+##### `rgbToHsb(rgb)`
 
 Convert RGB to HSB.
 
@@ -522,7 +545,7 @@ Convert RGB to HSB.
 rgbToHsb([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
-##### hsbToRgb(hsb)
+##### `hsbToRgb(hsb)`
 
 Convert HSB to RGB.
 
@@ -532,7 +555,7 @@ Convert HSB to RGB.
 hsbToRgb([h, s, b]: [number, number, number]): [number, number, number];
 ```
 
-##### labToHcl(lab)
+##### `labToHcl(lab)`
 
 Convert L*a*b\* to HCL.
 
@@ -542,7 +565,7 @@ Convert L*a*b\* to HCL.
 labToHcl([l, a, b]: [number, number, number]): [number, number, number];
 ```
 
-##### hclToLab(hcl)
+##### `hclToLab(hcl)`
 
 Convert HCL to L\*a\*b\*.
 
@@ -552,7 +575,7 @@ Convert HCL to L\*a\*b\*.
 hclToLab([h, c, l]: [number, number, number]): [number, number, number];
 ```
 
-##### labToRgb(lab)
+##### `labToRgb(lab)`
 
 Convert L\*a\*b\* to RGB.
 
@@ -562,7 +585,7 @@ Convert L\*a\*b\* to RGB.
 labToRgb([l, a, b]: [number, number, number]): [number, number, number];
 ```
 
-##### rgbToLab(rgb)
+##### `rgbToLab(rgb)`
 
 Convert RGB to L\*a\*b\*.
 
@@ -572,18 +595,18 @@ Convert RGB to L\*a\*b\*.
 rgbToLab([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
-##### deltaE(labA, labB)
+##### `deltaE(lab1, lab2)`
 
 Get the delta from two L\*a\*b\* colors.
 
-- `labA`: First L\*a\*b\* color.
-- `labB`: Second L\*a\*b\* color.
+- `lab1`: First L\*a\*b\* color.
+- `lab2`: Second L\*a\*b\* color.
 
 ```ts
-deltaE(labA: [number, number, number], labB: [number, number, number]): number;
+deltaE(lab1: [number, number, number], lab2: [number, number, number]): number;
 ```
 
-##### rgbToHcl(rgb)
+##### `rgbToHcl(rgb)`
 
 Convert RGB to HCL.
 
@@ -593,7 +616,7 @@ Convert RGB to HCL.
 rgbToHcl([r, g, b]: [number, number, number]): [number, number, number];
 ```
 
-##### hclToRgb(hcl)
+##### `hclToRgb(hcl)`
 
 Convert HCL to RGB.
 
@@ -605,7 +628,7 @@ hclToRgb([h, c, l]: [number, number, number]): [number, number, number];
 
 ### Functions <a id="functions-functions"></a>
 
-##### noop()
+##### `noop()`
 
 No-op function.
 
@@ -613,7 +636,7 @@ No-op function.
 noop(): void;
 ```
 
-##### wait(delay)
+##### `wait(delay?)`
 
 Promise wrapped setTimeout.
 
@@ -623,47 +646,39 @@ Promise wrapped setTimeout.
 wait(delay?: number): Promise<void>;
 ```
 
-##### isDefined(value)
+##### `isDefined(value)`
 
 Check if a value is defined.
 
 - `value`: Value to check.
 
 ```ts
-isDefined(value: any): boolean;
+isDefined<T>(value: T): boolean;
 ```
 
-##### debounce(callback, delay)
+##### `debounce(callback, delay)`
 
-Create a debounced function that delays the execution of `callback` until a specified `delay` time has passed since the last call.
+Create a debounced function that delays the execution of a given callback until a specified delay time has passed since the last call.
 
 - `callback`: Function to debounce.
 - `delay`: Delay (in milliseconds).
 
 ```ts
-debounce(callback: Function, delay: number): Function;
+debounce<T>(callback: T, delay: number): Function;
 ```
 
-##### throttle(callback, limit)
+##### `throttle(callback, limit)`
 
-Create a throttled function that limits the execution of `callback` to once every `limit` time.
+Create a throttled function that limits the execution of a given callback to once every specified limit time.
 
 - `callback`: Function to throttle.
 - `limit`: Minimum interval between two calls (in milliseconds).
 
 ```ts
-throttle(callback: Function, limit: number): Function;
+throttle<T>(callback: T, limit: number): Function;
 ```
 
-##### defer()
-
-Deferred promise implementation.
-
-```ts
-defer<T>(): Deferred<T>;
-```
-
-##### now()
+##### `now()`
 
 Polyfill for `now()` functions.
 
@@ -671,11 +686,11 @@ Polyfill for `now()` functions.
 now(): number;
 ```
 
-### Strings <a id="strings-functions"></a>
+### String <a id="string-functions"></a>
 
-#### Cases
+#### Case
 
-##### capitalize(string)
+##### `capitalize(string)`
 
 Capitalize a string.
 
@@ -685,7 +700,7 @@ Capitalize a string.
 capitalize(string: string): string;
 ```
 
-##### toKebabCase(string)
+##### `toKebabCase(string)`
 
 Convert a string to kebab-case: 'Hello world' -> 'hello-world'.
 
@@ -695,7 +710,7 @@ Convert a string to kebab-case: 'Hello world' -> 'hello-world'.
 toKebabCase(string: string): string;
 ```
 
-##### toSnakeCase(string)
+##### `toSnakeCase(string)`
 
 Convert a string to snake_case: 'Hello world' -> 'hello_world'.
 
@@ -705,7 +720,7 @@ Convert a string to snake_case: 'Hello world' -> 'hello_world'.
 toSnakeCase(string: string): string;
 ```
 
-##### toCamelCase(string)
+##### `toCamelCase(string)`
 
 Convert a string to camelCase: 'Hello world' -> 'helloWorld'.
 
@@ -715,7 +730,7 @@ Convert a string to camelCase: 'Hello world' -> 'helloWorld'.
 toCamelCase(string: string): string;
 ```
 
-##### toPascalCase(string)
+##### `toPascalCase(string)`
 
 Convert a string to PascalCase: 'Hello world' -> 'HelloWorld'.
 
@@ -725,7 +740,7 @@ Convert a string to PascalCase: 'Hello world' -> 'HelloWorld'.
 toPascalCase(string: string): string;
 ```
 
-##### toTrainCase(string)
+##### `toTrainCase(string)`
 
 Convert a string to Train-Case: 'Hello world' -> 'Hello-World'.
 
@@ -735,7 +750,7 @@ Convert a string to Train-Case: 'Hello world' -> 'Hello-World'.
 toTrainCase(string: string): string;
 ```
 
-##### toConstantCase(string)
+##### `toConstantCase(string)`
 
 Convert a string to CONSTANT_CASE: 'Hello world' -> 'HELLO_WORLD'.
 
@@ -745,9 +760,9 @@ Convert a string to CONSTANT_CASE: 'Hello world' -> 'HELLO_WORLD'.
 toConstantCase(string: string): string;
 ```
 
-#### Paths
+#### Path
 
-##### cleanPath(path)
+##### `cleanPath(path)`
 
 Clean a path by removing its parameters.
 
@@ -757,7 +772,7 @@ Clean a path by removing its parameters.
 cleanPath(path: string): string;
 ```
 
-##### addTrailingSlash(path)
+##### `addTrailingSlash(path)`
 
 Convert a path by ensuring it has a trailing slash.
 
@@ -767,7 +782,7 @@ Convert a path by ensuring it has a trailing slash.
 addTrailingSlash(path: string): string;
 ```
 
-##### removeTrailingSlash(path)
+##### `removeTrailingSlash(path)`
 
 Convert a path by ensuring it has not a trailing slash.
 
@@ -779,7 +794,7 @@ removeTrailingSlash(path: string): string;
 
 ### Query parameters <a id="query-functions"></a>
 
-##### getQuery(property)
+##### `getQuery(property)`
 
 Get a query parameter.
 
@@ -789,7 +804,7 @@ Get a query parameter.
 getQuery(property: string): string | null;
 ```
 
-##### setQuery(property)
+##### `setQuery(property, value)`
 
 Set a query parameter.
 
@@ -800,7 +815,7 @@ Set a query parameter.
 setQuery(property: string, value: string): void;
 ```
 
-##### hasQuery(property)
+##### `hasQuery(property)`
 
 Check if a query parameter exists.
 
@@ -812,7 +827,7 @@ hasQuery(property: string): boolean;
 
 ### DOM <a id="dom-functions"></a>
 
-##### closest(element, selector)
+##### `closest(element, selector)`
 
 Find the closest parent that matches a selector.
 
@@ -820,33 +835,12 @@ Find the closest parent that matches a selector.
 - `selector`: Selector or parent to match.
 
 ```ts
-closest(element: Element | null, selector: Element | string): Element | null;
+closest(element: Element | null, selector: Element | null | string): Element | null;
 ```
 
-##### createCanvas(width, height)
+### File <a id="file-functions"></a>
 
-Create a canvas and 2d context.
-
-- `width`: Width of the canvas.
-- `height`: Height of the canvas.
-
-```ts
-createCanvas(width: number, height: number): { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D };
-```
-
-##### injectStyles(styles)
-
-Inject CSS styles in `document.head`.
-
-- `styles`: CSS styles to inject.
-
-```ts
-injectStyles(styles: string): void;
-```
-
-### Files <a id="files-functions"></a>
-
-##### load(file)
+##### `load(file)`
 
 Load a file.
 
@@ -856,7 +850,7 @@ Load a file.
 async load(file: File): Promise<string>;
 ```
 
-##### download(blob, filename)
+##### `download(blob, params)`
 
 Download a Blob object into user files.
 
@@ -865,10 +859,10 @@ Download a Blob object into user files.
 - `params.filename`: Downloaded file name.
 
 ```ts
-download(blob: Blob, { filename }: { filename: string }): void;
+download(blob: Blob, params: { filename: string }): void;
 ```
 
-##### upload(onLoad)
+##### `upload(onLoad, accept?)`
 
 Upload a file from user files.
 
@@ -879,7 +873,7 @@ Upload a file from user files.
 upload(onLoad: (dataUrl: string) => void, accept?: string): void;
 ```
 
-##### share(blob)
+##### `share(blob, params)`
 
 Share a Blob object with the user's device.
 
@@ -888,12 +882,12 @@ Share a Blob object with the user's device.
 - `params.filename`: Shared file name.
 
 ```ts
-async share(blob: Blob, { filename, ...data }: { filename: string } & ShareData): Promise<void>;
+async share(blob: Blob, params: { filename: string } & ShareData): Promise<void>;
 ```
 
 ### Random <a id="random-functions"></a>
 
-##### randomBoolean(probability)
+##### `randomBoolean(probability?)`
 
 Generate a random boolean (true or false).
 
@@ -903,7 +897,7 @@ Generate a random boolean (true or false).
 randomBoolean(probability?: number): boolean;
 ```
 
-##### randomSign(probability)
+##### `randomSign(probability?)`
 
 Generate a random sign (1 or -1).
 
@@ -913,7 +907,7 @@ Generate a random sign (1 or -1).
 randomSign(probability?: number): number;
 ```
 
-##### randomFloat(min, max)
+##### `randomFloat(min?, max?, precision?)`
 
 Generate a random floating-point number within a specified range.
 
@@ -925,7 +919,7 @@ Generate a random floating-point number within a specified range.
 randomFloat(min?: number, max?: number, precision?: number): number;
 ```
 
-##### randomInt(min, max)
+##### `randomInt(min, max)`
 
 Generate a random integer number within a specified range.
 
@@ -936,7 +930,7 @@ Generate a random integer number within a specified range.
 randomInt(min: number, max: number): number;
 ```
 
-##### randomHexColor()
+##### `randomHexColor()`
 
 Generate a random hexadecimal color.
 
@@ -944,9 +938,9 @@ Generate a random hexadecimal color.
 randomHexColor(): string;
 ```
 
-##### randomItem(array)
+##### `randomItem(array)`
 
-Pick a random item from a given array.
+Pick a random item from an array.
 
 - `array`: Array to pick the item from.
 
@@ -954,9 +948,9 @@ Pick a random item from a given array.
 randomItem<T>(array: T[]): T | undefined;
 ```
 
-##### randomObjectProperty(object)
+##### `randomObjectProperty(object)`
 
-Pick a random property value from a given object.
+Pick a random property value from an object.
 
 - `object`: Object to pick the property from.
 
@@ -964,7 +958,7 @@ Pick a random property value from a given object.
 randomObjectProperty<T>(object: Record<string, T>): T | undefined;
 ```
 
-##### randomIndex(weights)
+##### `randomIndex(weights)`
 
 Select a random index from an array of weighted items.
 
@@ -974,18 +968,18 @@ Select a random index from an array of weighted items.
 randomIndex(weights: number[]): number;
 ```
 
-##### randomGaussian(mean, spread)
+##### `randomGaussian(mean?, spread?)`
 
 Generate a random number fitting a Gaussian (normal) distribution.
 
-- `[mean=0]`: Central value.
-- `[spread=1]`: Standard deviation.
+- `[mean=0]`: Mean (central) value of the distribution.
+- `[spread=1]`: Spread (standard deviation) of the distribution.
 
 ```ts
 randomGaussian(mean?: number, spread?: number): number;
 ```
 
-##### onCircle(radius)
+##### `onCircle(radius?)`
 
 Produce a random 2D point around the perimiter of a unit circle.
 
@@ -995,7 +989,7 @@ Produce a random 2D point around the perimiter of a unit circle.
 onCircle(radius?: number): [number, number];
 ```
 
-##### insideCircle(radius)
+##### `insideCircle(radius?)`
 
 Produce a random 2D point inside a unit circle.
 
@@ -1005,7 +999,7 @@ Produce a random 2D point inside a unit circle.
 insideCircle(radius?: number): [number, number];
 ```
 
-##### onSphere(radius)
+##### `onSphere(radius?)`
 
 Produce a random 3D point on the surface of a sphere.
 
@@ -1015,7 +1009,7 @@ Produce a random 3D point on the surface of a sphere.
 onSphere(radius?: number): [number, number, number];
 ```
 
-##### insideSphere(radius)
+##### `insideSphere(radius?)`
 
 Produce a random 3D point inside a sphere.
 
@@ -1023,184 +1017,6 @@ Produce a random 3D point inside a sphere.
 
 ```ts
 insideSphere(radius?: number): [number, number, number];
-```
-
-### Pseudo-Random Number Generator (PRNG) <a id="prng-functions"></a>
-
-#### PRNG Algorithms
-
-**Credits**: [Seeding random number generator](https://stackoverflow.com/questions/521295/seeding-the-random-number-generator-in-javascript)
-
-##### cyrb128(seed)
-
-Produce a 128-bit hash value from a string.
-
-`seed`: Initial seed state.
-
-```ts
-cyrb128(prng: string | object): [number, number, number, number];
-```
-
-##### sfc32(a, b, c, d)
-
-_Simple Fast Counter_, Generator with a 128-bit state.
-
-```ts
-sfc32(a: number, b: number, c: number, d: number): number;
-```
-
-##### splitmix32(a)
-
-_SplitMix32_, Generator with a 32-bit state.
-
-```ts
-splitmix32(a: number): number;
-```
-
-##### mulberry32(a)
-
-_Mulberry32_, Generator with a 32-bit state.
-
-```ts
-mulberry32(a: number): number;
-```
-
-##### jsf32(a, b, c, d)
-
-_Jenkins' Small Fast_, Generator with a 32-bit state.
-
-```ts
-jsf32(a: number, b: number, c: number, d: number): number;
-```
-
-##### xoshiro128ss(a, b, c, d)
-
-_xoshiro128\*\*_, Generator with a 128-bit state.
-
-```ts
-xoshiro128ss(a: number, b: number, c: number, d: number): number;
-```
-
-#### PRNG functions
-
-Thanks to the above algorithms, a seed-based version of most of the [random functions](#random) exist with additionnal parameters for a `seed` string and a PRNG `algorithm` function.
-
-PRNG parameters: <a id="prng-parameters"></a>
-
-```ts
-type PRNGParameters = string | { seed: string; algorithm: (...args: number[]) => number };
-```
-
-##### random(prng)
-
-Generate a pseudo-random number in the interval [0, 1]. It is the PRNG equivalent of `Math.random()`.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-
-```ts
-random(prng: PRNGParameters): number;
-```
-
-##### randomBoolean(prng)
-
-Generate a pseudo-random boolean (true or false).
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `[probability=0.5]`: Probability to get true.
-
-```ts
-randomBoolean(prng: PRNGParameters, probability?: number): boolean;
-```
-
-##### randomSign(prng)
-
-Generate a pseudo-random sign (1 or -1).
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `[probability=0.5]`: Probability to get 1.
-
-```ts
-randomSign(prng: PRNGParameters, probability?: number): number;
-```
-
-##### randomFloat(prng, min, max)
-
-Generate a pseudo-random floating-point number within a specified range.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `[min=0]`: Minimum boundary.
-- `[max=1]`: Maximum boundary.
-- `[precision=2]`: Number of digits after the decimal point.
-
-```ts
-randomFloat(prng: PRNGParameters, min?: number, max?: number, precision?: number): number;
-```
-
-##### randomInt(prng, min, max)
-
-Generate a pseudo-random integer number within a specified range.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `min`: Minimum boundary.
-- `max`: Maximum boundary.
-
-```ts
-randomInt(prng: PRNGParameters, min: number, max: number): number;
-```
-
-##### randomHexColor(prng)
-
-Generate a pseudo-random hexadecimal color.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-
-```ts
-randomHexColor(prng: PRNGParameters): string;
-```
-
-##### randomItem(prng, array)
-
-Pick a pseudo-random item from a given array.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `array`: Array to pick the item from.
-
-```ts
-randomItem<T>(prng: PRNGParameters, array: T[]): T | undefined;
-```
-
-##### randomObjectProperty(prng)
-
-Pick a pseudo-random property value from a given object.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `object`: Object to pick the property from.
-
-```ts
-randomObjectProperty<T>(prng: PRNGParameters, object: Record<string, T>): T | undefined;
-```
-
-##### randomIndex(prng)
-
-Select a pseudo-random index from an array of weighted items.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `weights`: Array of weights.
-
-```ts
-randomIndex(prng: string | object, weights: number[]): number;
-```
-
-##### randomGaussian(prng, mean, spread)
-
-Generate a pseudo-random number fitting a Gaussian (normal) distribution.
-
-- `prng`: [PRNG parameters](#prng-parameters).
-- `[mean=0]`: Central value.
-- `[spread=1]`: Standard deviation.
-
-```ts
-randomGaussian(prng: string | object, mean?: number, spread?: number): number;
 ```
 
 ## Utility classes
@@ -1257,23 +1073,25 @@ See Paths utility classes documentation [here](./docs/PATHS.md).
 
 #### [PathSVG](./docs/PATHS.md#path-svg)
 
-### Colors <a id="colors-classes"></a>
+### Color <a id="color-classes"></a>
 
-See Colors utility classes documentation [here](./docs/COLORS.md).
+See Color utility classes documentation [here](./docs/COLOR.md).
 
-#### [Color](./docs/COLORS.md#color)
+#### [Color](./docs/COLOR.md#color)
 
-#### [ColorScale](./docs/COLORS.md#color-scale)
+#### [ColorScale](./docs/COLOR.md#color-scale)
 
-#### [ColorPalette](./docs/COLORS.md#color-palette)
+#### [ColorPalette](./docs/COLOR.md#color-palette)
 
-### Frame rate <a id="frame-rate-class"></a>
+### Performance <a id="performance-classes"></a>
 
-See `FrameRate` utility class documentation [here](./docs/FRAME_RATE.md).
+See Performance utility classes documentation [here](./docs/PERFORMANCE.md).
+
+#### [FrameRate](./docs/PERFORMANCE.md#frame-rate)
 
 ## Constants
 
-### Maths
+### Math
 
 `EPSILON`
 
@@ -1287,9 +1105,13 @@ See `FrameRate` utility class documentation [here](./docs/FRAME_RATE.md).
 
 `QUARTER_PI`
 
-### Colors
+`RAD2DEG`
 
-`W3CX11`
+`DEG2RAD`
+
+### Color
+
+`COLORS`
 
 ## License
 

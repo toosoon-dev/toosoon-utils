@@ -1,30 +1,74 @@
 {
   "name": "toosoon-utils",
-  "version": "4.4.0",
+  "version": "5.0.0",
   "description": "Utility functions & classes",
   "type": "module",
   "engines": {
-    "node": ">=16"
+    "node": ">=22"
   },
   "main": "",
-  "types": "./lib/types.d.ts",
+  "types": "",
   "exports": {
-    "./maths": "./lib/maths.js",
-    "./geometry": "./lib/geometry.js",
-    "./colors": "./lib/colors.js",
-    "./functions": "./lib/functions.js",
-    "./strings": "./lib/strings.js",
-    "./query": "./lib/query.js",
-    "./dom": "./lib/dom.js",
-    "./files": "./lib/files.js",
-    "./random": "./lib/random.js",
-    "./prng": "./lib/prng.js",
-    "./constants": "./lib/constants.js",
-    "./extras/geometry": "./lib/extras/geometry/index.js",
-    "./extras/curves": "./lib/extras/curves/index.js",
-    "./extras/paths": "./lib/extras/paths/index.js",
-    "./extras/colors": "./lib/extras/colors/index.js",
-    "./extras/frame-rate": "./lib/extras/frame-rate/FrameRate.js"
+    "./math": {
+      "default": "./lib/math.js",
+      "types": "./lib/math.d.ts"
+    },
+    "./geometry": {
+      "default": "./lib/geometry.js",
+      "types": "./lib/geometry.d.ts"
+    },
+    "./color": {
+      "default": "./lib/color.js",
+      "types": "./lib/color.d.ts"
+    },
+    "./functions": {
+      "default": "./lib/functions.js",
+      "types": "./lib/functions.d.ts"
+    },
+    "./string": {
+      "default": "./lib/string.js",
+      "types": "./lib/string.d.ts"
+    },
+    "./query": {
+      "default": "./lib/query.js",
+      "types": "./lib/query.d.ts"
+    },
+    "./dom": {
+      "default": "./lib/dom.js",
+      "types": "./lib/dom.d.ts"
+    },
+    "./file": {
+      "default": "./lib/file.js",
+      "types": "./lib/file.d.ts"
+    },
+    "./random": {
+      "default": "./lib/random.js",
+      "types": "./lib/random.d.ts"
+    },
+    "./constants": {
+      "default": "./lib/constants.js",
+      "types": "./lib/constants.d.ts"
+    },
+    "./classes/geometry": {
+      "default": "./lib/classes/geometry/index.js",
+      "types": "./lib/classes/geometry/index.d.ts"
+    },
+    "./classes/curves": {
+      "default": "./lib/classes/curves/index.js",
+      "types": "./lib/classes/curves/index.d.ts"
+    },
+    "./classes/paths": {
+      "default": "./lib/classes/paths/index.js",
+      "types": "./lib/classes/paths/index.d.ts"
+    },
+    "./classes/color": {
+      "default": "./lib/classes/color/index.js",
+      "types": "./lib/classes/color/index.d.ts"
+    },
+    "./classes/performance": {
+      "default": "./lib/classes/performance/index.js",
+      "types": "./lib/classes/performance/index.d.ts"
+    }
   },
   "scripts": {
     "build": "npx tsc",
@@ -37,16 +81,19 @@
   "keywords": [
     "toosoon",
     "utils",
-    "maths",
+    "classes",
+    "math",
     "geometry",
-    "colors",
+    "color",
     "functions",
-    "strings",
+    "string",
     "query",
     "dom",
-    "files",
+    "file",
     "random",
-    "prng"
+    "curves",
+    "paths",
+    "performance"
   ],
   "author": "Arnaud Rocca",
   "license": "MIT",
@@ -56,6 +103,6 @@
   "homepage": "https://github.com/toosoon-dev/toosoon-utils#readme",
   "devDependencies": {
     "@types/node": "^20.11.26",
-    "typescript": "^5.4.2"
+    "typescript": "^5.9.3"
   }
 }

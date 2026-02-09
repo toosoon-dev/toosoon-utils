@@ -1,11 +1,11 @@
-import { Vector2, Vector3 } from './extras/geometry';
+import { Vector2, Vector3 } from './classes/geometry';
 import type { Point2, Point3 } from './types';
 
 /**
  * Generate a random boolean (true or false)
  *
- * @param {number} [probability=0.5] Probability to get true
- * @returns {boolean} Either true or false
+ * @param {number} [probability=0.5] Probability to get `true`
+ * @returns {boolean} Either `true` or `false`
  */
 export function randomBoolean(probability: number = 0.5): boolean {
   return Math.random() < probability;
@@ -14,8 +14,8 @@ export function randomBoolean(probability: number = 0.5): boolean {
 /**
  * Generate a random sign (1 or -1)
  *
- * @param {number} [probability=0.5] Probability to get 1
- * @returns {number} Either 1 or -1
+ * @param {number} [probability=0.5] Probability to get `1`
+ * @returns {number} Either `1` or `-1`
  */
 export function randomSign(probability: number = 0.5): number {
   return randomBoolean(probability) ? 1 : -1;
@@ -27,7 +27,7 @@ export function randomSign(probability: number = 0.5): number {
  * @param {number} [min=0] Minimum boundary
  * @param {number} [max=1] Maximum boundary
  * @param {number} [precision=2] Number of digits after the decimal point
- * @returns {number} Generated float
+ * @returns {number} Generated floating-point number
  */
 export function randomFloat(min: number = 0, max: number = 1, precision: number = 2): number {
   return parseFloat(Math.min(min + Math.random() * (max - min), max).toFixed(precision));
@@ -38,7 +38,7 @@ export function randomFloat(min: number = 0, max: number = 1, precision: number 
  *
  * @param {number} min Minimum boundary
  * @param {number} max Maximum boundary
- * @returns {number} Generated integer
+ * @returns {number} Generated integer number
  */
 export function randomInt(min: number, max: number): number {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -54,10 +54,11 @@ export function randomHexColor(): string {
 }
 
 /**
- * Pick a random item from a given array
+ * Pick a random item from an array
  *
- * @param {unknown[]} array Array to pick the item from
- * @returns {unknown|undefined} Random item picked
+ * @template {unknown} [T=unknown]
+ * @param {T[]} array Array to pick the item from
+ * @returns {T|undefined} Random item picked
  */
 export function randomItem<T = unknown>(array: T[]): T | undefined {
   if (array.length === 0) return undefined;
@@ -65,10 +66,11 @@ export function randomItem<T = unknown>(array: T[]): T | undefined {
 }
 
 /**
- * Pick a random property value from a given object
+ * Pick a random property value from an object
  *
+ * @template {unknown} [T=unknown]
  * @param {object} object Object to pick the property from
- * @returns {unknown|undefined} Random item picked
+ * @returns {T|undefined} Random property value picked
  */
 export function randomObjectProperty<T = unknown>(object: Record<string, T>): T | undefined {
   const keys = Object.keys(object);
@@ -109,8 +111,8 @@ export function randomIndex(weights: number[]): number {
 /**
  * Generate a random number fitting a Gaussian (normal) distribution
  *
- * @param {number} [mean=0] Central value
- * @param {number} [spread=1] Standard deviation
+ * @param {number} [mean=0] Mean (central) value of the distribution
+ * @param {number} [spread=1] Spread (standard deviation) of the distribution
  * @returns {number} Generated number
  */
 export function randomGaussian(mean: number = 0, spread: number = 1): number {
