@@ -107,7 +107,7 @@ PathContext.beginPath(): this;
 ##### .`closePath()` <a id="path-context-close-path-method"></a>
 
 Draw a line from the ending position to the beginning position of the path.
-Add an instance of [LineCurve](#line-curve) to the path.
+Add an instance of [LineCurve](./CURVES.md#line-curve) to the path.
 
 ```ts
 PathContext.closePath(): this;
@@ -127,7 +127,7 @@ PathContext.moveTo(x: number, y: number): this;
 ##### .`lineTo(x, y)` <a id="path-context-line-to-method"></a>
 
 Draw a line from the current position to the position specified by `x` and `y`.
-Add an instance of [LineCurve](#line-curve) to the path.
+Add an instance of [LineCurve](./CURVES.md#line-curve) to the path.
 
 - `x`: X-axis coordinate of the point.
 - `y`: Y-axis coordinate of the point.
@@ -139,7 +139,7 @@ PathContext.lineTo(x: number, y: number): this;
 ##### .`polylineTo(points)` <a id="path-context-polyline-to-method"></a>
 
 Draw a Polyline curve from the current position through given points.
-Add an instance of [PolylineCurve](#polyline-curve) to the path.
+Add an instance of [PolylineCurve](./CURVES.md#polyline-curve) to the path.
 
 - `points`: Array of points defining the curve.
 
@@ -150,7 +150,7 @@ PathContext.polylineTo(points: Array<[number, number]>): this;
 ##### .`quadraticCurveTo(cpx, cpy, x2, y2)` <a id="path-context-quadratic-curve-to-method"></a>
 
 Draw a Quadratic Bézier curve from the current position to the end point specified by `x` and `y`, using the control point specified by `cpx` and `cpy`.
-Add an instance of [QuadraticBezierCurve](#quadratic-bezier-curve) to the path.
+Add an instance of [QuadraticBezierCurve](./CURVES.md#quadratic-bezier-curve) to the path.
 
 - `cpx`: X-axis coordinate of the control point.
 - `cpy`: Y-axis coordinate of the control point.
@@ -164,7 +164,7 @@ PathContext.quadraticCurveTo(cpx: number, cpy: number, x2: number, y2: number): 
 ##### .`bezierCurveTo(cp1x, cp1y, cp2x, cp2y, x2, y2)` <a id="path-context-bezier-curve-to-method"></a>
 
 Draw a Cubic Bézier curve from the current position to the end point specified by `x` and `y`, using the control point specified by (`cp1x`, `cp1y`) and (`cp2x`, `cp2y`).
-Add an instance of [CubicBezierCurve](#cubic-bezier-curve) to the path.
+Add an instance of [CubicBezierCurve](./CURVES.md#cubic-bezier-curve) to the path.
 
 - `cp1x`: X-axis coordinate of the first control point.
 - `cp1y`: Y-axis coordinate of the first control point.
@@ -180,7 +180,7 @@ PathContext.bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number
 ##### .`catmullRomCurveTo(cp1x, cp1y, cp2x, cp2y, x2, y2)` <a id="path-context-catmull-rom-curve-to-method"></a>
 
 Draw a Catmull-Rom curve from the current position to the end point specified by `x` and `y`, using the control points specified by (`cp1x`, `cp1y`) and (`cp2x`, `cp2y`).
-Add an instance of [CatmullRomCurve](#catmull-rom-curve) to the path.
+Add an instance of [CatmullRomCurve](./CURVES.md#catmull-rom-curve) to the path.
 
 - `cp1x`: X-axis coordinate of the first control point.
 - `cp1y`: Y-axis coordinate of the first control point.
@@ -196,7 +196,7 @@ PathContext.catmullRomCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: nu
 ##### .`splineTo(points)` <a id="path-context-spline-to-method"></a>
 
 Draw a Spline curve from the current position through given points.
-Add an instance of [SplineCurve](#spline-curve) to the path.
+Add an instance of [SplineCurve](./CURVES.md#spline-curve) to the path.
 
 - `points`: Array of points defining the curve.
 
@@ -207,7 +207,7 @@ PathContext.splineTo(points: Array<[number, number]>): this;
 ##### .`ellipse(cx, cy, rx, ry, rotation, startAngle, endAngle, counterclockwise?)` <a id="path-context-ellipse-method"></a>
 
 Draw an Ellispe curve which is centered at (`cx`, `cy`) position.
-Add an instance of [EllipseCurve](#ellipse-curve) to the path.
+Add an instance of [EllipseCurve](./CURVES.md#ellipse-curve) to the path.
 
 - `cx`: X-axis coordinate of the center of the ellipse.
 - `cy`: Y-axis coordinate of the center of the ellipse.
@@ -225,7 +225,7 @@ PathContext.ellipse(cx: number, cy: number, rx: number, ry: number, rotation?: n
 ##### .`arc(cx, cy, radius, startAngle, endAngle, counterclockwise?)` <a id="path-context-arc-method"></a>
 
 Draw an Arc curve which is centered at (`cx`, `cy`) position.
-Add an instance of [ArcCurve](#arc-curve) to the path.
+Add an instance of [ArcCurve]./CURVES.md#arc-curve) to the path.
 
 - `cx`: X-axis coordinate of the center of the circle.
 - `cy`: Y-axis coordinate of the center of the circle.
@@ -241,7 +241,7 @@ PathContext.arc(cx: number, cy: number, radius: number, startAngle?: number, end
 ##### .`arcTo(x1, y1, x2, y2, radius)` <a id="path-context-arc-to-method"></a>
 
 Draw an Arc curve from the current position, tangential to the 2 segments created by both control points
-Add an instance of [EllipseCurve](#ellipse-curve) to the path.
+Add an instance of [EllipseCurve](./CURVES.md#ellipse-curve) to the path.
 
 - `x1`: X-axis coordinate of the first control point.
 - `y1`: Y-axis coordinate of the first control point.
@@ -256,7 +256,7 @@ PathContext.arcTo(x1: number, y1: number, x2: number, y2: number, radius: number
 ##### .`rect(x, y, width, height)` <a id="path-context-rect-method"></a>
 
 Draw a rectangular path from the start position specified by `x` and `y` to the end position using `width` and `height`.
-Add an instance of [PolylineCurve](#polyline-curve) to the path.
+Add an instance of [PolylineCurve](./CURVES.md#polyline-curve) to the path.
 
 - `x`: X-axis coordinate of the rectangle starting point.
 - `y`: Y-axis coordinate of the rectangle starting point.
@@ -335,7 +335,7 @@ PathSVG.toString(params?: PathSVGSerializationParameters): string;
 
 ##### `static` PathSVG.`approximate(curve, resolution?)` <a id="path-svg-static-approximate-method"></a>
 
-Convert a [Curve](#curve) into straight segments.
+Convert a [Curve](./CURVES.md#curve) into straight segments.
 
 - `curve`: Curve to approximate.
 - `[resolution=5]`: Approximation resolution.
@@ -346,7 +346,7 @@ static PathSVG.approximate(curve: Curve, resolution?: number): Vector2[];
 
 ##### `static` PathSVG.`serialize(curve, params?)` <a id="path-svg-static-serialize-method"></a>
 
-Serialize a [Curve](#curve).
+Serialize a [Curve](./CURVES.md#curve).
 
 - `curve`: Curve to serialize.
 - `[params]`: [Serialization parameters](#path-svg-serialization-parameters).
@@ -357,7 +357,7 @@ static PathSVG.serialize(curve: Curve, params?: PathSVGSerializationParameters):
 
 ##### `static` PathSVG.`serializeLineCurve(curve)` <a id="path-svg-static-serialize-line-curve-method"></a>
 
-Serialize a [LineCurve](#line-curve).
+Serialize a [LineCurve](./CURVES.md#line-curve).
 
 - `curve`: Curve to serialize.
 
@@ -367,7 +367,7 @@ static PathSVG.serializeLineCurve(curve: LineCurve): string;
 
 ##### `static` PathSVG.`serializePolylineCurve(curve)` <a id="path-svg-static-serialize-polyline-curve-method"></a>
 
-Serialize a [PolylineCurve](#polyline-curve).
+Serialize a [PolylineCurve](./CURVES.md#polyline-curve).
 
 - `curve`: PolylineCurve to serialize.
 
@@ -377,7 +377,7 @@ static PathSVG.serializePolylineCurve(curve: PolylineCurve): string;
 
 ##### `static` PathSVG.`serializeQuadraticBezierCurve(curve)` <a id="path-svg-static-serialize-quadratic-bezier-curve-method"></a>
 
-Serialize a [QuadraticBezierCurve](#quadratic-bezier-curve).
+Serialize a [QuadraticBezierCurve](./CURVES.md#quadratic-bezier-curve).
 
 - `curve`: QuadraticBezierCurve to serialize.
 
@@ -387,7 +387,7 @@ static PathSVG.serializeQuadraticBezierCurve(curve: QuadraticBezierCurve): strin
 
 ##### `static` PathSVG.`serializeCubicBezierCurve(curve)` <a id="path-svg-static-serialize-cubic-bezier-curve-method"></a>
 
-Serialize a [CubicBezierCurve](#cubic-bezier-curve).
+Serialize a [CubicBezierCurve](./CURVES.md#cubic-bezier-curve).
 
 - `curve`: CubicBezierCurve to serialize.
 
@@ -397,7 +397,7 @@ static PathSVG.serializeCubicBezierCurve(curve: CubicBezierCurve): string;
 
 ##### `static` PathSVG.`serializeCatmullRomCurve(curve, resolution?)` <a id="path-svg-static-serialize-catmull-rom-curve-method"></a>
 
-Serialize a [CatmullRomCurve](#catmull-rom-curve) by approximating it into straight lines.
+Serialize a [CatmullRomCurve](./CURVES.md#catmull-rom-curve) by approximating it into straight lines.
 
 - `curve`: CatmullRomCurve to serialize.
 - `[resolution]`: Approximation resolution.
@@ -408,7 +408,7 @@ static PathSVG.serializeCatmullRomCurve(curve: CatmullRomCurve, resolution?: num
 
 ##### `static` PathSVG.`serializeSplineCurve(curve, resolution?)` <a id="path-svg-static-serialize-spline-curve-method"></a>
 
-Serialize a [SplineCurve](#spline-curve) by approximating it into straight lines.
+Serialize a [SplineCurve](./CURVES.md#spline-curve) by approximating it into straight lines.
 
 - `curve`: SplineCurve to serialize.
 - `[resolution]`: Approximation resolution.
@@ -419,7 +419,7 @@ static PathSVG.serializeSplineCurve(curve: SplineCurve, resolution?: number): st
 
 ##### `static` PathSVG.`serializeEllipseCurve(curve)` <a id="path-svg-static-serialize-ellipse-curve-method"></a>
 
-Serialize a [EllipseCurve](#ellipse-curve).
+Serialize a [EllipseCurve](./CURVES.md#ellipse-curve).
 
 - `curve`: EllipseCurve to serialize.
 
@@ -429,7 +429,7 @@ static PathSVG.serializeEllipseCurve(curve: EllipseCurve): string;
 
 ##### `static` PathSVG.`serializeArcCurve(curve)` <a id="path-svg-static-serialize-arc-curve-method"></a>
 
-Serialize a [ArcCurve](#arc-curve).
+Serialize a [ArcCurve](./CURVES.md#arc-curve).
 
 - `curve`: ArcCurve to serialize.
 
