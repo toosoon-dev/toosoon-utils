@@ -4,20 +4,20 @@
 
 Utility abstract class for manipulating curves.
 
-- new Curve()
+- new Curve\<V\>()
   - .isCurve: `true`
   - [.arcLengthDivisions](#curve-arc-length-divisions): `number`
   - [.needsUpdate](#curve-needs-update): `boolean`
-  - [.getPoint(t)](#curve-get-point-method): `Vector`
-  - [.getPointAt(u)](#curve-get-point-at-method): `Vector`
-  - [.getPoints(divisions?)](#curve-get-points-method): `Vector[]`
-  - [.getSpacedPoints(divisions?)](#curve-get-spaced-points-method): `Vector[]`
+  - [.getPoint(t)](#curve-get-point-method): `V`
+  - [.getPointAt(u)](#curve-get-point-at-method): `V`
+  - [.getPoints(divisions?)](#curve-get-points-method): `V[]`
+  - [.getSpacedPoints(divisions?)](#curve-get-spaced-points-method): `V[]`
   - [.getLength()](#curve-get-length-method): `number`
   - [.getLengths(divisions?)](#curve-get-lengths-method): `number[]`
   - [.updateArcLengths()](#curve-update-arc-lengths-method): `void`
   - [.getUtoTmapping(t, targetArcLength?)](#curve-get-u-to-t-mapping-method): `number`
-  - [.getTangent(t)](#curve-get-tangent-method): `Vector`
-  - [.getTangentAt(u)](#curve-get-tangent-at-method): `Vector`
+  - [.getTangent(t)](#curve-get-tangent-method): `V`
+  - [.getTangentAt(u)](#curve-get-tangent-at-method): `V`
   - [.isClosed()](#curve-is-closed-method): `boolean`
 
 #### Properties
@@ -47,7 +47,7 @@ Interpolate a point on the curve.
 - `u`: Normalized time value to interpolate.
 
 ```ts
-Curve.getPoint(t: number): Vector;
+Curve<V>.getPoint(t: number): V;
 ```
 
 ##### .`getPointAt(u)` <a id="curve-get-point-at-method"></a>
@@ -57,7 +57,7 @@ Interpolate a point on the curve.
 - `u`: Normalized position value to interpolate.
 
 ```ts
-Curve.getPointAt(u: number): Vector;
+Curve<V>.getPointAt(u: number): V;
 ```
 
 ##### .`getPoints(divisions?)` <a id="curve-get-points-method"></a>
@@ -67,7 +67,7 @@ Compute the curve shape into an array of points.
 - `[divisions=5]`: Number of divisions.
 
 ```ts
-Curve.getPoints(divisions?: number): Vector[];
+Curve<V>.getPoints(divisions?: number): V[];
 ```
 
 ##### .`getSpacedPoints(divisions?)` <a id="curve-get-spaced-points-method"></a>
@@ -77,7 +77,7 @@ Compute the curve shape into an array of equi-spaced points across the entire cu
 - `[divisions=5]`: Number of divisions.
 
 ```ts
-Curve.getSpacedPoints(divisions?: number): Vector[];
+Curve<V>.getSpacedPoints(divisions?: number): V[];
 ```
 
 ##### .`getLength()` <a id="curve-get-length-method"></a>
@@ -124,7 +124,7 @@ Compute an unit vector tangent for a given normalized time value.
 - `t`: Normalized time value.
 
 ```ts
-Curve.getTangent(t: number): Vector;
+Curve<V>.getTangent(t: number): V;
 ```
 
 ##### .`getTangentAt(u)` <a id="curve-get-tangent-at-method"></a>
@@ -134,7 +134,7 @@ Compute an unit vector tangent for a given normalized position value.
 - `u`: Normalized position value.
 
 ```ts
-Curve.getTangentAt(u: number): Vector;
+Curve<V>.getTangentAt(u: number): V;
 ```
 
 ##### .`isClosed()` <a id="curve-is-closed-method"></a>

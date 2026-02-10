@@ -59,20 +59,20 @@ Utility class for manipulating a 2D vectors.
   - `static` [.sub(vector1, vector2)](#vector-2-static-sub-method): `[number, number]
   - `static` [.multiply(vector1, vector2)](#vector-2-static-multiply-method): `[number, number]
   - `static` [.divide(vector1, vector2)](#vector-2-static-divide-method): `[number, number]
-  - `static` [.rotate(vector, center, angle)](#vector-2-static-rotate-method): `[number, number]
-  - `static` [.lerp(t, min, max)](#vector-2-static-lerp-method): `[number, number]
-  - `static` [.equals(vector1, vector2)](#vector-2-static-equals-method): boolean
-  - `static` [.collinear(vector1, vector2, vector3)](#vector-2-static-collinear-method): boolean
-  - `static` [.dot(vector1, vector2)](#vector-2-static-dot-method): number
-  - `static` [.cross(vector1, vector2)](#vector-2-static-cross-method): number
-  - `static` [.angle(vector)](#vector-2-static-angle-method): number
-  - `static` [.distance(vector1, vector2)](#vector-2-static-distance-method): number
-  - `static` [.squaredDistance(vector1, vector2)](#vector-2-static-squared-distance-method): number
-  - `static` [.manhattanDistance(vector1, vector2)](#vector-2-static-manhattan-distance-method): number
-  - `static` [.length(vector)](#vector-2-static-length-method): number
-  - `static` [.squaredLength(vector)](#vector-2-static-squared-length-method): number
-  - `static` [.manhattanLength(vector)](#vector-2-static-manhattan-length-method): number
-  - `static` [.fromCircularCoords(angle, radius)](#vector-2-static-from-circular-coords-method): [number, number]
+  - `static` [.rotate(vector, center, angle)](#vector-2-static-rotate-method): `[number, number]`
+  - `static` [.lerp(t, min, max)](#vector-2-static-lerp-method): `[number, number]`
+  - `static` [.equals(vector1, vector2)](#vector-2-static-equals-method): `boolean`
+  - `static` [.collinear(vector1, vector2, vector3)](#vector-2-static-collinear-method): `boolean`
+  - `static` [.dot(vector1, vector2)](#vector-2-static-dot-method): `number`
+  - `static` [.cross(vector1, vector2)](#vector-2-static-cross-method): `number`
+  - `static` [.angle(vector)](#vector-2-static-angle-method): `number`
+  - `static` [.distance(vector1, vector2)](#vector-2-static-distance-method): `number`
+  - `static` [.squaredDistance(vector1, vector2)](#vector-2-static-squared-distance-method): `number`
+  - `static` [.manhattanDistance(vector1, vector2)](#vector-2-static-manhattan-distance-method): `number`
+  - `static` [.length(vector)](#vector-2-static-length-method): `number`
+  - `static` [.squaredLength(vector)](#vector-2-static-squared-length-method): `number`
+  - `static` [.manhattanLength(vector)](#vector-2-static-manhattan-length-method): `number`
+  - `static` [.fromCircularCoords(angle, radius)](#vector-2-static-from-circular-coords-method): `[number, number]`
 
 #### Constructor <a id="vector-2-constructor"></a>
 
@@ -808,16 +808,16 @@ Utility class for manipulating a 3D vectors.
   - `static` [.multiply(vector1, vector2)](#vector-3-static-multiply-method): `[number, number, number]`
   - `static` [.divide(vector1, vector2)](#vector-3-static-divide-method): `[number, number, number]`
   - `static` [.lerp(t, min, max)](#vector-3-static-lerp-method): `[number, number, number]`
-  - `static` [.equals(vector1, vector2)](#vector-3-static-equals-method): boolean
-  - `static` [.collinear(vector1, vector2, vector3)](#vector-3-static-collinear-method): boolean
-  - `static` [.dot(vector1, vector2)](#vector-3-static-dot-method): number
+  - `static` [.equals(vector1, vector2)](#vector-3-static-equals-method): `boolean`
+  - `static` [.collinear(vector1, vector2, vector3)](#vector-3-static-collinear-method): `boolean`
+  - `static` [.dot(vector1, vector2)](#vector-3-static-dot-method): `number`
   - `static` [.cross(vector1, vector2)](#vector-3-static-cross-method): `[number, number, number]`
-  - `static` [.distance(vector1, vector2)](#vector-3-static-distance-method): number
-  - `static` [.squaredDistance(vector1, vector2)](#vector-3-static-squared-distance-method): number
-  - `static` [.manhattanDistance(vector1, vector2)](#vector-3-static-manhattan-distance-method): number
-  - `static` [.length(vector)](#vector-3-static-length-method): number
-  - `static` [.squaredLength(vector)](#vector-3-static-squared-length-method): number
-  - `static` [.manhattanLength(vector)](#vector-3-static-manhattan-length-method): number
+  - `static` [.distance(vector1, vector2)](#vector-3-static-distance-method): `number`
+  - `static` [.squaredDistance(vector1, vector2)](#vector-3-static-squared-distance-method): `number`
+  - `static` [.manhattanDistance(vector1, vector2)](#vector-3-static-manhattan-distance-method): `number`
+  - `static` [.length(vector)](#vector-3-static-length-method): `number`
+  - `static` [.squaredLength(vector)](#vector-3-static-squared-length-method): `number`
+  - `static` [.manhattanLength(vector)](#vector-3-static-manhattan-length-method): `number`
   - `static` [.fromSphericalCoords(phi, theta, radius?)](#vector-3-static-from-spherical-coords-method): `[number, number, number]`
   - `static` [.fromCylindricalCoords(theta, y, radius?)](#vector-3-static-from-cylindrical-coords-method): `[number, number, number]`
 
